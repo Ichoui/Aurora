@@ -1,13 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
+    <!--    Rajouter image ou logo-->
+    <ion-toolbar>
+        <ion-title>
+            Crédits
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content class="sl">
-  <div class="sl">
-ea
-  </div>
+<ion-content>
+    <ion-card>
+        <div>
+            App build with
+            <ion-icon name="logo-ionic" title="Ionic" color="tertiary"></ion-icon>
+            &
+            <ion-icon name="logo-angular" title="Angular" color="tertiary"></ion-icon>
+        </div>
+    </ion-card>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="dark">
+            <ion-icon name="arrow-dropup"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-list side="top">
+            <ion-fab-button color="primary">
+                <ion-icon name="logo-linkedin" color="dark"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="primary">
+                <ion-icon name="logo-twitter" color="dark"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="primary">
+                <ion-icon name="logo-github" color="dark"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="primary">
+                <ion-icon name="at" color="dark"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
 </ion-content>
