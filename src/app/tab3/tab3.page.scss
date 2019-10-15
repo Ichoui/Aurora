@@ -4,13 +4,8 @@ ion-icon.gitlab {
 }
 
 ion-card {
-  img {
+  img, ion-img {
     border: 2px solid var(--ion-color-primary);
-    border-radius: 5px;
-  }
-
-  .based-on {
-    color: var(--ion-color-primary);
   }
 
   ion-icon {
@@ -18,4 +13,3 @@ ion-card {
     height: 3vh;
   }
 }
-
