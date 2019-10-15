@@ -1,5 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
+@import "fonts";
 
 /** Ionic CSS Variables **/
 :root {
@@ -26,9 +27,9 @@
 
   /** dark **/
   --ion-color-dark: #2a2a2a;
-  --ion-color-dark-rgb: 42,42,42;
+  --ion-color-dark-rgb: 42, 42, 42;
   --ion-color-dark-contrast: #ffffff;
-  --ion-color-dark-contrast-rgb: 255,255,255;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
   --ion-color-dark-shade: #252525;
   --ion-color-dark-tint: #3f3f3f;
 
@@ -49,14 +50,20 @@
   --ion-color-light-tint: #f5f6f9;
 
   --ion-background-color: #2a2a2a;
-  --ion-text-color: #fff;
+  --ion-text-color: #f4f5f8;
+
+  /* fonts */
+  --ion-font-light: 'Oswald-Light';
+  --ion-font-regular: 'Oswald-Regular';
+  --ion-font-bold: 'Oswald-Bold';
 }
 
 $colors: (
         primary: #69BFAF,
-        secondary: #7EE6D3,
+        secondary: #8CFFEA,
         tertiary: #468075,
-        background: #2a2a2a
+        dark: #2a2a2a,
+        light: #f4f5f8
 );
 
-
+@import "stylefullpage";

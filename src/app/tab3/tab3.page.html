@@ -1,5 +1,5 @@
 <ion-header>
-    <!--    Rajouter image ou logo-->
+    <!--    Rajouter image ou logo sous forme de module -->
     <ion-toolbar>
         <ion-title>
             Crédits
@@ -9,31 +9,37 @@
 
 <ion-content>
     <ion-card>
-        <div>
-            App build with
-            <ion-icon name="logo-ionic" title="Ionic" color="tertiary"></ion-icon>
-            &
-            <ion-icon name="logo-angular" title="Angular" color="tertiary"></ion-icon>
-        </div>
+        <ion-card-content>Merci à .. pour l'API (regarder les crédits)</ion-card-content>
+        <ion-card-content>
+            <div class="based-on">
+                Application développée en
+                <ion-icon name="logo-ionic" title="Ionic" color="tertiary"></ion-icon>
+                &
+                <ion-icon name="logo-angular" title="Angular" color="tertiary"></ion-icon>
+            </div>
+        </ion-card-content>
     </ion-card>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button color="dark">
-            <ion-icon name="arrow-dropup"></ion-icon>
-        </ion-fab-button>
-
-        <ion-fab-list side="top">
-            <ion-fab-button color="primary">
-                <ion-icon name="logo-linkedin" color="dark"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-button color="primary">
-                <ion-icon name="logo-twitter" color="dark"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-button color="primary">
-                <ion-icon name="logo-github" color="dark"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-button color="primary">
-                <ion-icon name="at" color="dark"></ion-icon>
-            </ion-fab-button>
-        </ion-fab-list>
-    </ion-fab>
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary">
+        <ion-icon name="arrow-dropup" color="dark"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+        <ion-fab-button color="secondary">
+            <ion-icon name="logo-linkedin" color="dark"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="secondary">
+            <ion-icon name="logo-twitter" color="dark"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="secondary">
+            <ion-icon name="logo-github" color="dark"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="secondary">
+            <ion-icon class="gitlab" src="assets/icon/gitlab.svg" color="dark"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="secondary" href="mailto:morganichoui@gmail.com">
+            <ion-icon name="at" color="dark"></ion-icon>
+        </ion-fab-button>
+    </ion-fab-list>
+</ion-fab>

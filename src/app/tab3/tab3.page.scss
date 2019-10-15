@@ -1,0 +1,15 @@
+ion-icon.gitlab {
+  width: 100%;
+  min-height: 80%;
+}
+
+ion-card {
+  .based-on {
+    color: var(--ion-color-primary);
+    font-style: italic;
+  }
+  ion-icon {
+    width: 2.5vh;
+    height: 2.5vh;  }
+}
+
