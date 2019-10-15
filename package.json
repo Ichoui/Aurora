@@ -4,8 +4,9 @@
   "author": "Morgan N",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve -o --port=7841",
+    "start_ionic": "ionic serve -o",
+    "start_ionic_lab": "ionic serve --lab -o",
     "build": "ng build"
   },
   "private": true,
@@ -36,6 +37,7 @@
     "@angular/compiler-cli": "~8.1.2",
     "@angular/language-service": "~8.1.2",
     "@ionic/angular-toolkit": "~2.0.0",
+    "@ionic/lab": "2.0.13",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
