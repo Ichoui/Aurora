@@ -8,12 +8,14 @@ ion-card {
     border: 2px solid var(--ion-color-primary);
     border-radius: 5px;
   }
+
   .based-on {
     color: var(--ion-color-primary);
-    font-style: italic;
   }
+
   ion-icon {
-    width: 2.5vh;
-    height: 2.5vh;  }
+    width: 3vh;
+    height: 3vh;
+  }
 }
 
