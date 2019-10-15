@@ -4,6 +4,10 @@ ion-icon.gitlab {
 }
 
 ion-card {
+  img {
+    border: 2px solid var(--ion-color-primary);
+    border-radius: 5px;
+  }
   .based-on {
     color: var(--ion-color-primary);
     font-style: italic;
