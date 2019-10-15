@@ -4,9 +4,30 @@
   font-size: 5em;
   letter-spacing: 0;
   position: absolute;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   left: 50%;
   //border-radius: 50%;
   //overflow: hidden;
 }
 
+
+// A faire péter
+ion-tab-bar {
+  height: 90px;
+  flex-direction: column;
+
+  .test {
+    height: 34px;
+    //background: red;
+    border: 1px solid blue;
+    width: 100%;
+  }
+
+  .bis {
+    display: flex;
+  }
+
+  ion-tab-button {
+    height: 54px;
+  }
+}
