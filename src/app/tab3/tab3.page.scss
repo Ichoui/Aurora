@@ -4,8 +4,9 @@ ion-icon.gitlab {
 }
 
 ion-card {
-  img, ion-img {
+  ion-img {
     border: 2px solid var(--ion-color-primary);
+    max-width: 902px;
   }
 
   ion-icon {
