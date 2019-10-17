@@ -15,30 +15,7 @@ ion-tab-bar {
     overflow: visible;  // shadow root A ...
   }
 }
-:host a {
-    overflow: visible;  // shadow root A ...
+:host(a) {
+    --ion-overflow: visible !important;  // shadow root A ...
 
 }
-
-// A faire péter
-/*
-ion-tab-bar {
-  height: 90px;
-  flex-direction: column;
-
-  .test {
-    height: 34px;
-    //background: red;
-    border: 1px solid blue;
-    width: 100%;
-  }
-
-  .bis {
-    display: flex;
-  }
-
-  ion-tab-button {
-    height: 54px;
-  }
-}
-*/
