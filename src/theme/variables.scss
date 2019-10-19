@@ -58,10 +58,6 @@
   --ion-font-medium: 'Oswald-Medium';
   --ion-font-semibold: 'Oswald-SemiBold';
   --ion-font-bold: 'Oswald-Bold';
-
-    overflow: visible !important;  // shadow root A ...
-
-
 }
 
 
@@ -75,6 +71,3 @@ $colors: (
 
 @import "icomoon";
 @import "stylefullpage";
-.item {
-  contain:none;
-}

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
+  pageName = 'Contacts';
   constructor() {}
 
 }
