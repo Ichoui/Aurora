@@ -59,13 +59,11 @@
   --ion-font-semibold: 'Oswald-SemiBold';
   --ion-font-bold: 'Oswald-Bold';
 
-  :host(a) {
-    --ion-overflow: visible !important;  // shadow root A ...
-
-  }
+    overflow: visible !important;  // shadow root A ...
 
 
 }
+
 
 $colors: (
         primary: #69BFAF,

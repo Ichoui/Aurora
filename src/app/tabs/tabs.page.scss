@@ -9,13 +9,16 @@
   //border-radius: 50%;
   //overflow: hidden;
 }
+
 ion-tab-bar {
   contain: none;
-  ion-tab-button > a {
-    overflow: visible;  // shadow root A ...
-  }
 }
-:host(a) {
-    --ion-overflow: visible !important;  // shadow root A ...
 
+.main-btn {
+  ion-label {
+    padding-top: 20px;
+    font-family: var(--ion-font-bold);
+    text-transform: uppercase;
+    font-size: 1.3em;
+  }
 }
