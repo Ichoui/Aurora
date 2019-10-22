@@ -1,4 +1,25 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-card {
+  ion-card-header {
+    color: var(--ion-color-primary);
+    text-transform: uppercase;
+    font-family: var(--ion-font-semibold);
+  }
+
+  ion-card-content {
+    color: var(--ion-color-light);
+
+    ion-label {
+      padding: 3px 0;
+      font-weight: bold;
+      color: var(--ion-color-tertiary);
+    }
+
+  }
+
+  &.welcome-card {
+    ion-card-header {
+      font-size: 1.2em;
+      text-align: center;
+    }
+  }
 }

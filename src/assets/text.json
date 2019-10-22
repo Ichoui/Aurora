@@ -1,0 +1,12 @@
+{
+  "tab1": {
+    "title": "Informations",
+    "cards": {
+      "welcome": {
+        "title": "Bienvenue sur Aurora - Northen Lights",
+        "message": "L'objectif de cette application est simple : vous informer, pour une localisation donnée, des informations sur la visiblité d'Aurore Boréales. Vous pourrez également y trouver des informations sur celles-ci."
+
+      }
+    }
+  }
+}

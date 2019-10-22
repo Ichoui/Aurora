@@ -14,6 +14,8 @@ import { HeaderPageModule } from '../header/header.module';
         RouterModule.forChild([{path: '', component: Tab1Page}]),
         HeaderPageModule
     ],
-  declarations: [Tab1Page]
+    declarations: [Tab1Page],
+    providers: []
 })
-export class Tab1PageModule {}
+export class Tab1PageModule {
+}
