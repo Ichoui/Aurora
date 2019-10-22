@@ -1,36 +1,36 @@
-<app-header [titre]="pageName"></app-header>
-
+<app-header titre="{{ 'tab1.title' | translate }}"></app-header>
 
 <ion-content>
     <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
+        <ion-card-header>{{'tab1.cards.welcome.title' | translate }}</ion-card-header>
+        <ion-card-content>{{ 'tab1.cards.welcome.message' | translate }}</ion-card-content>
     </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Une Aurore Boréale ?</ion-card-header>
+        <ion-card-content>Une Aurore Boréale, ou Aurore Polaire,</ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Comment apparaissent-elle ?</ion-card-header>
+        <ion-card-content>eeeea</ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Où en voir ?</ion-card-header>
+        <ion-card-content>eeeea</ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> {{ 'tab1.cards.legends.title' | translate }}</ion-card-header>
+        <ion-card-content> {{ 'tab1.cards.legends.message' | translate }}
+            <div class="countries"><span>{{ 'tab1.cards.legends.alaska.list' | translate }}</span>{{ 'tab1.cards.legends.alaska.message' | translate}}</div>
+            <div class="countries"><span>{{ 'tab1.cards.legends.canada.list' | translate }}</span>{{ 'tab1.cards.legends.canada.message' | translate}}</div>
+            <div class="countries"><span>{{ 'tab1.cards.legends.norvege.list' | translate }}</span>{{ 'tab1.cards.legends.norvege.message' | translate}}</div>
+            <div class="countries"><span>{{ 'tab1.cards.legends.islande.list' | translate }}</span>{{ 'tab1.cards.legends.islande.message' | translate}}</div>
+            <br>
+            <div>{{ 'tab1.cards.legends.conclusion' | translate }}</div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Comment peut-on prévoir ce phénomène ?</ion-card-header>
+        <ion-card-content>eeeea</ion-card-content>
+    </ion-card>
+
 </ion-content>

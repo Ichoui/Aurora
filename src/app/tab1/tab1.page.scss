@@ -1,4 +1,27 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-card {
+  ion-card-header {
+    color: var(--ion-color-tertiary);
+    text-transform: uppercase;
+    font-family: var(--ion-font-semibold);
+  }
+
+  &.welcome-card {
+    ion-card-header {
+      color: var(--ion-color-primary) !important;
+      font-size: 1.2em;
+      text-align: center;
+    }
+  }
+
+  ion-card-content {
+    color: var(--ion-color-light);
+    //padding-left: 22px;
+
+    .countries span {
+      padding: 3px 0;
+      font-weight: bold;
+      color: var(--ion-color-tertiary);
+      font-style: italic;
+    }
+  }
 }

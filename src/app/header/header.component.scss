@@ -1,12 +1,19 @@
 ion-header {
-  text-align: right;
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
-  ion-title {
-    font-family: var(--ion-font-bold);
-    font-weight: bold;
-    font-size: 1.8em;
-    text-transform: uppercase;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    img {
+      width: 120px;
+    }
+
+    span {
+      text-align: right;
+      font-family: var(--ion-font-bold);
+      font-weight: bold;
+      font-size: 1.8em;
+      text-transform: uppercase;
+    }
   }
 }

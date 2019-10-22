@@ -1,0 +1,45 @@
+{
+  "tab1": {
+    "title": "Informations",
+    "cards": {
+      "welcome": {
+        "title": "Bienvenue sur Aurora - Northen Lights",
+        "message": "L'objectif de cette application est simple : vous informer, pour une localisation donnée, des informations sur la visiblité d'Aurore Boréales. Vous pourrez également y trouver des informations sur celles-ci."
+      },
+      "explain": {
+        "title": "",
+        "message": ""
+      },
+      "how": {
+        "title": "",
+        "message": ""
+      },
+      "where": {
+        "title": "",
+        "message": ""
+      },
+      "legends": {
+        "title": "Légendes & Mythes",
+        "message": "Il existe bon nombre de légendes autour des aurores, qui diffèrent en fonction des Régions. Je vais vous en présenter quelques unes.",
+        "alaska": {
+          "list": "Alaska : ",
+          "message": "Les Inuits craignaient les aurores."
+        },
+        "canada": {
+          "list": "Canada : ",
+          "message": ""
+        },
+        "norvege": {
+          "list": "Norvège : ",
+          "message": ""
+        },
+        "islande": {
+          "list": "Islande : ",
+          "message": ""
+        },
+        "conclusion": "Ces légendes sont de très brefs résumés, il en existe un nombre très conséquent. Il en existe en Scandinavie, Russie Amérique du Nord, et sont toutes différentes. La seule chose que ces légendes ont en commun, c'est quelles ne laissent personne indifférent."
+
+      }
+    }
+  }
+}
