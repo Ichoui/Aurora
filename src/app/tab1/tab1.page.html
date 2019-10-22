@@ -6,28 +6,31 @@
         <ion-card-content>{{ 'tab1.cards.welcome.message' | translate }}</ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header>Une Aurore Boréale ?</ion-card-header>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Une Aurore Boréale ?</ion-card-header>
         <ion-card-content>Une Aurore Boréale, ou Aurore Polaire,</ion-card-content>
-        <ion-card-header>Comment apparaissent-elle ?</ion-card-header>
+    </ion-card>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Comment apparaissent-elle ?</ion-card-header>
         <ion-card-content>eeeea</ion-card-content>
-        <ion-card-header>Où en voir ?</ion-card-header>
+    </ion-card>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Où en voir ?</ion-card-header>
         <ion-card-content>eeeea</ion-card-content>
-        <ion-card-header>Légendes & Mythes</ion-card-header>
-        <ion-card-content>
-            Il existe bon nombre de légendes autour des aurores, qui diffèrent en fonction des Régions. Je vais vous en présenter quelques unes.
+    </ion-card>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> {{ 'tab1.cards.legends.title' | translate }}</ion-card-header>
+        <ion-card-content> {{ 'tab1.cards.legends.message' | translate }}
+            <div class="countries"><span>{{ 'tab1.cards.legends.alaska.list' | translate }}</span>{{ 'tab1.cards.legends.alaska.message' | translate}}</div>
+            <div class="countries"><span>{{ 'tab1.cards.legends.canada.list' | translate }}</span>{{ 'tab1.cards.legends.canada.message' | translate}}</div>
+            <div class="countries"><span>{{ 'tab1.cards.legends.norvege.list' | translate }}</span>{{ 'tab1.cards.legends.norvege.message' | translate}}</div>
+            <div class="countries"><span>{{ 'tab1.cards.legends.islande.list' | translate }}</span>{{ 'tab1.cards.legends.islande.message' | translate}}</div>
             <br>
-            <ion-label>- Alaska :</ion-label>
-            Les Inuits... <i></i>
-            <br>
-            <ion-label>- Canada :</ion-label>
-          e
-            <br>
-            <ion-label>- Norvège :</ion-label>
-          ae
-            <br>
-            <ion-label>- Islande :</ion-label>
-          eazr
+            <div>{{ 'tab1.cards.legends.conclusion' | translate }}</div>
         </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Comment peut-on prévoir ce phénomène ?</ion-card-header>
+        <ion-card-content>eeeea</ion-card-content>
     </ion-card>
 
 </ion-content>
