@@ -1,10 +1,9 @@
-<app-header [titre]="pageName"></app-header>
-
+<app-header titre="{{ 'tab1.title' | translate }}"></app-header>
 
 <ion-content>
     <ion-card class="welcome-card">
-        <ion-card-header></ion-card-header>
-        <ion-card-content></ion-card-content>
+        <ion-card-header>{{'tab1.cards.welcome.title' | translate }}</ion-card-header>
+        <ion-card-content>{{ 'tab1.cards.welcome.message' | translate }}</ion-card-content>
     </ion-card>
     <ion-card>
         <ion-card-header>Une Aurore Boréale ?</ion-card-header>
