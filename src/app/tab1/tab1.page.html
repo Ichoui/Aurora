@@ -3,23 +3,24 @@
 <ion-content>
     <ion-card class="welcome-card">
         <ion-card-header>{{'tab1.cards.welcome.title' | translate }}</ion-card-header>
-        <ion-card-content>{{ 'tab1.cards.welcome.message' | translate }}</ion-card-content>
+        <ion-card-content class="dont-touch">{{ 'tab1.cards.welcome.message' | translate }}</ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Une Aurore Boréale ?</ion-card-header>
+        <ion-card-header (click)="visibility($event, 1)"><ion-icon name="arrow-dropright"></ion-icon> Une Aurore Boréale ?</ion-card-header>
         <ion-card-content>Une Aurore Boréale, ou Aurore Polaire,</ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Comment apparaissent-elle ?</ion-card-header>
+        <ion-card-header (click)="visibility($event, 2)"><ion-icon name="arrow-dropright"></ion-icon> Comment apparaissent-elle ?</ion-card-header>
         <ion-card-content>eeeea</ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Où en voir ?</ion-card-header>
+        <ion-card-header (click)="visibility($event, 3)"><ion-icon name="arrow-dropright"></ion-icon> Où en voir ?</ion-card-header>
         <ion-card-content>eeeea</ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> {{ 'tab1.cards.legends.title' | translate }}</ion-card-header>
+        <ion-card-header (click)="visibility($event, 4)"><ion-icon name="arrow-dropright"></ion-icon> {{ 'tab1.cards.legends.title' | translate }}</ion-card-header>
         <ion-card-content> {{ 'tab1.cards.legends.message' | translate }}
+            <br>
             <div class="countries"><span>{{ 'tab1.cards.legends.alaska.list' | translate }}</span>{{ 'tab1.cards.legends.alaska.message' | translate}}</div>
             <div class="countries"><span>{{ 'tab1.cards.legends.canada.list' | translate }}</span>{{ 'tab1.cards.legends.canada.message' | translate}}</div>
             <div class="countries"><span>{{ 'tab1.cards.legends.norvege.list' | translate }}</span>{{ 'tab1.cards.legends.norvege.message' | translate}}</div>
@@ -29,7 +30,7 @@
         </ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header (click)="visibility($event)"><ion-icon name="arrow-dropright"></ion-icon> Comment peut-on prévoir ce phénomène ?</ion-card-header>
+        <ion-card-header (click)="visibility($event, 5)"><ion-icon name="arrow-dropright"></ion-icon> Comment peut-on prévoir ce phénomène ?</ion-card-header>
         <ion-card-content>eeeea</ion-card-content>
     </ion-card>
 

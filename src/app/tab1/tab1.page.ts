@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class Tab1Page implements OnInit {
     text;
+    tabOpen = [];
 
     constructor(private translateService: TranslateService) {
     }
@@ -15,7 +16,14 @@ export class Tab1Page implements OnInit {
     ngOnInit(): void {
     }
 
-  visibility(event): void {
-
-  }
+    visibility(event, index): void {
+        if (this.tabOpen.includes(index)) {
+            const remove = this.tabOpen.indexOf(index);
+            this.tabOpen.splice(remove);
+            event.target.nextElementSibling.style.display = 'none';
+        } else {
+            this.tabOpen.push(index);
+            event.target.nextElementSibling.style.display = 'block';
+        }
+    }
 }
