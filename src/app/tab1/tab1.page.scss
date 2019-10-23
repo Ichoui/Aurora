@@ -16,6 +16,9 @@ ion-card {
   ion-card-content {
     color: var(--ion-color-light);
     //padding-left: 22px;
+    &:not(.dont-touch) {
+      display: none;
+    }
 
     .countries span {
       padding: 3px 0;

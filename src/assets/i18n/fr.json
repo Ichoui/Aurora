@@ -23,21 +23,30 @@
         "message": "Il existe bon nombre de légendes autour des aurores, qui diffèrent en fonction des Régions. Je vais vous en présenter quelques unes.",
         "alaska": {
           "list": "Alaska : ",
-          "message": "Les Inuits craignaient les aurores."
+          "message": "Les Inuits craignaient les aurores. Ils voyaient dedans les âmes dansantes d'animaux, comme le saumon, le phoque, béluga ou le cerf. Ils se munissaient de couteau pour les chasser."
         },
         "canada": {
           "list": "Canada : ",
-          "message": ""
+          "message": "Les Inuits de la Baie d'Hudson, eux, pensaient que le ciel était un dôme imense pourvu de trous, par lesquels les esprits des morts passaient pour se rendre vers les régions célestes. Ils y allumaient alors de nombreuses torches, perettant de guider les nouveaux arrivant. Quant à eux, les Indiens de l'Ouest voyaient des géants amicaux. "
         },
-        "norvege": {
-          "list": "Norvège : ",
-          "message": ""
+        "vikings": {
+          "list": "Peuple viking : ",
+          "message": "Elles représentaient pour le peuple Vikings les Valkyries, qui sont connues comme étant les messagères du dieu nordique Odin. Au terme de chaque guerre, Odin sélectionnait les plus valheureux guerriers pouvant rejoindre le Valhaha pour le Ragnarök, et envoyait les Valkyries les récupérer. Les Vikings pensaient que les aurores étaient le reflet des armures des Valkyries venues sur terre pour accomplir leur mission."
         },
-        "islande": {
-          "list": "Islande : ",
-          "message": ""
+        "sami": {
+          "list": "Peuple Sami : ",
+          "message": "Ce peuple lapon regroupe la partie Nord de la Norvège, de la Suède, de la Finlande et de la Péninsule de Kola en Russie. Pour certaines tribus de ce peuple, les aurores sont de Mauvais Présages, évoquant la mort. Elles apparaissent lorsqu'une personne est brûlée vive, ou qu'il y a eu un meurtre, un suicide ou un accouchement. Pour d'autre tribus, elles annoncent un Bon Présage, comme le souffle des baleines dans l'océan Arctique."
         },
-        "conclusion": "Ces légendes sont de très brefs résumés, il en existe un nombre très conséquent. Il en existe en Scandinavie, Russie Amérique du Nord, et sont toutes différentes. La seule chose que ces légendes ont en commun, c'est quelles ne laissent personne indifférent."
+
+        "finlande": {
+          "list": "Peuple Finnois : ",
+          "message": "La légende raconte que des renards arctiques produisaient les aurores en courrant dans le ciel à une grande vitesse, à tel point que la fourrure de leurs queues déclenchaient des étincelles et projetaient ces illuminations. Une autre légende raconte que les renards de feu faisait tourbilloner la neige déposée sur le sol vers le ciel. Les flocons refletaient alors la lueur émise par la lune. En Finlandais, une aurore boréale se dit 'Revontulet', soit littéralement Renard de feu."
+        },
+        "france": {
+          "list": "France : ",
+          "message": "Les pêcheurs Normands avaient peurs des aurores, car elles étaient de couleurs rougeâtre. Ne descendant pas fréquemment jusqu'en France, ils pensaient que celles-ci étaient annonciatrices de malheurs."
+        },
+        "conclusion": "Ces légendes sont de très brefs résumés, il en existe un nombre très conséquent. Il en existe dans les différents pays Scandinaves, en Russie, en Amérique du Nord, et sont toutes différentes. La seule chose que ces légendes ont en commun, c'est quelles ne laissent personne indifférent."
 
       }
     }
