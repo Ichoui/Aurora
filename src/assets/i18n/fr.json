@@ -37,7 +37,6 @@
           "list": "Peuple Sami : ",
           "message": "Ce peuple lapon regroupe la partie Nord de la Norvège, de la Suède, de la Finlande et de la Péninsule de Kola en Russie. Pour certaines tribus de ce peuple, les aurores sont de Mauvais Présages, évoquant la mort. Elles apparaissent lorsqu'une personne est brûlée vive, ou qu'il y a eu un meurtre, un suicide ou un accouchement. Pour d'autre tribus, elles annoncent un Bon Présage, comme le souffle des baleines dans l'océan Arctique."
         },
-
         "finlande": {
           "list": "Peuple Finnois : ",
           "message": "La légende raconte que des renards arctiques produisaient les aurores en courrant dans le ciel à une grande vitesse, à tel point que la fourrure de leurs queues déclenchaient des étincelles et projetaient ces illuminations. Une autre légende raconte que les renards de feu faisait tourbilloner la neige déposée sur le sol vers le ciel. Les flocons refletaient alors la lueur émise par la lune. En Finlandais, une aurore boréale se dit 'Revontulet', soit littéralement Renard de feu."
@@ -47,8 +46,11 @@
           "message": "Les pêcheurs Normands avaient peurs des aurores, car elles étaient de couleurs rougeâtre. Ne descendant pas fréquemment jusqu'en France, ils pensaient que celles-ci étaient annonciatrices de malheurs."
         },
         "conclusion": "Ces légendes sont de très brefs résumés, il en existe un nombre très conséquent. Il en existe dans les différents pays Scandinaves, en Russie, en Amérique du Nord, et sont toutes différentes. La seule chose que ces légendes ont en commun, c'est quelles ne laissent personne indifférent."
-
       }
     }
-  }
+  },
+  "info": "Lumiere multicolore : Dans la mythologie romaine, Aurora était la déesse de l’aurore. Le mot « borealis » fait référence au dieu grec du vent du Nord. « Aurora Borealis », ou aurore boréale, signifie donc « vent de l’aurore ». Dans de nombreuses langues, ce phénomène est appelé « lumières du Nord ».",
+  "info2": "Galilée a inventé le terme « Aurora Borealis » en 1619.\n",
+  "info3": "Des aurores polaires ont été observées sur Mars, Vénus, Saturne, Jupiter et Uranus. En raison de sa taille et de sa proximité du soleil, Mercure n’a pas d’atmosphère. Par conséquent, les aurores polaires ne peuvent pas s’y produire.\n",
+  "info4": "Dans l’hémisphère sud, l’aurore polaire est appelée aurore australe. Elle peut être aperçue depuis l’Antarctique, la Tasmanie, et même l’extrémité sud de la Nouvelle-Zélande.\n"
 }

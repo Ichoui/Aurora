@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ng serve -o --port=7841",
     "start_ionic": "ionic serve -o",
-    "start_ionic_lab": "ionic serve --lab -o",
+    "start_ionic_lab": "ionic serve --lc -o",
+    "start_androind": "ionic serve --devapp",
     "build": "ng build"
   },
   "private": true,
