@@ -1,8 +1,16 @@
 ion-card {
+
+  &.card-container {
+    box-shadow: none;
+  }
   ion-card-header {
     color: var(--ion-color-tertiary);
     text-transform: uppercase;
     font-family: var(--ion-font-semibold);
+    padding: 8px !important;
+    &:not(.header) {
+      font-style: italic;
+    }
   }
 
   &.welcome-card {
@@ -15,7 +23,7 @@ ion-card {
 
   ion-card-content {
     color: var(--ion-color-light);
-    //padding-left: 22px;
+
     &:not(.dont-touch) {
       display: none;
     }
@@ -25,6 +33,12 @@ ion-card {
       font-weight: bold;
       color: var(--ion-color-tertiary);
       font-style: italic;
+    }
+
+    .annecdotes:before {
+      content: "•";
+      padding-right: 5px;
+      color: var(--ion-color-tertiary)
     }
   }
 }

@@ -5,34 +5,54 @@
         <ion-card-header>{{'tab1.cards.welcome.title' | translate }}</ion-card-header>
         <ion-card-content class="dont-touch">{{ 'tab1.cards.welcome.message' | translate }}</ion-card-content>
     </ion-card>
-    <ion-card>
-        <ion-card-header (click)="visibility($event, 1)"><ion-icon name="arrow-dropright"></ion-icon> Une Aurore Boréale ?</ion-card-header>
-        <ion-card-content>Une Aurore Boréale, ou Aurore Polaire,</ion-card-content>
+    <ion-card class="card-container">
+        <ion-card-header class="header">{{ 'tab1.header.firstblock' | translate }}</ion-card-header>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 1)">
+                <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.cards.how.title' | translate }}</ion-card-header>
+            <ion-card-content>{{ 'tab1.cards.how.message' | translate }}</ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 2)">
+                <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.cards.where.title' | translate }}</ion-card-header>
+            <ion-card-content>{{ 'tab1.cards.where.message' | translate }}</ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 3)">
+                <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.cards.legends.title' | translate }}</ion-card-header>
+            <ion-card-content> {{ 'tab1.cards.legends.message' | translate }}
+                <br>
+                <div class="countries"><span>{{ 'tab1.cards.legends.alaska.list' | translate }}</span>{{ 'tab1.cards.legends.alaska.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.cards.legends.canada.list' | translate }}</span>{{ 'tab1.cards.legends.canada.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.cards.legends.sami.list' | translate }}</span>{{ 'tab1.cards.legends.sami.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.cards.legends.finlande.list' | translate }}</span>{{ 'tab1.cards.legends.finlande.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.cards.legends.france.list' | translate }}</span>{{ 'tab1.cards.legends.france.message' | translate}}</div>
+                <br>
+                <div>{{ 'tab1.cards.legends.conclusion' | translate }}</div>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 4)">
+                <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.cards.annecdotes.title' | translate }}</ion-card-header>
+            <ion-card-content>
+                <div class="annecdotes">{{ 'tab1.cards.annecdotes.une' | translate }}</div>
+                <div class="annecdotes">{{ 'tab1.cards.annecdotes.deux' | translate }}</div>
+                <div class="annecdotes">{{ 'tab1.cards.annecdotes.trois' | translate }}</div>
+            </ion-card-content>
+        </ion-card>
     </ion-card>
-    <ion-card>
-        <ion-card-header (click)="visibility($event, 2)"><ion-icon name="arrow-dropright"></ion-icon> Comment apparaissent-elle ?</ion-card-header>
-        <ion-card-content>eeeea</ion-card-content>
+    <ion-card class="card-container">
+        <ion-card-header class="header">{{ 'tab1.header.secondblock' | translate }}</ion-card-header>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 6)">
+                <ion-icon name="arrow-dropright"></ion-icon>
+                Comment peut-on prévoir ce phénomène ?
+            </ion-card-header>
+            <ion-card-content>eeeea</ion-card-content>
+        </ion-card>
     </ion-card>
-    <ion-card>
-        <ion-card-header (click)="visibility($event, 3)"><ion-icon name="arrow-dropright"></ion-icon> Où en voir ?</ion-card-header>
-        <ion-card-content>eeeea</ion-card-content>
-    </ion-card>
-    <ion-card>
-        <ion-card-header (click)="visibility($event, 4)"><ion-icon name="arrow-dropright"></ion-icon> {{ 'tab1.cards.legends.title' | translate }}</ion-card-header>
-        <ion-card-content> {{ 'tab1.cards.legends.message' | translate }}
-            <br>
-            <div class="countries"><span>{{ 'tab1.cards.legends.alaska.list' | translate }}</span>{{ 'tab1.cards.legends.alaska.message' | translate}}</div>
-            <div class="countries"><span>{{ 'tab1.cards.legends.canada.list' | translate }}</span>{{ 'tab1.cards.legends.canada.message' | translate}}</div>
-            <div class="countries"><span>{{ 'tab1.cards.legends.sami.list' | translate }}</span>{{ 'tab1.cards.legends.sami.message' | translate}}</div>
-            <div class="countries"><span>{{ 'tab1.cards.legends.finlande.list' | translate }}</span>{{ 'tab1.cards.legends.finlande.message' | translate}}</div>
-            <div class="countries"><span>{{ 'tab1.cards.legends.france.list' | translate }}</span>{{ 'tab1.cards.legends.france.message' | translate}}</div>
-            <br>
-            <div>{{ 'tab1.cards.legends.conclusion' | translate }}</div>
-        </ion-card-content>
-    </ion-card>
-    <ion-card>
-        <ion-card-header (click)="visibility($event, 5)"><ion-icon name="arrow-dropright"></ion-icon> Comment peut-on prévoir ce phénomène ?</ion-card-header>
-        <ion-card-content>eeeea</ion-card-content>
-    </ion-card>
-
 </ion-content>

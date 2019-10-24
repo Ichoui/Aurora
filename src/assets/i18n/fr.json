@@ -1,21 +1,19 @@
 {
   "tab1": {
     "title": "Informations",
+    "header.firstblock": "Une Aurore Boréale ?",
+    "header.secondblock": "Scientifique",
     "cards": {
       "welcome": {
         "title": "Bienvenue sur Aurora - Northen Lights",
         "message": "L'objectif de cette application est simple : vous informer, selon votre localisation, des estimations sur la visiblité d'Aurore Boréales. Vous pourrez également y trouver des informations sur celles-ci."
       },
-      "explain": {
-        "title": "",
-        "message": ""
-      },
       "how": {
-        "title": "",
-        "message": ""
+        "title": "Comment apparaissent-elles ?",
+        "message": "Une Aurore Boréale, ou Aurore Polaire dans l'hémisphère Nord, est un phénomène lumineux dansant qui apparraît à la nuit tombée autour des cercles polaires."
       },
       "where": {
-        "title": "",
+        "title": "Où en voir ?",
         "message": ""
       },
       "legends": {
@@ -39,18 +37,24 @@
         },
         "finlande": {
           "list": "Peuple Finnois : ",
-          "message": "La légende raconte que des renards arctiques produisaient les aurores en courrant dans le ciel à une grande vitesse, à tel point que la fourrure de leurs queues déclenchaient des étincelles et projetaient ces illuminations. Une autre légende raconte que les renards de feu faisait tourbilloner la neige déposée sur le sol vers le ciel. Les flocons refletaient alors la lueur émise par la lune. En Finlandais, une aurore boréale se dit 'Revontulet', soit littéralement Renard de feu."
+          "message": "La légende raconte que des renards arctiques produisaient les aurores en courrant dans le ciel à une grande vitesse, à tel point que la fourrure de leurs queues déclenchaient des étincelles et projetaient ces illuminations. Une autre légende raconte que les renards de feu faisait tourbilloner la neige déposée sur le sol vers le ciel. Les flocons refletaient alors la lueur émise par la lune. En Finlandais, une aurore boréale se dit « Revontulet », soit littéralement Renard de feu."
         },
         "france": {
           "list": "France : ",
           "message": "Les pêcheurs Normands avaient peurs des aurores, car elles étaient de couleurs rougeâtre. Ne descendant pas fréquemment jusqu'en France, ils pensaient que celles-ci étaient annonciatrices de malheurs."
         },
+        "romains": {
+          "list": "Peuple Romain :",
+          "message": "Dans la mythologie romaine, Aurora était la déesse de l’aurore. Le mot « borealis » fait référence au dieu grec du vent du Nord. « Aurora Borealis », ou aurore boréale, signifie donc « vent de l’aurore ». Dans de nombreuses langues, ce phénomène est appelé « lumières du Nord »."
+        },
         "conclusion": "Ces légendes sont de très brefs résumés, il en existe un nombre très conséquent. Il en existe dans les différents pays Scandinaves, en Russie, en Amérique du Nord, et sont toutes différentes. La seule chose que ces légendes ont en commun, c'est quelles ne laissent personne indifférent."
+      },
+      "annecdotes": {
+        "title": "Annecdotes",
+        "une": "Galilée aurait inventé le terme « Aurora Borealis » en 1619.",
+        "deux": "Des aurores boréales ont été observées sur Mars, Vénus, Saturne, Jupiter et Uranus. En raison de sa taille et de sa proximité du soleil, Mercure n’a pas d’atmosphère. Par conséquent, les aurores polaires ne peuvent pas s’y produire.",
+        "trois": "Dans l’hémisphère sud, l’Aurore Boréale est appelée Aurore Australe. Elle peut être aperçue depuis l’Antarctique, la Tasmanie, et même à l’extrémité sud de la Nouvelle-Zélande."
       }
     }
-  },
-  "info": "Lumiere multicolore : Dans la mythologie romaine, Aurora était la déesse de l’aurore. Le mot « borealis » fait référence au dieu grec du vent du Nord. « Aurora Borealis », ou aurore boréale, signifie donc « vent de l’aurore ». Dans de nombreuses langues, ce phénomène est appelé « lumières du Nord ».",
-  "info2": "Galilée a inventé le terme « Aurora Borealis » en 1619.\n",
-  "info3": "Des aurores polaires ont été observées sur Mars, Vénus, Saturne, Jupiter et Uranus. En raison de sa taille et de sa proximité du soleil, Mercure n’a pas d’atmosphère. Par conséquent, les aurores polaires ne peuvent pas s’y produire.\n",
-  "info4": "Dans l’hémisphère sud, l’aurore polaire est appelée aurore australe. Elle peut être aperçue depuis l’Antarctique, la Tasmanie, et même l’extrémité sud de la Nouvelle-Zélande.\n"
+  }
 }
