@@ -3,13 +3,16 @@ ion-card {
   &.card-container {
     box-shadow: none;
   }
+
   ion-card-header {
-    color: var(--ion-color-tertiary);
+    color: var(--ion-color-primary);
     text-transform: uppercase;
     font-family: var(--ion-font-semibold);
     padding: 8px !important;
+
     &:not(.header) {
       font-style: italic;
+      color: var(--ion-color-tertiary);
     }
   }
 

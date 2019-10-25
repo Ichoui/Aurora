@@ -2,57 +2,77 @@
 
 <ion-content>
     <ion-card class="welcome-card">
-        <ion-card-header>{{'tab1.cards.welcome.title' | translate }}</ion-card-header>
-        <ion-card-content class="dont-touch">{{ 'tab1.cards.welcome.message' | translate }}</ion-card-content>
+        <ion-card-header>{{'tab1.firstblock.welcome.title' | translate }}</ion-card-header>
+        <ion-card-content class="dont-touch">{{ 'tab1.firstblock.welcome.message' | translate }}</ion-card-content>
     </ion-card>
     <ion-card class="card-container">
-        <ion-card-header class="header">{{ 'tab1.header.firstblock' | translate }}</ion-card-header>
+        <ion-card-header class="header">{{ 'tab1.firstblock.header' | translate }}</ion-card-header>
         <ion-card>
             <ion-card-header (click)="visibility($event, 1)">
                 <ion-icon name="arrow-dropright"></ion-icon>
-                {{ 'tab1.cards.how.title' | translate }}</ion-card-header>
-            <ion-card-content>{{ 'tab1.cards.how.message' | translate }}</ion-card-content>
+                {{ 'tab1.firstblock.how.title' | translate }}
+            </ion-card-header>
+            <ion-card-content>
+                <div [innerHTML]="'tab1.firstblock.how.message' | translate"></div>
+            </ion-card-content>
         </ion-card>
         <ion-card>
             <ion-card-header (click)="visibility($event, 2)">
                 <ion-icon name="arrow-dropright"></ion-icon>
-                {{ 'tab1.cards.where.title' | translate }}</ion-card-header>
-            <ion-card-content>{{ 'tab1.cards.where.message' | translate }}</ion-card-content>
+                {{ 'tab1.firstblock.where.title' | translate }}
+            </ion-card-header>
+            <ion-card-content>
+                <div [innerHTML]="'tab1.firstblock.where.message' | translate"></div>
+            </ion-card-content>
         </ion-card>
         <ion-card>
             <ion-card-header (click)="visibility($event, 3)">
                 <ion-icon name="arrow-dropright"></ion-icon>
-                {{ 'tab1.cards.legends.title' | translate }}</ion-card-header>
-            <ion-card-content> {{ 'tab1.cards.legends.message' | translate }}
+                {{ 'tab1.firstblock.legends.title' | translate }}
+            </ion-card-header>
+            <ion-card-content> {{ 'tab1.firstblock.legends.message' | translate }}
                 <br>
-                <div class="countries"><span>{{ 'tab1.cards.legends.alaska.list' | translate }}</span>{{ 'tab1.cards.legends.alaska.message' | translate}}</div>
-                <div class="countries"><span>{{ 'tab1.cards.legends.canada.list' | translate }}</span>{{ 'tab1.cards.legends.canada.message' | translate}}</div>
-                <div class="countries"><span>{{ 'tab1.cards.legends.sami.list' | translate }}</span>{{ 'tab1.cards.legends.sami.message' | translate}}</div>
-                <div class="countries"><span>{{ 'tab1.cards.legends.finlande.list' | translate }}</span>{{ 'tab1.cards.legends.finlande.message' | translate}}</div>
-                <div class="countries"><span>{{ 'tab1.cards.legends.france.list' | translate }}</span>{{ 'tab1.cards.legends.france.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.firstblock.legends.alaska.list' | translate }}</span>{{ 'tab1.firstblock.legends.alaska.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.firstblock.legends.canada.list' | translate }}</span>{{ 'tab1.firstblock.legends.canada.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.firstblock.legends.sami.list' | translate }}</span>{{ 'tab1.firstblock.legends.sami.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.firstblock.legends.finlande.list' | translate }}</span>{{ 'tab1.firstblock.legends.finlande.message' | translate}}</div>
+                <div class="countries"><span>{{ 'tab1.firstblock.legends.france.list' | translate }}</span>{{ 'tab1.firstblock.legends.france.message' | translate}}</div>
                 <br>
-                <div>{{ 'tab1.cards.legends.conclusion' | translate }}</div>
+                <div>{{ 'tab1.firstblock.legends.conclusion' | translate }}</div>
             </ion-card-content>
         </ion-card>
         <ion-card>
             <ion-card-header (click)="visibility($event, 4)">
                 <ion-icon name="arrow-dropright"></ion-icon>
-                {{ 'tab1.cards.annecdotes.title' | translate }}</ion-card-header>
+                {{ 'tab1.firstblock.annecdotes.title' | translate }}
+            </ion-card-header>
             <ion-card-content>
-                <div class="annecdotes">{{ 'tab1.cards.annecdotes.une' | translate }}</div>
-                <div class="annecdotes">{{ 'tab1.cards.annecdotes.deux' | translate }}</div>
-                <div class="annecdotes">{{ 'tab1.cards.annecdotes.trois' | translate }}</div>
+                <div class="annecdotes">{{ 'tab1.firstblock.annecdotes.une' | translate }}</div>
+                <div class="annecdotes">{{ 'tab1.firstblock.annecdotes.deux' | translate }}</div>
+                <div class="annecdotes">{{ 'tab1.firstblock.annecdotes.trois' | translate }}</div>
+                <div class="annecdotes">{{ 'tab1.firstblock.annecdotes.quatre' | translate }}</div>
             </ion-card-content>
         </ion-card>
     </ion-card>
     <ion-card class="card-container">
-        <ion-card-header class="header">{{ 'tab1.header.secondblock' | translate }}</ion-card-header>
+        <ion-card-header class="header">{{ 'tab1.secondblock.header' | translate }}</ion-card-header>
         <ion-card>
-            <ion-card-header (click)="visibility($event, 6)">
+            <ion-card-header (click)="visibility($event, 5)">
                 <ion-icon name="arrow-dropright"></ion-icon>
-                Comment peut-on prévoir ce phénomène ?
+                {{ 'tab1.secondblock.forecast.title' | translate }}
             </ion-card-header>
-            <ion-card-content>eeeea</ion-card-content>
+            <ion-card-content>
+                <div [innerHTML]="'tab1.secondblock.forecast.message' | translate"></div>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 5)">
+                <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.secondblock.kp.title' | translate }}
+            </ion-card-header>
+            <ion-card-content>
+                <div [innerHTML]="'tab1.secondblock.kp.message' | translate"></div>
+            </ion-card-content>
         </ion-card>
     </ion-card>
 </ion-content>
