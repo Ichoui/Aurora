@@ -68,5 +68,11 @@
         "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre. L'échelle commence à 0 et se termine à 9. A partir d'un Kp 5, on peut admettre qu'il y a une tempête géomagnétique, et les chances d'appercevoir une aurore boréale augmentent à une basse lattitude. "
       }
     }
+  },
+  "tab2": {
+    "title": "Aurores"
+  },
+  "tab3": {
+    "title": "Paramètres"
   }
 }
