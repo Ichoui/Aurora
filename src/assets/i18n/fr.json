@@ -61,11 +61,11 @@
       "header": "Des prévisions ?",
       "forecast": {
         "title": "Comment peut-on prévoir ce phénomène ?",
-        "message": ""
+        "message": "On ne peut jamais assurer le fait d'en appercevoir. On ne peut que le prévoir.<br>Des outils sont mis à disposition par la &laquo; Space Weather Prediction Center &raquo;<br>Sous forme de graphique, il est possible de suivre les activités géomathétique, solaires. Il existe également une estimation à plus long terme, grâce à l'indice KP.<br>Pour plus d'explications, rendez-vous sur <a href='https://tinyurl.com/y3fnxwdv'>Aurora Maniacs</a>"
       },
       "kp": {
-        "title": "L'indice KP",
-        "message": "e"
+        "title": "L'indice Kp",
+        "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre. L'échelle commence à 0 et se termine à 9. A partir d'un Kp 5, on peut admettre qu'il y a une tempête géomagnétique, et les chances d'appercevoir une aurore boréale augmentent à une basse lattitude. "
       }
     }
   }
