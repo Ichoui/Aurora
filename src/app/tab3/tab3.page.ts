@@ -16,7 +16,7 @@ export class Tab3Page implements OnInit {
         this.geoloc.getCurrentPosition().then((resp) => {
             // resp.coords.latitude
             // resp.coords.longitude
-  console.log(resp);
+            console.log(resp);
         }).catch((error) => {
             console.log('Error getting location', error);
         });
