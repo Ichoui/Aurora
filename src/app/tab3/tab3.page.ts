@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { first } from 'rxjs/operators';
 
 @Component({
     selector: 'app-tab3',
@@ -8,6 +7,9 @@ import { first } from 'rxjs/operators';
     styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
+
+    customWhite = 'red';
+
 
     constructor(private geoloc: Geolocation) {
     }
@@ -19,11 +21,9 @@ export class Tab3Page implements OnInit {
             console.log('Error getting location', error);
         });
 
-
         // let watch = this.geoloc.watchPosition();
         // watch.pipe(first()).subscribe((data) => {
         //     console.log(data.coords);
         // });
     }
-
 }
