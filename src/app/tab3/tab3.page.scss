@@ -9,8 +9,14 @@ ion-card {
     max-width: 902px;
   }
 
-  ion-icon {
-    width: 3vh;
-    height: 3vh;
+  ion-select {
+    color: var(--ion-color-light);
+
+    ion-select-option {
+      color: var(--ion-color-light);
+    }
+  }
+
+  ion-action-sheet {
   }
 }

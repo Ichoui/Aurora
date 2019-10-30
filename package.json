@@ -4,11 +4,13 @@
   "author": "Morgan N",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "start": "ng serve -o --port=7841",
-    "start_ionic": "ionic serve -o",
-    "start_ionic_lab": "ionic serve --lab -o",
-    "start_androind": "ionic serve --devapp",
-    "build": "ng build"
+    "start:ionic_lab": "ionic serve --lab -o",
+    "build:run_browser": "ionic cordova run browser -lc -o",
+    "build:android_emulate": "ionic cordova emulate android",
+    "build:android_run_livereload": "ionic cordova run android --livereload --ssl",
+    "build:android_run": "ionic cordova run android",
+    "remove:platform_android": "ionic cordova platform rm android",
+    "info:ionic": "ionic info"
   },
   "private": true,
   "dependencies": {
