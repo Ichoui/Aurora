@@ -1,5 +1,19 @@
 <app-header titre="{{ 'tab2.title' | translate }}"></app-header>
 
-<ion-content>
-    https://ionicframework.com/docs/api/slides
+<ion-content *ngIf="loading">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+
 </ion-content>
+
+<ion-content *ngIf="!loading">
+    https://ionicframework.com/docs/api/slides
+
+    Future localisation :{{ localisation }}
+    <br>
+    Latitude : {{ coords.latitude }}<br>
+    Longitude : {{ coords.longitude }}<br>
+    Altitude : {{ coords.altitude }}
+</ion-content>
+
+
+

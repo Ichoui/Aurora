@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { HeaderPageModule } from '../header/header.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
     imports: [
@@ -13,9 +16,14 @@ import { TranslateModule } from '@ngx-translate/core';
         CommonModule,
         FormsModule,
         TranslateModule,
+        IonicStorageModule.forRoot(),
         RouterModule.forChild([{path: '', component: Tab2Page}]),
         HeaderPageModule
     ],
-  declarations: [Tab2Page]
+    declarations: [Tab2Page],
+    providers: [
+        Geolocation,
+    ]
 })
-export class Tab2PageModule {}
+export class Tab2PageModule {
+}

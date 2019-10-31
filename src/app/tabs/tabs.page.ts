@@ -16,7 +16,6 @@ export class TabsPage implements OnInit {
         this.interval();
     }
 
-
     /*
     * Permet d'afficher le logo Aurora
     * tag <a> est dans shadowRoot et ne se charge pas immédiatement

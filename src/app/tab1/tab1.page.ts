@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -6,14 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
     templateUrl: 'tab1.page.html',
     styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements OnInit {
+export class Tab1Page {
     text;
     tabOpen = [];
 
     constructor(private translateService: TranslateService) {
-    }
-
-    ngOnInit(): void {
     }
 
     visibility(event, index): void {

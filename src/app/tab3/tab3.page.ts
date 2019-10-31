@@ -1,29 +1,66 @@
-import { Component, OnInit } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { City } from '../models';
+
 
 @Component({
     selector: 'app-tab3',
     templateUrl: 'tab3.page.html',
     styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page implements OnInit {
+export class Tab3Page {
 
-    customWhite = 'red';
+    cities: City[] = [
+        {
+            'code': 'mtl',
+            'label': 'Montréal - CA',
+        },
+        {
+            'code': 'qc',
+            'label': 'Québec - CA',
+        },
+        {
+            'code': 'sgn',
+            'label': 'Saguenay - CA',
+        },
+        {
+            'code': 'bff',
+            'label': 'Banff - CA',
 
+        },
+        {
+            'code': 'edm',
+            'label': 'Edmonton - CA',
+        },
+        {
 
-    constructor(private geoloc: Geolocation) {
+            'code': 'ylk',
+            'label': 'Yellowknife - CA',
+        },
+        {
+
+            'code': 'jsp',
+            'label': 'Jasper - CA',
+        },
+        {
+            'code': 'bgn',
+            'label': 'Bergen - NO',
+        },
+        {
+
+            'code': 'trm',
+            'label': 'Tromso - NO',
+        },
+        {
+            'code': 'ryk',
+            'label': 'Reykjavik - ISL',
+        }
+    ];
+
+    constructor(private storage: Storage) {
     }
 
-    ngOnInit(): void {
-        this.geoloc.getCurrentPosition().then((resp) => {
-            console.log(resp.coords);
-        }).catch((error) => {
-            console.log('Error getting location', error);
-        });
-
-        // let watch = this.geoloc.watchPosition();
-        // watch.pipe(first()).subscribe((data) => {
-        //     console.log(data.coords);
-        // });
+    ionViewWillEnter() {
+        this.storage.set('localisation', 'current')
     }
 }

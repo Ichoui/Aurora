@@ -1,33 +1,14 @@
 <app-header titre="{{ 'tab3.title' | translate }}"></app-header>
 
 <ion-content>
-    <ion-card [color]="customWhite">
+    <ion-card>
         <ion-img src="/assets/img/aurora-tab3.jpg"></ion-img>
         <ion-card-content>
             <ion-item>
                 <ion-label>Localisation</ion-label>
-                <ion-select value="enable" >
-                    <ion-select-option value="enable">Montréal - CA</ion-select-option>
-                    <ion-select-option value="mute">Québec - CA</ion-select-option>
-                    <ion-select-option value="mute_week">Saguenay - CA</ion-select-option>
-                    <ion-select-option value="mute_year">Banff - CA</ion-select-option>
-                    <ion-select-option value="mute_year">Jasper - CA</ion-select-option>
-                    <ion-select-option value="mute_year">Bergen - NO</ion-select-option>
-                    <ion-select-option value="mute_year">Tromso - NO</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">Reikjavic - IL</ion-select-option>
-                    <ion-select-option value="mute_year">AAAAAA -  IL</ion-select-option>
+                <ion-select value="currentLocation" interface="action-sheet">
+                    <ion-select-option value="currentLocation">Position actuelle</ion-select-option>
+                    <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.label}}</ion-select-option>
                 </ion-select>
             </ion-item>
         </ion-card-content>

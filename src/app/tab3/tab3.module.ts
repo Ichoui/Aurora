@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab3Page } from './tab3.page';
 import { HeaderPageModule } from '../header/header.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
     imports: [
@@ -14,13 +14,11 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
         CommonModule,
         FormsModule,
         TranslateModule,
+        HeaderPageModule,
         RouterModule.forChild([{path: '', component: Tab3Page}]),
-        HeaderPageModule
+        IonicStorageModule.forRoot(),
     ],
     declarations: [Tab3Page],
-    providers: [
-        Geolocation
-    ]
 })
 export class Tab3PageModule {
 }
