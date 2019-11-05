@@ -32,6 +32,7 @@ export class Tab2Page {
         this.geoloc.getCurrentPosition().then((resp) => {
             console.log(resp.coords);
             this.coords = resp.coords;
+            console.log(typeof resp.coords.latitude);
             this.loading = false;
             console.log(this.coords);
         }).catch((error) => {
