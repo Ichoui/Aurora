@@ -6,7 +6,7 @@
         <ion-card-content>
             <ion-item>
                 <ion-label>Localisation</ion-label>
-                <ion-select value="currentLocation" interface="action-sheet">
+                <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedValue($event)">
                     <ion-select-option value="currentLocation">Position actuelle</ion-select-option>
                     <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.label}}</ion-select-option>
                 </ion-select>

@@ -56,11 +56,41 @@ export class Tab3Page {
             'label': 'Reykjavik - ISL',
         }
     ];
+    localisation: string;
 
     constructor(private storage: Storage) {
     }
 
+    /*
+    * Si storage vide, set valeur à location actuelle ET valeur du select à position actuelle
+    * Sinon, set valeur du select à la position indiquée dans storage
+    * */
     ionViewWillEnter() {
-        this.storage.set('localisation', 'current')
+        this.storage.get('localisation').then(
+            localisation => {
+                console.log(localisation);
+                if (localisation === null) {
+                    console.log('je suis là');
+                    this.selectedValue(null, 'currentLocation');
+                    this.localisation = 'currentLocation';
+                } else {
+                    this.localisation = localisation;
+                }
+            },
+            error => console.log('Il y a un soucis de storage de position', error)
+        );
+    }
+
+
+    selectedValue(choice?: any, init?: string) {
+        if (choice) {
+            this.localisation = choice.detail.value;
+            this.storage.set('localisation', this.localisation);
+            return;
+        }
+        if (init){
+            this.storage.set('localisation', 'currentLocation');
+            return;
+        }
     }
 }

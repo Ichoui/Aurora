@@ -16,7 +16,10 @@ import { IonicStorageModule } from '@ionic/storage';
         CommonModule,
         FormsModule,
         TranslateModule,
-        IonicStorageModule.forRoot(),
+        IonicStorageModule.forRoot({
+            name: '__dbAurora',
+            driverOrder: ['indexeddb', 'sqlite', 'websql']
+        }),
         RouterModule.forChild([{path: '', component: Tab2Page}]),
         HeaderPageModule
     ],
