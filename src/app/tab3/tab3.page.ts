@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { City } from '../models';
 import { cities } from '../cities';
 
 @Component({

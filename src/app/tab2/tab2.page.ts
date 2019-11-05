@@ -17,22 +17,27 @@ export class Tab2Page {
     }
 
     ionViewWillEnter() {
-        // this.loading = true; // si on remet ça, buffer constamment présent : pas trop long ?
+        this.loading = true; // si on remet ça, buffer constamment présent : pas trop long ?
         this.storage.get('localisation').then(
-            res => {
-                this.localisation = res;
+            localisation => {
+                this.localisation = localisation;
+                if (localisation === 'currentLocation') {
+                    this.userLocalisation();
+                } else {
+                    this.coords = null;
+                    // mettre les coordonénées des autres via fonction
+                    this.loading = false;
+                }
                 console.log(this.localisation);
             },
             error => console.log('errorStorage', error)
         );
-        this.userLocalisation();
     }
 
+    // reverse coordonénées ici
     userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
-            console.log(resp.coords);
             this.coords = resp.coords;
-            console.log(typeof resp.coords.latitude);
             this.loading = false;
             console.log(this.coords);
         }).catch((error) => {
