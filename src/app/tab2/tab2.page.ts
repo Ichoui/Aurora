@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
+import { cities, Coords } from '../cities';
 
 @Component({
     selector: 'app-tab2',
@@ -11,7 +12,7 @@ export class Tab2Page {
 
     loading: boolean = true;
     localisation;
-    coords: Coordinates;
+    coords: Coords;
 
     constructor(private geoloc: Geolocation, private storage: Storage) {
     }
@@ -19,29 +20,38 @@ export class Tab2Page {
     ionViewWillEnter() {
         this.loading = true; // si on remet ça, buffer constamment présent : pas trop long ?
         this.storage.get('localisation').then(
-            localisation => {
-                this.localisation = localisation;
-                if (localisation === 'currentLocation') {
+            codeLocation => {
+                if (codeLocation === 'currentLocation') {
+                    this.localisation = codeLocation;
                     this.userLocalisation();
                 } else {
-                    this.coords = null;
-                    // mettre les coordonénées des autres via fonction
-                    this.loading = false;
+                    this.localisation = codeLocation;
+                    this.chooseAnyCity(codeLocation);
                 }
-                console.log(this.localisation);
             },
             error => console.log('errorStorage', error)
         );
     }
 
     // reverse coordonénées ici
-    userLocalisation() {
+    userLocalisation(): void {
         this.geoloc.getCurrentPosition().then((resp) => {
             this.coords = resp.coords;
+            console.log(resp);
             this.loading = false;
             console.log(this.coords);
         }).catch((error) => {
             console.log('Error getting location', error);
         });
+    }
+
+    // choosen city coords
+    chooseAnyCity(code: string): void {
+        const city = cities.find(res => res.code === code);
+        this.coords = {
+            latitude : city.latitude,
+            longitude: city.longitude
+        };
+        this.loading = false;
     }
 }
