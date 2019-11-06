@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { cities, Coords } from '../cities';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 @Component({
     selector: 'app-tab2',
@@ -14,7 +15,9 @@ export class Tab2Page {
     localisation;
     coords: Coords;
 
-    constructor(private geoloc: Geolocation, private storage: Storage) {
+    constructor(private geoloc: Geolocation,
+                private storage: Storage,
+                private nativeGeo: NativeGeocoder) {
     }
 
     ionViewWillEnter() {
@@ -34,10 +37,19 @@ export class Tab2Page {
     }
 
     // reverse coordonénées ici
-    userLocalisation(): void {
+    userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
             this.coords = resp.coords;
-            console.log(resp);
+            let options: NativeGeocoderOptions = {
+                useLocale: true,
+                maxResults: 5
+            };
+            this.nativeGeo.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options).then(
+                (res: NativeGeocoderResult[]) => {
+                    console.log(res);
+                },
+                error => console.log( error)
+            );
             this.loading = false;
             console.log(this.coords);
         }).catch((error) => {
@@ -49,7 +61,7 @@ export class Tab2Page {
     chooseAnyCity(code: string): void {
         const city = cities.find(res => res.code === code);
         this.coords = {
-            latitude : city.latitude,
+            latitude: city.latitude,
             longitude: city.longitude
         };
         this.loading = false;

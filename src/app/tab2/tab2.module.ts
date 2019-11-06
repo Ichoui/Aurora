@@ -8,7 +8,7 @@ import { HeaderPageModule } from '../header/header.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 @NgModule({
     imports: [
@@ -26,6 +26,7 @@ import { IonicStorageModule } from '@ionic/storage';
     declarations: [Tab2Page],
     providers: [
         Geolocation,
+        NativeGeocoder
     ]
 })
 export class Tab2PageModule {
