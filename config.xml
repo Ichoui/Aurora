@@ -3,7 +3,7 @@
     <name>Aurora - NorthenLight</name>
     <description>Application NorthenLight</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="https://192.168.10.92:8100" />
+    <content original-src="index.html" src="https://localhost:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

@@ -1,0 +1,13 @@
+Bannière top
+Des lieux géographiques mondiaux pour les auroras (Canada Nord Banff Jasper ...) + Islande 9 Norway ...
+En fonction de la route où on est : changer
+Une map générale avec toutes les aurores en timelive
+un graphique chartJS
+une partie générale avec une explication sur ce que sont les northen lights, mythes, comment ça marche ...
+
+-------
+Page right : météo de la ville en cours & température, prévisions sur X jours, prévisions des nuages sur les prochaines 24h (?))
+Page left : Chance de voir des aurores (oui / non / nuageux), KP actuel (kp), KP 1 heure (kp1minute) / KP 27 jours, BZ, Vent solaire bz speed density (renseignement), ennuagement
+
+
+

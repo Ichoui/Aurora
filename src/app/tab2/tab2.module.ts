@@ -9,6 +9,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { MeteoModule } from './meteo/meteo.module';
+import { KpindexModule } from './kpindex/kpindex.module';
 
 @NgModule({
     imports: [
@@ -21,7 +23,9 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
             driverOrder: ['indexeddb', 'sqlite', 'websql']
         }),
         RouterModule.forChild([{path: '', component: Tab2Page}]),
-        HeaderPageModule
+        HeaderPageModule,
+        MeteoModule,
+        KpindexModule
     ],
     declarations: [Tab2Page],
     providers: [

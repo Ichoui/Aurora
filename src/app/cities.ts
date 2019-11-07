@@ -111,3 +111,7 @@ export const cities: City[] = [
         'longitude': 21.940686
     }
 ];
+
+// toulouse
+// lat : 43.608763
+// long : 1.436908

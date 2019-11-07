@@ -9,11 +9,12 @@
 
     <ion-slides [options]="slideOpts">
         <ion-slide>
-            Latitude : {{ coords.latitude }}<br>
-            Longitude : {{ coords.longitude }}<br>
+            <app-kpindex></app-kpindex>
         </ion-slide>
-        <ion-slide>B</ion-slide>
-        <ion-slide>C</ion-slide>
+        <ion-slide>
+            <app-meteo [coords]="coords"></app-meteo>
+        </ion-slide>
+        <ion-slide>Quoi de plus ?</ion-slide>
 
     </ion-slides>
 </ion-content>

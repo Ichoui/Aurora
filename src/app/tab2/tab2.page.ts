@@ -18,7 +18,7 @@ export class Tab2Page {
     city: string;
     country: string;
     slideOpts = {
-        initialSlide: 1,
+        initialSlide: 0,
         speed: 400
     };
 

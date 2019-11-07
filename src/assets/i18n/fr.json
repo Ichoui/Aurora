@@ -9,11 +9,11 @@
       },
       "how": {
         "title": "Mécanisme ?",
-        "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le Soleil.<br>Elles apparaissent lorsque des particules solaires, propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles sont attirées vers les pôles magnétiques (entre 65 et 75° de latitude), où elles interargissent avec les couches supérieures de l'atmhosphère : ozone, oxygène et autre gaz. De l'énergie se créé alors et devient visible sous forme de lumières dansantes comme nous les connaissons.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques : <ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
+        "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le Soleil.<br>Elles apparaissent lorsque des particules solaires, propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles sont attirées vers les pôles magnétiques (entre 65 et 75° de latitude), où elles interargissent avec les couches supérieures de l'atmhosphère : ozone, oxygène et autres gazs. De l'énergie se créé alors et devient visible sous forme de lumières dansantes multi-colores.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), c'est à dire dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques et scientifiques, je vous propose les sites suivants : <ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
       },
       "where": {
         "title": "Où en voir ?",
-        "message": "Plus on se rapproche d'un pôle de la planète, plus les probabilités de voir une Aurore Boréale seront élevées.<br>L'Alaska, le Canada du Nord, la Norvège, l'Islande ou encore la Laponie sont des endroits de choix pour admirer en admirer à la tombée de la nuit. Dans l'hémisphère Sud, ce sera surtout en Nouvelle-Zélande. Bien entendu, cela dépend de l'activité solaire.<br>En été, il est impossible de voir des Aurores Boréales à proximité du pôle Nord à cause du soleil de minuit (le jour ne se couche pas ou très peu). Il faut alors se rapprocher du solstice d'hiver (21 décembre) pour en appercevoir. A l'inverse, en été il est possible d'en voir en se rapprochant du pôle Sud"
+        "message": "Plus on se rapproche d'un pôle de la planète, plus les probabilités d'en voir seront élevées.<br>L'Alaska, le Canada du Nord, la Norvège, l'Islande ou encore la Laponie sont des endroits de choix pour admirer en admirer à la tombée de la nuit. Dans l'hémisphère Sud, ce sera surtout en Nouvelle-Zélande. Bien entendu, cela dépend de l'activité solaire.<br>En été, il est impossible de voir des Aurores Boréales à proximité du pôle Nord à cause du soleil de minuit (le jour ne se couche pas ou très peu). Il faut alors se rapprocher du solstice d'hiver (21 décembre) pour en appercevoir. A l'inverse, en été il est possible d'en voir en se rapprochant du pôle Sud"
       },
       "legends": {
         "title": "Légendes & Mythes",
@@ -54,7 +54,8 @@
         "deux": "Des Aurores Boréales ont été observées sur Mars, Vénus, Saturne, Jupiter et Uranus. En raison de sa taille et de sa proximité du soleil, Mercure n'a pas d'atmosphère. Par conséquent, les Aurores Boréales ne peuvent pas s'y produire.",
         "trois": "Dans l'hémisphère nord, l'Aurore Boréale est aussi appelée Aurore Polaire. Elle peut être apperçue depuis la banquise Arctique, l'Amérique du Nord (Alaska, Canada), le Groenland, le nord des pays Scandinave ou encore l'Islande.",
         "quatre": "Dans l'hémisphère sud, l'Aurore Boréale est appelée Aurore Australe. Elle peut être aperçue depuis l'Antarctique, la Tasmanie, et même à l'extrémité sud de la Nouvelle-Zélande.",
-        "cinq": "Les Aurores Boréales dépendent de l'activité du Soleil. Il se trouve que l'activité solaire a un cycle de 11 ans, où les vents solaires sont au plus bas. En 2019, l'activité est au plus bas car un cycle se termine."
+        "cinq": "Les Aurores Boréales dépendent de l'activité du Soleil. Il se trouve que l'activité solaire a un cycle de 11 ans, où les vents solaires sont au plus bas. En 2019, l'activité est au plus bas car un cycle se termine.",
+        "six": "Il existe deux villes situées en Alaska, Fairbanks et Nome, où il est possible d'observer des Aurores Boréales plus de 200 jours par an."
       }
     },
     "secondblock": {
@@ -66,6 +67,10 @@
       "kp": {
         "title": "L'indice Kp",
         "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre. L'échelle commence à 0 et se termine à 9. A partir d'un Kp 5, on peut admettre qu'il y a une tempête géomagnétique, et les chances d'appercevoir une aurore boréale augmentent à une basse lattitude. "
+      },
+      "solarwind": {
+        "title": "Le vent solaire",
+        "message": "vent solaire BZ densité vitesse ..."
       }
     }
   },
