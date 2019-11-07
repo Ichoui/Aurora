@@ -8,7 +8,7 @@
                 <ion-label>Localisation</ion-label>
                 <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedValue($event)">
                     <ion-select-option value="currentLocation">Position actuelle</ion-select-option>
-                    <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.label}}</ion-select-option>
+                    <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.ville }} - {{ city.codePays }} </ion-select-option>
                 </ion-select>
             </ion-item>
         </ion-card-content>

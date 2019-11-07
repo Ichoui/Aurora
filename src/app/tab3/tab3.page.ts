@@ -31,7 +31,7 @@ export class Tab3Page {
                     this.localisation = localisation;
                 }
             },
-            error => console.log('Il y a un soucis de storage de position', error)
+            error => console.warn('Il y a un soucis de storage de position', error)
         );
     }
 

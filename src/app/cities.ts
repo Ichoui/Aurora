@@ -1,6 +1,8 @@
 export interface City {
     code: string;
-    label: string;
+    ville: string;
+    pays: string;
+    codePays: string;
     latitude: number;
     longitude: number;
 }
@@ -17,25 +19,33 @@ export interface Coords {
 export const cities: City[] = [
     {
         'code': 'mtl',
-        'label': `Montréal - CA`,
+        'ville': 'Montréal',
+        'pays': 'Canada',
+        'codePays':'CA',
         'latitude': 45.573589,
         'longitude': -73.537113
     },
     {
         'code': 'qc',
-        'label': 'Québec - CA',
+        'ville': 'Québec',
+        'pays': 'Canada',
+        'codePays':'CA',
         'latitude': 46.826835,
         'longitude': -71.205849
     },
     {
         'code': 'sgn',
-        'label': 'Saguenay - CA',
+        'ville': 'Saguenay',
+        'pays': 'Canada',
+        'codePays':'CA',
         'latitude': 48.427878,
         'longitude': -71.066089
     },
     {
         'code': 'bff',
-        'label': 'Banff - CA',
+        'ville': 'Banff',
+        'pays': 'Canada',
+        'codePays':'CA',
         'latitude': 51.178911,
         'longitude': -115.569748
 
@@ -43,46 +53,60 @@ export const cities: City[] = [
     {
 
         'code': 'jsp',
-        'label': 'Jasper - CA',
+        'ville': 'Jasper',
+        'pays': 'Canada',
+        'codePays':'CA',
         'latitude': 52.873291,
         'longitude': -118.080682
     },
     {
         'code': 'edm',
-        'label': 'Edmonton - CA',
+        'ville': 'Edmonton',
+        'pays': 'Canada',
+        'codePays':'CA',
         'latitude': 53.546250,
         'longitude': -113.493442
     },
     {
 
         'code': 'ylk',
-        'label': 'Yellowknife - CA',
+        'ville': 'Yellowknife',
+        'pays': 'Canada',
+        'codePays':'CA',
         'latitude': 62.452538,
         'longitude': -114.377654
     },
     {
 
         'code': 'anc',
-        'label': 'Anchorage - US',
+        'ville': 'Anchorage',
+        'pays': 'Alaska',
+        'codePays':'USA',
         'latitude': 61.228421,
         'longitude': -149.887640
     },
     {
         'code': 'bgn',
-        'label': 'Bergen - NO',
+        'ville': 'Bergen',
+        'pays': 'Norvège',
+        'codePays':'NW',
         'latitude': 60.387856,
         'longitude': 5.330406
     },
     {
 
         'code': 'trm',
-        'label': 'Tromso - NO',
+        'ville': 'Trømso',
+        'pays': 'Norvège',
+        'codePays':'NW',
         'latitude': 69.650288,
         'longitude': 18.955098
     },
     {
         'code': 'ryk',
-        'label': 'Reykjavik - ISL',
+        'ville': 'Reykjavik',
+        'pays': 'Islande',
+        'codePays':'ISL',
         'latitude': 64.146653,
         'longitude': 21.940686
     }

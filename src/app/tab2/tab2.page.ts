@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { cities, Coords } from '../cities';
-import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 
 @Component({
     selector: 'app-tab2',
@@ -12,8 +12,15 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@io
 export class Tab2Page {
 
     loading: boolean = true;
-    localisation;
+    localisation: string;
+    getCode: string;
     coords: Coords;
+    city: string;
+    country: string;
+    slideOpts = {
+        initialSlide: 1,
+        speed: 400
+    };
 
     constructor(private geoloc: Geolocation,
                 private storage: Storage,
@@ -24,42 +31,39 @@ export class Tab2Page {
         this.loading = true; // si on remet ça, buffer constamment présent : pas trop long ?
         this.storage.get('localisation').then(
             codeLocation => {
-                if (codeLocation === 'currentLocation') {
-                    this.localisation = codeLocation;
+                if (codeLocation === 'currentLocation' || codeLocation === null) {
+                    this.getCode = codeLocation;
                     this.userLocalisation();
                 } else {
-                    this.localisation = codeLocation;
+                    this.getCode = codeLocation;
                     this.chooseAnyCity(codeLocation);
                 }
             },
-            error => console.log('errorStorage', error)
+            error => console.warn('errorStorage', error)
         );
     }
 
-    // reverse coordonénées ici
     userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
             this.coords = resp.coords;
-            let options: NativeGeocoderOptions = {
-                useLocale: true,
-                maxResults: 5
-            };
-            this.nativeGeo.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options).then(
+            this.nativeGeo.reverseGeocode(resp.coords.latitude, resp.coords.longitude).then(
                 (res: NativeGeocoderResult[]) => {
-                    console.log(res);
+                    this.city = res[0].locality;
+                    this.country = res[0].countryName;
                 },
-                error => console.log( error)
+                error => console.warn('Erreur de reverse geocode', error)
             );
             this.loading = false;
-            console.log(this.coords);
         }).catch((error) => {
-            console.log('Error getting location', error);
+            console.warn('Error getting location', error);
         });
     }
 
-    // choosen city coords
     chooseAnyCity(code: string): void {
         const city = cities.find(res => res.code === code);
+        this.city = city.ville;
+        this.country = city.pays;
+
         this.coords = {
             latitude: city.latitude,
             longitude: city.longitude

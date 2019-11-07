@@ -1,1 +1,18 @@
+h2 {
+  margin: 10px auto;
 
+  span:first-child {
+    display: block;
+  }
+
+  span:last-child {
+    display: block;
+    font-size: .55em;
+    text-transform: uppercase;
+    font-family: var(--ion-font-semibold);
+  }
+}
+
+ion-slides {
+  min-height: 70vh;
+}
