@@ -19,6 +19,24 @@
         <ion-card>
             <ion-card-header (click)="visibility($event, 2)">
                 <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.firstblock.solarwind.title' | translate }}
+            </ion-card-header>
+            <ion-card-content>
+                <div [innerHTML]="'tab1.firstblock.solarwind.message' | translate"></div>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 3)">
+                <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.firstblock.colors.title' | translate }}
+            </ion-card-header>
+            <ion-card-content>
+                <div [innerHTML]="'tab1.firstblock.colors.message' | translate"></div>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 4)">
+                <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.firstblock.where.title' | translate }}
             </ion-card-header>
             <ion-card-content>
@@ -26,7 +44,7 @@
             </ion-card-content>
         </ion-card>
         <ion-card>
-            <ion-card-header (click)="visibility($event, 3)">
+            <ion-card-header (click)="visibility($event, 5)">
                 <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.firstblock.legends.title' | translate }}
             </ion-card-header>
@@ -42,7 +60,7 @@
             </ion-card-content>
         </ion-card>
         <ion-card>
-            <ion-card-header (click)="visibility($event, 4)">
+            <ion-card-header (click)="visibility($event, 6)">
                 <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.firstblock.annecdotes.title' | translate }}
             </ion-card-header>
@@ -53,13 +71,15 @@
                 <div class="annecdotes">{{ 'tab1.firstblock.annecdotes.quatre' | translate }}</div>
                 <div class="annecdotes">{{ 'tab1.firstblock.annecdotes.cinq' | translate }}</div>
                 <div class="annecdotes">{{ 'tab1.firstblock.annecdotes.six' | translate }}</div>
+                <div class="annecdotes">{{ 'tab1.firstblock.annecdotes.sept' | translate }}</div>
             </ion-card-content>
         </ion-card>
     </ion-card>
+
     <ion-card class="card-container">
         <ion-card-header class="header">{{ 'tab1.secondblock.header' | translate }}</ion-card-header>
         <ion-card>
-            <ion-card-header (click)="visibility($event, 4)">
+            <ion-card-header (click)="visibility($event, 7)">
                 <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.secondblock.forecast.title' | translate }}
             </ion-card-header>
@@ -68,21 +88,12 @@
             </ion-card-content>
         </ion-card>
         <ion-card>
-            <ion-card-header (click)="visibility($event, 5)">
+            <ion-card-header (click)="visibility($event, 8)">
                 <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.secondblock.kp.title' | translate }}
             </ion-card-header>
             <ion-card-content>
                 <div [innerHTML]="'tab1.secondblock.kp.message' | translate"></div>
-            </ion-card-content>
-        </ion-card>
-        <ion-card>
-            <ion-card-header (click)="visibility($event, 6)">
-                <ion-icon name="arrow-dropright"></ion-icon>
-                {{ 'tab1.secondblock.solarwind.title' | translate }}
-            </ion-card-header>
-            <ion-card-content>
-                <div [innerHTML]="'tab1.secondblock.solarwind.message' | translate"></div>
             </ion-card-content>
         </ion-card>
     </ion-card>

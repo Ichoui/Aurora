@@ -9,26 +9,34 @@
       },
       "how": {
         "title": "Mécanisme ?",
-        "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le Soleil.<br>Elles apparaissent lorsque des particules solaires, propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles sont attirées vers les pôles magnétiques (entre 65 et 75° de latitude), où elles interargissent avec les couches supérieures de l'atmhosphère : ozone, oxygène et autres gazs. De l'énergie se créé alors et devient visible sous forme de lumières dansantes multi-colores.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), c'est à dire dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques et scientifiques, je vous propose les sites suivants : <ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
+        "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le <b>Soleil</b>.<br>Elles apparaissent lorsque des <b>particules solaires</b> propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles sont attirées vers les pôles magnétiques (entre 65 et 75° de latitude), où elles interagissent avec les couches supérieures de l'atmosphère : ozone, oxygène, hydrogène et autres gaz. De l'énergie se créé alors et devient visible sous forme de lumières dansantes.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), c'est à dire dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques et scientifiques, je vous propose les sites suivants : <ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
+      },
+      "solarwind": {
+        "title": "Le vent solaire",
+        "message": "Le vent solaire est un <b>plasma</b> (un gaz constitué principalement d'électrons, d'ions et de protons). Il existe 2 type de vents solaires :<ul><li>le lent (environ 300 km/s)</li><li>le rapide (entre 500 et 800 km/s)</li></ul> C'est le second qui a un impact direct sur la Terre, et qui est soumis à l'activité et aux cycles solaires.<br>  vent solaire BZ densité vitesse ..."
+      },
+      "colors": {
+        "title": "Verte, violette ou rose",
+        "message": "Leurs couleurs dépend de l'altitude à laquelle le plasma des vents solaires entrent en contact avec les gaz contenus dans notre atmosphère. Plus la <b>densité</b> d'un vent solaire est élevé, plus les particules contenues dans le plasma descendront bas dans l'atmosphère.<ul><li><b>Violette / Rouge</b> : entre 200 et 500km d'altitude, les électrons ionisent l'oxygène qui est plutôt rare.</li><li><b>Vert</b> : entre 100 et 200km d'altitude, les électrons ionisent l'oxygène qui est plus dense à cette altitude. C'est le phénomène le plus fréquent</li><li><b>Rose</b> : entre 80 et 100km d'altitude, les électrons ionisent l'hydrogène et l'azote. Plutôt rare car il faut un vent solaire très dense et/ou chargé en énergie</li></ul>"
       },
       "where": {
         "title": "Où en voir ?",
-        "message": "Plus on se rapproche d'un pôle de la planète, plus les probabilités d'en voir seront élevées.<br>L'Alaska, le Canada du Nord, la Norvège, l'Islande ou encore la Laponie sont des endroits de choix pour admirer en admirer à la tombée de la nuit. Dans l'hémisphère Sud, ce sera surtout en Nouvelle-Zélande. Bien entendu, cela dépend de l'activité solaire.<br>En été, il est impossible de voir des Aurores Boréales à proximité du pôle Nord à cause du soleil de minuit (le jour ne se couche pas ou très peu). Il faut alors se rapprocher du solstice d'hiver (21 décembre) pour en appercevoir. A l'inverse, en été il est possible d'en voir en se rapprochant du pôle Sud"
+        "message": "Plus on se rapproche d'un pôle de la planète, plus les probabilités d'en voir seront élevées.<br>L'Alaska, le Canada du Nord, la Norvège, l'Islande ou encore la Laponie sont des endroits de choix pour admirer en admirer à la tombée de la nuit. Dans l'hémisphère Sud, ce sera surtout en Nouvelle-Zélande. Bien entendu, cela dépend de l'activité solaire.<br>En été, il est impossible de voir des Aurores Boréales à proximité du pôle Nord à cause du soleil de minuit (le jour ne se couche pas ou très peu). Il faut alors se rapprocher du solstice d'hiver (21 décembre) pour en apercevoir. A l'inverse, en été il est possible d'en voir en se rapprochant du pôle Sud"
       },
       "legends": {
         "title": "Légendes & Mythes",
-        "message": "Il existe bon nombre de légendes autour des Aurores, qui diffèrent en fonction des Régions. Je vais vous en présenter quelques unes.",
+        "message": "Il existe bon nombre de légendes autour des Aurores, qui diffèrent en fonction des Régions. Je vais vous en présenter quelques-une.",
         "alaska": {
           "list": "Alaska : ",
           "message": "Les Inuits craignaient les Aurores. Ils voyaient dedans les âmes dansantes d'animaux, comme le saumon, le phoque, béluga ou le cerf. Ils se munissaient de couteau pour les chasser."
         },
         "canada": {
           "list": "Canada : ",
-          "message": "Les Inuits de la Baie d'Hudson, eux, pensaient que le ciel était un dôme imense pourvu de trous, par lesquels les esprits des morts passaient pour se rendre vers les régions célestes. Ils y allumaient alors de nombreuses torches, perettant de guider les nouveaux arrivant. Quant à eux, les Indiens de l'Ouest voyaient des géants amicaux. "
+          "message": "Les Inuits de la Baie d'Hudson, eux, pensaient que le ciel était un dôme immense pourvu de trous, par lesquels les esprits des morts passaient pour se rendre vers les régions célestes. Ils y allumaient alors de nombreuses torches, permettant de guider les nouveaux arrivant. Quant à eux, les Indiens de l'Ouest voyaient des géants amicaux. "
         },
         "vikings": {
           "list": "Peuple viking : ",
-          "message": "Elles représentaient pour le peuple Vikings les Valkyries, qui sont connues comme étant les messagères du dieu nordique Odin. Au terme de chaque guerre, Odin sélectionnait les plus valheureux guerriers pouvant rejoindre le Valhaha pour le Ragnarök, et envoyait les Valkyries les récupérer. Les Vikings pensaient que les Aurores étaient le reflet des armures des Valkyries venues sur terre pour accomplir leur mission."
+          "message": "Elles représentaient pour le peuple Vikings les Valkyries, qui sont connues comme étant les messagères du dieu nordique Odin. Au terme de chaque guerre, Odin sélectionnait les plus valeureux guerriers pouvant rejoindre le Valhaha pour le Ragnarök, et envoyait les Valkyries les récupérer. Les Vikings pensaient que les Aurores étaient le reflet des armures des Valkyries venues sur terre pour accomplir leur mission."
         },
         "sami": {
           "list": "Peuple Sami : ",
@@ -36,7 +44,7 @@
         },
         "finlande": {
           "list": "Peuple Finnois : ",
-          "message": "La légende raconte que des renards arctiques produisaient les Aurores en courrant dans le ciel à une grande vitesse, à tel point que la fourrure de leurs queues déclenchaient des étincelles et projetaient ces illuminations. Une autre légende raconte que les renards de feu faisait tourbilloner la neige déposée sur le sol vers le ciel. Les flocons refletaient alors la lueur émise par la lune.<br>En Finlandais, une Aurore boréale se dit « Revontulet », soit littéralement Renard de feu."
+          "message": "La légende raconte que des renards arctiques produisaient les Aurores en courant dans le ciel à une grande vitesse, à tel point que la fourrure de leurs queues déclenchaient des étincelles et projetaient ces illuminations. Une autre légende raconte que les renards de feu faisaient tourbillonner la neige déposée sur le sol vers le ciel. Les flocons refletaient alors la lueur émise par la lune.<br>En Finlandais, une Aurore boréale se dit « Revontulet », soit littéralement Renard de feu."
         },
         "france": {
           "list": "France : ",
@@ -46,31 +54,28 @@
           "list": "Peuple Romain :",
           "message": "Dans la mythologie romaine, Aurora était la déesse de l'Aurore. Le mot « borealis » fait référence au dieu grec du vent du Nord. « Aurora Borealis », ou Aurore Boréale, signifie donc « vent de l'Aurore ». Dans de nombreuses langues, ce phénomène est appelé « lumières du Nord »."
         },
-        "conclusion": "Ces légendes sont de très brefs résumés, il en existe un nombre très conséquent. Il en existe dans les différents pays Scandinaves, en Russie, en Amérique du Nord, et sont toutes différentes. La seule chose que ces légendes ont en commun, c'est quelles ne laissent personne indifférent."
+        "conclusion": "Ces légendes sont de très brefs résumés, il en existe un nombre très conséquent. Il en existe dans les différents pays Scandinaves, en Russie, en Amérique du Nord, et sont toutes différentes. La seule chose que ces légendes ont en commun, c'est qu'elles ne laissent personne indifférent."
       },
       "annecdotes": {
         "title": "Annecdotes",
         "une": "Galilée aurait inventé le terme « Aurora Borealis » en 1619.",
         "deux": "Des Aurores Boréales ont été observées sur Mars, Vénus, Saturne, Jupiter et Uranus. En raison de sa taille et de sa proximité du soleil, Mercure n'a pas d'atmosphère. Par conséquent, les Aurores Boréales ne peuvent pas s'y produire.",
-        "trois": "Dans l'hémisphère nord, l'Aurore Boréale est aussi appelée Aurore Polaire. Elle peut être apperçue depuis la banquise Arctique, l'Amérique du Nord (Alaska, Canada), le Groenland, le nord des pays Scandinave ou encore l'Islande.",
+        "trois": "Dans l'hémisphère nord, l'Aurore Boréale est aussi appelée Aurore Polaire. Elle peut être aperçue depuis la banquise Arctique, l'Amérique du Nord (Alaska, Canada), le Groenland, le nord des pays Scandinave ou encore l'Islande.",
         "quatre": "Dans l'hémisphère sud, l'Aurore Boréale est appelée Aurore Australe. Elle peut être aperçue depuis l'Antarctique, la Tasmanie, et même à l'extrémité sud de la Nouvelle-Zélande.",
         "cinq": "Les Aurores Boréales dépendent de l'activité du Soleil. Il se trouve que l'activité solaire a un cycle de 11 ans, où les vents solaires sont au plus bas. En 2019, l'activité est au plus bas car un cycle se termine.",
-        "six": "Il existe deux villes situées en Alaska, Fairbanks et Nome, où il est possible d'observer des Aurores Boréales plus de 200 jours par an."
+        "six": "Il existe deux villes situées en Alaska, Fairbanks et Nome, où il est possible d'observer des Aurores Boréales plus de 200 jours par an.",
+        "sept": "STEVE TODO"
       }
     },
     "secondblock": {
       "header": "Des prévisions ?",
       "forecast": {
         "title": "Comment peut-on prévoir ce phénomène ?",
-        "message": "On ne peut jamais assurer le fait d'en appercevoir. On ne peut que le prévoir.<br>Des outils sont mis à disposition par la &laquo; Space Weather Prediction Center &raquo;<br>Sous forme de graphique, il est possible de suivre les activités géomathétique, solaires. Il existe également une estimation à plus long terme, grâce à l'indice KP.<br>Pour plus d'explications, rendez-vous sur <a href='https://tinyurl.com/y3fnxwdv'>Aurora Maniacs</a>"
+        "message": "On ne peut jamais assurer le fait d'en apercevoir. On ne peut que le prévoir grâce à l'activité solaire.<br>Des outils sont mis à disposition par la &laquo; Space Weather Prediction Center &raquo;<br>Sous forme de graphique, il est possible de suivre les activités géomagnétiques, solaires. Il existe également une estimation à plus long terme, grâce à l'indice KP.<br>Pour plus d'explications, rendez-vous sur <a href='https://tinyurl.com/y3fnxwdv'>Aurora Maniacs</a>"
       },
       "kp": {
         "title": "L'indice Kp",
-        "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre. L'échelle commence à 0 et se termine à 9. A partir d'un Kp 5, on peut admettre qu'il y a une tempête géomagnétique, et les chances d'appercevoir une aurore boréale augmentent à une basse lattitude. "
-      },
-      "solarwind": {
-        "title": "Le vent solaire",
-        "message": "vent solaire BZ densité vitesse ..."
+        "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre. L'échelle commence à 0 et se termine à 9. A partir d'un Kp 5, on peut admettre qu'il y a une tempête géomagnétique, et les chances d'apercevoir une aurore boréale augmentent à une basse latitude. "
       }
     }
   },

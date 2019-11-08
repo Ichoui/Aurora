@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "weather-font";
+  font-family: "Flaticon";
   src: url("./Flaticon.eot");
   src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
        url("./Flaticon.woff2") format("woff2"),
@@ -18,7 +18,7 @@
 }
 
 .fimanager:before {
-    display: inline-block;
+      display: inline-block;
   font-family: "Flaticon";
   font-style: normal;
   font-weight: normal;
@@ -30,6 +30,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
+    display: block;
 }
 
 .flaticon-001-sunny:before { content: "\f100"; }
@@ -62,34 +63,3 @@
 .flaticon-028-rainny:before { content: "\f11b"; }
 .flaticon-029-storm:before { content: "\f11c"; }
 .flaticon-030-snow:before { content: "\f11d"; }
-
-$font-Flaticon-001-sunny: "\f100";
-$font-Flaticon-002-cloudy: "\f101";
-$font-Flaticon-003-wind: "\f102";
-$font-Flaticon-004-sunrise: "\f103";
-$font-Flaticon-005-cloudy: "\f104";
-$font-Flaticon-006-mist: "\f105";
-$font-Flaticon-007-night: "\f106";
-$font-Flaticon-008-wind: "\f107";
-$font-Flaticon-009-rainny: "\f108";
-$font-Flaticon-010-snow: "\f109";
-$font-Flaticon-011-rainny: "\f10a";
-$font-Flaticon-012-cloudy: "\f10b";
-$font-Flaticon-013-cold: "\f10c";
-$font-Flaticon-014-storm: "\f10d";
-$font-Flaticon-015-rainny: "\f10e";
-$font-Flaticon-016-mist: "\f10f";
-$font-Flaticon-017-wind: "\f110";
-$font-Flaticon-018-bolt: "\f111";
-$font-Flaticon-019-wind: "\f112";
-$font-Flaticon-020-rainny: "\f113";
-$font-Flaticon-021-sunset: "\f114";
-$font-Flaticon-022-storm: "\f115";
-$font-Flaticon-023-cloudy: "\f116";
-$font-Flaticon-024-thunderstorm: "\f117";
-$font-Flaticon-025-bolt: "\f118";
-$font-Flaticon-026-hot: "\f119";
-$font-Flaticon-027-wind: "\f11a";
-$font-Flaticon-028-rainny: "\f11b";
-$font-Flaticon-029-storm: "\f11c";
-$font-Flaticon-030-snow: "\f11d";
