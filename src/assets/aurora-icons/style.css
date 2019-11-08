@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'aurora-icons';
-  src:  url('fonts/aurora-icons.eot?o1obv9');
-  src:  url('fonts/aurora-icons.eot?o1obv9#iefix') format('embedded-opentype'),
-    url('fonts/aurora-icons.ttf?o1obv9') format('truetype'),
-    url('fonts/aurora-icons.woff?o1obv9') format('woff'),
-    url('fonts/aurora-icons.svg?o1obv9#aurora-icons') format('svg');
+  src:  url('fonts/aurora-icons.eot?vd4f7b');
+  src:  url('fonts/aurora-icons.eot?vd4f7b#iefix') format('embedded-opentype'),
+    url('fonts/aurora-icons.ttf?vd4f7b') format('truetype'),
+    url('fonts/aurora-icons.woff?vd4f7b') format('woff'),
+    url('fonts/aurora-icons.svg?vd4f7b#aurora-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,96 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cloudy:before {
+  content: "\e915";
+}
+.icon-mist:before {
+  content: "\e916";
+}
+.icon-night:before {
+  content: "\e917";
+}
+.icon-wind:before {
+  content: "\e918";
+}
+.icon-rainny:before {
+  content: "\e919";
+}
+.icon-snow:before {
+  content: "\e91a";
+}
+.icon-rainny1:before {
+  content: "\e91b";
+}
+.icon-cloudy1:before {
+  content: "\e91c";
+}
+.icon-cold:before {
+  content: "\e91d";
+}
+.icon-storm:before {
+  content: "\e91e";
+}
+.icon-rainny2:before {
+  content: "\e91f";
+}
+.icon-mist1:before {
+  content: "\e920";
+}
+.icon-wind3:before {
+  content: "\e921";
+}
+.icon-bolt1:before {
+  content: "\e922";
+}
+.icon-wind4:before {
+  content: "\e923";
+}
+.icon-rainny4:before {
+  content: "\e941";
+}
+.icon-sunset:before {
+  content: "\e942";
+}
+.icon-storm2:before {
+  content: "\e943";
+}
+.icon-cloudy2:before {
+  content: "\e944";
+}
+.icon-thunderstorm:before {
+  content: "\e945";
+}
+.icon-bolt:before {
+  content: "\e946";
+}
+.icon-hot:before {
+  content: "\e947";
+}
+.icon-wind1:before {
+  content: "\e948";
+}
+.icon-rainny3:before {
+  content: "\e949";
+}
+.icon-storm1:before {
+  content: "\e94a";
+}
+.icon-snow1:before {
+  content: "\e94b";
+}
+.icon-sunny:before {
+  content: "\e94c";
+}
+.icon-cloudy3:before {
+  content: "\e94d";
+}
+.icon-wind2:before {
+  content: "\e94e";
+}
+.icon-sunrise:before {
+  content: "\e94f";
+}
 .icon-settings:before {
   content: "\e93f";
 }
