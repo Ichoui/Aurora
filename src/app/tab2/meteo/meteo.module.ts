@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeteoComponent } from './meteo.component';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { MeteoComponent } from './meteo.component';
         MeteoComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        IonicModule
     ]
 })
 export class MeteoModule {

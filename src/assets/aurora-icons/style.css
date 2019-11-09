@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'aurora-icons';
-  src:  url('fonts/aurora-icons.eot?vd4f7b');
-  src:  url('fonts/aurora-icons.eot?vd4f7b#iefix') format('embedded-opentype'),
-    url('fonts/aurora-icons.ttf?vd4f7b') format('truetype'),
-    url('fonts/aurora-icons.woff?vd4f7b') format('woff'),
-    url('fonts/aurora-icons.svg?vd4f7b#aurora-icons') format('svg');
+  src:  url('fonts/aurora-icons.eot?m3iuig');
+  src:  url('fonts/aurora-icons.eot?m3iuig#iefix') format('embedded-opentype'),
+    url('fonts/aurora-icons.ttf?m3iuig') format('truetype'),
+    url('fonts/aurora-icons.woff?m3iuig') format('woff'),
+    url('fonts/aurora-icons.svg?m3iuig#aurora-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-drop:before {
+  content: "\e950";
+}
 .icon-cloudy:before {
   content: "\e915";
 }
