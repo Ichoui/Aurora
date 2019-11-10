@@ -1,4 +1,4 @@
-.today, .previsions, .cloudy-rate, .details, .datas {
+.today, .previsions, .cloudy-rate, .details, .datas .next-hours {
   padding: 10px 0;
 }
 
@@ -28,7 +28,7 @@ ion-header {
   }
 }
 
-// Prévisions
+// Prévisions 7j
 .previsions {
   display: flex;
   justify-content: center;
@@ -94,11 +94,12 @@ ion-header {
 .cloudy-rate {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 
   .cloudy {
     display: flex;
     align-items: center;
+    padding-left: 5px;
 
     .time {
       margin-right: 10px;
@@ -106,8 +107,11 @@ ion-header {
 
     .bar {
       height: 15px;
-      width: 70vw;
-      background-color: var(--ion-color-tertiary);
+      width: 60vw;
+      background: linear-gradient(to right,
+              var(--ion-color-secondary) 30%,
+              var(--ion-color-primary) 55%,
+              var(--ion-color-tertiary)) 100%;
     }
 
     .percent {
@@ -120,7 +124,7 @@ ion-header {
   }
 }
 
-// Sunset Sunrise
+//Détails
 .details, .datas {
   display: flex;
   justify-content: space-evenly;

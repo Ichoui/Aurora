@@ -11,3 +11,24 @@ Page left : Chance de voir des aurores (oui / non / nuageux), KP actuel (kp), KP
 
 
 
+10/11 --> 16h36
+
+Proposé :
+10/11 (Jour J)
+H-1 jusqu'à 23h00 , heure par heure
+
+11/11 (J+1, lendemain)
+00h00 jusqu'à 23h00 , heure par heure
+
+12h/11 (J+2, sur-lendemain)
+00h00 jusqu'à 23h00 , heure par heure
+
+13/11 (J+3)
+00h - 6h, heure par heure
+12h 18h, 6h par 6h
+
+14/11 au 19/11 (J+4 à J+9)
+00h 6h 12h 18h
+
+20/11 (J+10)
+00h seulement

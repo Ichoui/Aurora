@@ -3,6 +3,13 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { cities, Coords } from '../cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
+import { AuroraService } from '../aurora.service';
+import { tap } from 'rxjs/operators';
+
+export interface ErrorTemplate {
+    value: boolean;
+    message: string;
+}
 
 @Component({
     selector: 'app-tab2',
@@ -22,8 +29,16 @@ export class Tab2Page {
         speed: 400
     };
 
+    dataForecast: any;
+
+    dataError: ErrorTemplate = {
+        value: false,
+        message: 'Un problème est survenu'
+    };
+
     constructor(private geoloc: Geolocation,
                 private storage: Storage,
+                private auroraService: AuroraService,
                 private nativeGeo: NativeGeocoder) {
     }
 
@@ -39,7 +54,13 @@ export class Tab2Page {
                     this.chooseAnyCity(codeLocation);
                 }
             },
-            error => console.warn('errorStorage', error)
+            error => {
+                console.warn('errorStorage', error);
+                this.dataError = {
+                    value: true,
+                    message: error
+                };
+            }
         );
     }
 
@@ -50,10 +71,17 @@ export class Tab2Page {
                 (res: NativeGeocoderResult[]) => {
                     this.city = res[0].locality;
                     this.country = res[0].countryName;
+                    this.getForecast();
                 },
-                error => console.warn('Erreur de reverse geocode', error)
+                error => {
+                    console.warn('Erreur de reverse geocode', error);
+                    this.loading = false;
+                    this.dataError = {
+                        value: true,
+                        message: error
+                    };
+                }
             );
-            this.loading = false;
         }).catch((error) => {
             console.warn('Error getting location', error);
         });
@@ -68,6 +96,24 @@ export class Tab2Page {
             latitude: city.latitude,
             longitude: city.longitude
         };
-        this.loading = false;
+        this.getForecast();
+        // this.loading = false;
+    }
+
+    getForecast(): void {
+        this.auroraService.forecastNineDays(this.coords.latitude, this.coords.longitude).pipe(
+        ).subscribe(
+                data => this.dataForecast = data,
+                error => {
+                    console.warn('Error with the Forecast', error);
+                    this.loading = false;
+                    this.dataError = {
+                        value: true,
+                        message: error.status + ' ' + error.statusText
+                    };
+                    console.log(this.dataError);
+                },
+                () => this.loading = false
+            );
     }
 }

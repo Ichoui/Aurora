@@ -2,14 +2,14 @@
 
 <ion-content *ngIf="loading" fullscreen>
     <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    <p>Nous chargeons votre localisation ...</p>
 </ion-content>
 
-<ion-content *ngIf="!loading" fullscreen>
+<ion-content *ngIf="!loading && !dataError.value" fullscreen>
     <h2 class="ion-text-center"><span>{{ city }}</span><span>{{ country }}</span></h2><br>
-
     <ion-slides [options]="slideOpts">
         <ion-slide>
-            <app-meteo [coords]="coords"></app-meteo>
+            <app-meteo [coords]="coords" [dataForecast]="dataForecast"></app-meteo>
         </ion-slide>
         <ion-slide>
             <app-kpindex [coords]="coords"></app-kpindex>
@@ -18,5 +18,8 @@
     </ion-slides>
 </ion-content>
 
+<ion-content *ngIf="!loading && dataError.value">
+    {{ dataError.message}}
+</ion-content>
 
 
