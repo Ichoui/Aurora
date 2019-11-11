@@ -5,14 +5,14 @@ export interface Weather {
     humidity: string;
     fog: string;
     symbol: string;
-    wind: Wind[];
+    wind: Wind;
     sunrise: string;
     sunset: string;
     moonrise: string;
     moonset: string;
     moonphase: number;
     date: string;
-    location: Location[];
+    location: Location;
     length?: number;
 }
 

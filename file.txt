@@ -10,8 +10,14 @@ Page right : météo de la ville en cours & température, prévisions sur X jour
 Page left : Chance de voir des aurores (oui / non / nuageux), KP actuel (kp), KP 1 heure (kp1minute) / KP 27 jours, BZ, Vent solaire bz speed density (renseignement), ennuagement
 
 
+## ATTENTION : Renvoie du GMT 0, France en GMT+1
+Pour du 18h00 Locale :
+-> Clef : 18h00
+  - valeur "date" : 17h00
 
-10/11 --> 16h36
+ DONC : Commence à H+1
+
+Tentative de pattern le 10/11 --> 16h36
 
 Proposé :
 10/11 (Jour J)

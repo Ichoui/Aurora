@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Coords } from '../../cities';
 import { Weather } from '../../weather';
+import 'moment/locale/fr';
 
 @Component({
     selector: 'app-meteo',
@@ -10,20 +11,39 @@ import { Weather } from '../../weather';
 export class MeteoComponent implements OnInit {
 
     @Input() coords: Coords;
-    @Input() dataForecast: any;
+    @Input() nineDayForecast;
+    @Input() currentWeather: Weather;
 
     constructor() {
     }
 
     ngOnInit() {
-        console.log(this.dataForecast);
-        Object.keys(this.dataForecast).forEach(key => {
-            let value: Weather = this.dataForecast[key];
+        this.sevenDayForecast();
+        this.todayWeather();
+    }
+
+    sevenDayForecast() {
+        console.log(this.nineDayForecast);
+        Object.keys(this.nineDayForecast).forEach(key => {
+            let value: Weather = this.nineDayForecast[key];
             // Exclu le message du Space Weather Prediction Center
+            let i = 0;
             if (value.length != 1) {
-                console.log(value);
+                i = i + 1;
+                // console.log(i);
+                // console.log(value);
             }
         });
+    }
+
+    todayWeather() {
+        console.log(this.currentWeather);
+        // console.log(this.currentWeather.temperature);
+
+    }
+
+    nextHours() {
+
     }
 
 }

@@ -1,6 +1,6 @@
 <div class="today">
     <div class="actual-weather"><span class="icon icon-wind"></span></div>
-    <div class="temperature">21°</div>
+    <div class="temperature">{{ currentWeather.temperature }} °</div>
 </div>
 
 <ion-card>
@@ -120,26 +120,26 @@
     <ion-header>Details</ion-header>
     <div class="details">
         <div class="sun">
-            <span class="icon icon-sunset"></span>
+            <span class="icon icon-sunrise"></span>
             <div class="label">Lever du soleil</div>
-            <div class="value">04h00</div>
+            <div class="value">{{ currentWeather.sunrise | date: 'H:mm' }}</div>
         </div>
         <div class="sun">
-            <span class="icon icon-sunrise"></span>
+            <span class="icon icon-sunset"></span>
             <div class="label">Coucher du soleil</div>
-            <div class="value">04h00</div>
+            <div class="value">{{ currentWeather.sunset | date: 'H:mm' }}</div>
         </div>
     </div>
     <div class="datas">
         <div class="windy">
             <span class="icon icon-wind3"></span>
             <div class="label">Vitesse du vent</div>
-            <div class="value">22°</div>
+            <div class="value">{{ currentWeather.wind.speed }} km/h</div>
         </div>
         <div class="feels-like">
             <span class="icon icon-hot"></span>
-            <div class="label">Ressenti</div>
-            <div class="value">22°</div>
+            <div class="label">Humidité</div>
+            <div class="value">{{ currentWeather.humidity }}</div>
         </div>
     </div>
 </ion-card>

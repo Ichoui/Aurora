@@ -4,7 +4,6 @@ import { Storage } from '@ionic/storage';
 import { cities, Coords } from '../cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
-import { tap } from 'rxjs/operators';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -29,7 +28,8 @@ export class Tab2Page {
         speed: 400
     };
 
-    dataForecast: any;
+    dataNineDaysForecast: any;
+    dataCurrentWeather: any;
 
     dataError: ErrorTemplate = {
         value: false,
@@ -101,19 +101,32 @@ export class Tab2Page {
     }
 
     getForecast(): void {
-        this.auroraService.forecastNineDays(this.coords.latitude, this.coords.longitude).pipe(
-        ).subscribe(
-                data => this.dataForecast = data,
-                error => {
-                    console.warn('Error with the Forecast', error);
-                    this.loading = false;
-                    this.dataError = {
-                        value: true,
-                        message: error.status + ' ' + error.statusText
-                    };
-                    console.log(this.dataError);
-                },
-                () => this.loading = false
-            );
+        this.auroraService.weatherForecast(this.coords.latitude, this.coords.longitude, '').subscribe(
+            data => {
+                this.dataCurrentWeather = data;
+            },
+            error => {
+                console.warn('Error with the ONE day Forecast', error);
+                this.dataError = {
+                    value: true,
+                    message: error.status + ' ' + error.statusText
+                };
+            }
+        )
+        this.auroraService.weatherForecast(this.coords.latitude, this.coords.longitude, true).subscribe(
+            data => {
+                this.dataNineDaysForecast = data;
+                this.loading = false;
+            },
+            error => {
+                console.warn('Error with the NINE days Forecast', error);
+                this.loading = false;
+                this.dataError = {
+                    value: true,
+                    message: error.status + ' ' + error.statusText
+                };
+            }
+        );
+
     }
 }
