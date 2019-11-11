@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  api: '/api',
+  cors: 'https://cors-anywhere.herokuapp.com',
+  api: 'https://api.darksky.net',
+  apikey: 'c84f54f11c3506e9ec94676057636e36',
   application_name: 'Aurora - Northen Light',
 };
 

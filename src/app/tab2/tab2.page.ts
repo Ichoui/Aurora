@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { cities, Coords } from '../cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
+import { tap } from 'rxjs/operators';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -35,6 +36,9 @@ export class Tab2Page {
         value: false,
         message: 'Un problème est survenu'
     };
+
+    apiCallCurrent = 0;
+    apiCalledCondition = 0; // Nombre de fois où j'appelle l'API weatherForecast, pour chargement des données.
 
     constructor(private geoloc: Geolocation,
                 private storage: Storage,
@@ -101,32 +105,62 @@ export class Tab2Page {
     }
 
     getForecast(): void {
-        this.auroraService.weatherForecast(this.coords.latitude, this.coords.longitude, '').subscribe(
-            data => {
-                this.dataCurrentWeather = data;
-            },
-            error => {
-                console.warn('Error with the ONE day Forecast', error);
-                this.dataError = {
-                    value: true,
-                    message: error.status + ' ' + error.statusText
-                };
-            }
-        )
-        this.auroraService.weatherForecast(this.coords.latitude, this.coords.longitude, true).subscribe(
-            data => {
-                this.dataNineDaysForecast = data;
-                this.loading = false;
-            },
-            error => {
-                console.warn('Error with the NINE days Forecast', error);
-                this.loading = false;
-                this.dataError = {
-                    value: true,
-                    message: error.status + ' ' + error.statusText
-                };
-            }
-        );
 
+        this.auroraService.testDarkSky(this.coords.latitude, this.coords.longitude).subscribe(
+            e => {
+                console.log('darksky');
+                console.log(e);
+            },
+            error => {
+                console.log('darksky');
+                console.log(error);
+            });
+
+        this.auroraService.weatherForecast(this.coords.latitude, this.coords.longitude, '')
+            .pipe(tap(() => this.apiCalledCondition += 1))
+            .subscribe(
+                data => {
+                    this.dataCurrentWeather = data;
+                    this.checkingLoader(1);
+
+                },
+                error => {
+                    console.warn('Error with the ONE day Forecast', error);
+                    this.dataError = {
+                        value: true,
+                        message: error.status + ' ' + error.statusText
+                    };
+                }
+            );
+
+        this.auroraService.weatherForecast(this.coords.latitude, this.coords.longitude, true)
+            .pipe(tap(() => this.apiCalledCondition += 1))
+            .subscribe(
+                data => {
+                    this.dataNineDaysForecast = data;
+                    this.checkingLoader(1);
+                },
+                error => {
+                    console.warn('Error with the NINE days Forecast', error);
+                    this.loading = false;
+                    this.dataError = {
+                        value: true,
+                        message: error.status + ' ' + error.statusText
+                    };
+                }
+            );
+    }
+
+    /*
+    * Permet de contrôler le nombre d'appel réussi au service aurora.
+    * @apiCallCurrent : incrémente le nombre d'appel
+    * @apiCalled : nombre de fois où l'api devra être appelé pour que la condition soit valide
+    * */
+    checkingLoader(apiCalled: number): void {
+        this.apiCallCurrent += apiCalled;
+        console.log(this.apiCallCurrent);
+        if (this.apiCallCurrent === this.apiCalledCondition) {
+            this.loading = false;
+        }
     }
 }

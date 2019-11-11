@@ -1,8 +1,7 @@
 {
   "/api/*": {
-    "target": "https://api.darksky.net/forecast/c84f54f11c3506e9ec94676057636e36",
+    "target": "https://api.darksky.net/",
     "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
+    "changeOrigin": true
   }
 }

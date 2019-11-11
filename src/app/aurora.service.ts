@@ -37,9 +37,14 @@ export class AuroraService {
         return this.http.get(`${URL_AURORA}/`, {params});
     }
 
+    testDarkSky(lat, long): Observable<any> {
+        const params = {
+        };
+        return this.http.get(`${environment.cors}/${environment.api}/forecast/${environment.apikey}/${lat},${long}/`, {params});
+    }
+
 
     // --> prefere https://darksky.net/dev/docs#forecast-request mais tarifs?
-        // return this.http.get(`${environment.api}/${lat},${long}/`, {params});
 }
 
 // --> https://www.chartjs.org/docs/latest/getting-started/installation.html CHART JS! enjoy
