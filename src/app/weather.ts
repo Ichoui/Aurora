@@ -1,36 +1,14 @@
 export interface Weather {
-    temperature: string;
-    cloud: string;
-    rain: string;
-    humidity: string;
-    fog: string;
-    symbol: string;
-    wind: Wind;
-    sunrise: string;
-    sunset: string;
-    moonrise: string;
-    moonset: string;
-    moonphase: number;
-    date: string;
-    location: Location;
-    length?: number;
+    currently: Currently;
+    daily: Daily;
+    hourly: Hourly;
+    latitude: number;
+    longitude: number;
+    timezone: string;
+    offset?: number;
 }
 
-export interface Wind {
-    speed: number
-    direction: string;
-}
-
-export interface Location {
-    lat: string;
-    long: string;
-    name: string;
-    state: string
-    country: string;
-}
-
-/*
-DarkSky
+// DarkSky
 export interface Currently {
     time: number;
     summary: string;
@@ -126,4 +104,3 @@ export interface DataDaily {
     apparentTemperatureMax: number;
     apparentTemperatureMaxTime: number;
 }
-*/

@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Coords } from '../../cities';
-import { Weather } from '../../weather';
+import * as moment from 'moment';
 import 'moment/locale/fr';
+import { Currently, Daily, Hourly } from '../../weather';
 
 @Component({
     selector: 'app-meteo',
@@ -11,39 +12,49 @@ import 'moment/locale/fr';
 export class MeteoComponent implements OnInit {
 
     @Input() coords: Coords;
-    @Input() nineDayForecast;
-    @Input() currentWeather: Weather;
+    @Input() currentWeather: Currently;
+    @Input() hourlyWeather: Hourly;
+    @Input() sevenDayWeather: Daily;
+
+    sunset = 0;// a calculer
+    sunrise = 0;
 
     constructor() {
     }
 
     ngOnInit() {
+        this.todayForecast();
+        this.nextHoursForecast();
         this.sevenDayForecast();
-        this.todayWeather();
+    }
+
+
+    todayForecast() {
+        console.log(this.currentWeather);
+        const date = this.manageDates(this.currentWeather.time, true);
+        console.log(date);
+    }
+
+    nextHoursForecast() {
+        console.log(this.hourlyWeather);
+
     }
 
     sevenDayForecast() {
-        console.log(this.nineDayForecast);
-        Object.keys(this.nineDayForecast).forEach(key => {
-            let value: Weather = this.nineDayForecast[key];
-            // Exclu le message du Space Weather Prediction Center
-            let i = 0;
-            if (value.length != 1) {
-                i = i + 1;
-                // console.log(i);
-                // console.log(value);
-            }
-        });
+        console.log(this.sevenDayWeather);
     }
 
-    todayWeather() {
-        console.log(this.currentWeather);
-        // console.log(this.currentWeather.temperature);
-
+    /**
+    * Permet de gérer les dates qui sont au format Unix Timestamp (seconds)
+    * @params date Date retournée par l'API
+    * @params format  true : renvoie la date formatée 2019-11-12T21:16:37Z / false : renvoie l'objet momentJs
+     * */
+    manageDates(date: number, format?: boolean): string | moment.Moment {
+        const unixToLocal = moment.unix(date).utc();
+        if (format) {
+            return unixToLocal.format();
+        } else {
+            return unixToLocal;
+        }
     }
-
-    nextHours() {
-
-    }
-
 }

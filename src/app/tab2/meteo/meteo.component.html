@@ -1,6 +1,16 @@
 <div class="today">
-    <div class="actual-weather"><span class="icon icon-wind"></span></div>
-    <div class="temperature">{{ currentWeather.temperature }} °</div>
+    <!--    // cold : si température négative, afficher l'icone en plus en petit (même chose avec hot)-->
+    <!--    // cold wind : si vent ET 8 degrés max : cold-wind-->
+    <div class="actual-weather">
+        <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"
+              class="icon icon-cold-wind"></span>
+        <ng-template #normalIcon>
+            <span class="icon icon-{{ currentWeather.icon }}"></span>
+        </ng-template>
+    </div>
+    <div class="temperature">{{ currentWeather.temperature | number: '1.0-0' }}°</div>
+    <span *ngIf="currentWeather.temperature >= 34" class="icon minicons icon-hot"></span>
+    <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>
 </div>
 
 <ion-card>
@@ -9,7 +19,8 @@
         <!--        graph des temperatures par heure sans abcisses/ordonénées-->
     </div>
 </ion-card>
-
+<canvas id="clear-day" width="64" height="64">
+</canvas>
 <ion-card>
     <ion-header>Prévisions 7j</ion-header>
     <div class="previsions">
@@ -122,24 +133,24 @@
         <div class="sun">
             <span class="icon icon-sunrise"></span>
             <div class="label">Lever du soleil</div>
-            <div class="value">{{ currentWeather.sunrise | date: 'H:mm' }}</div>
+            <div class="value">{{ sunrise }}</div>
         </div>
         <div class="sun">
             <span class="icon icon-sunset"></span>
             <div class="label">Coucher du soleil</div>
-            <div class="value">{{ currentWeather.sunset | date: 'H:mm' }}</div>
+            <div class="value">{{ sunset }}</div>
         </div>
     </div>
     <div class="datas">
         <div class="windy">
             <span class="icon icon-wind3"></span>
             <div class="label">Vitesse du vent</div>
-            <div class="value">{{ currentWeather.wind.speed }} km/h</div>
+            <div class="value">{{ currentWeather.windSpeed | number: '1.0-0' }} km/h</div>
         </div>
         <div class="feels-like">
             <span class="icon icon-hot"></span>
             <div class="label">Humidité</div>
-            <div class="value">{{ currentWeather.humidity }} %</div>
+            <div class="value">{{ currentWeather.humidity | percent }}</div>
         </div>
     </div>
 </ion-card>

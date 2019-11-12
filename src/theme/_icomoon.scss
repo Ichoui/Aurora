@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'aurora-icons';
-  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?m3iuig');
-  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?m3iuig#iefix') format('embedded-opentype'),
-  url('/assets/aurora-icons/fonts/aurora-icons.ttf?m3iuig') format('truetype'),
-  url('/assets/aurora-icons/fonts/aurora-icons.woff?m3iuig') format('woff'),
-  url('/assets/aurora-icons/fonts/aurora-icons.svg?m3iuig#aurora-icons') format('svg');
+  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?e4ikvf');
+  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?e4ikvf#iefix') format('embedded-opentype'),
+  url('/assets/aurora-icons/fonts/aurora-icons.ttf?e4ikvf') format('truetype'),
+  url('/assets/aurora-icons/fonts/aurora-icons.woff?e4ikvf') format('woff'),
+  url('/assets/aurora-icons/fonts/aurora-icons.svg?e4ikvf#aurora-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -28,50 +28,35 @@
 .icon-drop:before {
   content: "\e950";
 }
-.icon-cloudy:before {
+.icon-partly-cloudy-night:before {
   content: "\e915";
 }
-.icon-mist:before {
+.icon-fog:before {
   content: "\e916";
 }
-.icon-night:before {
+.icon-clear-night:before {
   content: "\e917";
 }
-.icon-wind:before {
+.icon-cold-wind:before {
   content: "\e918";
 }
-.icon-rainny:before {
-  content: "\e919";
-}
-.icon-snow:before {
+.icon-sleet:before {
   content: "\e91a";
 }
-.icon-rainny1:before {
-  content: "\e91b";
-}
-.icon-cloudy1:before {
+.icon-cloudy:before {
   content: "\e91c";
 }
 .icon-cold:before {
   content: "\e91d";
 }
-.icon-storm:before {
-  content: "\e91e";
-}
 .icon-rainny2:before {
   content: "\e91f";
 }
-.icon-mist1:before {
-  content: "\e920";
-}
-.icon-wind3:before {
+.icon-wind:before {
   content: "\e921";
 }
-.icon-bolt1:before {
+.icon-bolt:before {
   content: "\e922";
-}
-.icon-wind4:before {
-  content: "\e923";
 }
 .icon-rainny4:before {
   content: "\e941";
@@ -79,41 +64,20 @@
 .icon-sunset:before {
   content: "\e942";
 }
-.icon-storm2:before {
-  content: "\e943";
-}
-.icon-cloudy2:before {
+.icon-partly-cloudy-day:before {
   content: "\e944";
 }
 .icon-thunderstorm:before {
   content: "\e945";
 }
-.icon-bolt:before {
-  content: "\e946";
-}
 .icon-hot:before {
   content: "\e947";
 }
-.icon-wind1:before {
-  content: "\e948";
-}
-.icon-rainny3:before {
-  content: "\e949";
-}
-.icon-storm1:before {
-  content: "\e94a";
-}
-.icon-snow1:before {
+.icon-snow:before {
   content: "\e94b";
 }
-.icon-sunny:before {
+.icon-clear-day:before {
   content: "\e94c";
-}
-.icon-cloudy3:before {
-  content: "\e94d";
-}
-.icon-wind2:before {
-  content: "\e94e";
 }
 .icon-sunrise:before {
   content: "\e94f";
@@ -123,9 +87,6 @@
 }
 .icon-infos:before {
   content: "\e940";
-}
-.icon-aurora-bw:before {
-  content: "\e900";
 }
 .icon-aurora .path1:before {
   content: "\e901";
@@ -225,138 +186,4 @@
   content: "\e914";
   margin-left: -1em;
   color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path1:before {
-  content: "\e924";
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path2:before {
-  content: "\e925";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path3:before {
-  content: "\e926";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path4:before {
-  content: "\e927";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path5:before {
-  content: "\e928";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path6:before {
-  content: "\e929";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path7:before {
-  content: "\e92a";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path8:before {
-  content: "\e92b";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path9:before {
-  content: "\e92c";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path10:before {
-  content: "\e92d";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path11:before {
-  content: "\e92e";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path12:before {
-  content: "\e92f";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path13:before {
-  content: "\e930";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path14:before {
-  content: "\e931";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path15:before {
-  content: "\e932";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path16:before {
-  content: "\e933";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path17:before {
-  content: "\e934";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path18:before {
-  content: "\e935";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path19:before {
-  content: "\e936";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path20:before {
-  content: "\e937";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path21:before {
-  content: "\e938";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path22:before {
-  content: "\e939";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path23:before {
-  content: "\e93a";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path24:before {
-  content: "\e93b";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-aurora-color .path25:before {
-  content: "\e93c";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path26:before {
-  content: "\e93d";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
-}
-.icon-aurora-color .path27:before {
-  content: "\e93e";
-  margin-left: -1em;
-  color: rgb(114, 233, 205);
 }

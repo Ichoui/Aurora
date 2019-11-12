@@ -18,8 +18,13 @@ ion-header {
   justify-content: center;
   align-items: center;
 
-  span.icon {
+  span.icon:not(.minicons) {
     font-size: 3.5em;
+  }
+  .minicons {
+    position: absolute;
+    top: 0;
+    left: 34vh;
   }
 
   .temperature {

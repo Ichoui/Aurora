@@ -4,7 +4,7 @@ import { Storage } from '@ionic/storage';
 import { cities, Coords } from '../cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
-import { tap } from 'rxjs/operators';
+import { Weather } from '../weather';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -29,16 +29,14 @@ export class Tab2Page {
         speed: 400
     };
 
-    dataNineDaysForecast: any;
     dataCurrentWeather: any;
+    dataHourly : any;
+    dataSevenDay: any;
 
     dataError: ErrorTemplate = {
         value: false,
         message: 'Un problème est survenu'
     };
-
-    apiCallCurrent = 0;
-    apiCalledCondition = 0; // Nombre de fois où j'appelle l'API weatherForecast, pour chargement des données.
 
     constructor(private geoloc: Geolocation,
                 private storage: Storage,
@@ -68,6 +66,9 @@ export class Tab2Page {
         );
     }
 
+    /**
+    * Déterminer la localisation actuelle de l'utilisateur via lat/long et via reverseGeocode retrouver le nom de la ville exacte
+    * */
     userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
             this.coords = resp.coords;
@@ -91,6 +92,9 @@ export class Tab2Page {
         });
     }
 
+    /**
+    * Choisir une des villes pré-enregistrées
+    * */
     chooseAnyCity(code: string): void {
         const city = cities.find(res => res.code === code);
         this.city = city.ville;
@@ -101,66 +105,27 @@ export class Tab2Page {
             longitude: city.longitude
         };
         this.getForecast();
-        // this.loading = false;
     }
 
+    /**
+    * API Dark Sky
+    * 3 variable pour aujourd'hui, prochaines 24h et 7 jours
+    * */
     getForecast(): void {
-
-        this.auroraService.testDarkSky(this.coords.latitude, this.coords.longitude).subscribe(
-            e => {
-                console.log('darksky');
-                console.log(e);
+        this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
+            (res: Weather) => {
+                this.dataCurrentWeather = res.currently;
+                this.dataHourly = res.hourly;
+                this.dataSevenDay = res.daily;
+                this.loading = false;
             },
             error => {
-                console.log('darksky');
-                console.log(error);
+                console.warn('Error with Dark Sky Forecast', error);
+                this.loading = false;
+                this.dataError = {
+                    value: true,
+                    message: error.status + ' ' + error.statusText
+                };
             });
-
-        this.auroraService.weatherForecast(this.coords.latitude, this.coords.longitude, '')
-            .pipe(tap(() => this.apiCalledCondition += 1))
-            .subscribe(
-                data => {
-                    this.dataCurrentWeather = data;
-                    this.checkingLoader(1);
-
-                },
-                error => {
-                    console.warn('Error with the ONE day Forecast', error);
-                    this.dataError = {
-                        value: true,
-                        message: error.status + ' ' + error.statusText
-                    };
-                }
-            );
-
-        this.auroraService.weatherForecast(this.coords.latitude, this.coords.longitude, true)
-            .pipe(tap(() => this.apiCalledCondition += 1))
-            .subscribe(
-                data => {
-                    this.dataNineDaysForecast = data;
-                    this.checkingLoader(1);
-                },
-                error => {
-                    console.warn('Error with the NINE days Forecast', error);
-                    this.loading = false;
-                    this.dataError = {
-                        value: true,
-                        message: error.status + ' ' + error.statusText
-                    };
-                }
-            );
-    }
-
-    /*
-    * Permet de contrôler le nombre d'appel réussi au service aurora.
-    * @apiCallCurrent : incrémente le nombre d'appel
-    * @apiCalled : nombre de fois où l'api devra être appelé pour que la condition soit valide
-    * */
-    checkingLoader(apiCalled: number): void {
-        this.apiCallCurrent += apiCalled;
-        console.log(this.apiCallCurrent);
-        if (this.apiCallCurrent === this.apiCalledCondition) {
-            this.loading = false;
-        }
     }
 }

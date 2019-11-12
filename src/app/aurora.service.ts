@@ -25,20 +25,14 @@ export class AuroraService {
     // Aurores KP
     // --> http://auroraslive.io/#/api/v1/ace
 
-    // Weather
-    weatherForecast(lat, long, forecast): Observable<any> {
+    /*
+    * @param exclude : hourly | daily
+    * */
+    darkSkyForecast(lat: number, long: number, exclude?: string): Observable<any> {
         const params = {
-            type: 'weather',
-            forecast: forecast,
-            lat: lat,
-            long: long
-        };
-
-        return this.http.get(`${URL_AURORA}/`, {params});
-    }
-
-    testDarkSky(lat, long): Observable<any> {
-        const params = {
+            lang: 'fr',
+            units: 'si',
+            exclude: `alerts, flags, ${exclude}`
         };
         return this.http.get(`${environment.cors}/${environment.api}/forecast/${environment.apikey}/${lat},${long}/`, {params});
     }
