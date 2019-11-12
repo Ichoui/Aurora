@@ -16,8 +16,8 @@ export class MeteoComponent implements OnInit {
     @Input() hourlyWeather: Hourly;
     @Input() sevenDayWeather: Daily;
 
-    sunset = 0;// a calculer
-    sunrise = 0;
+    sunset;
+    sunrise;
 
     constructor() {
     }
@@ -31,30 +31,35 @@ export class MeteoComponent implements OnInit {
 
     todayForecast() {
         console.log(this.currentWeather);
-        const date = this.manageDates(this.currentWeather.time, true);
+        const date = this.manageDates(this.currentWeather.time);
         console.log(date);
     }
 
     nextHoursForecast() {
-        console.log(this.hourlyWeather);
+        console.log(this.hourlyWeather.data);
 
     }
 
     sevenDayForecast() {
-        console.log(this.sevenDayWeather);
+
+        const today = moment().add(0, 'd');
+        this.sevenDayWeather.data.forEach(day => {
+            if (this.manageDates(day.time, 'MM DD') === today.format('MM DD')) {
+                console.log(day.windSpeed);
+                this.sunset = this.manageDates(day.sunsetTime, 'H:mm');
+                this.sunrise = this.manageDates(day.sunriseTime, 'H:mm');
+            }
+            console.log(day);
+        });
     }
 
     /**
-    * Permet de gérer les dates qui sont au format Unix Timestamp (seconds)
-    * @params date Date retournée par l'API
-    * @params format  true : renvoie la date formatée 2019-11-12T21:16:37Z / false : renvoie l'objet momentJs
+     * Permet de gérer les dates qui sont au format Unix Timestamp (seconds)
+     * @params date Date retournée par l'API
+     * @params format Permet de choisir le formatage de la date. (ex: YYYY MM DD)
      * */
-    manageDates(date: number, format?: boolean): string | moment.Moment {
-        const unixToLocal = moment.unix(date).utc();
-        if (format) {
-            return unixToLocal.format();
-        } else {
-            return unixToLocal;
-        }
+    manageDates(date: number, format?: string): string | moment.Moment {
+        const unixToLocal = moment.unix(date);
+        return unixToLocal.format(format);
     }
 }
