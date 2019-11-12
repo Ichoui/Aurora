@@ -18,6 +18,7 @@ export class MeteoComponent implements OnInit {
 
     sunset;
     sunrise;
+    actualDate;
 
     constructor() {
     }
@@ -30,20 +31,19 @@ export class MeteoComponent implements OnInit {
 
 
     todayForecast() {
-        console.log(this.currentWeather);
-        const date = this.manageDates(this.currentWeather.time);
-        console.log(date);
+        // console.log(this.currentWeather);
+        this.actualDate = this.manageDates(this.currentWeather.time, 'dddd DD MMMM, HH:mm')
     }
 
     nextHoursForecast() {
-        console.log(this.hourlyWeather.data);
+        // console.log(this.hourlyWeather.data);
 
     }
 
     sevenDayForecast() {
-
         const today = moment().add(0, 'd');
         this.sevenDayWeather.data.forEach(day => {
+            // Permet de calculer dans le jour en cours sunset/sunrise
             if (this.manageDates(day.time, 'MM DD') === today.format('MM DD')) {
                 console.log(day.windSpeed);
                 this.sunset = this.manageDates(day.sunsetTime, 'H:mm');

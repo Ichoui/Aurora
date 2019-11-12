@@ -1,6 +1,4 @@
 <div class="today">
-    <!--    // cold : si température négative, afficher l'icone en plus en petit (même chose avec hot)-->
-    <!--    // cold wind : si vent ET 8 degrés max : cold-wind-->
     <div class="actual-weather">
         <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"
               class="icon icon-cold-wind"></span>
@@ -13,14 +11,15 @@
     <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>
 </div>
 
+<div class="date">{{ actualDate }}</div>
+
 <ion-card>
     <ion-header>Prochaines heures</ion-header>
     <div class="next-hours">
         <!--        graph des temperatures par heure sans abcisses/ordonénées-->
     </div>
 </ion-card>
-<canvas id="clear-day" width="64" height="64">
-</canvas>
+
 <ion-card>
     <ion-header>Prévisions 7 jours</ion-header>
     <div class="previsions">
@@ -36,6 +35,7 @@
                 <span class="temp-min">4°</span>
             </div>
         </div>
+
         <div class="next-days">
             <span class="day">Mar</span>
             <div class="rain">
