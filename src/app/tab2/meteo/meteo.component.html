@@ -23,89 +23,16 @@
 <ion-card>
     <ion-header>Prévisions 7 jours</ion-header>
     <div class="previsions">
-        <div class="next-days">
-            <span class="day">Lun</span>
+        <div *ngFor="let day of days" class="next-days">
+            <span class="day">{{ day.date }}</span>
             <div class="rain">
                 <span class="icon icon-drop"></span>
-                <div class="percent">55%</div>
+                <div class="percent">{{ day.precipProbability | percent}}%</div>
             </div>
-            <span class="icon icon-wind"></span>
+            <span class="icon icon-{{day.icon}}"></span>
             <div class="temps">
-                <span class="temp-max">8°</span>
-                <span class="temp-min">4°</span>
-            </div>
-        </div>
-
-        <div class="next-days">
-            <span class="day">Mar</span>
-            <div class="rain">
-                <span class="icon icon-drop"></span>
-                <div class="percent">55%</div>
-            </div>
-            <span class="icon icon-wind"></span>
-            <div class="temps">
-                <span class="temp-max">8°</span>
-                <span class="temp-min">4°</span>
-            </div>
-        </div>
-        <div class="next-days">
-            <span class="day">Mer</span>
-            <div class="rain">
-                <span class="icon icon-drop"></span>
-                <div class="percent">55%</div>
-            </div>
-            <span class="icon icon-wind"></span>
-            <div class="temps">
-                <span class="temp-max">8°</span>
-                <span class="temp-min">4°</span>
-            </div>
-        </div>
-        <div class="next-days">
-            <span class="day">Jeu</span>
-            <div class="rain">
-                <span class="icon icon-drop"></span>
-                <div class="percent">55%</div>
-            </div>
-            <span class="icon icon-wind"></span>
-            <div class="temps">
-                <span class="temp-max">28°</span>
-                <span class="temp-min">4°</span>
-            </div>
-        </div>
-        <div class="next-days">
-            <span class="day">Ven</span>
-            <div class="rain">
-                <span class="icon icon-drop"></span>
-                <div class="percent">55%</div>
-            </div>
-            <span class="icon icon-wind"></span>
-            <div class="temps">
-                <span class="temp-max">-8°</span>
-                <span class="temp-min">4°</span>
-            </div>
-        </div>
-        <div class="next-days">
-            <span class="day">Sam</span>
-            <div class="rain">
-                <span class="icon icon-drop"></span>
-                <div class="percent">55%</div>
-            </div>
-            <span class="icon icon-wind"></span>
-            <div class="temps">
-                <span class="temp-max">8°</span>
-                <span class="temp-min">4°</span>
-            </div>
-        </div>
-        <div class="next-days">
-            <span class="day">Dim</span>
-            <div class="rain">
-                <span class="icon icon-drop"></span>
-                <div class="percent">55%</div>
-            </div>
-            <span class="icon icon-wind"></span>
-            <div class="temps">
-                <span class="temp-max">8°</span>
-                <span class="temp-min">4°</span>
+                <span class="temp-max">{{ day.temperatureMax | number: '1.0-0'}}°</span>
+                <span class="temp-min">{{ day.temperatureMin | number: '1.0-0'}}°</span>
             </div>
         </div>
     </div>

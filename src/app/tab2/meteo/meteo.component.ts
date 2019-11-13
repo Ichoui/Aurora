@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Coords } from '../../cities';
 import * as moment from 'moment';
 import 'moment/locale/fr';
-import { Currently, Daily, Hourly } from '../../weather';
+import { Currently, Daily, DataDaily, DataHourly, Hourly } from '../../weather';
 
 @Component({
     selector: 'app-meteo',
@@ -19,6 +19,11 @@ export class MeteoComponent implements OnInit {
     sunset;
     sunrise;
     actualDate;
+    timezone = new Date().getTimezoneOffset();
+
+    temps;
+    days: DataDaily[] = [];
+    cloudy;
 
     constructor() {
     }
@@ -27,6 +32,8 @@ export class MeteoComponent implements OnInit {
         this.todayForecast();
         this.nextHoursForecast();
         this.sevenDayForecast();
+
+        console.log(this.timezone);
     }
 
 
@@ -45,12 +52,13 @@ export class MeteoComponent implements OnInit {
         this.sevenDayWeather.data.forEach(day => {
             // Permet de calculer dans le jour en cours sunset/sunrise
             if (this.manageDates(day.time, 'MM DD') === today.format('MM DD')) {
-                console.log(day.windSpeed);
                 this.sunset = this.manageDates(day.sunsetTime, 'H:mm');
                 this.sunrise = this.manageDates(day.sunriseTime, 'H:mm');
             }
-            console.log(day);
+            day.date = this.manageDates(day.time, 'ddd');
+            this.days.push(day);
         });
+        console.log(this.days);
     }
 
     /**

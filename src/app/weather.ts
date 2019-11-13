@@ -1,3 +1,5 @@
+import { Moment } from 'moment';
+
 export interface Weather {
     currently: Currently;
     daily: Daily;
@@ -103,4 +105,6 @@ export interface DataDaily {
     apparentTemperatureMinTime: number;
     apparentTemperatureMax: number;
     apparentTemperatureMaxTime: number;
+    date?: string | number | Moment;
 }
+

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'aurora-icons';
-  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?skzcgh');
-  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?skzcgh#iefix') format('embedded-opentype'),
-  url('/assets/aurora-icons/fonts/aurora-icons.ttf?skzcgh') format('truetype'),
-  url('/assets/aurora-icons/fonts/aurora-icons.woff?skzcgh') format('woff'),
-  url('/assets/aurora-icons/fonts/aurora-icons.svg?skzcgh#aurora-icons') format('svg');
+  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?y5yxki');
+  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?y5yxki#iefix') format('embedded-opentype'),
+  url('/assets/aurora-icons/fonts/aurora-icons.ttf?y5yxki') format('truetype'),
+  url('/assets/aurora-icons/fonts/aurora-icons.woff?y5yxki') format('woff'),
+  url('/assets/aurora-icons/fonts/aurora-icons.svg?y5yxki#aurora-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -52,7 +52,7 @@
 .icon-cold:before {
   content: "\e91d";
 }
-.icon-rainny2:before {
+.icon-rain:before {
   content: "\e91f";
 }
 .icon-wind:before {
@@ -60,9 +60,6 @@
 }
 .icon-bolt:before {
   content: "\e922";
-}
-.icon-rainny4:before {
-  content: "\e941";
 }
 .icon-sunset:before {
   content: "\e942";
