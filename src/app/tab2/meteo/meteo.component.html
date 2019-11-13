@@ -1,3 +1,4 @@
+<div class="date">{{ actualDate }}</div>
 <div class="today">
     <div class="actual-weather">
         <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"
@@ -11,11 +12,11 @@
     <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>
 </div>
 
-<div class="date">{{ actualDate }}</div>
 
 <ion-card>
     <ion-header>Prochaines heures</ion-header>
     <div class="next-hours">
+        <canvas id="next-hours"></canvas>
         <!--        graph des temperatures par heure sans abcisses/ordonénées-->
     </div>
 </ion-card>
@@ -41,15 +42,10 @@
 <ion-card>
     <ion-header>Ennuagement</ion-header>
     <div class="cloudy-rate">
-        <div class="cloudy">
-            <div class="time">22h00</div>
-            <div class="bar" style="width: 50vw"></div>
-            <div class="percent">15%</div>
-        </div>
-        <div class="cloudy">
-            <div class="time">23h00</div>
-            <span class="bar" style="width: 70vw"></span>
-            <span class="percent">15%</span>
+        <div *ngFor="let c of cloudy" class="cloudy">
+            <div class="time">{{ c.time }}</div>
+            <div class="bar" [style.width]="((c.percent * 100) * 70) / 100 + 'vw'"></div>
+            <div class="percent">{{ c.percent | percent}}</div>
         </div>
     </div>
 </ion-card>

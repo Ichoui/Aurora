@@ -108,3 +108,8 @@ export interface DataDaily {
     date?: string | number | Moment;
 }
 
+export interface Cloudy {
+    percent?: number;
+    time?: string | Moment;
+}
+

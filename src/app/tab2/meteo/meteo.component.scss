@@ -6,7 +6,7 @@ ion-header {
   margin: 5px 0 0 12px;
   text-align: left;
   font-family: var(--ion-font-bold);
-
+  color: #fff;
   &:after {
     background-image: none;
   }
@@ -110,7 +110,7 @@ ion-header {
   .cloudy {
     display: flex;
     align-items: center;
-    padding-left: 5px;
+    padding-left: 3px;
 
     .time {
       margin-right: 10px;
@@ -139,7 +139,9 @@ ion-header {
 .details, .datas {
   display: flex;
   justify-content: space-evenly;
-
+  > div {
+    width: 50%;
+  }
   .value {
     display: flex;
     align-items: center;

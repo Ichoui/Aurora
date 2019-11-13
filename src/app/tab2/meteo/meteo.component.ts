@@ -2,7 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Coords } from '../../cities';
 import * as moment from 'moment';
 import 'moment/locale/fr';
-import { Currently, Daily, DataDaily, DataHourly, Hourly } from '../../weather';
+import { Cloudy, Currently, Daily, DataDaily, Hourly } from '../../weather';
+import * as Chart from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 
 @Component({
     selector: 'app-meteo',
@@ -19,11 +22,16 @@ export class MeteoComponent implements OnInit {
     sunset;
     sunrise;
     actualDate;
-    timezone = new Date().getTimezoneOffset();
 
-    temps;
+    dataNumberInCharts: number = 8;
+    temps: number[] = [];
+    nextHours = [];
+
+    cloudy: Cloudy[] = [];
+    cloudyHours = [];
+
     days: DataDaily[] = [];
-    cloudy;
+
 
     constructor() {
     }
@@ -32,19 +40,114 @@ export class MeteoComponent implements OnInit {
         this.todayForecast();
         this.nextHoursForecast();
         this.sevenDayForecast();
-
-        console.log(this.timezone);
     }
 
 
     todayForecast() {
         // console.log(this.currentWeather);
-        this.actualDate = this.manageDates(this.currentWeather.time, 'dddd DD MMMM, HH:mm')
+        this.actualDate = this.manageDates(this.currentWeather.time, 'dddd DD MMMM, HH:mm');
     }
 
     nextHoursForecast() {
         // console.log(this.hourlyWeather.data);
+        let i = 0;
+        this.hourlyWeather.data.forEach(hours => {
+            // heures paries jusqu'à ce que tableau soit de 8 valeurs
+            if (this.temps.length < this.dataNumberInCharts && i % 2 === 0) {
+                this.temps.push(Math.round(hours.temperature));
+                this.nextHours.push(this.manageDates(hours.time, 'HH:mm'));
+            }
 
+            const cloudy: Cloudy = {
+                percent: hours.cloudCover,
+                time: this.manageDates(hours.time, 'HH:mm')
+            };
+            if (this.cloudy.length < 8) {
+                this.cloudy.push(cloudy);
+            }
+            i++;
+        });
+        console.log(this.cloudy);
+
+        new Chart('next-hours', {
+            type: 'line',
+            plugins: [ChartDataLabels],
+            data: {
+                labels: this.nextHours,
+                datasets: [{
+                    data: this.temps,
+                    backgroundColor: [
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(140, 255, 234, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)',
+                        'rgba(105, 191, 175, 0.4)'
+                    ],
+                    borderWidth: 2,
+                    pointBorderWidth: 3,
+                    pointHitRadius: 10,
+                    pointHoverBackgroundColor: '#8cffea'
+
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    datalabels: {
+                        align: 'end',
+                        color: '#8cffea',
+                        font: {
+                            family: 'Oswald-SemiBold',
+                            size: 15
+                        },
+                        formatter: function (value) {
+                            return value + '°';
+                        },
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            fontColor: '#949494',
+                            fontFamily: 'Oswald-SemiBold'
+                        }
+                    }],
+                    yAxes: [{
+                        display: false,
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                },
+                layout: {
+                    padding: {
+                        top: 30
+                    }
+                },
+                tooltips: {
+                    enabled: false
+                }
+            }
+        });
     }
 
     sevenDayForecast() {
@@ -58,7 +161,6 @@ export class MeteoComponent implements OnInit {
             day.date = this.manageDates(day.time, 'ddd');
             this.days.push(day);
         });
-        console.log(this.days);
     }
 
     /**
