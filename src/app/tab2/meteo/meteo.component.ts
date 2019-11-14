@@ -28,7 +28,6 @@ export class MeteoComponent implements OnInit {
     nextHours = [];
 
     cloudy: Cloudy[] = [];
-    cloudyHours = [];
 
     days: DataDaily[] = [];
 

@@ -10,19 +10,22 @@ Page right : météo de la ville en cours & température, prévisions sur X jour
 Page left : Chance de voir des aurores (oui / non / nuageux), KP actuel (kp), KP 1 heure (kp1minute) / KP 27 jours, BZ, Vent solaire bz speed density (renseignement), ennuagement
 
 
-
+-----
 Idée d'amélioration:
 
 Quand on clique sur un jour, on affiche une nouvelle page, avec encore plus de données
 Image de weather devienne des Lotties
 Notification quand KP > 4 ou 5 ou 6 (au choix de l'utilisateur)
+Map ... ?
 
 TODO :
 Loading des informations : afficher un lottie (forme de vague verte rappelant aurore dansante ?)
 
 En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue, nuages en gris, neige en blanc ...)
-Ouvrir les liens dans browser
+Ouvrir les liens dans browser --> https://github.com/apache/cordova-plugin-inappbrowser ?
 Crédit page Aurora.live & DarkSky
 SplashScreen
+Theme status bar & bottom button bar
 
 
+https://ionicframework.com/docs/native/themeable-browser  fouiller là dedans

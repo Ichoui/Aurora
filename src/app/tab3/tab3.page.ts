@@ -9,8 +9,9 @@ import { cities } from '../cities';
 })
 export class Tab3Page {
 
-   cities = cities;
+    cities = cities;
     localisation: string;
+
 
     constructor(private storage: Storage) {
     }
@@ -33,6 +34,9 @@ export class Tab3Page {
             },
             error => console.warn('Il y a un soucis de storage de position', error)
         );
+
+        // window.open("http://google.com",'_system', 'location=yes');
+
     }
 
 
@@ -42,7 +46,7 @@ export class Tab3Page {
             this.storage.set('localisation', this.localisation);
             return;
         }
-        if (init){
+        if (init) {
             this.storage.set('localisation', 'currentLocation');
             return;
         }
