@@ -10,31 +10,19 @@ Page right : météo de la ville en cours & température, prévisions sur X jour
 Page left : Chance de voir des aurores (oui / non / nuageux), KP actuel (kp), KP 1 heure (kp1minute) / KP 27 jours, BZ, Vent solaire bz speed density (renseignement), ennuagement
 
 
-## ATTENTION : Renvoie du GMT 0, France en GMT+1
-Pour du 18h00 Locale :
--> Clef : 18h00
-  - valeur "date" : 17h00
 
- DONC : Commence à H+1
+Idée d'amélioration:
 
-Tentative de pattern le 10/11 --> 16h36
+Quand on clique sur un jour, on affiche une nouvelle page, avec encore plus de données
+Image de weather devienne des Lotties
+Notification quand KP > 4 ou 5 ou 6 (au choix de l'utilisateur)
 
-Proposé :
-10/11 (Jour J)
-H-1 jusqu'à 23h00 , heure par heure
+TODO :
+Loading des informations : afficher un lottie (forme de vague verte rappelant aurore dansante ?)
 
-11/11 (J+1, lendemain)
-00h00 jusqu'à 23h00 , heure par heure
+En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue, nuages en gris, neige en blanc ...)
+Ouvrir les liens dans browser
+Crédit page Aurora.live & DarkSky
+SplashScreen
 
-12h/11 (J+2, sur-lendemain)
-00h00 jusqu'à 23h00 , heure par heure
 
-13/11 (J+3)
-00h - 6h, heure par heure
-12h 18h, 6h par 6h
-
-14/11 au 19/11 (J+4 à J+9)
-00h 6h 12h 18h
-
-20/11 (J+10)
-00h seulement
