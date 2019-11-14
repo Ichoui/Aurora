@@ -7,6 +7,8 @@ import { Tab3Page } from './tab3.page';
 import { HeaderPageModule } from '../header/header.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicStorageModule } from '@ionic/storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 
 @NgModule({
     imports: [
@@ -22,6 +24,9 @@ import { IonicStorageModule } from '@ionic/storage';
         }),
     ],
     declarations: [Tab3Page],
+    providers: [
+        InAppBrowser
+    ]
 })
 export class Tab3PageModule {
 }

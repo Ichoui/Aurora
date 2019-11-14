@@ -20,14 +20,7 @@ Map ... ?
 
 TODO :
 Loading des informations : afficher un lottie (forme de vague verte rappelant aurore dansante ?)
+Informations sur Vent Solaire (pas fini) & STEVE
 
 En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue, nuages en gris, neige en blanc ...)
-Ouvrir les liens dans browser --> https://github.com/apache/cordova-plugin-inappbrowser ?
-Crédit page Aurora.live & DarkSky
-SplashScreen
-Theme status bar --> https://ionicframework.com/docs/native/status-bar
-Theme bottom button bar --> https://github.com/fagundes/cordova-plugin-navigationbar + https://www.npmjs.com/package/ionic-plugin-navigation-bar-color (pas sûr que ce soit celui ci)
-Diagnostic pour test géoloc (important) -->     "@ionic-native/diagnostic": "^5.15.1"
-
-
-https://ionicframework.com/docs/native/themeable-browser  fouiller là dedans
+SplashScreen a faire

@@ -2,7 +2,10 @@
 
 <ion-content *ngIf="loading" fullscreen>
     <ion-progress-bar type="indeterminate"></ion-progress-bar>
-    <p>Votre localisation est en cours de chargement ... :spinningearth:</p>
+    <p class="with-spinner">Votre localisation est en cours de chargement ...</p>
+    <div class="content-spinner">
+        <div class="whirly-loader"></div>
+    </div>
 </ion-content>
 
 <ion-content *ngIf="!loading && !dataError.value" fullscreen>

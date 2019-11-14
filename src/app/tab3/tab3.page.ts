@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { cities } from '../cities';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
     selector: 'app-tab3',
@@ -13,7 +14,8 @@ export class Tab3Page {
     localisation: string;
 
 
-    constructor(private storage: Storage) {
+    constructor(private storage: Storage,
+                private iab: InAppBrowser) {
     }
 
     /*
@@ -35,8 +37,14 @@ export class Tab3Page {
             error => console.warn('Il y a un soucis de storage de position', error)
         );
 
-        // window.open("http://google.com",'_system', 'location=yes');
 
+    }
+
+    openUrl(url: string) {
+       const options : InAppBrowserOptions = {
+            location : 'yes',//Or 'no'
+        };
+        this.iab.create(url, '_system', options);
     }
 
 
