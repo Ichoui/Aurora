@@ -12,6 +12,17 @@ export class KpindexComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const reset = function(e) {
+      e.target.className = 'star';
+      setTimeout(function() {
+        e.target.className = 'star star--animated';
+      }, 0);
+    };
+    const stars = document.querySelectorAll('.star');
+    for(let i = 0; i < stars.length; i++) {
+      stars[i].addEventListener('animationend', reset);
+    }
+  }
 
 }
