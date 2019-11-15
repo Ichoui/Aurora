@@ -7,7 +7,7 @@ export interface Weather {
     latitude: number;
     longitude: number;
     timezone: string;
-    offset?: number;
+    offset: number;
 }
 
 // DarkSky

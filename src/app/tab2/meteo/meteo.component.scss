@@ -18,6 +18,7 @@ ion-header {
 
 // Temperature du jour
 .today {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +28,7 @@ ion-header {
   }
   .minicons {
     position: absolute;
-    top: 0;
+    bottom: 10px;
     left: 34vh;
   }
 

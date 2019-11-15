@@ -12,7 +12,7 @@
     <h2 class="ion-text-center"><span>{{ city }}</span><span>{{ country }}</span></h2><br>
     <ion-slides [options]="slideOpts">
         <ion-slide>
-            <app-meteo [coords]="coords" [currentWeather]="dataCurrentWeather" [hourlyWeather]="dataHourly" [sevenDayWeather]="dataSevenDay"></app-meteo>
+            <app-meteo [coords]="coords" [currentWeather]="dataCurrentWeather" [hourlyWeather]="dataHourly" [sevenDayWeather]="dataSevenDay" [utc]="utcOffset"></app-meteo>
         </ion-slide>
         <ion-slide>
             <app-kpindex [coords]="coords"></app-kpindex>

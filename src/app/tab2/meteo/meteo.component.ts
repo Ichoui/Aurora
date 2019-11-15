@@ -18,6 +18,7 @@ export class MeteoComponent implements OnInit {
     @Input() currentWeather: Currently;
     @Input() hourlyWeather: Hourly;
     @Input() sevenDayWeather: Daily;
+    @Input() utc: number;
 
     sunset;
     sunrise;
@@ -28,7 +29,6 @@ export class MeteoComponent implements OnInit {
     nextHours = [];
 
     cloudy: Cloudy[] = [];
-
     days: DataDaily[] = [];
 
 
@@ -150,7 +150,9 @@ export class MeteoComponent implements OnInit {
     sevenDayForecast() {
         const today = moment().add(0, 'd');
         this.sevenDayWeather.data.forEach(day => {
+            console.log(day);
             // Permet de calculer dans le jour en cours sunset/sunrise
+            console.log(this.manageDates(day.sunriseTime, 'MM DD H:mm'));
             if (this.manageDates(day.time, 'MM DD') === today.format('MM DD')) {
                 this.sunset = this.manageDates(day.sunsetTime, 'H:mm');
                 this.sunrise = this.manageDates(day.sunriseTime, 'H:mm');
@@ -166,7 +168,7 @@ export class MeteoComponent implements OnInit {
      * @params format Permet de choisir le formatage de la date. (ex: YYYY MM DD)
      * */
     manageDates(date: number, format?: string): string | moment.Moment {
-        const unixToLocal = moment.unix(date);
+        const unixToLocal = moment.unix(date).utc().add(this.utc, 'h');
         return unixToLocal.format(format);
     }
 }

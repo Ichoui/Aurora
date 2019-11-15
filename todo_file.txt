@@ -27,8 +27,6 @@ Informations sur Vent Solaire (pas fini) & STEVE
 En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue, nuages en gris, neige en blanc ...)
 SplashScreen a faire
 
-IMPORTANT : Sunrise / Sunset en fonction de la locale --> Essayer avec Québec
-
 Names of each tabs + icons left/right
 
 Language : FR / EN :

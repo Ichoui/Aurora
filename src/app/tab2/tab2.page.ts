@@ -32,6 +32,7 @@ export class Tab2Page {
     dataCurrentWeather: any;
     dataHourly: any;
     dataSevenDay: any;
+    utcOffset: number;
 
     dataError: ErrorTemplate = {
         value: false,
@@ -117,6 +118,7 @@ export class Tab2Page {
                 this.dataCurrentWeather = res.currently;
                 this.dataHourly = res.hourly;
                 this.dataSevenDay = res.daily;
+                this.utcOffset = res.offset;
                 this.loading = false;
             },
             error => {
