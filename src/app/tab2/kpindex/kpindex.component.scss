@@ -1,10 +1,14 @@
+* {
+  box-sizing: border-box;
+}
 .night-sky {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(20deg, #000, #6c7a89);
+  overflow: hidden;
+  background: linear-gradient(20deg,var(--ion-background-color), var(--ion-background-color));
 }
 
 .night-sky__aurora {
@@ -13,8 +17,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
-  height: 100vh;
+  //width: 100vw;
+  //height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 3;
 }
 
@@ -28,7 +34,7 @@
 
 .landscape {
   height: 50px;
-  background: #000;
+  background: var(--ion-background-color);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -39,7 +45,7 @@
 .tent {
   height: 0;
   width: 100px;
-  border-bottom: 40px solid #000;
+  border-bottom: 40px solid var(--ion-background-color);
   position: absolute;
   bottom: 80%;
   left: 100px;
@@ -52,7 +58,7 @@
   height: 40px;
   width: 50px;
   display: block;
-  border-left: 2px solid #000;
+  border-left: 2px solid var(--ion-background-color);
   transform: skewX(-50deg);
   position: absolute;
   top: 0;
@@ -64,7 +70,7 @@
   height: 40px;
   width: 50px;
   display: block;
-  border-left: 2px solid #000;
+  border-left: 2px solid var(--ion-background-color);
   transform: skewX(50deg);
   position: absolute;
   top: 0;
@@ -157,8 +163,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 97vh;
-  left: 36vw;
+  top: 97%;
+  left: 36%;
   animation-delay: 55s;
 }
 
@@ -201,8 +207,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 12vh;
-  left: 26vw;
+  top: 12%;
+  left: 26%;
   animation-delay: 21s;
 }
 
@@ -245,8 +251,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 59vh;
-  left: 25vw;
+  top: 59%;
+  left: 25%;
   animation-delay: 73s;
 }
 
@@ -289,8 +295,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 24vh;
-  left: 25vw;
+  top: 24%;
+  left: 25%;
   animation-delay: 44s;
 }
 
@@ -333,8 +339,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 96vh;
-  left: 40vw;
+  top: 96%;
+  left: 40%;
   animation-delay: 4s;
 }
 
@@ -377,8 +383,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 63vh;
-  left: 1vw;
+  top: 63%;
+  left: 1%;
   animation-delay: 44s;
 }
 
@@ -421,8 +427,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 49vh;
-  left: 7vw;
+  top: 49%;
+  left: 7%;
   animation-delay: 47s;
 }
 
@@ -465,8 +471,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 59vh;
-  left: 52vw;
+  top: 59%;
+  left: 52%;
   animation-delay: 44s;
 }
 
@@ -509,8 +515,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 35vh;
-  left: 86vw;
+  top: 35%;
+  left: 86%;
   animation-delay: 27s;
 }
 
@@ -553,8 +559,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 36vh;
-  left: 31vw;
+  top: 36%;
+  left: 31%;
   animation-delay: 66s;
 }
 
@@ -597,8 +603,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 49vh;
-  left: 36vw;
+  top: 49%;
+  left: 36%;
   animation-delay: 33s;
 }
 
@@ -641,8 +647,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 45vh;
-  left: 95vw;
+  top: 45%;
+  left: 95%;
   animation-delay: 24s;
 }
 
@@ -685,8 +691,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 32vh;
-  left: 43vw;
+  top: 32%;
+  left: 43%;
   animation-delay: 69s;
 }
 
@@ -729,8 +735,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 62vh;
-  left: 98vw;
+  top: 62%;
+  left: 98%;
   animation-delay: 16s;
 }
 
@@ -773,8 +779,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 18vh;
-  left: 39vw;
+  top: 18%;
+  left: 39%;
   animation-delay: 61s;
 }
 
@@ -817,8 +823,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 88vh;
-  left: 56vw;
+  top: 88%;
+  left: 56%;
   animation-delay: 22s;
 }
 
@@ -861,8 +867,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 99vh;
-  left: 88vw;
+  top: 99%;
+  left: 88%;
   animation-delay: 9s;
 }
 
@@ -905,8 +911,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 70vh;
-  left: 66vw;
+  top: 70%;
+  left: 66%;
   animation-delay: 12s;
 }
 
@@ -949,8 +955,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 19vh;
-  left: 88vw;
+  top: 19%;
+  left: 88%;
   animation-delay: 18s;
 }
 
@@ -993,8 +999,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 79vh;
-  left: 1vw;
+  top: 79%;
+  left: 1%;
   animation-delay: 57s;
 }
 
@@ -1037,8 +1043,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 42vh;
-  left: 5vw;
+  top: 42%;
+  left: 5%;
   animation-delay: 20s;
 }
 
@@ -1081,8 +1087,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 76vh;
-  left: 31vw;
+  top: 76%;
+  left: 31%;
   animation-delay: 39s;
 }
 
@@ -1125,8 +1131,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 55vh;
-  left: 26vw;
+  top: 55%;
+  left: 26%;
   animation-delay: 52s;
 }
 
@@ -1169,8 +1175,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 84vh;
-  left: 38vw;
+  top: 84%;
+  left: 38%;
   animation-delay: 58s;
 }
 
@@ -1213,8 +1219,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 25vh;
-  left: 62vw;
+  top: 25%;
+  left: 62%;
   animation-delay: 59s;
 }
 
@@ -1257,8 +1263,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 95vh;
-  left: 60vw;
+  top: 95%;
+  left: 60%;
   animation-delay: 29s;
 }
 
@@ -1301,8 +1307,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 76vh;
-  left: 58vw;
+  top: 76%;
+  left: 58%;
   animation-delay: 48s;
 }
 
@@ -1345,8 +1351,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 33vh;
-  left: 52vw;
+  top: 33%;
+  left: 52%;
   animation-delay: 55s;
 }
 
@@ -1389,8 +1395,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 17vh;
-  left: 60vw;
+  top: 17%;
+  left: 60%;
   animation-delay: 10s;
 }
 
@@ -1433,8 +1439,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 65vh;
-  left: 16vw;
+  top: 65%;
+  left: 16%;
   animation-delay: 60s;
 }
 
@@ -1477,8 +1483,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 11vh;
-  left: 51vw;
+  top: 11%;
+  left: 51%;
   animation-delay: 53s;
 }
 
@@ -1521,8 +1527,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 25vh;
-  left: 4vw;
+  top: 25%;
+  left: 4%;
   animation-delay: 4s;
 }
 
@@ -1565,8 +1571,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 64vh;
-  left: 38vw;
+  top: 64%;
+  left: 38%;
   animation-delay: 71s;
 }
 
@@ -1609,8 +1615,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 29vh;
-  left: 6vw;
+  top: 29%;
+  left: 6%;
   animation-delay: 2s;
 }
 
@@ -1653,8 +1659,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 51vh;
-  left: 85vw;
+  top: 51%;
+  left: 85%;
   animation-delay: 17s;
 }
 
@@ -1697,8 +1703,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 0vh;
-  left: 49vw;
+  top: 0%;
+  left: 49%;
   animation-delay: 45s;
 }
 
@@ -1741,8 +1747,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 90vh;
-  left: 0vw;
+  top: 90%;
+  left: 0%;
   animation-delay: 6s;
 }
 
@@ -1785,8 +1791,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 8vh;
-  left: 94vw;
+  top: 8%;
+  left: 94%;
   animation-delay: 48s;
 }
 
@@ -1829,8 +1835,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 70vh;
-  left: 1vw;
+  top: 70%;
+  left: 1%;
   animation-delay: 44s;
 }
 
@@ -1873,8 +1879,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 88vh;
-  left: 52vw;
+  top: 88%;
+  left: 52%;
   animation-delay: 29s;
 }
 
@@ -1917,8 +1923,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 30vh;
-  left: 34vw;
+  top: 30%;
+  left: 34%;
   animation-delay: 9s;
 }
 
@@ -1961,8 +1967,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 59vh;
-  left: 27vw;
+  top: 59%;
+  left: 27%;
   animation-delay: 55s;
 }
 
@@ -2005,8 +2011,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 50vh;
-  left: 37vw;
+  top: 50%;
+  left: 37%;
   animation-delay: 49s;
 }
 
@@ -2049,8 +2055,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 52vh;
-  left: 2vw;
+  top: 52%;
+  left: 2%;
   animation-delay: 14s;
 }
 
@@ -2093,8 +2099,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 81vh;
-  left: 29vw;
+  top: 81%;
+  left: 29%;
   animation-delay: 64s;
 }
 
@@ -2137,8 +2143,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 56vh;
-  left: 4vw;
+  top: 56%;
+  left: 4%;
   animation-delay: 63s;
 }
 
@@ -2181,8 +2187,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 44vh;
-  left: 6vw;
+  top: 44%;
+  left: 6%;
   animation-delay: 2s;
 }
 
@@ -2225,8 +2231,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 51vh;
-  left: 4vw;
+  top: 51%;
+  left: 4%;
   animation-delay: 66s;
 }
 
@@ -2269,8 +2275,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 64vh;
-  left: 10vw;
+  top: 64%;
+  left: 10%;
   animation-delay: 25s;
 }
 
@@ -2313,8 +2319,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 98vh;
-  left: 96vw;
+  top: 98%;
+  left: 96%;
   animation-delay: 21s;
 }
 
@@ -2357,8 +2363,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 49vh;
-  left: 53vw;
+  top: 49%;
+  left: 53%;
   animation-delay: 62s;
 }
 
@@ -2401,8 +2407,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 100vh;
-  left: 64vw;
+  top: 100%;
+  left: 64%;
   animation-delay: 14s;
 }
 
@@ -2445,8 +2451,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 30vh;
-  left: 34vw;
+  top: 30%;
+  left: 34%;
   animation-delay: 3s;
 }
 
@@ -2489,8 +2495,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 100vh;
-  left: 19vw;
+  top: 100%;
+  left: 19%;
   animation-delay: 72s;
 }
 
@@ -2533,8 +2539,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 45vh;
-  left: 75vw;
+  top: 45%;
+  left: 75%;
   animation-delay: 54s;
 }
 
@@ -2577,8 +2583,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 81vh;
-  left: 97vw;
+  top: 81%;
+  left: 97%;
   animation-delay: 20s;
 }
 
@@ -2621,8 +2627,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 55vh;
-  left: 85vw;
+  top: 55%;
+  left: 85%;
   animation-delay: 19s;
 }
 
@@ -2665,8 +2671,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 77vh;
-  left: 46vw;
+  top: 77%;
+  left: 46%;
   animation-delay: 50s;
 }
 
@@ -2709,8 +2715,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 20vh;
-  left: 57vw;
+  top: 20%;
+  left: 57%;
   animation-delay: 31s;
 }
 
@@ -2753,8 +2759,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 76vh;
-  left: 97vw;
+  top: 76%;
+  left: 97%;
   animation-delay: 25s;
 }
 
@@ -2797,8 +2803,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 48vh;
-  left: 4vw;
+  top: 48%;
+  left: 4%;
   animation-delay: 49s;
 }
 
@@ -2841,8 +2847,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 84vh;
-  left: 47vw;
+  top: 84%;
+  left: 47%;
   animation-delay: 60s;
 }
 
@@ -2885,8 +2891,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 72vh;
-  left: 66vw;
+  top: 72%;
+  left: 66%;
   animation-delay: 56s;
 }
 
@@ -2929,8 +2935,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 51vh;
-  left: 21vw;
+  top: 51%;
+  left: 21%;
   animation-delay: 1s;
 }
 
@@ -2973,8 +2979,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 79vh;
-  left: 92vw;
+  top: 79%;
+  left: 92%;
   animation-delay: 42s;
 }
 
@@ -3017,8 +3023,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 29vh;
-  left: 33vw;
+  top: 29%;
+  left: 33%;
   animation-delay: 14s;
 }
 
@@ -3061,8 +3067,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 11vh;
-  left: 46vw;
+  top: 11%;
+  left: 46%;
   animation-delay: 70s;
 }
 
@@ -3105,8 +3111,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 32vh;
-  left: 25vw;
+  top: 32%;
+  left: 25%;
   animation-delay: 62s;
 }
 
@@ -3149,8 +3155,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 86vh;
-  left: 46vw;
+  top: 86%;
+  left: 46%;
   animation-delay: 55s;
 }
 
@@ -3193,8 +3199,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 0vh;
-  left: 98vw;
+  top: 0%;
+  left: 98%;
   animation-delay: 9s;
 }
 
@@ -3237,8 +3243,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 47vh;
-  left: 25vw;
+  top: 47%;
+  left: 25%;
   animation-delay: 25s;
 }
 
@@ -3281,8 +3287,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 85vh;
-  left: 85vw;
+  top: 85%;
+  left: 85%;
   animation-delay: 59s;
 }
 
@@ -3325,8 +3331,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 20vh;
-  left: 16vw;
+  top: 20%;
+  left: 16%;
   animation-delay: 40s;
 }
 
@@ -3369,8 +3375,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 89vh;
-  left: 2vw;
+  top: 89%;
+  left: 2%;
   animation-delay: 12s;
 }
 
@@ -3413,8 +3419,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 25vh;
-  left: 93vw;
+  top: 25%;
+  left: 93%;
   animation-delay: 36s;
 }
 
@@ -3457,8 +3463,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 76vh;
-  left: 79vw;
+  top: 76%;
+  left: 79%;
   animation-delay: 43s;
 }
 
@@ -3501,8 +3507,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 57vh;
-  left: 90vw;
+  top: 57%;
+  left: 90%;
   animation-delay: 2s;
 }
 
@@ -3545,8 +3551,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 0vh;
-  left: 16vw;
+  top: 0%;
+  left: 16%;
   animation-delay: 43s;
 }
 
@@ -3589,8 +3595,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 49vh;
-  left: 6vw;
+  top: 49%;
+  left: 6%;
   animation-delay: 29s;
 }
 
@@ -3633,8 +3639,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 17vh;
-  left: 23vw;
+  top: 17%;
+  left: 23%;
   animation-delay: 28s;
 }
 
@@ -3677,8 +3683,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 89vh;
-  left: 27vw;
+  top: 89%;
+  left: 27%;
   animation-delay: 3s;
 }
 
@@ -3721,8 +3727,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 20vh;
-  left: 25vw;
+  top: 20%;
+  left: 25%;
   animation-delay: 59s;
 }
 
@@ -3765,8 +3771,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 56vh;
-  left: 75vw;
+  top: 56%;
+  left: 75%;
   animation-delay: 74s;
 }
 
@@ -3809,8 +3815,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 85vh;
-  left: 37vw;
+  top: 85%;
+  left: 37%;
   animation-delay: 39s;
 }
 
@@ -3853,8 +3859,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 48vh;
-  left: 14vw;
+  top: 48%;
+  left: 14%;
   animation-delay: 51s;
 }
 
@@ -3897,8 +3903,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 43vh;
-  left: 37vw;
+  top: 43%;
+  left: 37%;
   animation-delay: 36s;
 }
 
@@ -3941,8 +3947,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 15vh;
-  left: 27vw;
+  top: 15%;
+  left: 27%;
   animation-delay: 71s;
 }
 
@@ -3985,8 +3991,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 85vh;
-  left: 45vw;
+  top: 85%;
+  left: 45%;
   animation-delay: 55s;
 }
 
@@ -4029,8 +4035,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 61vh;
-  left: 89vw;
+  top: 61%;
+  left: 89%;
   animation-delay: 48s;
 }
 
@@ -4073,8 +4079,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 45vh;
-  left: 4vw;
+  top: 45%;
+  left: 4%;
   animation-delay: 29s;
 }
 
@@ -4117,8 +4123,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 7vh;
-  left: 22vw;
+  top: 7%;
+  left: 22%;
   animation-delay: 55s;
 }
 
@@ -4161,8 +4167,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 22vh;
-  left: 12vw;
+  top: 22%;
+  left: 12%;
   animation-delay: 68s;
 }
 
@@ -4205,8 +4211,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 86vh;
-  left: 72vw;
+  top: 86%;
+  left: 72%;
   animation-delay: 66s;
 }
 
@@ -4249,8 +4255,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 0vh;
-  left: 84vw;
+  top: 0%;
+  left: 84%;
   animation-delay: 21s;
 }
 
@@ -4293,8 +4299,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 58vh;
-  left: 2vw;
+  top: 58%;
+  left: 2%;
   animation-delay: 26s;
 }
 
@@ -4337,8 +4343,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 4vh;
-  left: 17vw;
+  top: 4%;
+  left: 17%;
   animation-delay: 67s;
 }
 
@@ -4381,8 +4387,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 63vh;
-  left: 8vw;
+  top: 63%;
+  left: 8%;
   animation-delay: 61s;
 }
 
@@ -4425,8 +4431,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 92vh;
-  left: 76vw;
+  top: 92%;
+  left: 76%;
   animation-delay: 25s;
 }
 
@@ -4469,8 +4475,8 @@
   border-bottom: 0.7px solid #ff0;
   border-left: 1px solid transparent;
   transform: rotate(35deg);
-  top: 29vh;
-  left: 31vw;
+  top: 29%;
+  left: 31%;
   animation-delay: 5s;
 }
 
@@ -4513,8 +4519,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 40vh;
-  left: 53vw;
+  top: 40%;
+  left: 53%;
   animation-delay: 47s;
 }
 
@@ -4557,8 +4563,8 @@
   border-bottom: 1.4px solid #ff0;
   border-left: 2px solid transparent;
   transform: rotate(35deg);
-  top: 30vh;
-  left: 26vw;
+  top: 30%;
+  left: 26%;
   animation-delay: 60s;
 }
 

@@ -1,6 +1,10 @@
 .today, .previsions, .cloudy-rate, .details, .datas, .next-hours {
   padding: 10px 0;
 }
+.container {
+  height: 100%;
+  overflow: scroll;
+}
 
 ion-header {
   margin: 5px 0 0 12px;

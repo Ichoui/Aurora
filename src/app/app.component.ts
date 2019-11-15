@@ -11,7 +11,6 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-    errors = [];
     constructor(
         private platform: Platform,
         private translateService: TranslateService,
@@ -24,7 +23,7 @@ export class AppComponent {
 
     initializeApp() {
         this.platform.ready().then(() => {
-                        this.statusBar.styleLightContent();
+            this.statusBar.styleLightContent();
             this.statusBar.backgroundColorByHexString('#2a2a2a');
             this.splashScreen.hide();
         });

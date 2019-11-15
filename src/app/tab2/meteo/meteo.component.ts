@@ -66,8 +66,6 @@ export class MeteoComponent implements OnInit {
             }
             i++;
         });
-        console.log(this.cloudy);
-
         new Chart('next-hours', {
             type: 'line',
             plugins: [ChartDataLabels],
