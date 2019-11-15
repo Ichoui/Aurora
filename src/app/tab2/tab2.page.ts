@@ -38,6 +38,7 @@ export class Tab2Page {
         value: false,
         message: 'Un problème est survenu'
     };
+    eventRefresh: any;
 
     constructor(private geoloc: Geolocation,
                 private storage: Storage,
@@ -110,9 +111,9 @@ export class Tab2Page {
 
     /**
      * API Dark Sky
-     * 3 variable pour aujourd'hui, prochaines 24h et 7 jours
+     * 4 variables pour aujourd'hui, prochaines 24h, 7 jours et UtfOffset pour déterminer l'horaire locale de l'endroit sélectionné
      * */
-    getForecast(): void {
+    getForecast(refresh?): void {
         this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
             (res: Weather) => {
                 this.dataCurrentWeather = res.currently;
@@ -120,6 +121,10 @@ export class Tab2Page {
                 this.dataSevenDay = res.daily;
                 this.utcOffset = res.offset;
                 this.loading = false;
+
+                console.log(this.eventRefresh);
+
+                this.eventRefresh ? this.eventRefresh.target.complete() : '';
             },
             error => {
                 console.warn('Error with Dark Sky Forecast', error);
@@ -129,5 +134,9 @@ export class Tab2Page {
                     message: error.status + ' ' + error.statusText
                 };
             });
+    }
+    doRefresh(event) {
+        this.eventRefresh = event;
+        this.getForecast();
     }
 }

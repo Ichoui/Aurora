@@ -1,3 +1,4 @@
+
 <app-header titre="{{ 'tab2.title' | translate }}"></app-header>
 
 <ion-content *ngIf="loading" fullscreen>
@@ -9,6 +10,10 @@
 </ion-content>
 
 <ion-content *ngIf="!loading && !dataError.value">
+    <ion-refresher slot="fixed" id="refresher" (ionRefresh)="doRefresh($event)">
+        <div class="refresh whirly-loader"></div>
+    </ion-refresher>
+
     <h2 class="ion-text-center"><span>{{ city }}</span><span>{{ country }}</span></h2><br>
     <ion-slides [options]="slideOpts">
         <ion-slide>
