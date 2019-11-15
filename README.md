@@ -16,4 +16,5 @@ Release date : mi-december 2019.
 Credits to : 
 - Dark Sky API for the weather: https://darksky.net/poweredby/
 - Aurora Live API for the auroras' informations : http://auroraslive.io/#/
+- Thanks to JHEY for his talent : https://codepen.io/jh3y/pen/JKddVx
 - Various websites for stories about Aurora

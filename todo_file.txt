@@ -14,13 +14,17 @@ Page left : Chance de voir des aurores (oui / non / nuageux), KP actuel (kp), KP
 Idée d'amélioration:
 
 Quand on clique sur un jour, on affiche une nouvelle page, avec encore plus de données
-Image de weather devienne des Lotties
 Notification quand KP > 4 ou 5 ou 6 (au choix de l'utilisateur)
 Map ... ?
 
 TODO :
+Image de weather devienne des Lotties --> Gaetan ?
+Aurore en Lottie pour replaced l'icone principale ?
+
 Loading des informations : afficher un lottie (forme de vague verte rappelant aurore dansante ?)
 Informations sur Vent Solaire (pas fini) & STEVE
 
 En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue, nuages en gris, neige en blanc ...)
 SplashScreen a faire
+
+IMPORTANT : Sunrise / Sunset en fonction de la locale --> Essayer avec Québec
