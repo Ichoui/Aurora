@@ -2,7 +2,7 @@
 
 <ion-content *ngIf="loading" fullscreen>
     <ion-progress-bar type="indeterminate"></ion-progress-bar>
-    <p class="text-spinner">Votre localisation est en cours de chargement ...</p>
+    <p class="text-spinner">{{ 'tab2.loading' | translate }}</p>
     <div class="content-spinner">
         <div class="whirly-loader"></div>
     </div>
@@ -17,7 +17,6 @@
         <ion-slide>
             <app-kpindex [coords]="coords"></app-kpindex>
         </ion-slide>
-        <ion-slide>Quoi de plus ?</ion-slide>
     </ion-slides>
 </ion-content>
 

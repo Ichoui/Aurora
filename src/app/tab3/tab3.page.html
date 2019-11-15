@@ -5,18 +5,18 @@
         <ion-img src="/assets/img/aurora-tab3.jpg"></ion-img>
         <ion-card-content>
             <ion-item>
-                <ion-label>Localisation</ion-label>
+                <ion-label>{{ 'tab3.location' | translate }}</ion-label>
                 <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedValue($event)">
-                    <ion-select-option value="currentLocation">Position actuelle</ion-select-option>
+                    <ion-select-option value="currentLocation">{{ 'tab3.current.position' | translate }}</ion-select-option>
                     <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.ville }} - {{ city.codePays }} </ion-select-option>
                 </ion-select>
             </ion-item>
         </ion-card-content>
         <ion-card-content>
-            <ion-header>Crédits</ion-header>
+            <ion-header>{{ 'tab3.credits' | translate }}</ion-header>
             <p>Aurora datas powered by <a href="#" (click)="openUrl('http://auroraslive.io/#/')">Auroras.live</a></p>
             <p>Weather Powered by <a href="#" (click)="openUrl('https://darksky.net/poweredby/')">Dark Sky</a></p>
-            <p>Thanks to <a href="#" (click)="openUrl('https://codepen.io/jh3y')">JHEY</a> for his <a href="#" (click)="openUrl('https://codepen.io/jh3y/pen/JKddVx')">Auroras</a></p>
+            <p>Thanks to <a href="#" (click)="openUrl('https://codepen.io/jh3y')">JHEY</a> for his <a href="#" (click)="openUrl('https://codepen.io/jh3y/pen/JKddVx')">Auroras CSS Project</a></p>
         </ion-card-content>
     </ion-card>
 </ion-content>

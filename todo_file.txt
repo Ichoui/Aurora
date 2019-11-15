@@ -21,7 +21,6 @@ TODO :
 Image de weather devienne des Lotties --> Gaetan ?
 Aurore en Lottie pour replaced l'icone principale ?
 
-Loading des informations : afficher un lottie (forme de vague verte rappelant aurore dansante ?)
 Informations sur Vent Solaire (pas fini) & STEVE
 
 En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue, nuages en gris, neige en blanc ...)
@@ -32,3 +31,7 @@ Names of each tabs + icons left/right
 Language : FR / EN :
  - Add a switch dans paramètres
  - Tout le texte à rajouter dans fr.json
+
+Notifications :
+- https://ionicframework.com/docs/native/onesignal
+- https://ionicframework.com/docs/native/local-notifications

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeteoComponent } from './meteo.component';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { IonicModule } from '@ionic/angular';
     ],
     imports: [
         CommonModule,
-        IonicModule
+        IonicModule,
+        TranslateModule
     ]
 })
 export class MeteoModule {

@@ -80,9 +80,29 @@
     }
   },
   "tab2": {
-    "title": "Aurores"
+    "title": "Aurores",
+    "loading": "Votre localisation est en cours de chargement ...",
+    "meteo": {
+
+    },
+    "kp": {
+      "next.hours": "Prochaines heures",
+      "seven.days": "Prévisions 7 jours",
+      "cover.clouds": "Couverture nuageuse",
+      "details": "Détails",
+      "details.data": {
+        "sunrise": "Lever du soleil",
+        "sunset": "Coucher du soleil",
+        "windspeed": "Vitesse du vent",
+        "humidity": "Humidité"
+      }
+
+    }
   },
   "tab3": {
-    "title": "Paramètres"
+    "title": "Paramètres",
+    "location": "Localisation",
+    "current.position": "Position actuelle",
+    "credits": "Crédits"
   }
 }
