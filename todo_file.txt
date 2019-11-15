@@ -28,3 +28,9 @@ En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue
 SplashScreen a faire
 
 IMPORTANT : Sunrise / Sunset en fonction de la locale --> Essayer avec Québec
+
+Names of each tabs + icons left/right
+
+Language : FR / EN :
+ - Add a switch dans paramètres
+ - Tout le texte à rajouter dans fr.json

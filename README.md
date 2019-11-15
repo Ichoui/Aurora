@@ -1,20 +1,22 @@
 # Aurora Northen Lights Project
 
-###Installation
-
+### Installation
 `npm i` for dependencies
-<br>You will need an Dark Sky API key
+<br> Create a typescript file here `src/environments/keep.ts` and export a const named `API_KEY`
+<br>You will need an DarkSky API Key
 
+
+### About 
 Aurora Northen Lights Forecast & Weather. 
 <br>
 Mobile App (IONIC Angular).
-
 This project will be deployed on Android mobile devices in a first time. 
 <br>
-Release date : mi-december 2019.
+1st Release date : mi-december 2019.
 
-Credits to : 
+
+### Credits 
 - Dark Sky API for the weather: https://darksky.net/poweredby/
 - Aurora Live API for the auroras' informations : http://auroraslive.io/#/
-- Thanks to JHEY for his talent : https://codepen.io/jh3y/pen/JKddVx
+- Thanks to JHEY for his talent, found on Codepen : https://codepen.io/jh3y/pen/JKddVx
 - Various websites for stories about Aurora

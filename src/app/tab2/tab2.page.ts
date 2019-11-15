@@ -30,7 +30,7 @@ export class Tab2Page {
     };
 
     dataCurrentWeather: any;
-    dataHourly : any;
+    dataHourly: any;
     dataSevenDay: any;
 
     dataError: ErrorTemplate = {
@@ -67,8 +67,8 @@ export class Tab2Page {
     }
 
     /**
-    * Déterminer la localisation actuelle de l'utilisateur via lat/long et via reverseGeocode retrouver le nom de la ville exacte
-    * */
+     * Déterminer la localisation actuelle de l'utilisateur via lat/long et via reverseGeocode retrouver le nom de la ville exacte
+     * */
     userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
             this.coords = resp.coords;
@@ -93,8 +93,8 @@ export class Tab2Page {
     }
 
     /**
-    * Choisir une des villes pré-enregistrées
-    * */
+     * Choisir une des villes pré-enregistrées
+     * */
     chooseAnyCity(code: string): void {
         const city = cities.find(res => res.code === code);
         this.city = city.ville;
@@ -108,9 +108,9 @@ export class Tab2Page {
     }
 
     /**
-    * API Dark Sky
-    * 3 variable pour aujourd'hui, prochaines 24h et 7 jours
-    * */
+     * API Dark Sky
+     * 3 variable pour aujourd'hui, prochaines 24h et 7 jours
+     * */
     getForecast(): void {
         this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
             (res: Weather) => {
