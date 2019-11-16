@@ -113,7 +113,7 @@ export class Tab2Page {
      * API Dark Sky
      * 4 variables pour aujourd'hui, prochaines 24h, 7 jours et UtfOffset pour déterminer l'horaire locale de l'endroit sélectionné
      * */
-    getForecast(refresh?): void {
+    getForecast(): void {
         this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
             (res: Weather) => {
                 this.dataCurrentWeather = res.currently;
@@ -121,8 +121,6 @@ export class Tab2Page {
                 this.dataSevenDay = res.daily;
                 this.utcOffset = res.offset;
                 this.loading = false;
-
-                console.log(this.eventRefresh);
 
                 this.eventRefresh ? this.eventRefresh.target.complete() : '';
             },
@@ -137,6 +135,7 @@ export class Tab2Page {
     }
     doRefresh(event) {
         this.eventRefresh = event;
+        console.log('heere');
         this.getForecast();
     }
 }

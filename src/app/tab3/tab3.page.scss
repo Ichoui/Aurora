@@ -4,6 +4,11 @@ ion-icon.gitlab {
 }
 
 ion-card {
+  ion-item {
+    --inner-border-width: 0 !important;
+    --border-width: 0 !important;
+
+  }
 
   ion-img {
     border: 2px solid var(--ion-color-primary);

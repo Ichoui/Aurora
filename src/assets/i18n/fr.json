@@ -102,6 +102,8 @@
   "tab3": {
     "title": "Paramètres",
     "location": "Localisation",
+    "notifications": "Notifications",
+    "kp": "KP Index",
     "current.position": "Position actuelle",
     "credits": "Crédits"
   }

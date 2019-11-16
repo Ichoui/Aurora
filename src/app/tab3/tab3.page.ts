@@ -12,7 +12,7 @@ export class Tab3Page {
 
     cities = cities;
     localisation: string;
-
+    notifications: boolean = true;
 
     constructor(private storage: Storage,
                 private iab: InAppBrowser) {
@@ -25,10 +25,9 @@ export class Tab3Page {
     ionViewWillEnter() {
         this.storage.get('localisation').then(
             localisation => {
-                console.log(localisation);
                 if (localisation === null) {
                     console.log('je suis là');
-                    this.selectedValue(null, 'currentLocation');
+                    this.selectedLoc(null, 'currentLocation');
                     this.localisation = 'currentLocation';
                 } else {
                     this.localisation = localisation;
@@ -48,7 +47,7 @@ export class Tab3Page {
     }
 
 
-    selectedValue(choice?: any, init?: string) {
+    selectedLoc(choice?: any, init?: string) {
         if (choice) {
             this.localisation = choice.detail.value;
             this.storage.set('localisation', this.localisation);

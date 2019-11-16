@@ -24,7 +24,6 @@ Aurore en Lottie pour replaced l'icone principale ?
 Informations sur Vent Solaire (pas fini) & STEVE
 
 En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue, nuages en gris, neige en blanc ...)
-SplashScreen a faire
 
 Names of each tabs + icons left/right
 
