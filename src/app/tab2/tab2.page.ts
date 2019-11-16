@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
-import { cities, Coords } from '../cities';
+import { cities, Coords } from '../models/cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
-import { Weather } from '../weather';
+import { Weather } from '../models/weather';
 
 export interface ErrorTemplate {
     value: boolean;

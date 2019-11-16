@@ -34,3 +34,7 @@ Language : FR / EN :
 Notifications :
 - https://ionicframework.com/docs/native/onesignal
 - https://ionicframework.com/docs/native/local-notifications
+
+KP dans tab2 dans storage
+KP selected par user dans tab3
+--> si les 2 égaux, alors notifs user

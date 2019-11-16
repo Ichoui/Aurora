@@ -6,7 +6,7 @@
         <ion-card-content>
             <ion-item>
                 <ion-label>{{ 'tab3.location' | translate }}</ion-label>
-                <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedValue($event)">
+                <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedLoc($event)">
                     <ion-select-option value="currentLocation">{{ 'tab3.current.position' | translate }}</ion-select-option>
                     <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.ville }} - {{ city.codePays }} </ion-select-option>
                 </ion-select>
@@ -17,10 +17,9 @@
             </ion-item>
             <ion-item *ngIf="notifications">
                 <ion-label>{{ 'tab3.kp' | translate }}</ion-label>
-                <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedValue($event)">
-                    <ion-select-option value="currentLocation">{{ 'tab3.current.position' | translate }}</ion-select-option>
-<!--                    <ion-select-option *ngFor="let kp of kpindex" value="{{ kp.code }}"></ion-select-option>-->
-                    <ion-select-option value="ee">4</ion-select-option>
+                <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedKp($event)">
+                    <ion-select-option value="4" selected>4</ion-select-option>
+                    <ion-select-option *ngFor="let kp of kpindex" value="{{ kp }}">{{ kp }}</ion-select-option>
                 </ion-select>
             </ion-item>
         </ion-card-content>

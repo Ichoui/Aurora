@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Coords } from '../../cities';
+import { Coords } from '../../models/cities';
 import * as moment from 'moment';
 import 'moment/locale/fr';
-import { Cloudy, Currently, Daily, DataDaily, Hourly } from '../../weather';
+import { Cloudy, Currently, Daily, DataDaily, Hourly } from '../../models/weather';
 import * as Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Coords } from '../../cities';
+import { Coords } from '../../models/cities';
 
 @Component({
   selector: 'app-kpindex',

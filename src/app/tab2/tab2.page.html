@@ -11,7 +11,7 @@
 
 <ion-content *ngIf="!loading && !dataError.value">
 
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="130">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="140">
         <div class="refresh whirly-loader"></div>
     </ion-refresher>
 
