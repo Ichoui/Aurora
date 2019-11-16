@@ -38,3 +38,10 @@ Notifications :
 KP dans tab2 dans storage
 KP selected par user dans tab3
 --> si les 2 égaux, alors notifs user
+
+
+
+PWA / WP :
+Images shutterstock/autre d'une aurore boréale en background home page --> taf
+Premier temps ichoui.fr, second temps aurora-northenlights.io ?
+Menu : home | contacts | application |

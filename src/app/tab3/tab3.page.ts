@@ -13,17 +13,24 @@ export class Tab3Page {
     cities = cities;
     kpindex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     localisation: string;
-    notifications: boolean = true;
+    notifications: boolean = false;
+    notifKp;
 
     constructor(private storage: Storage,
                 private iab: InAppBrowser) {
     }
 
-    /*
+
+    ionViewWillEnter() {
+        this.storageLoc();
+        this.storageNotif();
+    }
+
+    /**
     * Si storage vide, set valeur à location actuelle ET valeur du select à position actuelle
     * Sinon, set valeur du select à la position indiquée dans storage
     * */
-    ionViewWillEnter() {
+    storageLoc(): void {
         this.storage.get('localisation').then(
             localisation => {
                 if (localisation === null) {
@@ -35,15 +42,26 @@ export class Tab3Page {
             },
             error => console.warn('Il y a un soucis de storage de position', error)
         );
-        this.storage.get('kp-selected').then(
-            kp => {
-                if (kp === null) {
+    }
 
-                } else {
-
-                }
+    storageNotif(): void {
+        this.storage.get('notifications_active').then(
+            notif => {
+                console.log(notif);
+                this.notifications = notif;
+                if (notif) this.storageKP();
             },
-            error => console.warn('Problème de KP', error)
+            error => console.warn('Problème de récupération notification', error)
+        );
+    }
+
+    storageKP(): void {
+        this.storage.get('kp_notif').then(
+            kp => {
+                this.notifKp = kp;
+                console.log(this.notifKp);
+            },
+            error => console.warn('Problème de récupération notification', error)
         );
     }
 
@@ -59,9 +77,15 @@ export class Tab3Page {
         }
     }
 
+    activeNotif(e): void {
+        this.notifications = e.detail.checked;
+        this.storage.set('notifications_active', this.notifications);
+    }
+
     selectedKp(choice?: any): void {
         if (choice) {
-            const kpSelected = choice.detail.value;
+            this.notifKp = choice.detail.value;
+            this.storage.set('kp_notif', this.notifKp);
         }
     }
 
