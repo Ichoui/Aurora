@@ -5,7 +5,8 @@
       "header": "Une Aurore Boréale ?",
       "welcome": {
         "title": "Bienvenue sur Aurora - Northen Lights",
-        "message": "L'objectif de cette application est simple : vous informer, selon votre localisation, des estimations sur la visiblité d'Aurore Boréales. Vous pourrez également y trouver des informations sur celles-ci."
+        "messagee": "L'objectif de cette application est simple : vous informer, selon votre localisation, des estimations sur la visiblité d'Aurore Boréales. Vous pourrez également y trouver des informations sur celles-ci.",
+        "message": "Cette application a pour objectif de simplifier la compréhension de ce phénomène via des informations et annecdotes, mais également de vous informer sur les chances d'appercevoir une aurore. Vous pouvez également décider de recevoir des notifications si l'indice Kp est élevé. De plus, une partie météo est intégrée à l'application."
       },
       "how": {
         "title": "Mécanisme ?",
@@ -22,6 +23,14 @@
       "where": {
         "title": "Où en voir ?",
         "message": "Plus on se rapproche d'un pôle de la planète, plus les probabilités d'en voir seront élevées.<br>L'Alaska, le Canada du Nord, la Norvège, l'Islande ou encore la Laponie sont des endroits de choix pour admirer en admirer à la tombée de la nuit. Dans l'hémisphère Sud, ce sera surtout en Nouvelle-Zélande. Bien entendu, cela dépend de l'activité solaire.<br>En été, il est impossible de voir des Aurores Boréales à proximité du pôle Nord à cause du soleil de minuit (le jour ne se couche pas ou très peu). Il faut alors se rapprocher du solstice d'hiver (21 décembre) pour en apercevoir. A l'inverse, en été il est possible d'en voir en se rapprochant du pôle Sud"
+      },
+      "corona": {
+        "title": "Aurora Corona",
+        "message": "C'est une apparition d'Aurore en forme de couronne au zénith (à 90° au dessus de notre tête). L'aspect de l'Aurore paraît alors circulaire, en forme de spirale. La base de l'Aurore se situe entre 80 et 100km, tandis que son extrémité est bien plus haut dans la Thermosphère. Une impression se créée alors : des rayons lumineux d'Aurores paraissent converger vers la base centre, et cela donne une impression de couronne, d'où le nom.<br>Il est nécessaire d'être à une haute latitude ainsi qu'un Kp5 pour avoir la chance d'en voir."
+      },
+      "steve": {
+        "title": "STEVE",
+        "message": "STEVE (Strong Thermal Emission Velocity Enhancement) est l'appelation donnée à un nouveau genre d'Aurore Boréale, découverte en 2017 par des chasseurs d'Aurores Boréales sur un groupe Facebook en Alberta, Canada. <br>Elle se présente sous la forme d'un long et étroit ruban pourpre, à travers le ciel. Les scientifiques, alertés par cette communauté, n'a pas été en mesure d'expliquer immédiatement le phénomène. C'est en 2018, après des recherches, qu'un professeur de l'Université de Calgary a pu affirmer que STEVE est un flux de gaz chaud (environ 3000°) qui se déplace plus rapidement que l'air environnant, d'ou sa couleur pourpre.<br>Le &laquo phénomène Steve &raquo; peut durer jusqu'à 1h, avance à une vitesse maximum de 6km/s et peut mesurer jusqu'à 25km. Il est observable en Alberta, à la latitude de Calgary. "
       },
       "legends": {
         "title": "Légendes & Mythes",
@@ -63,19 +72,18 @@
         "trois": "Dans l'hémisphère nord, l'Aurore Boréale est aussi appelée Aurore Polaire. Elle peut être aperçue depuis la banquise Arctique, l'Amérique du Nord (Alaska, Canada), le Groenland, le nord des pays Scandinave ou encore l'Islande.",
         "quatre": "Dans l'hémisphère sud, l'Aurore Boréale est appelée Aurore Australe. Elle peut être aperçue depuis l'Antarctique, la Tasmanie, et même à l'extrémité sud de la Nouvelle-Zélande.",
         "cinq": "Les Aurores Boréales dépendent de l'activité du Soleil. Il se trouve que l'activité solaire a un cycle de 11 ans, où les vents solaires sont au plus bas. En 2019, l'activité est au plus bas car un cycle se termine.",
-        "six": "Il existe deux villes situées en Alaska, Fairbanks et Nome, où il est possible d'observer des Aurores Boréales plus de 200 jours par an.",
-        "sept": "STEVE TODO"
+        "six": "Il existe deux villes situées en Alaska, Fairbanks et Nome, où il est possible d'observer des Aurores Boréales plus de 200 jours par an."
       }
     },
     "secondblock": {
       "header": "Des prévisions ?",
       "forecast": {
         "title": "Comment peut-on prévoir ce phénomène ?",
-        "message": "On ne peut jamais assurer le fait d'en apercevoir. On ne peut que le prévoir grâce à l'activité solaire.<br>Des outils sont mis à disposition par la &laquo; Space Weather Prediction Center &raquo;<br>Sous forme de graphique, il est possible de suivre les activités géomagnétiques, solaires. Il existe également une estimation à plus long terme, grâce à l'indice KP.<br>Pour plus d'explications, rendez-vous sur <a href='https://tinyurl.com/y3fnxwdv'>Aurora Maniacs</a>"
+        "message": "Grâce à un satellite nommé ACE et qui a pour mission d'étudier les particules solaires.<br>Les données sont ensuite traitée par la &laquo; Space Weather Prediction Center &raquo; qui est un service météorologique situé aux Etats-Unis.<br>Grâce à de savants calculs autour des particules solaires, il est alors possible de prévoir les Aurores, notamment grâce à l'indice Kp."
       },
       "kp": {
         "title": "L'indice Kp",
-        "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre. L'échelle commence à 0 et se termine à 9. A partir d'un Kp 5, on peut admettre qu'il y a une tempête géomagnétique, et les chances d'apercevoir une aurore boréale augmentent à une basse latitude. "
+        "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre, mais il ne prédit pas à 100% la visibibilité d'une Aurore. De plus, la couverture nuageuse est très importante. L'échelle commence à 0 et se termine à 9 :<ul><li>Kp 0 : Très faible visibilitées dans les ciels du Nord</li><li>Kp 1 : Faibles et peu dynamiques dans les ciels du Nord</li><li>Kp 2 : Visibles, un peu plus dynamiques et lumineuses</li><li>Kp 3 : Visibles au zénith, couleur vert pâle</li><li>Kp 4 : Brillantes, constantes et dynamiques. De plus en plus de couleurs apparaissent</li><li>Kp 5 : Tempête mineure. Brillantes et très colorées, rouge et violet peuvent apparaître. Petite probabilitée d'Aurora Corona</li><li>Kp 6 : Tempête moyenne. Plus intense que le précédent niveau</li><li>Kp 7 : Tempête puissante. Grande probabilitée d'Aurora Corona</li><li>Kp 8 : Tempête Tempête intense. Possibilité d'en voir à une latitude de 50°</li><li>Kp 9 : Tempête extrême. Possibilité d'en voir à une latitude de 40°. Les aurores sont rouges. Rare car nécessite une puissante éjections de masse coronale.</li></ul><br><br>Pour plus d'explications, rendez-vous sur <a href='https://tinyurl.com/y3fnxwdv'>Aurora Maniacs</a>"
       }
     }
   },

@@ -46,6 +46,24 @@
         <ion-card>
             <ion-card-header (click)="visibility($event, 5)">
                 <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.firstblock.corona.title' | translate }}
+            </ion-card-header>
+            <ion-card-content>
+                <div [innerHTML]="'tab1.firstblock.corona.message' | translate"></div>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 6)">
+                <ion-icon name="arrow-dropright"></ion-icon>
+                {{ 'tab1.firstblock.steve.title' | translate }}
+            </ion-card-header>
+            <ion-card-content>
+                <div [innerHTML]="'tab1.firstblock.steve.message' | translate"></div>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header (click)="visibility($event, 7)">
+                <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.firstblock.legends.title' | translate }}
             </ion-card-header>
             <ion-card-content> {{ 'tab1.firstblock.legends.message' | translate }}
@@ -60,7 +78,7 @@
             </ion-card-content>
         </ion-card>
         <ion-card>
-            <ion-card-header (click)="visibility($event, 6)">
+            <ion-card-header (click)="visibility($event, 8)">
                 <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.firstblock.annecdotes.title' | translate }}
             </ion-card-header>
@@ -79,7 +97,7 @@
     <ion-card class="card-container">
         <ion-card-header class="header">{{ 'tab1.secondblock.header' | translate }}</ion-card-header>
         <ion-card>
-            <ion-card-header (click)="visibility($event, 7)">
+            <ion-card-header (click)="visibility($event, 9)">
                 <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.secondblock.forecast.title' | translate }}
             </ion-card-header>
@@ -88,7 +106,7 @@
             </ion-card-content>
         </ion-card>
         <ion-card>
-            <ion-card-header (click)="visibility($event, 8)">
+            <ion-card-header (click)="visibility($event, 10)">
                 <ion-icon name="arrow-dropright"></ion-icon>
                 {{ 'tab1.secondblock.kp.title' | translate }}
             </ion-card-header>

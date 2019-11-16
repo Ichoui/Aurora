@@ -21,7 +21,7 @@ TODO :
 Image de weather devienne des Lotties --> Gaetan ?
 Aurore en Lottie pour replaced l'icone principale ?
 
-Informations sur Vent Solaire (pas fini) & STEVE
+Informations sur Vent Solaire (pas fini)
 
 En attendant : chaque image peut être colorée (soleil en jaune, pluie en bleue, nuages en gris, neige en blanc ...)
 
@@ -39,6 +39,7 @@ KP dans tab2 dans storage
 KP selected par user dans tab3
 --> si les 2 égaux, alors notifs user
 
+troisieme onglet : ovation MAP globe sud & nord ? Ou Map tout dispo sur space weather center
 
 
 PWA / WP :
