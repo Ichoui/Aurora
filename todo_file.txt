@@ -34,6 +34,7 @@ Language : FR / EN :
 Notifications :
 - https://ionicframework.com/docs/native/onesignal
 - https://ionicframework.com/docs/native/local-notifications
+- https://www.google.com/search?q=listener+sur+storage+ionic&rlz=1C1CHBF_frFR841FR841&oq=listener+sur+storage+ionic&aqs=chrome..69i57.5985j0j7&sourceid=chrome&ie=UTF-8
 
 KP dans tab2 dans storage
 KP selected par user dans tab3

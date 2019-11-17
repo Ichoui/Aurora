@@ -5,7 +5,7 @@ import { cities, Coords } from '../models/cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
 import { Weather } from '../models/weather';
-import { DataACE, ParamsACE, SolarWind } from '../models/aurora';
+import { AuroraZenith, DataACE, ParamsACE, SolarWind } from '../models/aurora';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -21,6 +21,8 @@ export class Tab2Page {
 
     loading: boolean = true;
     tabLoading: string[] = [];
+    apiCallNumber: number = 3; // nombre de fois où une API est appelé sur cette page
+
     localisation: string;
     getCode: string;
     coords: Coords;
@@ -39,6 +41,7 @@ export class Tab2Page {
     dataSevenDay: any;
     utcOffset: number;
     solarWind: SolarWind = {} as any;
+    auroraZenith: AuroraZenith = {} as any;
 
 
     dataError: ErrorTemplate = {
@@ -54,6 +57,7 @@ export class Tab2Page {
 
     ionViewWillEnter() {
         this.loading = true; // buffer constant
+        // Cheminement en fonction si la localisation est pré-set ou si géoloc
         this.storage.get('localisation').then(
             codeLocation => {
                 if (codeLocation === 'currentLocation' || codeLocation === null) {
@@ -86,7 +90,7 @@ export class Tab2Page {
                     this.country = res[0].countryName;
                     this.getForecast();
                     this.getSolarWind();
-                    this.getLocalAuroraLikely();
+                    this.getLocalAuroraZenith();
                 },
                 error => {
                     console.warn('Erreur de reverse geocode', error);
@@ -116,7 +120,7 @@ export class Tab2Page {
         };
         this.getForecast();
         this.getSolarWind();
-        this.getLocalAuroraLikely();
+        this.getLocalAuroraZenith();
     }
 
     /**
@@ -131,7 +135,6 @@ export class Tab2Page {
                 this.dataSevenDay = res.daily;
                 this.utcOffset = res.offset;
                 this.trickLoading('1st');
-                // this.loading = false;
             },
             error => {
                 console.warn('Error with Dark Sky Forecast', error);
@@ -168,7 +171,7 @@ export class Tab2Page {
     /**
      * Récupère les données ACE de probabilité d'Aurore pour une localisation lat/long donnée
      * */
-    getLocalAuroraLikely(): void {
+    getLocalAuroraZenith(): void {
         const params: ParamsACE = {
             type: 'ace',
             data: DataACE.probability,
@@ -176,8 +179,8 @@ export class Tab2Page {
             long: this.coords.longitude
         };
         this.auroraService.auroraLive(params).subscribe(
-            (test) => {
-                console.log(test);
+            (auroraZenith: AuroraZenith) => {
+                this.auroraZenith = auroraZenith;
                 this.trickLoading('3th');
             },
             error => {
@@ -195,8 +198,7 @@ export class Tab2Page {
      * */
     trickLoading(count: string): void {
         this.tabLoading.push(count);
-        console.log(this.tabLoading);
-        if (this.tabLoading.length === 3) {
+        if (this.tabLoading.length === this.apiCallNumber) {
             this.loading = false;
             this.eventRefresh ? this.eventRefresh.target.complete() : '';
         }
@@ -210,6 +212,6 @@ export class Tab2Page {
         this.eventRefresh = event;
         this.getForecast();
         this.getSolarWind();
-        this.getLocalAuroraLikely();
+        this.getLocalAuroraZenith();
     }
 }

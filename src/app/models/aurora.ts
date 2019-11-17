@@ -68,6 +68,6 @@ export enum DataACE {
     threeday = 'threeday',
     twentysevenday = 'twentysevenday',
     probability = 'probability',
-    all = 'all',
+    all = 'all'
 }
 
