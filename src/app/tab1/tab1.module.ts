@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
-import { HeaderPageModule } from '../header/header.module';
+import { HeaderPageModule } from '../shared/header/header.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({

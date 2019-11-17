@@ -1,5 +1,6 @@
 import { Moment } from 'moment';
 
+// DarkSky
 export interface Weather {
     currently: Currently;
     daily: Daily;
@@ -10,7 +11,6 @@ export interface Weather {
     offset: number;
 }
 
-// DarkSky
 export interface Currently {
     time: number;
     summary: string;
@@ -108,6 +108,7 @@ export interface DataDaily {
     date?: string | number | Moment;
 }
 
+// Ennuagement
 export interface Cloudy {
     percent?: number;
     time?: string | Moment;

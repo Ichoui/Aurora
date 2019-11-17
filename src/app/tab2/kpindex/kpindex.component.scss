@@ -1,6 +1,38 @@
-* {
-  box-sizing: border-box;
+:host {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
+
+.ace-data {
+  position: absolute;
+  z-index: 88;
+  transform: translateX(-50%);
+
+  left: 50%;
+  .label {
+
+  }
+
+  .value {
+    font-size: 4em;
+
+  }
+
+  &.kp {
+
+  }
+
+  &.density {
+
+  }
+
+  &.speed {
+
+  }
+}
+
+
 .night-sky {
   position: absolute;
   top: 0;
@@ -8,7 +40,7 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
-  background: linear-gradient(20deg,var(--ion-background-color), var(--ion-background-color));
+  background: linear-gradient(20deg, var(--ion-background-color), var(--ion-background-color));
 }
 
 .night-sky__aurora {

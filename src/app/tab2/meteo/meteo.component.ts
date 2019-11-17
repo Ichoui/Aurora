@@ -170,8 +170,4 @@ export class MeteoComponent implements OnInit {
         const unixToLocal = moment.unix(date).utc().add(this.utc, 'h');
         return unixToLocal.format(format);
     }
-
-    refresh() {
-
-    }
 }

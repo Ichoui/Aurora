@@ -4,10 +4,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
-import { HeaderPageModule } from '../header/header.module';
+import { HeaderPageModule } from '../shared/header/header.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { IonicStorageModule } from '@ionic/storage';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { MeteoModule } from './meteo/meteo.module';
 import { KpindexModule } from './kpindex/kpindex.module';
@@ -18,14 +17,10 @@ import { KpindexModule } from './kpindex/kpindex.module';
         CommonModule,
         FormsModule,
         TranslateModule,
-        IonicStorageModule.forRoot({
-            name: '__dbAurora',
-            driverOrder: ['indexeddb', 'sqlite', 'websql']
-        }),
         RouterModule.forChild([{path: '', component: Tab2Page}]),
         HeaderPageModule,
         MeteoModule,
-        KpindexModule
+        KpindexModule,
     ],
     declarations: [Tab2Page],
     providers: [

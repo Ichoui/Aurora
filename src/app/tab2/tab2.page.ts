@@ -5,6 +5,7 @@ import { cities, Coords } from '../models/cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
 import { Weather } from '../models/weather';
+import { SolarWind } from '../models/aurora';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -29,16 +30,20 @@ export class Tab2Page {
         speed: 400
     };
 
+    eventRefresh: any;
+
+    // Data inputs
     dataCurrentWeather: any;
     dataHourly: any;
     dataSevenDay: any;
     utcOffset: number;
+    solarWind: SolarWind = {} as any;
+
 
     dataError: ErrorTemplate = {
         value: false,
         message: 'Un problème est survenu'
     };
-    eventRefresh: any;
 
     constructor(private geoloc: Geolocation,
                 private storage: Storage,
@@ -47,7 +52,7 @@ export class Tab2Page {
     }
 
     ionViewWillEnter() {
-        this.loading = true; // si on remet ça, buffer constamment présent : pas trop long ?
+        this.loading = true; // buffer constant
         this.storage.get('localisation').then(
             codeLocation => {
                 if (codeLocation === 'currentLocation' || codeLocation === null) {
@@ -66,11 +71,12 @@ export class Tab2Page {
                 };
             }
         );
+        this.getSolarWind();
     }
 
     /**
      * Déterminer la localisation actuelle de l'utilisateur via lat/long et via reverseGeocode retrouver le nom de la ville exacte
-     * */
+     */
     userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
             this.coords = resp.coords;
@@ -96,7 +102,7 @@ export class Tab2Page {
 
     /**
      * Choisir une des villes pré-enregistrées
-     * */
+     */
     chooseAnyCity(code: string): void {
         const city = cities.find(res => res.code === code);
         this.city = city.ville;
@@ -112,7 +118,7 @@ export class Tab2Page {
     /**
      * API Dark Sky
      * 4 variables pour aujourd'hui, prochaines 24h, 7 jours et UtfOffset pour déterminer l'horaire locale de l'endroit sélectionné
-     * */
+     */
     getForecast(): void {
         this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
             (res: Weather) => {
@@ -133,9 +139,24 @@ export class Tab2Page {
                 };
             });
     }
+
+    getSolarWind(): void {
+        this.auroraService.auroraLive().subscribe(
+            (solarwind: SolarWind) => {
+                this.solarWind = solarwind;
+            },
+            error => {
+                console.warn('Problème avec données vent solaire', error);
+                this.dataError = {
+                    value: true,
+                    message: error.status + ' ' + error.statusText
+                };
+            });
+    }
+
     doRefresh(event) {
         this.eventRefresh = event;
-        console.log('heere');
+        console.log('Refresh');
         this.getForecast();
     }
 }

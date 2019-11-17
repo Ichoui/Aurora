@@ -47,7 +47,6 @@ export class Tab3Page {
     storageNotif(): void {
         this.storage.get('notifications_active').then(
             notif => {
-                console.log(notif);
                 this.notifications = notif;
                 if (notif) this.storageKP();
             },
@@ -59,9 +58,8 @@ export class Tab3Page {
         this.storage.get('kp_notif').then(
             kp => {
                 this.notifKp = kp;
-                console.log(this.notifKp);
             },
-            error => console.warn('Problème de récupération notification', error)
+                error => console.warn('Problème de récupération notification', error)
         );
     }
 

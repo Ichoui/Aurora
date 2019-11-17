@@ -3,6 +3,7 @@
   margin: 100px auto auto;
   zoom: .3;
 }
+
 h2 {
   margin: 10px auto 0;
 
@@ -25,18 +26,21 @@ app-kpindex, app-meteo {
 }
 
 
+// SPINNER
 .text-spinner {
   text-align: center;
   margin-top: 50%;
 }
 
-// SPINNER
 .content-spinner {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
 }
+
+
+
 /* :not(:required) hides this rule from IE9 and below */
 .whirly-loader:not(:required) {
   overflow: hidden;
@@ -94,3 +98,5 @@ app-kpindex, app-meteo {
     transform: rotate(360deg);
   }
 }
+
+

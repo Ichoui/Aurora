@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
     declarations: [AppComponent],
@@ -19,6 +20,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     imports: [BrowserModule, IonicModule.forRoot(),
         AppRoutingModule,
         HttpClientModule,
+        IonicStorageModule.forRoot({
+            name: '__dbAurora',
+            driverOrder: ['indexeddb', 'sqlite', 'websql']
+        }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
