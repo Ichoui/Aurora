@@ -1,4 +1,7 @@
 // Données sur le vent solaire
+import { Data } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
+
 export interface SolarWind {
     date: string;
     bz: number;
@@ -46,8 +49,25 @@ export interface Calculated {
     colour: string;
 }
 
-// Paramètres obligatoire & facultatif
+/*
+* Paramètres obligatoire & facultatif
+**/
 export interface ParamsACE {
+    type: string;
+    data: DataACE;
+    lat?: number;
+    long?: number;
+}
 
+export enum DataACE {
+    bz = 'bz',
+    speed = 'speed',
+    density = 'density',
+    kp = 'kp',
+    kp1minute = 'kp1minute',
+    threeday = 'threeday',
+    twentysevenday = 'twentysevenday',
+    probability = 'probability',
+    all = 'all',
 }
 

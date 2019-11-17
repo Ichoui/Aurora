@@ -15,7 +15,7 @@ Idée d'amélioration:
 
 Quand on clique sur un jour, on affiche une nouvelle page, avec encore plus de données
 Notification quand KP > 4 ou 5 ou 6 (au choix de l'utilisateur)
-Map ... ?
+Map dans paramètres pour permettre au user de sélectionner l'endroit précis ?
 
 TODO :
 Image de weather devienne des Lotties --> Gaetan ?
@@ -39,8 +39,7 @@ KP dans tab2 dans storage
 KP selected par user dans tab3
 --> si les 2 égaux, alors notifs user
 
-troisieme onglet : ovation MAP globe sud & nord ? Ou Map tout dispo sur space weather center
-
+troisieme onglet : ovation MAP globe sud & nord ? Ou Map tout dispo sur space weather center --> Ou sur un bouton à cliquer pour l'ouvrir ?
 
 PWA / WP :
 Images shutterstock/autre d'une aurore boréale en background home page --> taf

@@ -14,8 +14,13 @@ export class KpindexComponent implements OnInit {
     forecastACE: SolarWind;
 
     @Input()
-    set solarWind(value: SolarWind) { this.dataAurora.next(value) }
-    get solarWind() { return this.dataAurora.getValue() }
+    set solarWind(value: SolarWind) {
+        this.dataAurora.next(value);
+    }
+
+    get solarWind() {
+        return this.dataAurora.getValue();
+    }
 
     constructor(private storage: Storage) {
     }
@@ -23,7 +28,6 @@ export class KpindexComponent implements OnInit {
     ngOnInit() {
         this.auroraBackground();
         this.solarWindData();
-        this.storage.set('current_kp', this.forecastACE.kp);
     }
 
     auroraBackground() {
@@ -43,6 +47,8 @@ export class KpindexComponent implements OnInit {
         this.dataAurora.subscribe(aurora => {
             this.forecastACE = aurora;
             console.log(this.forecastACE);
+            console.log(this.forecastACE.kp);
+            this.storage.set('current_kp', this.forecastACE.kp);
         });
     }
 }

@@ -1,18 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
-import { ParamsACE } from './models/aurora';
-
-const URL_DARK_SKY = 'https://api.darksky.net/forecast';
-const URL_AURORA = 'https://api.auroras.live/v1';
-
-export interface ForecastParams {
-    type: string;
-    forecast?: string;
-    lat: number;
-    long: number;
-}
+import { UtilsService } from './models/utils';
 
 @Injectable({
     providedIn: 'root'
@@ -29,11 +19,8 @@ export class AuroraService {
      * type ACE combiné à data ALL : Récupère toute la data envoyée par ACE, BZ KP densité et vitesse particules
      * http://auroraslive.io/#/api/v1/ace
      * */
-    auroraLive(): Observable<any> {
-        const params = {
-            type: 'ace',
-            data: 'all',
-        };
+    auroraLive(params): Observable<any> {
+        const queryParams: HttpParams = UtilsService.buildQueryParams(params);
         return this.http.get(`${environment.cors}/${environment.aurora_api}`, {params});
     }
 

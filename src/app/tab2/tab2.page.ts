@@ -5,7 +5,7 @@ import { cities, Coords } from '../models/cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
 import { Weather } from '../models/weather';
-import { SolarWind } from '../models/aurora';
+import { DataACE, ParamsACE, SolarWind } from '../models/aurora';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -20,6 +20,7 @@ export interface ErrorTemplate {
 export class Tab2Page {
 
     loading: boolean = true;
+    tabLoading: string[] = [];
     localisation: string;
     getCode: string;
     coords: Coords;
@@ -71,7 +72,6 @@ export class Tab2Page {
                 };
             }
         );
-        this.getSolarWind();
     }
 
     /**
@@ -85,6 +85,8 @@ export class Tab2Page {
                     this.city = res[0].locality;
                     this.country = res[0].countryName;
                     this.getForecast();
+                    this.getSolarWind();
+                    this.getLocalAuroraLikely();
                 },
                 error => {
                     console.warn('Erreur de reverse geocode', error);
@@ -113,11 +115,13 @@ export class Tab2Page {
             longitude: city.longitude
         };
         this.getForecast();
+        this.getSolarWind();
+        this.getLocalAuroraLikely();
     }
 
     /**
      * API Dark Sky
-     * 4 variables pour aujourd'hui, prochaines 24h, 7 jours et UtfOffset pour déterminer l'horaire locale de l'endroit sélectionné
+     * 4 variables pour aujourd'hui, les variables vont aux enfants via Input()
      */
     getForecast(): void {
         this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
@@ -126,9 +130,8 @@ export class Tab2Page {
                 this.dataHourly = res.hourly;
                 this.dataSevenDay = res.daily;
                 this.utcOffset = res.offset;
-                this.loading = false;
-
-                this.eventRefresh ? this.eventRefresh.target.complete() : '';
+                this.trickLoading('1st');
+                // this.loading = false;
             },
             error => {
                 console.warn('Error with Dark Sky Forecast', error);
@@ -140,10 +143,18 @@ export class Tab2Page {
             });
     }
 
+    /**
+     * Récupère les données ACE de vent solaire
+     * */
     getSolarWind(): void {
-        this.auroraService.auroraLive().subscribe(
+        const params: ParamsACE = {
+            type: 'ace',
+            data: DataACE.all
+        };
+        this.auroraService.auroraLive(params).subscribe(
             (solarwind: SolarWind) => {
                 this.solarWind = solarwind;
+                this.trickLoading('2nd');
             },
             error => {
                 console.warn('Problème avec données vent solaire', error);
@@ -154,9 +165,51 @@ export class Tab2Page {
             });
     }
 
+    /**
+     * Récupère les données ACE de probabilité d'Aurore pour une localisation lat/long donnée
+     * */
+    getLocalAuroraLikely(): void {
+        const params: ParamsACE = {
+            type: 'ace',
+            data: DataACE.probability,
+            lat: this.coords.latitude,
+            long: this.coords.longitude
+        };
+        this.auroraService.auroraLive(params).subscribe(
+            (test) => {
+                console.log(test);
+                this.trickLoading('3th');
+            },
+            error => {
+                console.warn('Problème avec données vent solaire', error);
+                this.dataError = {
+                    value: true,
+                    message: error.status + ' ' + error.statusText
+                };
+            });
+    }
+
+    /**
+     * Gère le loader
+     * Lorsque tout les appels API sont passés, débloque le loader
+     * */
+    trickLoading(count: string): void {
+        this.tabLoading.push(count);
+        console.log(this.tabLoading);
+        if (this.tabLoading.length === 3) {
+            this.loading = false;
+            this.eventRefresh ? this.eventRefresh.target.complete() : '';
+        }
+    }
+
+    /*
+    * Attends les retours des résultats d'API pour retirer l'animation visuelle
+    * */
     doRefresh(event) {
+        this.tabLoading = [];
         this.eventRefresh = event;
-        console.log('Refresh');
         this.getForecast();
+        this.getSolarWind();
+        this.getLocalAuroraLikely();
     }
 }
