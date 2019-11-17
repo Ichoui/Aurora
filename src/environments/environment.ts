@@ -2,14 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { API_KEY } from './keep';
+import { DARKSKY_API_KEY } from './keep';
 
 export const environment = {
   production: false,
   cors: 'https://cors-anywhere.herokuapp.com',
   api: 'https://api.darksky.net',
   aurora_api: 'https://api.auroras.live/v1',
-  apikey: API_KEY,
+  apikey: DARKSKY_API_KEY,
   application_name: 'Aurora - Northen Light',
 };
 

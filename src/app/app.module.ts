@@ -14,6 +14,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+
+
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -35,7 +38,8 @@ import { IonicStorageModule } from '@ionic/storage';
     providers: [
         StatusBar,
         SplashScreen,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+        OneSignal
     ],
     bootstrap: [AppComponent]
 })

@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
+
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { GOOGLE_PROJECT_NUMBER, ONESIGNAL_APP_ID } from '../environments/keep';
+
 
 @Component({
     selector: 'app-root',
@@ -21,7 +25,10 @@ export class AppComponent {
         private translateService: TranslateService,
         private splashScreen: SplashScreen,
         private storage: Storage,
-        private statusBar: StatusBar
+        private statusBar: StatusBar,
+        private oneSignal: OneSignal,
+        private alertCtrl: AlertController
+
     ) {
         this.initializeApp();
         translateService.setDefaultLang('fr');
@@ -34,6 +41,19 @@ export class AppComponent {
             this.splashScreen.hide();
             this.getKp();
             this.isNotifsActive();
+            //
+            // if (this.platform.is('cordova')) {
+            //     this.setupPush();
+            // }
+
+            // const notificationOpenedCallback = function(jsonData) {
+            //     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            // };
+            //
+            // window["plugins"].OneSignal
+            //     .startInit(ONESIGNAL_APP_ID, GOOGLE_PROJECT_NUMBER)
+            //     .handleNotificationOpened(notificationOpenedCallback)
+            //     .endInit();
         });
     }
 
@@ -50,7 +70,7 @@ export class AppComponent {
                     }
                 }
             }
-        )
+        );
     }
 
     getKp(): void {
@@ -63,4 +83,46 @@ export class AppComponent {
 
     }
 
+
+
+   // setupPush() {
+   //      // I recommend to put these into your environment.ts
+   //      this.oneSignal.startInit(ONESIGNAL_APP_ID, GOOGLE_PROJECT_NUMBER);
+   //
+   //      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
+   //
+   //      // Notifcation was received in general
+   //      this.oneSignal.handleNotificationReceived().subscribe(data => {
+   //          let msg = data.payload.body;
+   //          let title = data.payload.title;
+   //          let additionalData = data.payload.additionalData;
+   //          this.showAlert(title, msg, additionalData.task);
+   //      });
+   //
+   //      // Notification was really clicked/opened
+   //      this.oneSignal.handleNotificationOpened().subscribe(data => {
+   //          // Just a note that the data is a different place here!
+   //          let additionalData = data.notification.payload.additionalData;
+   //
+   //          this.showAlert('Notification opened', 'You already read this before', additionalData.task);
+   //      });
+   //
+   //      this.oneSignal.endInit();
+   //  }
+   //
+   //  async showAlert(title, msg, task) {
+   //      const alert = await this.alertCtrl.create({
+   //          header: title,
+   //          subHeader: msg,
+   //          buttons: [
+   //              {
+   //                  text: `Action: ${task}`,
+   //                  handler: () => {
+   //                      // E.g: Navigate to a specific screen
+   //                  }
+   //              }
+   //          ]
+   //      });
+   //      await alert.present();
+   //  }
 }

@@ -9,8 +9,6 @@ import { UtilsService } from './models/utils';
 })
 export class AuroraService {
 
-    //http://auroraslive.io/#/api/v1
-
     constructor(private http: HttpClient) {
     }
 
@@ -38,8 +36,4 @@ export class AuroraService {
         };
         return this.http.get(`${environment.cors}/${environment.api}/forecast/${environment.apikey}/${lat},${long}/`, {params});
     }
-
-
 }
-
-// --> https://www.chartjs.org/docs/latest/getting-started/installation.html CHART JS! enjoy

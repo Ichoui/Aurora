@@ -32,15 +32,22 @@ Language : FR / EN :
  - Tout le texte à rajouter dans fr.json
 
 Notifications :
-- https://ionicframework.com/docs/native/onesignal
+- https://ionicframework.com/docs/native/onesignal -> https://documentation.onesignal.com/docs/ionic-sdk-setup
 - https://ionicframework.com/docs/native/local-notifications
 - https://www.google.com/search?q=listener+sur+storage+ionic&rlz=1C1CHBF_frFR841FR841&oq=listener+sur+storage+ionic&aqs=chrome..69i57.5985j0j7&sourceid=chrome&ie=UTF-8
+--> check notif screenshot
 
 KP dans tab2 dans storage
 KP selected par user dans tab3
 --> si les 2 égaux, alors notifs user
 
-troisieme onglet : ovation MAP globe sud & nord ? Ou Map tout dispo sur space weather center --> Ou sur un bouton à cliquer pour l'ouvrir ?
+troisieme onglet :
+oval MAP globe sud & nord --> Obligatoire, réclamé sur apple store
+ Ou Map tout dispo sur space weather center --> Ou sur un bouton à cliquer pour l'ouvrir ?
+
+--> https://v2.api.auroras.live/images/embed/nowcast.png
+--> https://v2.api.auroras.live/images/ovation-north.jpg
+--> https://v2.api.auroras.live/images/ovation-south.jpg
 
 PWA / WP :
 Images shutterstock/autre d'une aurore boréale en background home page --> taf
