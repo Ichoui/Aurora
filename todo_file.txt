@@ -31,12 +31,21 @@ Language : FR / EN :
  - Add a switch dans paramètres
  - Tout le texte à rajouter dans fr.json
 
+-------------------------
 Notifications :
 - https://ionicframework.com/docs/native/onesignal -> https://documentation.onesignal.com/docs/ionic-sdk-setup
+-------> https://ionicframework.com/docs/v3/native/onesignal/ mettre ça en place si possible;
+--> L'api pour envoyer https://documentation.onesignal.com/reference#create-notification
+ou alors firebase --> https://www.youtube.com/watch?v=SOOjamH1bAA
+
 - https://ionicframework.com/docs/native/local-notifications
 - https://www.google.com/search?q=listener+sur+storage+ionic&rlz=1C1CHBF_frFR841FR841&oq=listener+sur+storage+ionic&aqs=chrome..69i57.5985j0j7&sourceid=chrome&ie=UTF-8
 --> check notif screenshot
 
+Listener sur les Kp set & Kp Actuel
+Si l'un = l'autre à modification, notification.
+
+---------------------------
 KP dans tab2 dans storage
 KP selected par user dans tab3
 --> si les 2 égaux, alors notifs user
