@@ -3,7 +3,7 @@
 ### Installation
 `npm i` for dependencies
 <br> Create a typescript file here `src/environments/keep.ts` and export a const named `API_KEY`
-<br>You will need an DarkSky API Key
+<br>You will need an DarkSky API Key (free up to 1000 calls/day, then 1€/10.000 calls)
 
 
 ### About 
@@ -19,4 +19,4 @@ This project will be deployed on Android mobile devices in a first time.
 - Dark Sky API for the weather: https://darksky.net/poweredby/
 - Aurora Live API for the auroras' informations : http://auroraslive.io/#/
 - Thanks to JHEY for his talent, found on Codepen : https://codepen.io/jh3y/pen/JKddVx
-- Various websites for stories about Aurora
+- Various websites for informations & stories about Aurora
