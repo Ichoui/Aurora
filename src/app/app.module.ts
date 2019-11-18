@@ -15,6 +15,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { Notifications } from './notifications';
 
 
 @NgModule({
