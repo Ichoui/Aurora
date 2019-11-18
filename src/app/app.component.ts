@@ -44,9 +44,9 @@ export class AppComponent {
             this.getKp();
             this.isNotifsActive();
 
-            const notifFile = new Notifications(this.platform, this.oneSignal, this.auroraService, this.alertCtrl);
-            notifFile.isCordova();
-            notifFile.push()
+            const notificationFile = new Notifications(this.platform, this.oneSignal, this.auroraService, this.alertCtrl);
+            notificationFile.isCordova();
+            notificationFile.invokePush()
         });
     }
 

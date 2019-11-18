@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { UtilsService } from './models/utils';
-import { Aurora, AuroraModules } from './models/aurorav2';
+import { AuroraModules } from './models/aurorav2';
 import { DataNotif } from './notifications';
 
 
@@ -37,26 +37,25 @@ export class AuroraService {
 
     /**
      * @body {Aurora} get la v2 de aurora.live
-     * TODO Quand la v2 sera plus stable + du temps
+     * TODO Quand la v2 sera plus stable + du temps, attendre que le gars fixe le problème de nowcast
+     * https://v2.api.auroras.live/images/embed/nowcast.png
      * */
     auroraLiveV2(lat?: number, long?: number, modules?: AuroraModules[], nowcast?: boolean): Observable<any> {
-        // https://v2.api.auroras.live/images/embed/nowcast.png
-        if (nowcast) {
-            const nowcast = {
-                lat: 36,
-                long: 45
-            };
-            return this.http.post(`${environment.cors}/${environment.aurora_v2_api}/nowcast`, {'nowcast:local': nowcast});
+        if (!nowcast) {
+            return this.http.post(`${environment.cors}/${environment.aurora_v2_api}/nowcast`, {
+                'nowcast:local': {
+                    lat: 36,
+                    long: 45
+                }
+            });
         } else {
-            // NOT WORKING --> Missing BODY name ... :/
-            const bodyAurora: Aurora = {
+            return this.http.post(`${environment.cors}/${environment.aurora_v2_api}`, {
                 modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed],
                 common: {
                     lat: 42.50,
                     long: 1.54
                 }
-            };
-            return this.http.post(`${environment.cors}/${environment.aurora_v2_api}`, {common: bodyAurora});
+            });
         }
     }
 

@@ -24,7 +24,7 @@ export class Notifications {
         console.log('cc');
         if (this.platform.is('cordova')) {
             this.setupPush();
-            this.push();
+            this.invokePush();
         }
 
         /*        const notificationOpenedCallback = function (jsonData) {
@@ -91,7 +91,7 @@ export class Notifications {
     }
 
 
-    push() {
+    invokePush() {
         // --> https://documentation.onesignal.com/docs/using-postman
         const notif: DataNotif = {
             app_id: ONESIGNAL_APP_ID,
