@@ -2,6 +2,14 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { AlertController, Platform } from '@ionic/angular';
 import { GOOGLE_PROJECT_NUMBER, ONESIGNAL_APP_ID } from '../environments/keep';
 
+export interface DataNotif {
+    app_id: string;
+    included_segments: string[];
+    headings: {};
+    contents: {};
+    url: string;
+}
+
 export class Notifications {
 
     constructor(
@@ -83,12 +91,12 @@ export class Notifications {
     push() {
         // --> https://documentation.onesignal.com/docs/using-postman
         // POST --> https://onesignal.com/api/v1/notifications
-        const notif = {
-            'app_id': ONESIGNAL_APP_ID,
-            'included_segments': ['All'],
-            'headings': {'en': 'Cool cool cool cool cool'},
-            'contents': {'en': 'Salut Salut salut'},
-            'url': 'https://onesignal.com'
+        const notif: DataNotif = {
+            app_id: ONESIGNAL_APP_ID,
+            included_segments: ['All'],
+            headings: {'en': 'Cool cool cool cool cool'},
+            contents: {'en': 'Salut Salut salut'},
+            url: 'https://onesignal.com'
         };
     }
 }

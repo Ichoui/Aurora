@@ -36,4 +36,8 @@ export class AuroraService {
         };
         return this.http.get(`${environment.cors}/${environment.api}/forecast/${environment.apikey}/${lat},${long}/`, {params});
     }
+
+    postNotification(body: any): Observable<any> {
+        return this.http.post('https://onesignal.com/api/v1/notifications', {body})
+    }
 }
