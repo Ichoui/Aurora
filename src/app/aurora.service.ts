@@ -41,7 +41,7 @@ export class AuroraService {
      * https://v2.api.auroras.live/images/embed/nowcast.png
      * */
     auroraLiveV2(lat?: number, long?: number, modules?: AuroraModules[], nowcast?: boolean): Observable<any> {
-        if (!nowcast) {
+        if (nowcast) {
             return this.http.post(`${environment.cors}/${environment.aurora_v2_api}/nowcast`, {
                 'nowcast:local': {
                     lat: 36,
