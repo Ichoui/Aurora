@@ -81,6 +81,7 @@ export class Notifications {
 
 
     push() {
+        // --> https://documentation.onesignal.com/docs/using-postman
         // POST --> https://onesignal.com/api/v1/notifications
         const notif = {
             'app_id': ONESIGNAL_APP_ID,
