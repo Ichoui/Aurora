@@ -45,18 +45,21 @@ ou alors firebase --> https://www.youtube.com/watch?v=SOOjamH1bAA
 Listener sur les Kp set & Kp Actuel
 Si l'un = l'autre à modification, notification.
 
+Deuxième cas :
+Si probabilité de + de 50% à un endroit donné, push notif
+
 ---------------------------
-KP dans tab2 dans storage
-KP selected par user dans tab3
---> si les 2 égaux, alors notifs user
+
+Répartition onglet : weather left, middle (main sur laquelle on doit boot) Aurores KP & Proba, Right : mapg gen, globe sud&nord, autre
 
 troisieme onglet :
 oval MAP globe sud & nord --> Obligatoire, réclamé sur apple store
  Ou Map tout dispo sur space weather center --> Ou sur un bouton à cliquer pour l'ouvrir ?
-
+--> Droit affirmatif d'utiliser tout ça en bas
 --> https://v2.api.auroras.live/images/embed/nowcast.png
 --> https://v2.api.auroras.live/images/ovation-north.jpg
 --> https://v2.api.auroras.live/images/ovation-south.jpg
+
 
 PWA / WP :
 Images shutterstock/autre d'une aurore boréale en background home page --> taf

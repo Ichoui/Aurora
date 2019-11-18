@@ -12,6 +12,7 @@ export interface ErrorTemplate {
     message: string;
 }
 
+
 @Component({
     selector: 'app-tab2',
     templateUrl: 'tab2.page.html',
@@ -76,6 +77,8 @@ export class Tab2Page {
                 };
             }
         );
+
+        this.auroraService.auroraLiveV2(null,null,null,false).subscribe(console.log)
     }
 
     /**

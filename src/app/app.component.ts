@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Notifications } from './notifications';
+import { AuroraService } from './aurora.service';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class AppComponent {
         private storage: Storage,
         private statusBar: StatusBar,
         private oneSignal: OneSignal,
-        private alertCtrl: AlertController
+        private alertCtrl: AlertController,
+        private auroraService: AuroraService
     ) {
         this.initializeApp();
         translateService.setDefaultLang('fr');
@@ -42,7 +44,7 @@ export class AppComponent {
             this.getKp();
             this.isNotifsActive();
 
-            const notifFile = new Notifications(this.platform, this.oneSignal, this.alertCtrl);
+            const notifFile = new Notifications(this.platform, this.oneSignal, this.auroraService, this.alertCtrl);
             notifFile.isCordova();
             notifFile.push()
         });

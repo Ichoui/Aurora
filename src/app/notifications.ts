@@ -1,6 +1,7 @@
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { AlertController, Platform } from '@ionic/angular';
 import { GOOGLE_PROJECT_NUMBER, ONESIGNAL_APP_ID } from '../environments/keep';
+import { AuroraService } from './aurora.service';
 
 export interface DataNotif {
     app_id: string;
@@ -13,15 +14,17 @@ export interface DataNotif {
 export class Notifications {
 
     constructor(
-        private platform: Platform,
-        private oneSignal: OneSignal,
-        private alertCtrl: AlertController) {
+        private platform,
+        private oneSignal,
+        private auroraService,
+        private alertCtrl) {
     }
 
     isCordova(): void {
         console.log('cc');
         if (this.platform.is('cordova')) {
             this.setupPush();
+            this.push();
         }
 
         /*        const notificationOpenedCallback = function (jsonData) {
@@ -90,7 +93,6 @@ export class Notifications {
 
     push() {
         // --> https://documentation.onesignal.com/docs/using-postman
-        // POST --> https://onesignal.com/api/v1/notifications
         const notif: DataNotif = {
             app_id: ONESIGNAL_APP_ID,
             included_segments: ['All'],
@@ -98,5 +100,7 @@ export class Notifications {
             contents: {'en': 'Salut Salut salut'},
             url: 'https://onesignal.com'
         };
+
+        this.auroraService.pushNotification(notif).subscribe(console.log);
     }
 }

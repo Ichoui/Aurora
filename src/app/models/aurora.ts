@@ -1,7 +1,10 @@
 // Données sur le vent solaire
 import { Data } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
+import { AuroraEnumColours } from './aurorav2';
 
+
+// FIRST VERSION Aurora.live
 export interface SolarWind {
     date: string;
     bz: number;
@@ -23,12 +26,7 @@ export interface AuroraColours {
     kp: string;
 }
 
-export enum AuroraEnumColours {
-    green = 'green',
-    yellow = 'yellow',
-    orange = 'orange',
-    red = 'red'
-}
+
 
 // Probabilité de voir une aurora au Zénith
 export interface AuroraZenith {

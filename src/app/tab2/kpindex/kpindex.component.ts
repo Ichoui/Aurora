@@ -64,8 +64,6 @@ export class KpindexComponent implements OnInit {
     solarWindData(): void {
         this.dataSolarWind.subscribe(solarWind => {
             this.forecastSW = solarWind;
-            // console.log(this.forecastACE);
-            // console.log(this.forecastACE.kp);
             this.storage.set('current_kp', this.forecastSW.kp);
         });
     }
@@ -77,8 +75,7 @@ export class KpindexComponent implements OnInit {
         this.dataZenith.subscribe(zenith => {
             this.forecastZenith = zenith;
             console.log(this.forecastZenith);
-            // console.log(this.forecastACE.kp);
-            // this.storage.set('current_kp', this.forecastACE.kp);
+            this.storage.set('current_likely', this.forecastZenith.value);
         });
     }
 }
