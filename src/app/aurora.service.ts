@@ -79,13 +79,14 @@ export class AuroraService {
     // https://jasonwatmore.com/post/2018/09/07/angular-6-basic-http-authentication-tutorial-example
     // --> Authorization missing header, interceptors (voir pour interceptor cors aussi?)
     pushNotification(body: DataNotif): Observable<any> {
+
         const httpOptions = {
             headers: new HttpHeaders({
+                'Accept':  'application/json',
                 'Content-Type':  'application/json',
-                'Authorization': `Basic ${ONE_SIGNAL_REST_KEY}`
+                'Authorization': `Basic YmMxMTg1YzgtZTMwNy00NTQ1LTkyOGQtYmUwNmFhZTlhNzIw`
             })
         };
-
-        return this.http.post(`${environment.push_notifs}`, {body}, {headers: {'Content-Type': 'application/json}'}});
+        return this.http.post(`${environment.push_notifs}`, {body});
     }
 }

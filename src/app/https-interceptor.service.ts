@@ -15,17 +15,25 @@ export class HttpsInterceptorService implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-/*        if (req.url === `${environment.cors}/${environment.push_notifs}`) {
+       if (req.url === `${environment.push_notifs}`) {
             console.log(req.url);
             req = req.clone({
                 setHeaders: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': `Basic ${ONE_SIGNAL_REST_KEY}`,
+                    'Authorization': `Basic YmMxMTg1YzgtZTMwNy00NTQ1LTkyOGQtYmUwNmFhZTlhNzIw`,
                 }
             });
             return next.handle(req).pipe(tap(console.log));
-        }*/
+        }
+      req = req.clone({
+        setHeaders: {
+          'Access-Control-Allow-Origin':'*',
+          "Access-Control-Request-Headers": "content-type",
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      });
         return next.handle(req);
     }
 }
