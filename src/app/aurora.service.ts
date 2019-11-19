@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { UtilsService } from './models/utils';
 import { AuroraModules } from './models/aurorav2';
 import { DataNotif } from './notifications';
+import { ONE_SIGNAL_REST_KEY, ONESIGNAL_APP_ID } from '../environments/keep';
 
 
 export interface Nowcast {
@@ -78,6 +79,13 @@ export class AuroraService {
     // https://jasonwatmore.com/post/2018/09/07/angular-6-basic-http-authentication-tutorial-example
     // --> Authorization missing header, interceptors (voir pour interceptor cors aussi?)
     pushNotification(body: DataNotif): Observable<any> {
-        return this.http.post(`${environment.cors}/${environment.push_notifs}`, {body});
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+                'Authorization': `Basic ${ONE_SIGNAL_REST_KEY}`
+            })
+        };
+
+        return this.http.post(`${environment.push_notifs}`, {body}, {headers: {'Content-Type': 'application/json}'}});
     }
 }

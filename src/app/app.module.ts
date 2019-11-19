@@ -10,11 +10,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { HttpsInterceptorService } from './https-interceptor.service';
 
 
 @NgModule({
@@ -39,7 +40,12 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-        OneSignal
+        OneSignal,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpsInterceptorService,
+            multi: true
+        },
     ],
     bootstrap: [AppComponent]
 })

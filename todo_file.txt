@@ -38,6 +38,8 @@ Notifications :
 --> L'api pour envoyer https://documentation.onesignal.com/reference#create-notification
 ou alors firebase --> https://www.youtube.com/watch?v=SOOjamH1bAA
 
+CORS HTTP --> https://github.com/silkimen/cordova-plugin-advanced-http
+
 - https://ionicframework.com/docs/native/local-notifications
 - https://www.google.com/search?q=listener+sur+storage+ionic&rlz=1C1CHBF_frFR841FR841&oq=listener+sur+storage+ionic&aqs=chrome..69i57.5985j0j7&sourceid=chrome&ie=UTF-8
 --> check notif screenshot
