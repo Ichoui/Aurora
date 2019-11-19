@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AuroraZenith, SolarWind } from '../../models/aurora';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs';
+import { Density, KpCurrent, Nowcast, Speed } from '../../models/aurorav2';
 
 @Component({
     selector: 'app-kpindex',
@@ -10,27 +10,32 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class KpindexComponent implements OnInit {
 
-    dataSolarWind = new BehaviorSubject<SolarWind>(null);
-    dataZenith = new BehaviorSubject<AuroraZenith>(null);
-    forecastSW: SolarWind;
-    forecastZenith: AuroraZenith;
+    dataSolarWind = new BehaviorSubject<any>(null); // type SolarWind
+    dataNowcast = new BehaviorSubject<Nowcast>(null);
+    // forecastSW: SolarWind ;
+    // forecastZenith: AuroraZenith;
+
+    density: Density;
+    kpCurrent: KpCurrent;
+    speed: Speed;
+    nowcast: Nowcast;
 
     @Input()
-    set solarWind(value: SolarWind) {
+    set solarWindValue(value: any) {
         this.dataSolarWind.next(value);
     }
 
-    get solarWind() {
+    get solarWindValue() {
         return this.dataSolarWind.getValue();
     }
 
     @Input()
-    set auroraZenith(value: AuroraZenith) {
-        this.dataZenith.next(value);
+    set nowcastValue(value: Nowcast) {
+        this.dataNowcast.next(value);
     }
 
-    get auroraZenith() {
-        return this.dataZenith.getValue();
+    get nowcastValue() {
+        return this.dataNowcast.getValue();
     }
 
     constructor(private storage: Storage) {
@@ -39,7 +44,7 @@ export class KpindexComponent implements OnInit {
     ngOnInit() {
         this.auroraBackground();
         this.solarWindData();
-        this.auroraLikelyData();
+        this.auroraNowcast();
     }
 
     /**
@@ -63,19 +68,23 @@ export class KpindexComponent implements OnInit {
      * */
     solarWindData(): void {
         this.dataSolarWind.subscribe(solarWind => {
-            this.forecastSW = solarWind;
-            this.storage.set('current_kp', this.forecastSW.kp);
+            this.density = solarWind.density;
+            this.kpCurrent = solarWind["kp:current"];
+            // this.kpCurrent.value = 75; // test
+            this.speed = solarWind.speed;
+            this.storage.set('current_kp', this.kpCurrent.value);
         });
     }
 
     /**
      * Observable permettant de récupérer les des aurores visible au zénith via localisation
      * */
-    auroraLikelyData(): void {
-        this.dataZenith.subscribe(zenith => {
-            this.forecastZenith = zenith;
-            console.log(this.forecastZenith);
-            this.storage.set('current_likely', this.forecastZenith.value);
+    auroraNowcast(): void {
+        this.dataNowcast.subscribe(nowcast => {
+            this.nowcast = nowcast;
+            this.storage.set('nowcast', this.nowcast.value);
         });
     }
+
+
 }

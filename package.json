@@ -39,6 +39,7 @@
     "chart.js": "^2.9.2",
     "chartjs-plugin-datalabels": "^0.7.0",
     "cordova-android": "8.1.0",
+    "cordova-plugin-firebase": "^2.0.5",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-inappbrowser": "^3.1.0",
     "cordova-plugin-nativegeocoder": "3.2.2",
@@ -103,7 +104,8 @@
         "ANDROID_SUPPORT_VERSION": "28.+"
       },
       "cordova-plugin-inappbrowser": {},
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {},
+      "cordova-plugin-firebase": {}
     },
     "platforms": [
       "android"

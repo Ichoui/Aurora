@@ -5,17 +5,8 @@ import { environment } from '../environments/environment';
 import { UtilsService } from './models/utils';
 import { AuroraModules } from './models/aurorav2';
 import { DataNotif } from './notifications';
-import { ONE_SIGNAL_REST_KEY, ONESIGNAL_APP_ID } from '../environments/keep';
+import { ONE_SIGNAL_REST_KEY } from '../environments/keep';
 
-
-export interface Nowcast {
-    nowcast: {
-        local: {
-            lat: number;
-            long: number;
-        }
-    }
-}
 
 @Injectable({
     providedIn: 'root'
@@ -27,8 +18,9 @@ export class AuroraService {
 
     /**
      * @params {ParamsACE}
-     * Récupération du KP actuel depuis Space Weather Prediction Center sous-traité par le site auroralive.io
+     * Récupération du KP actuel
      * type ACE combiné à data ALL : Récupère toute la data envoyée par ACE, BZ KP densité et vitesse particules
+     * TODO Supprimer si on garde la v2 défintivement(ainsi que la data dans tab2.ts & kpindex.ts)
      * http://auroraslive.io/#/api/v1/ace
      * */
     auroraLive(params): Observable<any> {
@@ -37,24 +29,27 @@ export class AuroraService {
     }
 
     /**
-     * @body {Aurora} get la v2 de aurora.live
-     * TODO Quand la v2 sera plus stable + du temps, attendre que le gars fixe le problème de nowcast
+     * @lat : longitude
+     * @long latitude
+     * @nowcast si true on envoie nowcast la data Nowcast, sinon on envoie les modules et la latitudes.
+     * get la v2 providé par aurora.live grâce au Space Weather Prediction Center
+     * TODO Utilisation de la V2. Peut être soumis à des changements
      * https://v2.api.auroras.live/images/embed/nowcast.png
      * */
-    auroraLiveV2(lat?: number, long?: number, modules?: AuroraModules[], nowcast?: boolean): Observable<any> {
+    auroraLiveV2(lat?: number, long?: number, nowcast?: boolean): Observable<any> {
         if (nowcast) {
             return this.http.post(`${environment.cors}/${environment.aurora_v2_api}/nowcast`, {
                 'nowcast:local': {
-                    lat: 36,
-                    long: 45
+                    lat: lat,
+                    long: long
                 }
             });
         } else {
             return this.http.post(`${environment.cors}/${environment.aurora_v2_api}`, {
                 modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed],
                 common: {
-                    lat: 42.50,
-                    long: 1.54
+                    lat: lat,
+                    long: long
                 }
             });
         }
@@ -84,7 +79,7 @@ export class AuroraService {
             headers: new HttpHeaders({
                 'Accept':  'application/json',
                 'Content-Type':  'application/json',
-                'Authorization': `Basic YmMxMTg1YzgtZTMwNy00NTQ1LTkyOGQtYmUwNmFhZTlhNzIw`
+                'Authorization': `Basic ${ONE_SIGNAL_REST_KEY}`
             })
         };
         return this.http.post(`${environment.push_notifs}`, {body});

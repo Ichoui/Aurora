@@ -5,13 +5,15 @@ import { cities, Coords } from '../models/cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
 import { Weather } from '../models/weather';
-import { AuroraZenith, DataACE, ParamsACE, SolarWind } from '../models/aurora';
+import { DataACE, ParamsACE } from '../models/aurora';
+import { Nowcast } from '../models/aurorav2';
 
 export interface ErrorTemplate {
     value: boolean;
     message: string;
 }
 
+const API_CALL_NUMBER = 3; // nombre de fois où une API est appelé sur cette page
 
 @Component({
     selector: 'app-tab2',
@@ -22,7 +24,6 @@ export class Tab2Page {
 
     loading: boolean = true;
     tabLoading: string[] = [];
-    apiCallNumber: number = 3; // nombre de fois où une API est appelé sur cette page
 
     localisation: string;
     getCode: string;
@@ -41,8 +42,8 @@ export class Tab2Page {
     dataHourly: any;
     dataSevenDay: any;
     utcOffset: number;
-    solarWind: SolarWind = {} as any;
-    auroraZenith: AuroraZenith = {} as any;
+    solarWind: any = {} as any;
+    nowcast: Nowcast = {} as any;
 
 
     dataError: ErrorTemplate = {
@@ -58,6 +59,8 @@ export class Tab2Page {
 
     ionViewWillEnter() {
         this.loading = true; // buffer constant
+        this.tabLoading = [];
+
         // Cheminement en fonction si la localisation est pré-set ou si géoloc
         this.storage.get('localisation').then(
             codeLocation => {
@@ -78,7 +81,7 @@ export class Tab2Page {
             }
         );
 
-        this.auroraService.auroraLiveV2(null,null,null,false).subscribe(console.log)
+        // this.auroraService.auroraLiveV2(null,null,null,false).subscribe(console.log)
     }
 
     /**
@@ -157,8 +160,21 @@ export class Tab2Page {
             type: 'ace',
             data: DataACE.all
         };
-        this.auroraService.auroraLive(params).subscribe(
-            (solarwind: SolarWind) => {
+        /*        this.auroraService.auroraLive(params).subscribe(
+                    (solarwind: SolarWind) => {
+                        this.solarWind = solarwind;
+                        this.trickLoading('2nd');
+                    },
+                    error => {
+                        console.warn('Problème avec données vent solaire', error);
+                        this.dataError = {
+                            value: true,
+                            message: error.status + ' ' + error.statusText
+                        };
+                    });*/
+
+        this.auroraService.auroraLiveV2(this.coords.latitude, this.coords.longitude, false).subscribe(
+            solarwind => {
                 this.solarWind = solarwind;
                 this.trickLoading('2nd');
             },
@@ -172,7 +188,7 @@ export class Tab2Page {
     }
 
     /**
-     * Récupère les données ACE de probabilité d'Aurore pour une localisation lat/long donnée
+     * Récupère les données Nowcast ACE pour une localisation lat/long donnée
      * */
     getLocalAuroraZenith(): void {
         const params: ParamsACE = {
@@ -181,13 +197,26 @@ export class Tab2Page {
             lat: this.coords.latitude,
             long: this.coords.longitude
         };
-        this.auroraService.auroraLive(params).subscribe(
-            (auroraZenith: AuroraZenith) => {
-                this.auroraZenith = auroraZenith;
+        /*        this.auroraService.auroraLive(params).subscribe(
+                    (auroraZenith: AuroraZenith) => {
+                        this.auroraZenith = auroraZenith;
+                        this.trickLoading('3th');
+                    },
+                    error => {
+                        console.warn('Problème avec données probabilitées', error);
+                        this.dataError = {
+                            value: true,
+                            message: error.status + ' ' + error.statusText
+                        };
+                    });*/
+        this.auroraService.auroraLiveV2(this.coords.latitude, this.coords.longitude, true).subscribe(
+            (nowcast: Nowcast) => {
+                this.nowcast = nowcast;
+                console.log(nowcast);
                 this.trickLoading('3th');
             },
             error => {
-                console.warn('Problème avec données vent solaire', error);
+                console.warn('Problème avec Nowcast', error);
                 this.dataError = {
                     value: true,
                     message: error.status + ' ' + error.statusText
@@ -197,11 +226,11 @@ export class Tab2Page {
 
     /**
      * Gère le loader
-     * Lorsque tout les appels API sont passés, débloque le loader
+     * Lorsque tout les appels API sont passés et le tableau égal à la valeur API_CALL_NUMBER, débloque le loader
      * */
     trickLoading(count: string): void {
         this.tabLoading.push(count);
-        if (this.tabLoading.length === this.apiCallNumber) {
+        if (this.tabLoading.length === API_CALL_NUMBER) {
             this.loading = false;
             this.eventRefresh ? this.eventRefresh.target.complete() : '';
         }

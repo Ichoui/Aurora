@@ -1,128 +1,159 @@
 <!--https://codepen.io/jh3y/pen/JKddVx -->
 
+<div class="nowcast ace-data">
+    <p>Vous avez {{ nowcast.value }}% de chance de voir une Aurore Boréale</p>
+</div>
+
 <div class="kp ace-data">
+    <div class="colored">
+        <span *ngFor="let i of [1,2,3,4]; index as i"
+              [ngClass]="{
+        'green':  kpCurrent.value > 0 && kpCurrent.value < 25,
+        'yellow': kpCurrent.value >= 25 && kpCurrent.value < 50,
+        'orange': kpCurrent.value >= 50 && kpCurrent.value < 75,
+        'red': kpCurrent.value >= 75 }">
+        </span>
+
+    </div>
+    <div class="value">Kp{{ kpCurrent.value  }}</div>
     <div class="label">Kp Index</div>
-    <div class="value">Kp{{ forecastSW.kp  }}</div>
 </div>
 <div class="density ace-data">
+    <div class="colored">
+        <span *ngFor="let i of [1,2,3,4]; index as i"
+              [ngClass]="{
+        'green': density.value > 0 && density.value < 25,
+        'yellow': density.value >= 25 && density.value < 50,
+        'orange': density.value >= 50 && density.value < 75,
+        'red': density.value >= 75 }">
+        </span>
+    </div>
+    <div class="value">{{ density.value }}</div>
     <div class="label">Densitée des particules (p/cc)</div>
-    <div class="value"></div>
 </div>
 <div class="speed ace-data">
-    <div class="label">Vitesse du vent (km/h)</div>
-    <div class="value"></div>
+    <div class="colored">
+        <span *ngFor="let i of [1,2,3,4]; index as i"
+              [ngClass]="{
+        'green': speed.value > 0 && speed.value < 25,
+        'yellow': speed.value >= 25 && speed.value < 50,
+        'orange': speed.value >= 50 && speed.value < 75,
+        'red': speed.value >= 75 }">
+        </span>
+    </div>
+    <div class="value">{{ speed.value }}</div>
+    <div class="label">Vent solaire (km/h)</div>
 </div>
 
 
-
-    <div class="night-sky">
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="star star--animated"></div>
-        <div class="night-sky__aurora night-sky__aurora--one"></div>
-        <div class="night-sky__aurora night-sky__aurora--two"></div>
+<div class="night-sky">
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="star star--animated"></div>
+    <div class="night-sky__aurora night-sky__aurora--one"></div>
+    <div class="night-sky__aurora night-sky__aurora--two"></div>
+</div>
+<div class="landscape">
+    <div class="tent"></div>
+    <div class="campfire">
+        <div class="campfire__flame"></div>
+        <div class="campfire__logs"></div>
     </div>
-    <div class="landscape">
-        <div class="tent"></div>
-        <div class="campfire">
-            <div class="campfire__flame"></div>
-            <div class="campfire__logs"></div>
-        </div>
-    </div>
+</div>

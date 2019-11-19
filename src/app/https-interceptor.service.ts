@@ -21,7 +21,7 @@ export class HttpsInterceptorService implements HttpInterceptor {
                 setHeaders: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': `Basic YmMxMTg1YzgtZTMwNy00NTQ1LTkyOGQtYmUwNmFhZTlhNzIw`,
+                    'Authorization': `Basic ${ONE_SIGNAL_REST_KEY}`,
                 }
             });
             return next.handle(req).pipe(tap(console.log));
@@ -29,7 +29,6 @@ export class HttpsInterceptorService implements HttpInterceptor {
       req = req.clone({
         setHeaders: {
           'Access-Control-Allow-Origin':'*',
-          "Access-Control-Request-Headers": "content-type",
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         }

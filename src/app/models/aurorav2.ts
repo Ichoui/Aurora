@@ -70,3 +70,12 @@ export interface Bt {
     date: Date;
     request_date: Date;
 }
+
+export interface Nowcast {
+    value: number
+    lat: number
+    long: number
+    color: AuroraEnumColours
+    date: Date
+    request_date: Date
+}
