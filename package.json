@@ -45,6 +45,7 @@
     "cordova-sqlite-storage": "^3.4.0",
     "cordova.plugins.diagnostic": "^5.0.1",
     "core-js": "^2.5.4",
+    "lottie-web": "^5.5.9",
     "moment": "^2.24.0",
     "onesignal-cordova-plugin": "^2.7.0",
     "rxjs": "~6.5.1",

@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Coords } from '../../models/cities';
 import * as moment from 'moment';
 import 'moment/locale/fr';
 import { Cloudy, Currently, Daily, DataDaily, Hourly } from '../../models/weather';
 import * as Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-
 
 @Component({
     selector: 'app-meteo',
@@ -32,13 +31,14 @@ export class MeteoComponent implements OnInit {
     days: DataDaily[] = [];
 
 
-    constructor() {
+    constructor(private elementRef: ElementRef) {
     }
 
     ngOnInit() {
         this.todayForecast();
         this.nextHoursForecast();
         this.sevenDayForecast();
+        this.lotties();
     }
 
 
@@ -169,5 +169,15 @@ export class MeteoComponent implements OnInit {
     manageDates(date: number, format?: string): string | moment.Moment {
         const unixToLocal = moment.unix(date).utc().add(this.utc, 'h');
         return unixToLocal.format(format);
+    }
+
+    lotties(): void {
+        // this.sun = lottie.loadAnimation({
+        //     container: this.elementRef.nativeElement,
+        //     renderer: 'svg',
+        //     loop: false,
+        //     autoplay: false,
+        //     path: `./assets/lotties/lottie-sun.json`,
+        // });
     }
 }
