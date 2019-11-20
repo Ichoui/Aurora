@@ -10,6 +10,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { MeteoModule } from './meteo/meteo.module';
 import { KpindexModule } from './kpindex/kpindex.module';
+import { MapsModule } from './maps/maps.module';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { KpindexModule } from './kpindex/kpindex.module';
         HeaderPageModule,
         MeteoModule,
         KpindexModule,
+        MapsModule
     ],
     declarations: [Tab2Page],
     providers: [
