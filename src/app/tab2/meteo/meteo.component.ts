@@ -31,7 +31,7 @@ export class MeteoComponent implements OnInit {
     days: DataDaily[] = [];
 
 
-    constructor(private elementRef: ElementRef) {
+    constructor() {
     }
 
     ngOnInit() {
