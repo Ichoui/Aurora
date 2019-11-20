@@ -13,7 +13,7 @@ export interface ErrorTemplate {
     message: string;
 }
 
-const API_CALL_NUMBER = 3; // nombre de fois où une API est appelé sur cette page
+const API_CALL_NUMBER = 2; // nombre de fois où une API est appelé sur cette page
 
 @Component({
     selector: 'app-tab2',
@@ -31,7 +31,7 @@ export class Tab2Page {
     city: string;
     country: string;
     slideOpts = {
-        initialSlide: 0,
+        initialSlide: 1,
         speed: 400
     };
 
@@ -42,8 +42,7 @@ export class Tab2Page {
     dataHourly: any;
     dataSevenDay: any;
     utcOffset: number;
-    solarWind: any = {} as any;
-    nowcast: Nowcast = {} as any;
+    moduleACE: any = {} as any;
 
 
     dataError: ErrorTemplate = {
@@ -96,7 +95,6 @@ export class Tab2Page {
                     this.country = res[0].countryName;
                     this.getForecast();
                     this.getSolarWind();
-                    this.getLocalAuroraZenith();
                 },
                 error => {
                     console.warn('Erreur de reverse geocode', error);
@@ -126,7 +124,6 @@ export class Tab2Page {
         };
         this.getForecast();
         this.getSolarWind();
-        this.getLocalAuroraZenith();
     }
 
     /**
@@ -153,70 +150,16 @@ export class Tab2Page {
     }
 
     /**
-     * Récupère les données ACE de vent solaire
+     * Récupère les données ACE de vent solaire & nowcast
      * */
     getSolarWind(): void {
-        const params: ParamsACE = {
-            type: 'ace',
-            data: DataACE.all
-        };
-        /*        this.auroraService.auroraLive(params).subscribe(
-                    (solarwind: SolarWind) => {
-                        this.solarWind = solarwind;
-                        this.trickLoading('2nd');
-                    },
-                    error => {
-                        console.warn('Problème avec données vent solaire', error);
-                        this.dataError = {
-                            value: true,
-                            message: error.status + ' ' + error.statusText
-                        };
-                    });*/
-
-        this.auroraService.auroraLiveV2(this.coords.latitude, this.coords.longitude, false).subscribe(
-            solarwind => {
-                this.solarWind = solarwind;
+        this.auroraService.auroraLiveV2(this.coords.latitude, this.coords.longitude).subscribe(
+            ACE => {
+                this.moduleACE = ACE;
                 this.trickLoading('2nd');
             },
             error => {
                 console.warn('Problème avec données vent solaire', error);
-                this.dataError = {
-                    value: true,
-                    message: error.status + ' ' + error.statusText
-                };
-            });
-    }
-
-    /**
-     * Récupère les données Nowcast ACE pour une localisation lat/long donnée
-     * */
-    getLocalAuroraZenith(): void {
-        const params: ParamsACE = {
-            type: 'ace',
-            data: DataACE.probability,
-            lat: this.coords.latitude,
-            long: this.coords.longitude
-        };
-        /*        this.auroraService.auroraLive(params).subscribe(
-                    (auroraZenith: AuroraZenith) => {
-                        this.auroraZenith = auroraZenith;
-                        this.trickLoading('3th');
-                    },
-                    error => {
-                        console.warn('Problème avec données probabilitées', error);
-                        this.dataError = {
-                            value: true,
-                            message: error.status + ' ' + error.statusText
-                        };
-                    });*/
-        this.auroraService.auroraLiveV2(this.coords.latitude, this.coords.longitude, true).subscribe(
-            (nowcast: Nowcast) => {
-                this.nowcast = nowcast;
-                console.log(nowcast);
-                this.trickLoading('3th');
-            },
-            error => {
-                console.warn('Problème avec Nowcast', error);
                 this.dataError = {
                     value: true,
                     message: error.status + ' ' + error.statusText
@@ -244,6 +187,5 @@ export class Tab2Page {
         this.eventRefresh = event;
         this.getForecast();
         this.getSolarWind();
-        this.getLocalAuroraZenith();
     }
 }

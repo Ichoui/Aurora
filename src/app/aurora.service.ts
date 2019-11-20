@@ -17,42 +17,20 @@ export class AuroraService {
     }
 
     /**
-     * @params {ParamsACE}
-     * Récupération du KP actuel
-     * type ACE combiné à data ALL : Récupère toute la data envoyée par ACE, BZ KP densité et vitesse particules
-     * TODO Supprimer si on garde la v2 défintivement(ainsi que la data dans tab2.ts & kpindex.ts)
-     * http://auroraslive.io/#/api/v1/ace
-     * */
-    auroraLive(params): Observable<any> {
-        const queryParams: HttpParams = UtilsService.buildQueryParams(params);
-        return this.http.get(`${environment.cors}/${environment.aurora_v1_api}`, {params});
-    }
-
-    /**
      * @lat : longitude
      * @long latitude
      * @nowcast si true on envoie nowcast la data Nowcast, sinon on envoie les modules et la latitudes.
      * get la v2 providé par aurora.live grâce au Space Weather Prediction Center
-     * TODO Utilisation de la V2. Peut être soumis à des changements
      * https://v2.api.auroras.live/images/embed/nowcast.png
      * */
-    auroraLiveV2(lat?: number, long?: number, nowcast?: boolean): Observable<any> {
-        if (nowcast) {
-            return this.http.post(`${environment.cors}/${environment.aurora_v2_api}/nowcast`, {
-                'nowcast:local': {
-                    lat: lat,
-                    long: long
-                }
-            });
-        } else {
-            return this.http.post(`${environment.cors}/${environment.aurora_v2_api}`, {
-                modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed],
-                common: {
-                    lat: lat,
-                    long: long
-                }
-            });
-        }
+    auroraLiveV2(lat?: number, long?: number): Observable<any> {
+        return this.http.post(`${environment.cors}/${environment.aurora_v2_api}`, {
+            modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed, AuroraModules.nowcastlocal],
+            'nowcast:local': {
+                lat: lat,
+                long: long
+            }
+        });
     }
 
     /**
@@ -77,8 +55,8 @@ export class AuroraService {
 
         const httpOptions = {
             headers: new HttpHeaders({
-                'Accept':  'application/json',
-                'Content-Type':  'application/json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': `Basic ${ONE_SIGNAL_REST_KEY}`
             })
         };

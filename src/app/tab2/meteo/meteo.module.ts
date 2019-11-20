@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MeteoComponent } from './meteo.component';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { LottieAnimationViewModule } from 'ng-lottie';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TranslateModule } from '@ngx-translate/core';
     imports: [
         CommonModule,
         IonicModule,
-        TranslateModule
+        TranslateModule,
+        LottieAnimationViewModule.forRoot()
     ]
 })
 export class MeteoModule {

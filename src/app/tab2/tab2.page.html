@@ -17,18 +17,18 @@
     <h2 class="ion-text-center"><span>{{ city }}</span><span>{{ country }}</span></h2><br>
     <ion-slides [options]="slideOpts">
         <ion-slide>
-            <app-kpindex [solarWindValue]="solarWind"
-                    [nowcastValue]="nowcast">
-
-            </app-kpindex>
-        </ion-slide>
-        <ion-slide>
             <app-meteo [coords]="coords"
                        [currentWeather]="dataCurrentWeather"
                        [hourlyWeather]="dataHourly"
                        [sevenDayWeather]="dataSevenDay"
                        [utc]="utcOffset">
             </app-meteo>
+        </ion-slide>
+        <ion-slide>
+            <app-kpindex [moduleACEValue]="moduleACE"></app-kpindex>
+        </ion-slide>
+        <ion-slide>
+            MAPS & forecast 27days
         </ion-slide>
     </ion-slides>
 </ion-content>

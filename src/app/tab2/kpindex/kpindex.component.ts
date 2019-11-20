@@ -10,10 +10,7 @@ import { Density, KpCurrent, Nowcast, Speed } from '../../models/aurorav2';
 })
 export class KpindexComponent implements OnInit {
 
-    dataSolarWind = new BehaviorSubject<any>(null); // type SolarWind
-    dataNowcast = new BehaviorSubject<Nowcast>(null);
-    // forecastSW: SolarWind ;
-    // forecastZenith: AuroraZenith;
+    dataModuleACE = new BehaviorSubject<any>(null);
 
     density: Density;
     kpCurrent: KpCurrent;
@@ -21,21 +18,12 @@ export class KpindexComponent implements OnInit {
     nowcast: Nowcast;
 
     @Input()
-    set solarWindValue(value: any) {
-        this.dataSolarWind.next(value);
+    set moduleACEValue(value: any) {
+        this.dataModuleACE.next(value);
     }
 
-    get solarWindValue() {
-        return this.dataSolarWind.getValue();
-    }
-
-    @Input()
-    set nowcastValue(value: Nowcast) {
-        this.dataNowcast.next(value);
-    }
-
-    get nowcastValue() {
-        return this.dataNowcast.getValue();
+    get moduleACEValue() {
+        return this.dataModuleACE.getValue();
     }
 
     constructor(private storage: Storage) {
@@ -44,7 +32,6 @@ export class KpindexComponent implements OnInit {
     ngOnInit() {
         this.auroraBackground();
         this.solarWindData();
-        this.auroraNowcast();
     }
 
     /**
@@ -67,24 +54,15 @@ export class KpindexComponent implements OnInit {
      * Observable permettant de récupérer les données des vents solaires
      * */
     solarWindData(): void {
-        this.dataSolarWind.subscribe(solarWind => {
-            this.density = solarWind.density;
-            this.kpCurrent = solarWind["kp:current"];
+        this.dataModuleACE.subscribe(ace => {
+            this.density = ace.density;
+            this.kpCurrent = ace["kp:current"];
             // this.kpCurrent.value = 75; // test
-            this.speed = solarWind.speed;
+            this.speed = ace.speed;
+            this.nowcast = ace["nowcast:local"];
+
+            this.storage.set('nowcast', this.nowcast.value);
             this.storage.set('current_kp', this.kpCurrent.value);
         });
     }
-
-    /**
-     * Observable permettant de récupérer les des aurores visible au zénith via localisation
-     * */
-    auroraNowcast(): void {
-        this.dataNowcast.subscribe(nowcast => {
-            this.nowcast = nowcast;
-            this.storage.set('nowcast', this.nowcast.value);
-        });
-    }
-
-
 }

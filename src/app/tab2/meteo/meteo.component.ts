@@ -13,6 +13,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 })
 export class MeteoComponent implements OnInit {
 
+    // A passer en observable pour le refresh
     @Input() coords: Coords;
     @Input() currentWeather: Currently;
     @Input() hourlyWeather: Hourly;
@@ -30,6 +31,11 @@ export class MeteoComponent implements OnInit {
     cloudy: Cloudy[] = [];
     days: DataDaily[] = [];
 
+    // lotties
+    lottieConfig: Object;
+    anim: any;
+    animationSpeed: number = 1;
+
 
     constructor() {
     }
@@ -43,12 +49,11 @@ export class MeteoComponent implements OnInit {
 
 
     todayForecast() {
-        // console.log(this.currentWeather);
+        console.log('refs');
         this.actualDate = this.manageDates(this.currentWeather.time, 'dddd DD MMMM, HH:mm');
     }
 
     nextHoursForecast() {
-        // console.log(this.hourlyWeather.data);
         let i = 0;
         this.hourlyWeather.data.forEach(hours => {
             // heures paries jusqu'à ce que tableau soit de 8 valeurs
@@ -172,12 +177,21 @@ export class MeteoComponent implements OnInit {
     }
 
     lotties(): void {
-        // this.sun = lottie.loadAnimation({
-        //     container: this.elementRef.nativeElement,
-        //     renderer: 'svg',
-        //     loop: false,
-        //     autoplay: false,
-        //     path: `./assets/lotties/lottie-sun.json`,
-        // });
+        this.lottieConfig = {
+            path: 'assets/lotties/lottie-sun.json',
+            renderer: 'canvas',
+            autoplay: true,
+            loop: true
+        };
+        // <lottie-animation-view
+        //     [options]="lottieConfig"
+        //     [width]="70"
+        //     [height]="70"
+        //  (animCreated)="handleAnimation($event)">
+        //     </lottie-animation-view>
+    }
+
+    handleAnimation(anim: any) {
+        this.anim = anim;
     }
 }

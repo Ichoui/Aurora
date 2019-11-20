@@ -3,8 +3,8 @@
     <div class="date">{{ actualDate }}</div>
     <div class="today">
         <div class="actual-weather">
-        <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"
-              class="icon icon-cold-wind"></span>
+                       <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"
+                             class="icon icon-cold-wind"></span>
             <ng-template #normalIcon>
                 <span class="icon icon-{{ currentWeather.icon }}"></span>
             </ng-template>
