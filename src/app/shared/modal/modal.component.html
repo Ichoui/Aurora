@@ -1,4 +1,5 @@
 <ion-content>
+    <div (click)="close()" class="close"><span class="icon icon-close"></span></div>
     <div *ngIf="map" class="container-map">
         <div class="title">{{ titleMap }}</div>
         <ion-img src="{{ map }}"></ion-img>
@@ -11,6 +12,5 @@
         <div class="title">{{ globeTitle2 }}</div>
         <ion-img src="{{ globe2 }}"></ion-img>
     </div>
-    <div (click)="close()"><span class="icon icon-close"></span></div>
 </ion-content>
 
