@@ -8,10 +8,10 @@
     <div class="colored">
         <span *ngFor="let i of [1,2,3,4]; index as i"
               [ngClass]="{
-        'green':  kpCurrent.value > 0 && kpCurrent.value < 25,
-        'yellow': kpCurrent.value >= 25 && kpCurrent.value < 50,
-        'orange': kpCurrent.value >= 50 && kpCurrent.value < 75,
-        'red': kpCurrent.value >= 75 }">
+        'green':  kpCurrent.color === AuroraEnumColours.green,
+        'yellow': kpCurrent.color === AuroraEnumColours.yellow,
+        'orange': kpCurrent.color === AuroraEnumColours.orange,
+        'red': kpCurrent.color === AuroraEnumColours.red }">
         </span>
 
     </div>
@@ -22,10 +22,10 @@
     <div class="colored">
         <span *ngFor="let i of [1,2,3,4]; index as i"
               [ngClass]="{
-        'green': density.value > 0 && density.value < 25,
-        'yellow': density.value >= 25 && density.value < 50,
-        'orange': density.value >= 50 && density.value < 75,
-        'red': density.value >= 75 }">
+        'green':  density.color === AuroraEnumColours.green,
+        'yellow': density.color === AuroraEnumColours.yellow,
+        'orange': density.color === AuroraEnumColours.orange,
+        'red': density.color === AuroraEnumColours.red }">
         </span>
     </div>
     <div class="value">{{ density.value }}</div>
@@ -35,10 +35,10 @@
     <div class="colored">
         <span *ngFor="let i of [1,2,3,4]; index as i"
               [ngClass]="{
-        'green': speed.value > 0 && speed.value < 25,
-        'yellow': speed.value >= 25 && speed.value < 50,
-        'orange': speed.value >= 50 && speed.value < 75,
-        'red': speed.value >= 75 }">
+        'green':  speed.color === AuroraEnumColours.green,
+        'yellow': speed.color === AuroraEnumColours.yellow,
+        'orange': speed.color === AuroraEnumColours.orange,
+        'red': speed.color === AuroraEnumColours.red }">
         </span>
     </div>
     <div class="value">{{ speed.value }}</div>

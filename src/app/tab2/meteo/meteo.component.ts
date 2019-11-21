@@ -98,7 +98,6 @@ export class MeteoComponent implements OnInit {
         let i = 0;
         this.hourlyWeather$.subscribe(
             (res: Hourly) => {
-                console.log(res.data);
                 res.data.forEach((hours) => {
                     if (this.temps.length < this.dataNumberInCharts && i % 2 === 0) {
                         this.temps.push(Math.round(hours.temperature));

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs';
-import { Density, KpCurrent, Nowcast, Speed } from '../../models/aurorav2';
+import { AuroraEnumColours, Density, KpCurrent, Nowcast, Speed } from '../../models/aurorav2';
 
 @Component({
     selector: 'app-kpindex',
@@ -16,6 +16,8 @@ export class KpindexComponent implements OnInit {
     kpCurrent: KpCurrent;
     speed: Speed;
     nowcast: Nowcast;
+
+    AuroraEnumColours = AuroraEnumColours;
 
     @Input()
     set moduleACEValue(value: any) {
@@ -60,7 +62,6 @@ export class KpindexComponent implements OnInit {
             // this.kpCurrent.value = 75; // test
             this.speed = ace.speed;
             this.nowcast = ace["nowcast:local"];
-
             this.storage.set('nowcast', this.nowcast.value);
             this.storage.set('current_kp', this.kpCurrent.value);
         });
