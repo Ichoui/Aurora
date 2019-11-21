@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from '../../shared/modal/modal.component';
 import { TranslateService } from '@ngx-translate/core';
+import { Currently } from '../../models/weather';
+import { BehaviorSubject } from 'rxjs';
+import { Kp27day } from '../../models/aurorav2';
 
 @Component({
     selector: 'app-maps',
@@ -10,10 +13,23 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MapsComponent implements OnInit {
 
-    constructor(private modalController: ModalController, private translateService: TranslateService ) {
+    kpForecast$ = new BehaviorSubject<Kp27day>(null);
+
+
+    @Input()
+    set kpForecastInput(value: Kp27day) {
+        this.kpForecast$.next(value);
+    }
+
+    get kpForecastInput() {
+        return this.kpForecast$.getValue();
+    }
+
+    constructor(private modalController: ModalController, private translateService: TranslateService) {
     }
 
     ngOnInit() {
+        this.KpForecast();
     }
 
     async showMap() {
@@ -27,16 +43,24 @@ export class MapsComponent implements OnInit {
         return await modal.present();
     }
 
-  async showGlobes() {
-    const modal = await this.modalController.create({
-      component: ModalComponent,
-      componentProps: {
-        globe1: 'https://v2.api.auroras.live/images/ovation-north.jpg',
-        globeTitle1: this.translateService.instant('tab2.maps.ovation.north'),
-        globe2: 'https://v2.api.auroras.live/images/ovation-south.jpg',
-        globeTitle2: this.translateService.instant('tab2.maps.ovation.south'),
-      }
-    });
-    return await modal.present();
-  }
+    async showGlobes() {
+        const modal = await this.modalController.create({
+            component: ModalComponent,
+            componentProps: {
+                globe1: 'https://v2.api.auroras.live/images/ovation-north.jpg',
+                globeTitle1: this.translateService.instant('tab2.maps.ovation.north'),
+                globe2: 'https://v2.api.auroras.live/images/ovation-south.jpg',
+                globeTitle2: this.translateService.instant('tab2.maps.ovation.south'),
+            }
+        });
+        return await modal.present();
+    }
+
+    KpForecast() {
+        this.kpForecast$.subscribe(
+            res => {
+                console.log(res);
+            }
+        )
+    }
 }

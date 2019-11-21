@@ -24,7 +24,7 @@ export class AuroraService {
      * */
     auroraLiveV2(lat?: number, long?: number): Observable<any> {
         return this.http.post(`${environment.cors}/${environment.aurora_v2_api}`, {
-            modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed, AuroraModules.nowcastlocal],
+            modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed, AuroraModules.nowcastlocal, AuroraModules.kp27day],
             'nowcast:local': {
                 lat: lat,
                 long: long
@@ -37,7 +37,6 @@ export class AuroraService {
      * @param long : longitude
      * @param exclude : hourly | daily
      * @param time : Time au format UNIX (moment)
-     * L'appel au service se relance pas lors d'un refresh ... Ne comprends pas pourquoi. On passe bien dans la fonction, mais le get ne va pas chercher les données
      * */
     darkSkyForecast(lat: number, long: number, exclude?: string, time?: number): Observable<any> {
         const params = {

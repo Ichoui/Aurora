@@ -22,7 +22,7 @@
 
     span {
       display: inline-block;
-      border: .2px solid white;
+      border: .2px solid rgba(255,255,255,.5);
       width: 7px;
       margin: 0 1.5px;
       background: transparent;
@@ -46,36 +46,36 @@
 
     span.green {
       &:first-child {
-        background: green;
+        background: var(--ion-color-green);
       }
     }
 
     span.yellow {
       &:first-child {
-        background: yellow;
+        background: var(--ion-color-yellow);
       }
 
       &:nth-child(2) {
-        background: yellow;
+        background: var(--ion-color-yellow);
       }
     }
 
     span.orange {
       &:first-child {
-        background: orange;
+        background: var(--ion-color-orange);
       }
 
       &:nth-child(2) {
-        background: orange;
+        background: var(--ion-color-orange);
       }
 
       &:nth-child(3) {
-        background: orange;
+        background: var(--ion-color-orange);
       }
     }
 
     span.red {
-      background: red;
+      background: var(--ion-color-red);
     }
 
   }

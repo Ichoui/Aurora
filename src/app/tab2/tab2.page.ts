@@ -4,10 +4,11 @@ import { Storage } from '@ionic/storage';
 import { cities, Coords } from '../models/cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
-import { Weather } from '../models/weather';
+import { Currently, Daily, Hourly, Weather } from '../models/weather';
 import { NavController } from '@ionic/angular';
 import * as moment from 'moment';
 import 'moment/locale/fr';
+import { Kp27day } from '../models/aurorav2';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -39,11 +40,12 @@ export class Tab2Page {
     eventRefresh: any;
 
     // Data inputs
-    dataCurrentWeather: any;
-    dataHourly: any;
-    dataSevenDay: any;
+    dataCurrentWeather: Currently;
+    dataHourly: Hourly;
+    dataSevenDay: Daily;
     utcOffset: number;
     moduleACE: any = {} as any;
+    kpForecast27days: Kp27day = {} as any;
 
 
     dataError: ErrorTemplate = {
@@ -177,6 +179,7 @@ export class Tab2Page {
         this.auroraService.auroraLiveV2(this.coords.latitude, this.coords.longitude).subscribe(
             ACE => {
                 this.moduleACE = ACE;
+                this.kpForecast27days = ACE['kp:27day'];
                 this.trickLoading('2nd');
             },
             error => {

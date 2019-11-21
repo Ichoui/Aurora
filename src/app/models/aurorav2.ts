@@ -11,7 +11,7 @@ export enum AuroraModules {
     nowcastlocal = "nowcast:local",
     nowcasthighest = "nowcast:highest",
     kpcurrent = "kp:current",
-    kp3dhour = "kp:kp3hour",
+    kp3hour = "kp:kp3hour",
     kp3day = "kp:kp3day",
     kp27day = "kp:27day",
     kpforecast = "kpforecast",
