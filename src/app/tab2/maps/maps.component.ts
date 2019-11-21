@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from '../../shared/modal/modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-maps',
@@ -9,7 +10,7 @@ import { ModalComponent } from '../../shared/modal/modal.component';
 })
 export class MapsComponent implements OnInit {
 
-    constructor(public modalController: ModalController) {
+    constructor(private modalController: ModalController, private translateService: TranslateService ) {
     }
 
     ngOnInit() {
@@ -20,7 +21,7 @@ export class MapsComponent implements OnInit {
             component: ModalComponent,
             componentProps: {
                 map: 'https://v2.api.auroras.live/images/embed/nowcast.png',
-                titleMap: 'Carte live des Aurores',
+                titleMap: this.translateService.instant('tab2.maps.worldmap'),
             }
         });
         return await modal.present();
@@ -31,9 +32,9 @@ export class MapsComponent implements OnInit {
       component: ModalComponent,
       componentProps: {
         globe1: 'https://v2.api.auroras.live/images/ovation-north.jpg',
-        globeTitle1: 'Carte Pole Nord',
+        globeTitle1: this.translateService.instant('tab2.maps.ovation.north'),
         globe2: 'https://v2.api.auroras.live/images/ovation-south.jpg',
-        globeTitle2: 'Carte Pole Sud',
+        globeTitle2: this.translateService.instant('tab2.maps.ovation.south'),
       }
     });
     return await modal.present();

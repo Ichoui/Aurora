@@ -90,10 +90,10 @@
   "tab2": {
     "title": "Aurores",
     "loading": "Votre localisation est en cours de chargement ...",
-    "meteo": {
+    "kp": {
 
     },
-    "kp": {
+    "meteo": {
       "next.hours": "Prochaines heures",
       "seven.days": "Prévisions 7 jours",
       "cover.clouds": "Couverture nuageuse",
@@ -104,8 +104,12 @@
         "windspeed": "Vitesse du vent",
         "humidity": "Humidité"
       }
-
-    }
+    },
+      "maps": {
+        "worldmap": "Carte du monde",
+        "ovation.north": "Ovation North",
+        "ovation.south": "Ovation South"
+      }
   },
   "tab3": {
     "title": "Paramètres",
