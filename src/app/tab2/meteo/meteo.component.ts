@@ -44,7 +44,7 @@ export class MeteoComponent implements OnInit {
         this.todayForecast();
         this.nextHoursForecast();
         this.sevenDayForecast();
-        this.lotties();
+        this.lotties(this.currentWeather.icon);
     }
 
 
@@ -175,20 +175,14 @@ export class MeteoComponent implements OnInit {
         const unixToLocal = moment.unix(date).utc().add(this.utc, 'h');
         return unixToLocal.format(format);
     }
-
-    lotties(): void {
+    lotties(icon: string): void {
         this.lottieConfig = {
-            path: 'assets/lotties/lottie-clear-day.json',
+            // path: `assets/lotties/lottie-${icon}.json`,
+            path: `assets/lotties/lottie-partly-cloudy.json`,
             renderer: 'canvas',
             autoplay: true,
             loop: true
         };
-        // <lottie-animation-view
-        //     [options]="lottieConfig"
-        //     [width]="70"
-        //     [height]="70"
-        //  (animCreated)="handleAnimation($event)">
-        //     </lottie-animation-view>
     }
 
     handleAnimation(anim: any) {
