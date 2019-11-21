@@ -5,8 +5,9 @@ import { cities, Coords } from '../models/cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
 import { Weather } from '../models/weather';
-import { DataACE, ParamsACE } from '../models/aurora';
-import { Nowcast } from '../models/aurorav2';
+import { NavController } from '@ionic/angular';
+import * as moment from 'moment';
+import 'moment/locale/fr';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -52,6 +53,7 @@ export class Tab2Page {
 
     constructor(private geoloc: Geolocation,
                 private storage: Storage,
+                private navCtrl: NavController,
                 private auroraService: AuroraService,
                 private nativeGeo: NativeGeocoder) {
     }
@@ -79,8 +81,6 @@ export class Tab2Page {
                 };
             }
         );
-
-        // this.auroraService.auroraLiveV2(null,null,null,false).subscribe(console.log)
     }
 
     /**
@@ -130,9 +130,12 @@ export class Tab2Page {
      * API Dark Sky
      * 4 variables pour aujourd'hui, les variables vont aux enfants via Input()
      */
-    getForecast(): void {
-        this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
+    getForecast(time?: number): void {
+        if (time) {
+
+        this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude, null, time).subscribe(
             (res: Weather) => {
+                console.log(res);
                 this.dataCurrentWeather = res.currently;
                 this.dataHourly = res.hourly;
                 this.dataSevenDay = res.daily;
@@ -147,6 +150,24 @@ export class Tab2Page {
                     message: error.status + ' ' + error.statusText
                 };
             });
+        } else {
+            this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
+                (res: Weather) => {
+                    this.dataCurrentWeather = res.currently;
+                    this.dataHourly = res.hourly;
+                    this.dataSevenDay = res.daily;
+                    this.utcOffset = res.offset;
+                    this.trickLoading('1st');
+                },
+                error => {
+                    console.warn('Error with Dark Sky Forecast', error);
+                    this.loading = false;
+                    this.dataError = {
+                        value: true,
+                        message: error.status + ' ' + error.statusText
+                    };
+                });
+        }
     }
 
     /**
@@ -185,7 +206,7 @@ export class Tab2Page {
     doRefresh(event) {
         this.tabLoading = [];
         this.eventRefresh = event;
-        this.getForecast();
+        this.getForecast(moment().unix());
         this.getSolarWind();
     }
 }

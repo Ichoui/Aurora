@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
-import { UtilsService } from './models/utils';
 import { AuroraModules } from './models/aurorav2';
 import { DataNotif } from './notifications';
 import { ONE_SIGNAL_REST_KEY } from '../environments/keep';
@@ -37,17 +36,22 @@ export class AuroraService {
      * @param lat : latitude
      * @param long : longitude
      * @param exclude : hourly | daily
-     * prefere https://darksky.net/dev/docs#forecast-request
+     * @param time : Time au format UNIX (moment)
+     * L'appel au service se relance pas lors d'un refresh ... Ne comprends pas pourquoi. On passe bien dans la fonction, mais le get ne va pas chercher les données
      * */
-    darkSkyForecast(lat: number, long: number, exclude?: string): Observable<any> {
+    darkSkyForecast(lat: number, long: number, exclude?: string, time?: number): Observable<any> {
         const params = {
             lang: 'fr',
             units: 'si',
             exclude: `alerts, flags, ${exclude}`
         };
-        return this.http.get(`${environment.cors}/${environment.api_weather}/forecast/${environment.apikey}/${lat},${long}/`, {params});
-    }
+        if (time) {
+            return this.http.get(`${environment.cors}/${environment.api_weather}/forecast/${environment.apikey}/${lat},${long},${time}/`, {params});
 
+        } else {
+            return this.http.get(`${environment.cors}/${environment.api_weather}/forecast/${environment.apikey}/${lat},${long}/`, {params});
+        }
+    }
 
     // https://jasonwatmore.com/post/2018/09/07/angular-6-basic-http-authentication-tutorial-example
     // --> Authorization missing header, interceptors (voir pour interceptor cors aussi?)

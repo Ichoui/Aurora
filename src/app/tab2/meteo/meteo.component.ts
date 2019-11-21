@@ -1,10 +1,11 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Coords } from '../../models/cities';
 import * as moment from 'moment';
 import 'moment/locale/fr';
 import { Cloudy, Currently, Daily, DataDaily, Hourly } from '../../models/weather';
 import * as Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-meteo',
@@ -13,16 +14,51 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 })
 export class MeteoComponent implements OnInit {
 
+
     // A passer en observable pour le refresh
+    // INPUTS
     @Input() coords: Coords;
-    @Input() currentWeather: Currently;
-    @Input() hourlyWeather: Hourly;
-    @Input() sevenDayWeather: Daily;
+
+    @Input()
+    set currentWeatherInput(value: Currently) {
+        this.currentWeather$.next(value);
+    }
+
+    get currentWeatherInput() {
+        return this.currentWeather$.getValue();
+    }
+
+    @Input()
+    set hourlyWeatherInput(value: Hourly) {
+        this.hourlyWeather$.next(value);
+    }
+
+    get hourlyWeatherInput() {
+        return this.hourlyWeather$.getValue();
+    }
+
+    @Input()
+    set sevenDayWeatherInput(value: Daily) {
+        this.sevenDayWeather$.next(value);
+    }
+
+    get sevenDayWeatherInput() {
+        return this.sevenDayWeather$.getValue();
+    }
+
     @Input() utc: number;
+
+    // Observable
+    currentWeather$ = new BehaviorSubject<Currently>(null);
+    hourlyWeather$ = new BehaviorSubject<Hourly>(null);
+    sevenDayWeather$ = new BehaviorSubject<Daily>(null);
+
+    // Var reflettant observables
+    currentWeather: Currently;
 
     sunset;
     sunrise;
-    actualDate;
+    actualDate: any;
 
     dataNumberInCharts: number = 8;
     temps: number[] = [];
@@ -49,28 +85,37 @@ export class MeteoComponent implements OnInit {
 
 
     todayForecast() {
-        console.log('refs');
-        this.actualDate = this.manageDates(this.currentWeather.time, 'dddd DD MMMM, HH:mm');
+        this.currentWeather$.subscribe(
+            (res: Currently) => {
+                // console.log(res);
+                this.currentWeather = res;
+                this.actualDate = this.manageDates(res.time, 'dddd DD MMMM, HH:mm:ss');
+            }
+        );
     }
 
     nextHoursForecast() {
         let i = 0;
-        this.hourlyWeather.data.forEach(hours => {
-            // heures paries jusqu'à ce que tableau soit de 8 valeurs
-            if (this.temps.length < this.dataNumberInCharts && i % 2 === 0) {
-                this.temps.push(Math.round(hours.temperature));
-                this.nextHours.push(this.manageDates(hours.time, 'HH:mm'));
-            }
+        this.hourlyWeather$.subscribe(
+            (res: Hourly) => {
+                console.log(res.data);
+                res.data.forEach((hours) => {
+                    if (this.temps.length < this.dataNumberInCharts && i % 2 === 0) {
+                        this.temps.push(Math.round(hours.temperature));
+                        this.nextHours.push(this.manageDates(hours.time, 'HH:mm'));
+                    }
 
-            const cloudy: Cloudy = {
-                percent: hours.cloudCover,
-                time: this.manageDates(hours.time, 'HH:mm')
-            };
-            if (this.cloudy.length < 8) {
-                this.cloudy.push(cloudy);
-            }
-            i++;
-        });
+                    const cloudy: Cloudy = {
+                        percent: hours.cloudCover,
+                        time: this.manageDates(hours.time, 'HH:mm')
+                    };
+                    if (this.cloudy.length < 8) {
+                        this.cloudy.push(cloudy);
+                    }
+                    i++;
+                });
+
+            });
         new Chart('next-hours', {
             type: 'line',
             plugins: [ChartDataLabels],
@@ -154,15 +199,19 @@ export class MeteoComponent implements OnInit {
 
     sevenDayForecast() {
         const today = moment().add(0, 'd');
-        this.sevenDayWeather.data.forEach(day => {
-            // Permet de calculer dans le jour en cours sunset/sunrise
-            if (this.manageDates(day.time, 'MM DD') === today.format('MM DD')) {
-                this.sunset = this.manageDates(day.sunsetTime, 'H:mm');
-                this.sunrise = this.manageDates(day.sunriseTime, 'H:mm');
-            }
-            day.date = this.manageDates(day.time, 'ddd');
-            this.days.push(day);
-        });
+
+        this.sevenDayWeather$.subscribe(
+            (res: Daily) => {
+                res.data.forEach(day => {
+                    // Permet de calculer dans le jour en cours sunset/sunrise
+                    if (this.manageDates(day.time, 'MM DD') === today.format('MM DD')) {
+                        this.sunset = this.manageDates(day.sunsetTime, 'H:mm');
+                        this.sunrise = this.manageDates(day.sunriseTime, 'H:mm');
+                    }
+                    day.date = this.manageDates(day.time, 'ddd');
+                    this.days.push(day);
+                });
+            });
     }
 
     /**
@@ -175,6 +224,7 @@ export class MeteoComponent implements OnInit {
         const unixToLocal = moment.unix(date).utc().add(this.utc, 'h');
         return unixToLocal.format(format);
     }
+
     lotties(icon: string): void {
         this.lottieConfig = {
             // path: `assets/lotties/lottie-${icon}.json`,
