@@ -215,8 +215,8 @@ export class MeteoComponent implements OnInit {
 
     /**
      * Permet de gérer les dates qui sont au format Unix Timestamp (seconds)
-     * @params date Date retournée par l'API
-     * @params format Permet de choisir le formatage de la date. (ex: YYYY MM DD)
+     * @param date Date retournée par l'API
+     * @param format Permet de choisir le formatage de la date. (ex: YYYY MM DD)
      * .utc() pour gérer l'heure au format UTC et Input() Offset pour ajouter/soustraires les heures
      * */
     manageDates(date: number, format?: string): string | moment.Moment {

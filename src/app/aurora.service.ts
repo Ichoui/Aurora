@@ -16,16 +16,15 @@ export class AuroraService {
     }
 
     /**
-     * @lat : longitude
-     * @long latitude
-     * @nowcast si true on envoie nowcast la data Nowcast, sinon on envoie les modules et la latitudes.
+     * @param lat longitude
+     * @param long latitude
      * get la v2 providé par aurora.live grâce au Space Weather Prediction Center
      * https://v2.api.auroras.live/images/embed/nowcast.png
      * */
     auroraLiveV2(lat?: number, long?: number): Observable<any> {
         return this.http.post(`${environment.cors}/${environment.aurora_v2_api}`, {
             modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed, AuroraModules.nowcastlocal, AuroraModules.kp27day],
-            'nowcast:local': {
+            'common': {
                 lat: lat,
                 long: long
             }
