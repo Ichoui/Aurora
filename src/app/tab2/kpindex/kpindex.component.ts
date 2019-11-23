@@ -20,11 +20,11 @@ export class KpindexComponent implements OnInit {
     AuroraEnumColours = AuroraEnumColours;
 
     @Input()
-    set moduleACEValue(value: any) {
+    set moduleACEInput(value: any) {
         this.dataModuleACE.next(value);
     }
 
-    get moduleACEValue() {
+    get moduleACEInput() {
         return this.dataModuleACE.getValue();
     }
 
@@ -59,7 +59,6 @@ export class KpindexComponent implements OnInit {
         this.dataModuleACE.subscribe(ace => {
             this.density = ace.density;
             this.kpCurrent = ace["kp:current"];
-            // this.kpCurrent.value = 75; // test
             this.speed = ace.speed;
             this.nowcast = ace["nowcast:local"];
             this.storage.set('nowcast', this.nowcast.value);

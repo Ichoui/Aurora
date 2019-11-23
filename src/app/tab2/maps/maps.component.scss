@@ -1,6 +1,7 @@
 :host {
   width: 100%;
 }
+
 .container-world {
   display: flex;
   width: 100%;
@@ -9,6 +10,7 @@
   .world {
     display: flex;
     flex-direction: column;
+
     span:first-child {
       font-family: var(--ion-font-semibold);
     }
@@ -23,5 +25,15 @@
       font-size: 3em;
       padding-top: 16px;
     }
+  }
+}
+
+.container-chart {
+  margin-top: 15px;
+  font-size: .8em;
+  .header {
+    font-family: var(--ion-font-semibold);
+    text-align: left;
+    margin-left: 15px;
   }
 }
