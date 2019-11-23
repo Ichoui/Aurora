@@ -14,7 +14,7 @@ export enum AuroraModules {
     kp3hour = "kp:kp3hour",
     kp3day = "kp:kp3day",
     kp27day = "kp:27day",
-    kpforecast = "kpforecast",
+    kpforecast = "kp:forecast",
     speed = "speed",
     density = "density",
     bt = "bt",
@@ -36,6 +36,14 @@ export interface KpCurrent {
 }
 
 export interface Kp27day {
+    value: number;
+    color: AuroraEnumColours;
+    date: Date;
+    request_date: Date;
+    current: boolean;
+}
+
+export interface KpForecast {
     value: number;
     color: AuroraEnumColours;
     date: Date;

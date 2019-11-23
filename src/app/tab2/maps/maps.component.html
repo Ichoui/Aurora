@@ -1,4 +1,3 @@
-
 <div class="container-world">
     <div (click)="showMap()" class="world">
         <span>Carte du monde</span>
@@ -11,6 +10,13 @@
 </div>
 
 <div class="container-chart">
-    <div class="header">Prévisions Kp 14 jours</div>
+    <div class="header">Les prochaines heures</div>
+    <div class="sub">Kp maximum</div>
+    <canvas id="kpnexthours"></canvas>
+</div>
+
+<div class="container-chart">
+    <div class="header">Prévisions à long termes</div>
+    <div class="sub">Kp maximum</div>
     <canvas id="kpforecast"></canvas>
 </div>

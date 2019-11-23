@@ -8,7 +8,7 @@ import { Currently, Daily, Hourly, Weather } from '../models/weather';
 import { NavController } from '@ionic/angular';
 import * as moment from 'moment';
 import 'moment/locale/fr';
-import { Kp27day } from '../models/aurorav2';
+import { Kp27day, KpForecast } from '../models/aurorav2';
 
 export interface ErrorTemplate {
     value: boolean;
@@ -45,6 +45,7 @@ export class Tab2Page {
     dataSevenDay: Daily;
     utcOffset: number;
     moduleACE: any = {} as any;
+    kpForecast: KpForecast = {} as any;
     kpForecast27days: Kp27day = {} as any;
 
 
@@ -179,6 +180,7 @@ export class Tab2Page {
         this.auroraService.auroraLiveV2(this.coords.latitude, this.coords.longitude).subscribe(
             ACE => {
                 this.moduleACE = ACE;
+                this.kpForecast = ACE['kp:forecast'];
                 this.kpForecast27days = ACE['kp:27day'];
                 this.trickLoading('2nd');
             },

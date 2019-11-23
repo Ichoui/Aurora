@@ -1,0 +1,9 @@
+@mixin bottom-header {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: var(--ion-color-primary);
+  bottom: -2px;
+  width: 40px;
+}
+

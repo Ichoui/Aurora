@@ -4,7 +4,7 @@ import { ModalComponent } from '../../shared/modal/modal.component';
 import { TranslateService } from '@ngx-translate/core';
 import * as Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { Kp27day } from '../../models/aurorav2';
+import { Kp27day, KpForecast } from '../../models/aurorav2';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -14,16 +14,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MapsComponent implements OnInit {
 
-    kpForecast$ = new BehaviorSubject<Kp27day>(null);
+    kpForecast$ = new BehaviorSubject<KpForecast>(null);
+    kpForecast27$ = new BehaviorSubject<Kp27day>(null);
 
     @Input()
-    set kpForecastInput(value: Kp27day) {
+    set kpForecastInput(value: KpForecast) {
         this.kpForecast$.next(value);
     }
     get kpForecastInput() {
         return this.kpForecast$.getValue();
     }
 
+    @Input()
+    set kpForecast27Input(value: Kp27day) {
+        this.kpForecast27$.next(value);
+    }
+    get kpForecast27Input() {
+        return this.kpForecast27$.getValue();
+    }
     constructor(private modalController: ModalController, private translateService: TranslateService ) {
     }
 
@@ -56,7 +64,7 @@ export class MapsComponent implements OnInit {
   }
 
   chartForecast() {
-        this.kpForecast$.subscribe(
+        this.kpForecast27$.subscribe(
             res => {
                 console.log(res);
             }

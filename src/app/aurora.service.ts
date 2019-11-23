@@ -23,7 +23,7 @@ export class AuroraService {
      * */
     auroraLiveV2(lat?: number, long?: number): Observable<any> {
         return this.http.post(`${environment.cors}/${environment.aurora_v2_api}`, {
-            modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed, AuroraModules.nowcastlocal, AuroraModules.kp27day],
+            modules: [AuroraModules.kpcurrent, AuroraModules.density, AuroraModules.speed, AuroraModules.nowcastlocal, AuroraModules.kp27day, AuroraModules.kpforecast],
             'common': {
                 lat: lat,
                 long: long

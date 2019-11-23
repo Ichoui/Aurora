@@ -1,3 +1,6 @@
+@import "../../../theme/shared";
+
+
 :host {
   width: 100%;
 }
@@ -31,9 +34,18 @@
 .container-chart {
   margin-top: 15px;
   font-size: .8em;
+
   .header {
     font-family: var(--ion-font-semibold);
     text-align: left;
     margin-left: 15px;
+    position: relative;
+    &:before {
+      @include bottom-header;
+    }
   }
 }
+
+
+
+
