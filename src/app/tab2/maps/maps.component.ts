@@ -80,7 +80,6 @@ export class MapsComponent implements OnInit {
             res => {
                 let i = 0;
                 res.forEach(unit => {
-                    // console.log(value);
                     if (nextHoursForecast.length < numberMaxNextHours) {
                         nextHoursDate.push(moment(unit.date).format('HH:mm'));
                         nextHoursForecast.push(unit.value);

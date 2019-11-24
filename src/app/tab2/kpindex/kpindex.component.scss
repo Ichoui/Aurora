@@ -11,6 +11,10 @@
   z-index: 88;
   font-family: var(--ion-font-semibold);
 
+  p {
+    padding: 0 12px;
+  }
+
   .colored {
     position: absolute;
     left: 0;

@@ -94,7 +94,7 @@
       "kpindex": "Kp Index",
      "density":" Densitée des particules (p/cc)",
      "speed":" Vent solaire (km/h)",
-      "probability": "Vous avez {{value}}% de chances de voir une Aurore Boréale"
+      "probability": "Vous avez {{value}}% de chances de voir une Aurore Boréale au dessus de vous"
     },
     "meteo": {
       "next.hours": "Les prochaines heures",
