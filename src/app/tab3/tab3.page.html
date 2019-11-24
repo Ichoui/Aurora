@@ -2,8 +2,9 @@
 
 <ion-content>
     <ion-card>
-        <ion-img src="/assets/img/aurora-tab3.jpg"></ion-img>
         <ion-card-content>
+
+
             <ion-item>
                 <ion-label>{{ 'tab3.location' | translate }}</ion-label>
                 <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedLoc($event)" cancelText="{{ 'tab3.cancel' | translate }}">
@@ -11,17 +12,23 @@
                     <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.ville }} - {{ city.codePays }} </ion-select-option>
                 </ion-select>
             </ion-item>
+
+
+
+
             <ion-item>
                 <ion-label>{{ 'tab3.notifications' | translate }}</ion-label>
                 <ion-toggle color="primary" (ionChange)="activeNotif($event)" [checked]="notifications"></ion-toggle>
             </ion-item>
             <ion-item *ngIf="notifications">
                 <ion-label>{{ 'tab3.kp' | translate }}</ion-label>
-                <ion-select value="{{ notifKp }}" interface="action-sheet" (ionChange)="selectedKp($event)" >
+                <ion-select value="{{ notifKp }}" interface="action-sheet" (ionChange)="selectedKp($event)">
                     <ion-select-option *ngFor="let kp of kpindex" value="{{ kp }}">{{ kp }}</ion-select-option>
                 </ion-select>
             </ion-item>
         </ion-card-content>
+        <ion-img src="/assets/img/aurora-tab3.jpg"></ion-img>
+
     </ion-card>
 
     <ion-card>
@@ -30,7 +37,8 @@
             <p>Weather Lotties made by my friend <a>Blue Pixel</a></p>
             <p>Aurora datas powered by <a href="#" (click)="openUrl('http://auroraslive.io/#/')">Auroras.live</a></p>
             <p>Weather Powered by <a href="#" (click)="openUrl('https://darksky.net/poweredby/')">Dark Sky</a></p>
-            <p>Thanks to <a href="#" (click)="openUrl('https://codepen.io/jh3y')">JHEY</a> for his <a href="#" (click)="openUrl('https://codepen.io/jh3y/pen/JKddVx')">Auroras CSS Project</a></p>
+            <p>Thanks to <a href="#" (click)="openUrl('https://codepen.io/jh3y')">JHEY</a> for his <a href="#" (click)="openUrl('https://codepen.io/jh3y/pen/JKddVx')">Aurora CSS Project</a>
+            </p>
         </ion-card-content>
     </ion-card>
 </ion-content>
