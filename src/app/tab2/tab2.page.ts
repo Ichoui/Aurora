@@ -45,8 +45,8 @@ export class Tab2Page {
     dataSevenDay: Daily;
     utcOffset: number;
     moduleACE: any = {} as any;
-    kpForecast: KpForecast = {} as any;
-    kpForecast27days: Kp27day = {} as any;
+    kpForecast: KpForecast[] = [] as any;
+    kpForecast27days: Kp27day[] = [] as any;
 
 
     dataError: ErrorTemplate = {

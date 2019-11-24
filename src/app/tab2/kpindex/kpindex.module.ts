@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KpindexComponent } from './kpindex.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -11,8 +12,9 @@ import { KpindexComponent } from './kpindex.component';
   exports: [
     KpindexComponent
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        TranslateModule
+    ]
 })
 export class KpindexModule { }

@@ -1,7 +1,7 @@
 <!--https://codepen.io/jh3y/pen/JKddVx -->
 
 <div class="nowcast ace-data">
-    <p>Vous avez {{ nowcast.value }}% de chances de voir une Aurore Boréale</p>
+    <p>{{ 'tab2.kp.probability' |translate:nowcastVal }}</p>
 </div>
 
 <div class="kp ace-data">
@@ -16,7 +16,7 @@
 
     </div>
     <div class="value">Kp{{ kpCurrent.value | number:'1.0-0' }}</div>
-    <div class="label">Kp Index</div>
+    <div class="label">{{ 'tab2.kp.kpindex' | translate }}</div>
 </div>
 <div class="density ace-data">
     <div class="colored">
@@ -29,7 +29,7 @@
         </span>
     </div>
     <div class="value">{{ density.value }}</div>
-    <div class="label">Densitée des particules (p/cc)</div>
+    <div class="label">{{ 'tab2.kp.density' | translate }}</div>
 </div>
 <div class="speed ace-data">
     <div class="colored">
@@ -42,7 +42,7 @@
         </span>
     </div>
     <div class="value">{{ speed.value }}</div>
-    <div class="label">Vent solaire (km/h)</div>
+    <div class="label">{{ 'tab2.kp.speed' | translate }}</div>
 </div>
 
 

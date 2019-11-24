@@ -91,10 +91,13 @@
     "title": "Aurores",
     "loading": "Votre localisation est en cours de chargement ...",
     "kp": {
-
+      "kpindex": "Kp Index",
+     "density":" Densitée des particules (p/cc)",
+     "speed":" Vent solaire (km/h)",
+      "probability": "Vous avez {{value}}% de chances de voir une Aurore Boréale"
     },
     "meteo": {
-      "next.hours": "Prochaines heures",
+      "next.hours": "Les prochaines heures",
       "seven.days": "Prévisions 7 jours",
       "cover.clouds": "Couverture nuageuse",
       "details": "Détails",
@@ -105,11 +108,16 @@
         "humidity": "Humidité"
       }
     },
-      "maps": {
-        "worldmap": "Carte du monde",
-        "ovation.north": "Ovation North",
-        "ovation.south": "Ovation South"
-      }
+    "maps": {
+      "worldmap": "Carte du monde",
+      "ovations": "Ovation Prime",
+      "ovation.north": "Ovation North",
+      "ovation.south": "Ovation South",
+      "nexthours.title": "Les prochaines heures",
+      "nexthours.sub": "Kp maximum",
+      "longterm.title": "Prévisions à long termes",
+      "longterm.sub": "Kp maximum"
+    }
   },
   "tab3": {
     "title": "Paramètres",

@@ -19,7 +19,9 @@ h2 {
   }
 }
 
-app-kpindex, app-meteo {
+app-kpindex,
+app-meteo,
+app-maps {
   width: 100%;
   height: 70vh;
   overflow: hidden;
@@ -36,9 +38,8 @@ app-kpindex, app-meteo {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
-
 
 
 /* :not(:required) hides this rule from IE9 and below */
@@ -64,6 +65,7 @@ app-kpindex, app-meteo {
   -webkit-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
 }
+
 @-moz-keyframes whirly-loader {
   0% {
     -moz-transform: rotate(0deg);
@@ -74,6 +76,7 @@ app-kpindex, app-meteo {
     transform: rotate(360deg);
   }
 }
+
 @-webkit-keyframes whirly-loader {
   0% {
     -webkit-transform: rotate(0deg);
@@ -84,6 +87,7 @@ app-kpindex, app-meteo {
     transform: rotate(360deg);
   }
 }
+
 @keyframes whirly-loader {
   0% {
     -moz-transform: rotate(0deg);

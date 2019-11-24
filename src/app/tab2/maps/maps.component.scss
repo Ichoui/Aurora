@@ -4,6 +4,11 @@
 :host {
   width: 100%;
 }
+.container {
+  height: 100%;
+  overflow: scroll;
+}
+
 
 .container-world {
   display: flex;
@@ -36,16 +41,12 @@
   font-size: .8em;
 
   .header {
-    font-family: var(--ion-font-semibold);
-    text-align: left;
-    margin-left: 15px;
-    position: relative;
+    @include header-title;
     &:before {
       @include bottom-header;
     }
   }
+  .sub {
+    @include subtitle-header;
+  }
 }
-
-
-
-
