@@ -10,7 +10,9 @@
     "build:android_emulate": "ionic cordova emulate android",
     "build:android_run_livereload": "ionic cordova run android --livereload --ssl",
     "puggy": "pug src -P -w",
+    "build:crodova_android": "cordova build android",
     "build:android_run": "ionic cordova run android",
+    "add:cordovaandroid": "cordova platform add android",
     "remove:platform_android": "ionic cordova platform rm android",
     "info:ionic": "ionic info"
   },
@@ -23,9 +25,10 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
-    "@ionic-native/core": "^5.0.0",
+    "@ionic-native/core": "^5.17.0",
     "@ionic-native/diagnostic": "^5.16.0",
     "@ionic-native/geolocation": "^5.15.1",
+    "@ionic-native/google-maps": "^5.5.0",
     "@ionic-native/in-app-browser": "^5.16.0",
     "@ionic-native/native-geocoder": "^5.16.0",
     "@ionic-native/onesignal": "^5.16.0",
@@ -40,6 +43,7 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "cordova-android": "^8.1.0",
     "cordova-plugin-geolocation": "4.0.2",
+    "cordova-plugin-googlemaps": "^2.6.2",
     "cordova-plugin-inappbrowser": "^3.1.0",
     "cordova-plugin-nativegeocoder": "3.2.2",
     "cordova-sqlite-storage": "^3.4.0",
@@ -104,7 +108,11 @@
         "ANDROID_SUPPORT_VERSION": "28.+"
       },
       "cordova-plugin-inappbrowser": {},
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {},
+      "cordova-plugin-googlemaps": {
+        "PLAY_SERVICES_VERSION": "15.0.1",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
     },
     "platforms": [
       "android"

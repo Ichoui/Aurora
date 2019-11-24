@@ -9,8 +9,8 @@ import { IonicModule } from '@ionic/angular';
   declarations: [ModalComponent],
   exports: [ModalComponent],
   imports: [
-    CommonModule,
-    IonicModule
+    IonicModule,
+    CommonModule
   ],
   entryComponents: [ModalComponent]
 })

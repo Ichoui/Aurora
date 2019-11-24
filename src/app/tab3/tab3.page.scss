@@ -1,6 +1,11 @@
 @import "../../theme/shared";
 
 
+#map_canvas {
+  height: 125px;
+  width: 100%;
+}
+
 ion-icon.gitlab {
   width: 100%;
   min-height: 80%;

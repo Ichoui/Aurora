@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { LocationMapPage } from '../location-map/location-map.page';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+                import('../tab3/tab3.module').then(m => m.Tab3PageModule)
           }
         ]
       },
@@ -43,6 +44,11 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: 'map',
+    loadChildren: () =>
+        import('../location-map/location-map.module').then(m => m.LocationMapPageModule)
   },
   {
     path: '',

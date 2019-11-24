@@ -3,19 +3,17 @@
 <ion-content>
     <ion-card>
         <ion-card-content>
+            <div class="google-maps">
+                <ion-header>
+                    {{ 'tab3.location' | translate }}
+                </ion-header>
+                <div id="map_canvas"></div>
+            </div>
+        </ion-card-content>
+    </ion-card>
 
-
-            <ion-item>
-                <ion-label>{{ 'tab3.location' | translate }}</ion-label>
-                <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedLoc($event)" cancelText="{{ 'tab3.cancel' | translate }}">
-                    <ion-select-option value="currentLocation">{{ 'tab3.current.position' | translate }}</ion-select-option>
-                    <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.ville }} - {{ city.codePays }} </ion-select-option>
-                </ion-select>
-            </ion-item>
-
-
-
-
+    <ion-card>
+        <ion-card-content>
             <ion-item>
                 <ion-label>{{ 'tab3.notifications' | translate }}</ion-label>
                 <ion-toggle color="primary" (ionChange)="activeNotif($event)" [checked]="notifications"></ion-toggle>
@@ -27,8 +25,7 @@
                 </ion-select>
             </ion-item>
         </ion-card-content>
-        <ion-img src="/assets/img/aurora-tab3.jpg"></ion-img>
-
+        <!--        <ion-img src="/assets/img/aurora-tab3.jpg"></ion-img>-->
     </ion-card>
 
     <ion-card>
