@@ -46,6 +46,7 @@ export class Tab3Page {
      * Sinon Choisir une des villes pré-enregistrées
      * */
     minimapLocation() {
+        // localisation format json ? {code: 'currentlocation', lat: 41.1, long: 10.41} --> pas besoin de call à chaque fois lat et long comme ça...
         this.storage.get('localisation').then(
             codeLocation => {
                 if (codeLocation === 'currentLocation' || codeLocation === null) {
