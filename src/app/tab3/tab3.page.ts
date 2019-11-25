@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { cities } from '../models/cities';
+import { cities, Coords } from '../models/cities';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent } from '@ionic-native/google-maps';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 @Component({
@@ -21,30 +22,71 @@ export class Tab3Page {
     notifications: boolean = false;
     notifKp;
 
+    coords: Coords = {} as any;
     map: GoogleMap;
 
     constructor(private storage: Storage,
                 private router: Router,
+                private geoloc: Geolocation,
                 private modalController: ModalController,
                 private iab: InAppBrowser) {
     }
 
 
     ionViewWillEnter() {
-        // this.storageLoc();
+        this.minimapLocation();
         this.storageNotif();
-        this.loadMap();
+        // quand on revient de la fake popup, on ne passe pas dedans ... Ca a l'air de marcher quand on change de tab.
+    }
+
+    /**
+     *
+     *  Si la localisation n'a jamais été remplie, on set avec "currentLocation" && on localise l'utilisateur pour la minimap
+     *  Sinon si :
+     * Sinon Choisir une des villes pré-enregistrées
+     * */
+    minimapLocation() {
+        this.storage.get('localisation').then(
+            codeLocation => {
+                if (codeLocation === 'currentLocation' || codeLocation === null) {
+        console.log('??');
+                    this.userLocalisation();
+                    this.storage.set('localisation', 'currentLocation');
+                } else if (codeLocation === 'marker') {
+                    // gestion du marker ici, probablement nouvelle fonction.
+                } else {
+                    const city = cities.find(res => res.code === codeLocation);
+                    this.loadMap(city.latitude, city.longitude);
+                    this.storage.set('localisation', codeLocation);
+                }
+            }
+        );
+    }
+
+    // localise l'utilisateur et lance l'affichage de la map
+    userLocalisation() {
+        this.geoloc.getCurrentPosition().then((resp) => {
+            this.coords = resp.coords;
+            this.loadMap(this.coords.latitude, this.coords.longitude);
+        }).catch((error) => {
+            console.warn('Error getting location', error);
+        });
     }
 
 
-    loadMap(): void {
+    /**
+     * @param lat
+     * @param long
+     * */
+    loadMap(lat?, long?): void {
         Environment.setBackgroundColor('#2a2a2a');
         let mapOptions: GoogleMapOptions = {
-
             camera: {
                 target: {
-                    lat: 43.608763,
-                    lng: 1.436908
+                    // lat: 43.608763,
+                    // lng: 10.436908
+                    lat: lat,
+                    lng: long
                 },
                 zoom: 10,
                 tilt: 30
@@ -60,27 +102,10 @@ export class Tab3Page {
         //https://forum.ionicframework.com/t/google-map-native-map-click-event/100269/2
         this.map = GoogleMaps.create('map_canvas', mapOptions);
         this.map.on(GoogleMapsEvent.MAP_CLICK).pipe(
-            tap(e => this.router.navigate(['', 'map', {test: 'aa'}]))
+            tap(e => this.router.navigate(['', 'map', {lat: this.coords.latitude, long: this.coords.longitude}]))
         ).subscribe();
-    }
 
- /*   /!**
-     * Si storage vide, set valeur à location actuelle ET valeur du select à position actuelle
-     * Sinon, set valeur du select à la position indiquée dans storage
-     * *!/
-    storageLoc(): void {
-        this.storage.get('localisation').then(
-            localisation => {
-                if (localisation === null) {
-                    // this.selectedLoc(null, 'currentLocation');
-                    this.localisation = 'currentLocation';
-                } else {
-                    this.localisation = localisation;
-                }
-            },
-            error => console.warn('Il y a un soucis de storage de position', error)
-        );
-    }*/
+    }
 
     storageNotif(): void {
         this.storage.get('notifications_active').then(
@@ -100,18 +125,6 @@ export class Tab3Page {
             error => console.warn('Problème de récupération notification', error)
         );
     }
-
-/*    selectedLoc(choice?: any, init?: string): void {
-        if (choice) {
-            this.localisation = choice.detail.value;
-            this.storage.set('localisation', this.localisation);
-            return;
-        }
-        if (init) {
-            this.storage.set('localisation', 'currentLocation');
-            return;
-        }
-    }*/
 
     activeNotif(e): void {
         this.notifications = e.detail.checked;

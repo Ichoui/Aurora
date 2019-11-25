@@ -8,6 +8,7 @@ import { HeaderPageModule } from '../shared/header/header.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     ],
     declarations: [Tab3Page],
     providers: [
-        InAppBrowser
+        InAppBrowser,
+        Geolocation,
     ]
 })
 export class Tab3PageModule {

@@ -23,8 +23,8 @@ export class Notifications {
     isCordova(): void {
         console.log('cc');
         if (this.platform.is('cordova')) {
-            this.setupPush();
-            this.invokePush();
+            // this.setupPush();
+            // this.invokePush();
         }
 
         /*        const notificationOpenedCallback = function (jsonData) {

@@ -28,7 +28,7 @@ export class Tab2Page {
     tabLoading: string[] = [];
 
     localisation: string;
-    getCode: string;
+    // getCode: string;
     coords: Coords;
     city: string;
     country: string;
@@ -69,10 +69,12 @@ export class Tab2Page {
         this.storage.get('localisation').then(
             codeLocation => {
                 if (codeLocation === 'currentLocation' || codeLocation === null) {
-                    this.getCode = codeLocation;
+                    // this.getCode = codeLocation;
                     this.userLocalisation();
+                } else if (codeLocation === 'marker') {
+                // Etablir une fonction autour de ça (peut être séparer localisation de géoreverse ?
                 } else {
-                    this.getCode = codeLocation;
+                    // this.getCode = codeLocation;
                     this.chooseAnyCity(codeLocation);
                 }
             },

@@ -42,6 +42,7 @@
     "chart.js": "^2.9.2",
     "chartjs-plugin-datalabels": "^0.7.0",
     "cordova-android": "^8.1.0",
+    "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "^2.6.2",
     "cordova-plugin-inappbrowser": "^3.1.0",
@@ -93,6 +94,7 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
+      "onesignal-cordova-plugin": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
@@ -108,10 +110,12 @@
         "ANDROID_SUPPORT_VERSION": "28.+"
       },
       "cordova-plugin-inappbrowser": {},
-      "onesignal-cordova-plugin": {},
       "cordova-plugin-googlemaps": {
         "PLAY_SERVICES_VERSION": "15.0.1",
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-android-support-gradle-release": {
+        "ANDROID_SUPPORT_VERSION": "27.+"
       }
     },
     "platforms": [

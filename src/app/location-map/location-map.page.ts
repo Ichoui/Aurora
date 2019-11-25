@@ -44,10 +44,10 @@ export class LocationMapPage implements OnInit {
             this.storage.set('localisation', this.localisation);
             return;
         }
-        if (init) {
-            this.storage.set('localisation', 'currentLocation');
-            return;
-        }
+        // if (init) {
+        //     this.storage.set('localisation', 'currentLocation');
+        //     return;
+        // }
     }
 
     /**

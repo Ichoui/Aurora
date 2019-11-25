@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Notifications } from './notifications';
 import { AuroraService } from './aurora.service';
+import { Environment } from '@ionic-native/google-maps';
 
 
 @Component({
@@ -44,9 +45,10 @@ export class AppComponent {
             this.getKp();
             this.isNotifsActive();
 
+            Environment.setBackgroundColor('#2a2a2a');
             const notificationFile = new Notifications(this.platform, this.oneSignal, this.auroraService, this.alertCtrl);
-            notificationFile.isCordova();
-            notificationFile.invokePush()
+            // notificationFile.isCordova();
+            // notificationFile.invokePush()
         });
     }
 
