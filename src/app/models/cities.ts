@@ -16,6 +16,12 @@ export interface Coords {
     speed?: number | null;
 }
 
+export interface CodeLocalisation {
+    code?: string;
+    lat?: number;
+    long?: number;
+}
+
 export const cities: City[] = [
     {
         'code': 'mtl',

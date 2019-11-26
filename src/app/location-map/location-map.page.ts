@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, Marker } from '@ionic-native/google-maps';
 import { ActivatedRoute } from '@angular/router';
-import { cities } from '../models/cities';
+import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
 
 
@@ -38,16 +38,14 @@ export class LocationMapPage implements OnInit {
      * @param init Si la localisation n'a jamais été remplie, on set avec "currentLocation"
      * Permet de pré-remplir le select avec la valeur disponible en storage si elle existe.
      * */
-    selectedLoc(choice?: any, init?: string): void {
+    selectedLoc(choice?: any): void {
         if (choice) {
             this.localisation = choice.detail.value;
-            this.storage.set('localisation', this.localisation);
+            console.log(this.localisation);
+            // this.storage.set('localisation', this.localisation);
+            this.storage.set('localisation', {code: this.localisation, lat: null, long:null});
             return;
         }
-        // if (init) {
-        //     this.storage.set('localisation', 'currentLocation');
-        //     return;
-        // }
     }
 
     /**
@@ -56,12 +54,9 @@ export class LocationMapPage implements OnInit {
      * */
     storageLoc(): void {
         this.storage.get('localisation').then(
-            localisation => {
-                if (localisation === null) {
-                    this.selectedLoc(null, 'currentLocation');
-                    this.localisation = 'currentLocation';
-                } else {
-                    this.localisation = localisation;
+            (codeLocation: CodeLocalisation) => {
+                if (codeLocation) {
+                    this.localisation = codeLocation.code;
                 }
             },
             error => console.warn('Il y a un soucis de storage de position', error)

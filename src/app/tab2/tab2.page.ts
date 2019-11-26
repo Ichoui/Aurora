@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
-import { cities, Coords } from '../models/cities';
+import { cities, CodeLocalisation, Coords } from '../models/cities';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { AuroraService } from '../aurora.service';
 import { Currently, Daily, Hourly, Weather } from '../models/weather';
@@ -67,15 +67,17 @@ export class Tab2Page {
 
         // Cheminement en fonction si la localisation est pré-set ou si géoloc
         this.storage.get('localisation').then(
-            codeLocation => {
-                if (codeLocation === 'currentLocation' || codeLocation === null) {
-                    // this.getCode = codeLocation;
+            (codeLocation: CodeLocalisation) => {
+                if (!codeLocation) {
+                    console.log('aa');
                     this.userLocalisation();
-                } else if (codeLocation === 'marker') {
-                // Etablir une fonction autour de ça (peut être séparer localisation de géoreverse ?
+                } else if (codeLocation.code === 'currentLocation') {
+                    console.log('eeee');
+                    this.reverseGeoloc(codeLocation.lat, codeLocation.long);
+                } else if (codeLocation.code === 'marker') {
+                    // se combine certainement avec currentLocation via ||
                 } else {
-                    // this.getCode = codeLocation;
-                    this.chooseAnyCity(codeLocation);
+                    this.chooseAnyCity(codeLocation.code);
                 }
             },
             error => {
@@ -89,33 +91,50 @@ export class Tab2Page {
     }
 
     /**
-     * Déterminer la localisation actuelle de l'utilisateur via lat/long et via reverseGeocode retrouver le nom de la ville exacte
+     * Seulement premier accès sur cette page
+     * Déterminer la localisation actuelle de l'utilisateur
      */
     userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
             this.coords = resp.coords;
-            this.nativeGeo.reverseGeocode(resp.coords.latitude, resp.coords.longitude).then(
-                (res: NativeGeocoderResult[]) => {
-                    this.city = res[0].locality;
-                    this.country = res[0].countryName;
-                    this.getForecast();
-                    this.getSolarWind();
-                },
-                error => {
-                    console.warn('Erreur de reverse geocode', error);
-                    this.loading = false;
-                    this.dataError = {
-                        value: true,
-                        message: error
-                    };
-                }
-            );
+            this.reverseGeoloc(resp.coords.latitude, resp.coords.longitude);
         }).catch((error) => {
-            console.warn('Error getting location', error);
+            console.warn('Erreur de géolocalisation', error);
+            this.loading = false;
+            this.dataError = {
+                value: true,
+                message: error
+            };
         });
     }
 
     /**
+     * @param lat
+     * @param long
+     * Si utilisateur a déjà eu accès à cette page / utilisé la tab 3 / rentré coords dans tab3
+     * reverseGeocode, retrouve le nom de la ville via Lat/long
+     * */
+    reverseGeoloc(lat: number, long: number) {
+        this.nativeGeo.reverseGeocode(lat, long).then(
+            (res: NativeGeocoderResult[]) => {
+                this.city = res[0].locality;
+                this.country = res[0].countryName;
+                this.getForecast();
+                this.getSolarWind();
+            },
+            error => {
+                console.warn('Erreur de reverse geocode', error);
+                this.loading = false;
+                this.dataError = {
+                    value: true,
+                    message: error
+                };
+            }
+        );
+    }
+
+    /**
+     * @param code slug de la ville pour pouvoir récupérer les données liées au code
      * Choisir une des villes pré-enregistrées
      */
     chooseAnyCity(code: string): void {
@@ -132,29 +151,29 @@ export class Tab2Page {
     }
 
     /**
+     * @param time Lors du refresh, envoie le temps au format UNIX
      * API Dark Sky
      * 4 variables pour aujourd'hui, les variables vont aux enfants via Input()
      */
     getForecast(time?: number): void {
         if (time) {
-
-        this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude, null, time).subscribe(
-            (res: Weather) => {
-                console.log(res);
-                this.dataCurrentWeather = res.currently;
-                this.dataHourly = res.hourly;
-                this.dataSevenDay = res.daily;
-                this.utcOffset = res.offset;
-                this.trickLoading('1st');
-            },
-            error => {
-                console.warn('Error with Dark Sky Forecast', error);
-                this.loading = false;
-                this.dataError = {
-                    value: true,
-                    message: error.status + ' ' + error.statusText
-                };
-            });
+            this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude, null, time).subscribe(
+                (res: Weather) => {
+                    console.log(res);
+                    this.dataCurrentWeather = res.currently;
+                    this.dataHourly = res.hourly;
+                    this.dataSevenDay = res.daily;
+                    this.utcOffset = res.offset;
+                    this.trickLoading('1st');
+                },
+                error => {
+                    console.warn('Error with Dark Sky Forecast', error);
+                    this.loading = false;
+                    this.dataError = {
+                        value: true,
+                        message: error.status + ' ' + error.statusText
+                    };
+                });
         } else {
             this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
                 (res: Weather) => {
@@ -196,6 +215,7 @@ export class Tab2Page {
     }
 
     /**
+     * @param count
      * Gère le loader
      * Lorsque tout les appels API sont passés et le tableau égal à la valeur API_CALL_NUMBER, débloque le loader
      * */
@@ -207,7 +227,8 @@ export class Tab2Page {
         }
     }
 
-    /*
+    /**
+    @param event renvoyé par le rafraichissement
     * Attends les retours des résultats d'API pour retirer l'animation visuelle
     * */
     doRefresh(event) {
