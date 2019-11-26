@@ -28,8 +28,8 @@ export const cities: City[] = [
         'ville': 'Montréal',
         'pays': 'Canada',
         'codePays':'CA',
-        'latitude': 45.573589,
-        'longitude': -73.537113
+        'latitude': 45.501379,
+        'longitude': -73.564936
     },
     {
         'code': 'qc',
@@ -114,7 +114,7 @@ export const cities: City[] = [
         'pays': 'Islande',
         'codePays':'ISL',
         'latitude': 64.146653,
-        'longitude': 21.940686
+        'longitude': -21.940686
     }
 ];
 

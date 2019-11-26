@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, Marker } from '@ionic-native/google-maps';
 import { ActivatedRoute } from '@angular/router';
 import { cities, CodeLocalisation } from '../models/cities';
@@ -10,7 +10,7 @@ import { Storage } from '@ionic/storage';
     templateUrl: './location-map.page.html',
     styleUrls: ['./location-map.page.scss'],
 })
-export class LocationMapPage implements OnInit {
+export class LocationMapPage {
 
     map: GoogleMap;
     cities = cities;
@@ -22,27 +22,19 @@ export class LocationMapPage implements OnInit {
     ionViewWillEnter() {
         const test = this.route.snapshot.paramMap.get('test');
         console.log(test);
-        this.storageLoc();
+        this.checkStorageLoc();
         this.loadMap();
     }
 
-    ngOnInit() {
-        // const test = this.route.snapshot.paramMap.get('test');
-        // console.log(test);
-        // this.loadMap();
-    }
-
-
     /**
      * @param choice Lorsque le Select est modifié, rentre dans la condition pour modifier la valeur de localisation
-     * @param init Si la localisation n'a jamais été remplie, on set avec "currentLocation"
      * Permet de pré-remplir le select avec la valeur disponible en storage si elle existe.
+     * Met également la valeur en storage pour traitement tab3
      * */
     selectedLoc(choice?: any): void {
         if (choice) {
             this.localisation = choice.detail.value;
             console.log(this.localisation);
-            // this.storage.set('localisation', this.localisation);
             this.storage.set('localisation', {code: this.localisation, lat: null, long:null});
             return;
         }
@@ -52,7 +44,7 @@ export class LocationMapPage implements OnInit {
      * Si storage vide, set valeur à location actuelle ET valeur du select à position actuelle
      * Sinon, set valeur du select à la position indiquée dans storage
      * */
-    storageLoc(): void {
+    checkStorageLoc(): void {
         this.storage.get('localisation').then(
             (codeLocation: CodeLocalisation) => {
                 if (codeLocation) {

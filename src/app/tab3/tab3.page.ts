@@ -16,7 +16,6 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 })
 export class Tab3Page {
 
-    cities = cities;
     kpindex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     localisation: string;
     notifications: boolean = false;
@@ -32,15 +31,20 @@ export class Tab3Page {
                 private iab: InAppBrowser) {
     }
 
-
     ionViewWillEnter() {
         this.minimapLocation();
         this.storageNotif();
         // quand on revient de la fake popup, on ne passe pas dedans ... Ca a l'air de marcher quand on change de tab.
+        console.log('ccc');
+    }
+
+    ionViewWillLeave() {
+        // unset div & visibility on exit
+        this.map.setVisible(false);
+        this.map.setDiv(null);
     }
 
     /**
-     *
      *  Si la localisation n'a jamais été remplie, on set avec "currentLocation" && on localise l'utilisateur pour la minimap
      *  Sinon si current position + lat && long existent, envoie this.coords dans le loadMap et touche à rien (évite un nouvel appel de géoloc inutile)
      *  Sinon si marker
@@ -51,17 +55,21 @@ export class Tab3Page {
         this.storage.get('localisation').then(
             (codeLocation: CodeLocalisation) => {
                 console.log(codeLocation);
+                this.coords = {
+                    latitude: codeLocation.lat,
+                    longitude: codeLocation.long
+                };
                 if (!codeLocation) {
                     console.log('??');
                     this.userLocalisation();
                 } else if (codeLocation.code === 'currentLocation') {
                     console.log(' cc ');
-                    this.loadMap(codeLocation.lat, codeLocation.long)
+                    this.loadMap(codeLocation.lat, codeLocation.long);
                 } else if (codeLocation.code === 'marker') {
                     // gestion du marker ici, probablement nouvelle fonction.
                 } else {
                     const city = cities.find(res => res.code === codeLocation.code);
-                    console.log(city);
+                    console.log('city', city);
                     this.loadMap(city.latitude, city.longitude);
                     this.storage.set('localisation', {code: codeLocation.code, lat: city.latitude, long: city.longitude});
                 }
@@ -69,9 +77,9 @@ export class Tab3Page {
         );
     }
 
-    /*
-    * localise l'utilisateur et lance l'affichage de la map
-    * */
+    /**
+     * localise l'utilisateur et lance l'affichage de la map
+     * */
     userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
             this.coords = resp.coords;
@@ -89,6 +97,7 @@ export class Tab3Page {
      * */
     loadMap(lat?, long?): void {
         Environment.setBackgroundColor('#2a2a2a');
+
         let mapOptions: GoogleMapOptions = {
             camera: {
                 target: {
@@ -154,4 +163,6 @@ export class Tab3Page {
         };
         this.iab.create(url, '_system', options);
     }
+
+
 }
