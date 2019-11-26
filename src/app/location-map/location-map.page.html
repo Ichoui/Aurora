@@ -2,12 +2,13 @@
 LOCALISATION
 
 <ion-item>
-  <ion-label>Localisation prédéfinie</ion-label>
-  <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedLoc($event)" cancelText="{{ 'tab3.cancel' | translate }}">
-    <ion-select-option value="currentLocation">{{ 'tab3.current.position' | translate }}</ion-select-option>
-    <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.ville }} - {{ city.codePays }} </ion-select-option>
-  </ion-select>
+    <ion-label>Localisation prédéfinie</ion-label>
+    <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedLoc($event)" cancelText="{{ 'tab3.cancel' | translate }}">
+        <ion-select-option value="currentLocation">{{ 'tab3.current.position' | translate }}</ion-select-option>
+        <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.ville }} - {{ city.codePays }} </ion-select-option>
+    </ion-select>
 </ion-item>
 
 Localisation personnalisée
+ emplacement du lieu marker
 <div id="map_canvas_select"></div>

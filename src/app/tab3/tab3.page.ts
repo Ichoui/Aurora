@@ -99,13 +99,11 @@ export class Tab3Page {
         let mapOptions: GoogleMapOptions = {
             camera: {
                 target: {
-                    // lat: 43.608763,
-                    // lng: 10.436908
                     lat: lat,
                     lng: long
                 },
                 zoom: 10,
-                tilt: 30
+                tilt: 90
             },
             gestures: {
                 scroll: false,

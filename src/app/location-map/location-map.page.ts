@@ -72,7 +72,7 @@ export class LocationMapPage {
                     lng: 1.436908
                 },
                 zoom: 10,
-                tilt: 30
+                tilt: 60
             }
         };
 
