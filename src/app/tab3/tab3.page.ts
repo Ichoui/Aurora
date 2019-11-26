@@ -3,7 +3,7 @@ import { Storage } from '@ionic/storage';
 import { cities, CodeLocalisation, Coords } from '../models/cities';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent } from '@ionic-native/google-maps';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -27,6 +27,7 @@ export class Tab3Page {
     constructor(private storage: Storage,
                 private router: Router,
                 private geoloc: Geolocation,
+                private navController: NavController,
                 private modalController: ModalController,
                 private iab: InAppBrowser) {
     }
@@ -118,7 +119,7 @@ export class Tab3Page {
         //https://forum.ionicframework.com/t/google-map-native-map-click-event/100269/2
         this.map = GoogleMaps.create('map_canvas', mapOptions);
         this.map.on(GoogleMapsEvent.MAP_CLICK).pipe(
-            tap(e => this.router.navigate(['', 'map', {lat: this.coords.latitude, long: this.coords.longitude}]))
+            tap(e => this.navController.navigateRoot(['','map']))
         ).subscribe();
 
     }

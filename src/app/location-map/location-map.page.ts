@@ -3,6 +3,7 @@ import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, Marker } from '@i
 import { ActivatedRoute } from '@angular/router';
 import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -16,7 +17,9 @@ export class LocationMapPage {
     cities = cities;
     localisation: string;
 
-    constructor(private route: ActivatedRoute, private storage: Storage) {
+    constructor(private route: ActivatedRoute,
+                private navController: NavController,
+                private storage: Storage) {
     }
 
     ionViewWillEnter() {
@@ -25,7 +28,6 @@ export class LocationMapPage {
         this.checkStorageLoc();
         this.loadMap();
     }
-
     /**
      * @param choice Lorsque le Select est modifié, rentre dans la condition pour modifier la valeur de localisation
      * Permet de pré-remplir le select avec la valeur disponible en storage si elle existe.
