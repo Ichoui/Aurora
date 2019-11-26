@@ -55,10 +55,7 @@ export class Tab3Page {
         this.storage.get('localisation').then(
             (codeLocation: CodeLocalisation) => {
                 console.log(codeLocation);
-                this.coords = {
-                    latitude: codeLocation.lat,
-                    longitude: codeLocation.long
-                };
+
                 if (!codeLocation) {
                     console.log('??');
                     this.userLocalisation();

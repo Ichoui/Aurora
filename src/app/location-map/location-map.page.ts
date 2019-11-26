@@ -35,8 +35,11 @@ export class LocationMapPage {
         if (choice) {
             this.localisation = choice.detail.value;
             console.log(this.localisation);
-            this.storage.set('localisation', {code: this.localisation, lat: null, long:null});
-            return;
+            if (this.localisation === 'currentLocation') {
+                this.storage.remove('localisation');
+                return;
+            }
+            this.storage.set('localisation', {code: this.localisation, lat: null, long: null});
         }
     }
 
