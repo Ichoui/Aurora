@@ -37,12 +37,6 @@ export class Tab3Page {
         this.storageNotif();
     }
 
-    ionViewWillLeave() {
-        // unset div & visibility on exit
-        this.map.setVisible(false);
-        this.map.setDiv(null);
-    }
-
     /**
      *  Si la localisation n'a jamais été remplie, on set avec "currentLocation" && on localise l'utilisateur pour la minimap
      *  Sinon si current position + lat && long existent, envoie this.coords dans le loadMap et touche à rien (évite un nouvel appel de géoloc inutile)
@@ -54,18 +48,14 @@ export class Tab3Page {
         this.storage.get('localisation').then(
             (codeLocation: CodeLocalisation) => {
                 console.log(codeLocation);
-
                 if (!codeLocation) {
                     console.log('??');
                     this.userLocalisation();
-                } else if (codeLocation.code === 'currentLocation') {
+                } else if (codeLocation.code === 'currentLocation' || codeLocation.code === 'marker') {
                     console.log(' cc ');
                     this.loadMap(codeLocation.lat, codeLocation.long);
-                } else if (codeLocation.code === 'marker') {
-                    // gestion du marker ici, probablement nouvelle fonction.
                 } else {
                     const city = cities.find(res => res.code === codeLocation.code);
-                    console.log('city', city);
                     this.loadMap(city.latitude, city.longitude);
                     this.storage.set('localisation', {code: codeLocation.code, lat: city.latitude, long: city.longitude});
                 }

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, Marker } from '@ionic-native/google-maps';
+import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, LatLng, Marker } from '@ionic-native/google-maps';
 import { ActivatedRoute } from '@angular/router';
 import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
-import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -15,8 +14,9 @@ import { tap } from 'rxjs/operators';
 export class LocationMapPage {
 
     map: GoogleMap;
-    cities = cities;
     marker: Marker;
+
+    cities = cities;
     localisation: string;
 
     constructor(private route: ActivatedRoute,
@@ -33,11 +33,13 @@ export class LocationMapPage {
 
     /**
      * @param choice Lorsque le Select est modifié, rentre dans la condition pour modifier la valeur de localisation
+     * @param position Lorsqu'on ajoute un point sur la carte
      * Permet de pré-remplir le select avec la valeur disponible en storage si elle existe.
      * Met également la valeur en storage pour traitement tab3
      * */
-    selectedLoc(choice?: any): void {
+    selectedLoc(choice?: any, position?: LatLng): void {
         if (choice) {
+            this.removeMarker();
             this.localisation = choice.detail.value;
             console.log(this.localisation);
             if (this.localisation === 'currentLocation') {
@@ -45,6 +47,9 @@ export class LocationMapPage {
                 return;
             }
             this.storage.set('localisation', {code: this.localisation, lat: null, long: null});
+        } else {
+            this.localisation = 'marker';
+            this.storage.set('localisation', {code: 'marker', lat: position.lat, long: position.lng});
         }
     }
 
@@ -63,6 +68,7 @@ export class LocationMapPage {
         );
     }
 
+
     /**
      * Chargement de la carte
      * */
@@ -80,26 +86,43 @@ export class LocationMapPage {
         };
 
         this.map = GoogleMaps.create('map_canvas_select', mapOptions);
-        this.map.on(GoogleMapsEvent.MAP_CLICK).pipe(
-            tap(res => {
-                console.log(res);
-                this.addMarker(res);
-
-            })
-        ).subscribe();
+        this.map.on(GoogleMapsEvent.MAP_CLICK)
+            .subscribe(
+                (params: any[]) => {
+                    let latLng: LatLng = params[0];
+                    this.removeMarker();
+                    this.addMarker(latLng);
+                    this.selectedLoc(null, latLng);
+                });
     }
 
-    addMarker(res) {
-        console.log(res);
-        let marker = this.map.addMarker({
-            title: 'Ionic',
-            icon: 'rgba(200,200,200,.7)',
+
+    /**
+     * @param position Valeurs lat & lng
+     * Permet de créer un marqueur
+     * */
+    addMarker(position): void {
+        this.marker = this.map.addMarkerSync({
+            title: 'Localisation sélectionnée',
+            snippet: `Lat: ${position.lat}\nLong: ${position.lng}`,
+            icon: 'blue',
+            flat: true,
+            draggable: true,
             animation: 'DROP',
             position: {
-                lat: res.lat,
-                lng: res.lng
+                lat: position.lat,
+                lng: position.lng
             }
         });
+    }
+
+    /*
+    * Permet de retirer le marqueur actuel
+    * */
+    removeMarker(): void {
+        if (this.marker) {
+            this.marker.remove();
+        }
     }
 
 }

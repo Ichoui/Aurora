@@ -69,13 +69,9 @@ export class Tab2Page {
         this.storage.get('localisation').then(
             (codeLocation: CodeLocalisation) => {
                 if (!codeLocation) {
-                    console.log('aa');
                     this.userLocalisation();
-                } else if (codeLocation.code === 'currentLocation') {
-                    console.log('eeee');
+                } else if (codeLocation.code === 'currentLocation' || codeLocation.code === 'marker') {
                     this.reverseGeoloc(codeLocation.lat, codeLocation.long);
-                } else if (codeLocation.code === 'marker') {
-                    // se combine certainement avec currentLocation via ||
                 } else {
                     this.chooseAnyCity(codeLocation.code);
                 }
