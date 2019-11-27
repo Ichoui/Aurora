@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, Marker } from '@ionic-native/google-maps';
+import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, Marker } from '@ionic-native/google-maps';
 import { ActivatedRoute } from '@angular/router';
 import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
+import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class LocationMapPage {
 
     map: GoogleMap;
     cities = cities;
+    marker: Marker;
     localisation: string;
 
     constructor(private route: ActivatedRoute,
@@ -28,6 +30,7 @@ export class LocationMapPage {
         this.checkStorageLoc();
         this.loadMap();
     }
+
     /**
      * @param choice Lorsque le Select est modifié, rentre dans la condition pour modifier la valeur de localisation
      * Permet de pré-remplir le select avec la valeur disponible en storage si elle existe.
@@ -71,19 +74,30 @@ export class LocationMapPage {
                     lat: 43.608763,
                     lng: 1.436908
                 },
-                zoom: 10,
-                tilt: 60
+                zoom: 5,
+                tilt: 0
             }
         };
 
         this.map = GoogleMaps.create('map_canvas_select', mapOptions);
-        let marker: Marker = this.map.addMarkerSync({
+        this.map.on(GoogleMapsEvent.MAP_CLICK).pipe(
+            tap(res => {
+                console.log(res);
+                this.addMarker(res);
+
+            })
+        ).subscribe();
+    }
+
+    addMarker(res) {
+        console.log(res);
+        let marker = this.map.addMarker({
             title: 'Ionic',
-            icon: 'blue',
+            icon: 'rgba(200,200,200,.7)',
             animation: 'DROP',
             position: {
-                lat: 43.608763,
-                lng: 1.436908
+                lat: res.lat,
+                lng: res.lng
             }
         });
     }

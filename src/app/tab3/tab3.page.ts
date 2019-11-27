@@ -35,8 +35,6 @@ export class Tab3Page {
     ionViewWillEnter() {
         this.minimapLocation();
         this.storageNotif();
-        // quand on revient de la fake popup, on ne passe pas dedans ... Ca a l'air de marcher quand on change de tab.
-        console.log('ccc');
     }
 
     ionViewWillLeave() {
