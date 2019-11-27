@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { cities, CodeLocalisation, Coords } from '../models/cities';
+import { CodeLocalisation, Coords } from '../models/cities';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent } from '@ionic-native/google-maps';
 import { ModalController, NavController } from '@ionic/angular';
@@ -39,9 +39,7 @@ export class Tab3Page {
 
     /**
      *  Si la localisation n'a jamais été remplie, on set avec "currentLocation" && on localise l'utilisateur pour la minimap
-     *  Sinon si current position + lat && long existent, envoie this.coords dans le loadMap et touche à rien (évite un nouvel appel de géoloc inutile)
-     *  Sinon si marker
-     * Sinon Choisir une des villes pré-enregistrées
+     * Sinon charge la map avec les lat/long envoyée depuis la page popup (Marker et Ville Préselectionnées)
      * */
     minimapLocation() {
         // localisation format json ? {code: 'currentlocation', lat: 41.1, long: 10.41} --> pas besoin de call à chaque fois lat et long comme ça...
@@ -51,13 +49,9 @@ export class Tab3Page {
                 if (!codeLocation) {
                     console.log('??');
                     this.userLocalisation();
-                } else if (codeLocation.code === 'currentLocation' || codeLocation.code === 'marker') {
+                } else {
                     console.log(' cc ');
                     this.loadMap(codeLocation.lat, codeLocation.long);
-                } else {
-                    const city = cities.find(res => res.code === codeLocation.code);
-                    this.loadMap(city.latitude, city.longitude);
-                    this.storage.set('localisation', {code: codeLocation.code, lat: city.latitude, long: city.longitude});
                 }
             }
         );
@@ -100,12 +94,9 @@ export class Tab3Page {
                 tilt: false
             }
         };
-        console.log('?');
-        // https://stackoverflow.com/questions/44864303/send-data-through-routing-paths-in-angular
-        //https://forum.ionicframework.com/t/google-map-native-map-click-event/100269/2
         this.map = GoogleMaps.create('map_canvas', mapOptions);
         this.map.on(GoogleMapsEvent.MAP_CLICK).pipe(
-            tap(e => this.navController.navigateRoot(['','map']))
+            tap(e => this.navController.navigateRoot(['', 'map']))
         ).subscribe();
 
     }

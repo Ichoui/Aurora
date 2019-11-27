@@ -10,5 +10,7 @@ LOCALISATION
 </ion-item>
 
 Localisation personnalisée
- emplacement du lieu marker
+<div *ngIf="addressSelect">
+ {{ addressSelect.locality }}
+</div>
 <div id="map_canvas_select"></div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, LatLng, Marker } from '@ionic-native/google-maps';
+import { Environment, Geocoder, GeocoderRequest, GeocoderResult, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, LatLng, Marker } from '@ionic-native/google-maps';
 import { ActivatedRoute } from '@angular/router';
 import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
@@ -15,6 +15,11 @@ export class LocationMapPage {
 
     map: GoogleMap;
     marker: Marker;
+    addressSelect: {
+        locality: string;
+        countryCode: string;
+        country: string;
+    };
 
     cities = cities;
     localisation: string;
@@ -25,8 +30,6 @@ export class LocationMapPage {
     }
 
     ionViewWillEnter() {
-        const test = this.route.snapshot.paramMap.get('test');
-        console.log(test);
         this.checkStorageLoc();
         this.loadMap();
     }
@@ -40,13 +43,17 @@ export class LocationMapPage {
     selectedLoc(choice?: any, position?: LatLng): void {
         if (choice) {
             this.removeMarker();
+            console.log(choice);
             this.localisation = choice.detail.value;
-            console.log(this.localisation);
+            console.log('localis', this.localisation);
             if (this.localisation === 'currentLocation') {
                 this.storage.remove('localisation');
                 return;
             }
-            this.storage.set('localisation', {code: this.localisation, lat: null, long: null});
+            const city = cities.find(res => res.code === choice.detail.value);
+            if (city) {
+                this.storage.set('localisation', {code: this.localisation, lat: city.latitude, long: city.longitude});
+            }
         } else {
             this.localisation = 'marker';
             this.storage.set('localisation', {code: 'marker', lat: position.lat, long: position.lng});
@@ -96,14 +103,27 @@ export class LocationMapPage {
                 });
     }
 
-
     /**
      * @param position Valeurs lat & lng
      * Permet de créer un marqueur
      * */
     addMarker(position): void {
+        let options: GeocoderRequest = {
+            position: {'lat': position.lat, 'lng': position.lng}
+        };
+        Geocoder.geocode(options)
+            .then((results: GeocoderResult[]) => {
+                console.log(results);
+                this.addressSelect = {
+                    country: results[0].country,
+                    countryCode: results[0].countryCode,
+                    locality: results[0].locality
+                };
+                console.log(this.addressSelect);
+            });
+
         this.marker = this.map.addMarkerSync({
-            title: 'Localisation sélectionnée',
+            title: (this.addressSelect && this.addressSelect.locality) || 'Localisation sélectionnée',
             snippet: `Lat: ${position.lat}\nLong: ${position.lng}`,
             icon: 'blue',
             flat: true,
@@ -116,6 +136,7 @@ export class LocationMapPage {
         });
     }
 
+
     /*
     * Permet de retirer le marqueur actuel
     * */
@@ -124,5 +145,4 @@ export class LocationMapPage {
             this.marker.remove();
         }
     }
-
 }
