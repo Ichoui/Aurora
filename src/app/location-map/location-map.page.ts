@@ -1,17 +1,28 @@
-import { Component } from '@angular/core';
-import { Environment, Geocoder, GeocoderRequest, GeocoderResult, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, LatLng, Marker } from '@ionic-native/google-maps';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+    Environment,
+    Geocoder,
+    GeocoderRequest,
+    GeocoderResult,
+    GoogleMap,
+    GoogleMapOptions,
+    GoogleMaps,
+    GoogleMapsEvent,
+    LatLng,
+    Marker
+} from '@ionic-native/google-maps';
 import { ActivatedRoute } from '@angular/router';
 import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
     selector: 'app-location-map',
     templateUrl: './location-map.page.html',
     styleUrls: ['./location-map.page.scss'],
 })
-export class LocationMapPage {
+export class LocationMapPage implements OnInit, OnDestroy {
 
     map: GoogleMap;
     marker: Marker;
@@ -23,15 +34,24 @@ export class LocationMapPage {
 
     cities = cities;
     localisation: string;
+    displayedLocalisationChoice: string;
 
     constructor(private route: ActivatedRoute,
+                private geoloc: Geolocation,
                 private navController: NavController,
                 private storage: Storage) {
     }
 
-    ionViewWillEnter() {
+
+    ngOnInit(): void {
         this.checkStorageLoc();
-        this.loadMap();
+    }
+
+    ionViewWillEnter(): void {
+    }
+
+    ngOnDestroy(): void {
+        this.removeMarker();
     }
 
     /**
@@ -46,12 +66,9 @@ export class LocationMapPage {
             console.log(choice);
             this.localisation = choice.detail.value;
             console.log('localis', this.localisation);
-            if (this.localisation === 'currentLocation') {
-                this.storage.remove('localisation');
-                return;
-            }
             const city = cities.find(res => res.code === choice.detail.value);
             if (city) {
+                this.addMarker(city.latitude, city.longitude);
                 this.storage.set('localisation', {code: this.localisation, lat: city.latitude, long: city.longitude});
             }
         } else {
@@ -69,6 +86,8 @@ export class LocationMapPage {
             (codeLocation: CodeLocalisation) => {
                 if (codeLocation) {
                     this.localisation = codeLocation.code;
+                    this.loadMap(codeLocation.lat, codeLocation.long);
+                    this.addMarker(codeLocation.lat, codeLocation.long);
                 }
             },
             error => console.warn('Il y a un soucis de storage de position', error)
@@ -77,43 +96,109 @@ export class LocationMapPage {
 
 
     /**
+     * @param lat
+     * @param lng
      * Chargement de la carte
      * */
-    loadMap(): void {
+    loadMap(lat: number, lng: number): void {
         Environment.setBackgroundColor('#2a2a2a');
         let mapOptions: GoogleMapOptions = {
-            camera: {
-                target: {
-                    lat: 43.608763,
-                    lng: 1.436908
-                },
-                zoom: 5,
-                tilt: 0
+            controls: {
+                compass: true,
+                zoom: true,
+                myLocationButton: true,
+                indoorPicker: true,
+                mapToolbar: true,
+                myLocation: true,
             }
         };
 
         this.map = GoogleMaps.create('map_canvas_select', mapOptions);
+
+        this.map.animateCamera({
+            target: {
+                lat: lat,
+                lng: lng
+            },
+            zoom: 3,
+            duration: 1200
+        });
+
         this.map.on(GoogleMapsEvent.MAP_CLICK)
             .subscribe(
                 (params: any[]) => {
                     let latLng: LatLng = params[0];
                     this.removeMarker();
-                    this.addMarker(latLng);
+                    this.addMarker(latLng.lat, latLng.lng);
                     this.selectedLoc(null, latLng);
                 });
     }
 
     /**
-     * @param position Valeurs lat & lng
+     * @param lat
+     * @param lng
      * Permet de créer un marqueur
      * */
-    addMarker(position): void {
+    addMarker(lat, lng): void {
+
+        this.reverseGeocode(lat, lng);
+
+        this.marker = this.map.addMarkerSync({
+            icon: 'blue',
+            flat: true,
+            draggable: true,
+            animation: 'DROP',
+            position: {
+                lat: lat,
+                lng: lng
+            }
+        });
+
+        this.map.animateCamera({
+            target: {
+                lat: lat,
+                lng: lng
+            },
+            zoom: 3,
+            duration: 1200
+        });
+    }
+
+
+    /**
+     * Permet de retirer le marqueur actuel
+     * */
+    removeMarker(): void {
+        if (this.marker) {
+            this.marker.remove();
+        }
+    }
+
+    /**
+     * Géoloc l'utilisateur et place marker sur la map
+     * Set en localStorage les coords
+     * */
+    buttonMyPosition() {
+        this.removeMarker();
+        this.geoloc.getCurrentPosition().then(resp => {
+            this.addMarker(resp.coords.latitude, resp.coords.longitude);
+            this.storage.set('localisation', {code: 'currentLocation', lat: resp.coords.latitude, long: resp.coords.longitude});
+        }).catch((error) => {
+            console.warn('Error getting location', error);
+        });
+    }
+
+    /**
+     * @param lat
+     * @param lng
+     * Récupérer l'adresse en var globale
+     * */
+    reverseGeocode(lat: number, lng: number) {
         let options: GeocoderRequest = {
-            position: {'lat': position.lat, 'lng': position.lng}
+            position: {'lat': lat, 'lng': lng}
         };
-        Geocoder.geocode(options)
-            .then((results: GeocoderResult[]) => {
-                console.log(results);
+        Geocoder.geocode(options).then(
+            (results: GeocoderResult[]) => {
                 this.addressSelect = {
                     country: results[0].country,
                     countryCode: results[0].countryCode,
@@ -121,28 +206,7 @@ export class LocationMapPage {
                 };
                 console.log(this.addressSelect);
             });
-
-        this.marker = this.map.addMarkerSync({
-            title: (this.addressSelect && this.addressSelect.locality) || 'Localisation sélectionnée',
-            snippet: `Lat: ${position.lat}\nLong: ${position.lng}`,
-            icon: 'blue',
-            flat: true,
-            draggable: true,
-            animation: 'DROP',
-            position: {
-                lat: position.lat,
-                lng: position.lng
-            }
-        });
     }
 
 
-    /*
-    * Permet de retirer le marqueur actuel
-    * */
-    removeMarker(): void {
-        if (this.marker) {
-            this.marker.remove();
-        }
-    }
 }

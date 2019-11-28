@@ -1,4 +1,11 @@
 #map_canvas_select {
+  position: relative;
   width: 100%;
   height: 70%;
+
+  button {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }

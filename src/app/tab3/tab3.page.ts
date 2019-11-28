@@ -79,6 +79,9 @@ export class Tab3Page {
         Environment.setBackgroundColor('#2a2a2a');
 
         let mapOptions: GoogleMapOptions = {
+            controls: {
+                compass: false
+            },
             camera: {
                 target: {
                     lat: lat,

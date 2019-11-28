@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { LocationMapPage } from './location-map.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule
   ],
-  declarations: [LocationMapPage]
+  declarations: [LocationMapPage],
+  providers: [
+    Geolocation
+  ]
 })
 export class LocationMapPageModule {}
