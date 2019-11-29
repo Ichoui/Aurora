@@ -10,8 +10,9 @@ LOCALISATION
 </ion-item>
 
 Localisation personnalisée
-<div *ngIf="addressSelect">
- {{ addressSelect.locality }}
+<div *ngIf="displayedLocalisationChoice" (innerHTML)="test">
+<!-- {{ displayedLocalisationChoice | async }}-->
+<!--    {{ test | async}}-->
 </div>
 <div id="map_canvas_select">
     <button (click)="buttonMyPosition()">ME</button>

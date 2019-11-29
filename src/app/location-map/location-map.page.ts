@@ -1,21 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-    Environment,
-    Geocoder,
-    GeocoderRequest,
-    GeocoderResult,
-    GoogleMap,
-    GoogleMapOptions,
-    GoogleMaps,
-    GoogleMapsEvent,
-    LatLng,
-    Marker
-} from '@ionic-native/google-maps';
+import { Environment, Geocoder, GeocoderRequest, GeocoderResult, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, LatLng, Marker } from '@ionic-native/google-maps';
 import { ActivatedRoute } from '@angular/router';
 import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-location-map',
@@ -34,7 +24,8 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
     cities = cities;
     localisation: string;
-    displayedLocalisationChoice: string;
+    displayedLocalisationChoice: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+    test;
 
     constructor(private route: ActivatedRoute,
                 private geoloc: Geolocation,
@@ -45,6 +36,10 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.checkStorageLoc();
+        this.displayedLocalisationChoice.subscribe(val => {
+            console.log(val);
+            this.test = val
+        })
     }
 
     ionViewWillEnter(): void {
@@ -199,12 +194,31 @@ export class LocationMapPage implements OnInit, OnDestroy {
         };
         Geocoder.geocode(options).then(
             (results: GeocoderResult[]) => {
+                if (results.length === 0) {
+                    this.displayedLocalisationChoice.next('Localisation inconnue');
+                    // this.displayedLocalisationChoice = 'Localisation inconnue';
+                    return;
+                }
                 this.addressSelect = {
                     country: results[0].country,
                     countryCode: results[0].countryCode,
                     locality: results[0].locality
                 };
-                console.log(this.addressSelect);
+console.log(results);
+                if (this.addressSelect.locality === undefined) {
+                    // Si la ville n'est pas reconnue ou n'existe pas
+                    // this.displayedLocalisationChoice = this.addressSelect.country;
+                    this.displayedLocalisationChoice.next('Localisation');
+
+                } else if (!this.addressSelect.country) {
+                    this.displayedLocalisationChoice.next('inconnue');
+                    // Dans un océan
+                    // this.displayedLocalisationChoice = results[0].extra.featureName;
+                } else if (this.addressSelect.locality && this.addressSelect.countryCode) {
+                    this.displayedLocalisationChoice.next('zfrg gf');
+                    // Ville - CODE
+                    // this.displayedLocalisationChoice = this.addressSelect.locality + ' - ' + this.addressSelect.countryCode;
+                }
             });
     }
 
