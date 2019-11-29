@@ -5,7 +5,6 @@ import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-location-map',
@@ -16,16 +15,8 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
     map: GoogleMap;
     marker: Marker;
-    addressSelect: {
-        locality: string;
-        countryCode: string;
-        country: string;
-    };
-
     cities = cities;
     localisation: string;
-    displayedLocalisationChoice: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-    test;
 
     constructor(private route: ActivatedRoute,
                 private geoloc: Geolocation,
@@ -36,10 +27,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.checkStorageLoc();
-        this.displayedLocalisationChoice.subscribe(val => {
-            console.log(val);
-            this.test = val
-        })
     }
 
     ionViewWillEnter(): void {
@@ -193,32 +180,27 @@ export class LocationMapPage implements OnInit, OnDestroy {
             position: {'lat': lat, 'lng': lng}
         };
         Geocoder.geocode(options).then(
-            (results: GeocoderResult[]) => {
-                if (results.length === 0) {
-                    this.displayedLocalisationChoice.next('Localisation inconnue');
-                    // this.displayedLocalisationChoice = 'Localisation inconnue';
-                    return;
+            (locale: GeocoderResult[]) => {
+                let infoWindow;
+                console.log(locale);
+                if (locale.length === 0) {
+                    infoWindow = 'Localisation inconnue';
+                } else {
+                    if (locale[0].locality && locale[0].countryCode) {
+                        console.log('a');
+                        // Ville - CODE
+                        infoWindow = locale[0].locality + ' - ' + locale[0].countryCode;
+                    } else if (locale[0].country && !locale[0].locality && locale[0].subAdminArea) {
+                        infoWindow = locale[0].subAdminArea + ' - ' + locale[0].countryCode
+                    } else {
+                        console.log('c');
+                        // Dans un océan
+                        infoWindow = locale[0].extra.featureName;
+                    }
                 }
-                this.addressSelect = {
-                    country: results[0].country,
-                    countryCode: results[0].countryCode,
-                    locality: results[0].locality
-                };
-console.log(results);
-                if (this.addressSelect.locality === undefined) {
-                    // Si la ville n'est pas reconnue ou n'existe pas
-                    // this.displayedLocalisationChoice = this.addressSelect.country;
-                    this.displayedLocalisationChoice.next('Localisation');
-
-                } else if (!this.addressSelect.country) {
-                    this.displayedLocalisationChoice.next('inconnue');
-                    // Dans un océan
-                    // this.displayedLocalisationChoice = results[0].extra.featureName;
-                } else if (this.addressSelect.locality && this.addressSelect.countryCode) {
-                    this.displayedLocalisationChoice.next('zfrg gf');
-                    // Ville - CODE
-                    // this.displayedLocalisationChoice = this.addressSelect.locality + ' - ' + this.addressSelect.countryCode;
-                }
+                this.marker.setTitle(infoWindow);
+                this.marker.setSnippet(`Lat: ${lat}\nLng: ${lng}`);
+                this.marker.showInfoWindow();
             });
     }
 
