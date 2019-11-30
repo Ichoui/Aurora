@@ -70,9 +70,12 @@ export class Tab2Page {
             (codeLocation: CodeLocalisation) => {
                 if (!codeLocation) {
                     this.userLocalisation();
+                    console.log('aa');
                 } else if (codeLocation.code === 'currentLocation' || codeLocation.code === 'marker') {
+                    console.log('bb');
                     this.reverseGeoloc(codeLocation.lat, codeLocation.long);
                 } else {
+                    console.log('cc');
                     this.chooseAnyCity(codeLocation.code);
                 }
             },
@@ -92,7 +95,6 @@ export class Tab2Page {
      */
     userLocalisation() {
         this.geoloc.getCurrentPosition().then((resp) => {
-            this.coords = resp.coords;
             this.reverseGeoloc(resp.coords.latitude, resp.coords.longitude);
         }).catch((error) => {
             console.warn('Geolocalisation error', error);
@@ -111,6 +113,10 @@ export class Tab2Page {
      * reverseGeocode, retrouve le nom de la ville via Lat/long
      * */
     reverseGeoloc(lat: number, long: number) {
+        this.coords = {
+            latitude: lat,
+            longitude: long,
+        };
         this.nativeGeo.reverseGeocode(lat, long).then(
             (res: NativeGeocoderResult[]) => {
                 this.city = res[0].locality;
