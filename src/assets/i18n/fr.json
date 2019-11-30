@@ -127,5 +127,10 @@
     "kp": "KP Index",
     "current.position": "Position actuelle",
     "credits": "Crédits"
+  },
+  "tabmap": {
+    "title": "Localisation",
+    "select": "Localisation prédéfinie",
+    "back": "Retour"
   }
 }

@@ -7,6 +7,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { mapStyle } from '../../map-style';
 
 
 @Component({
@@ -95,7 +96,8 @@ export class Tab3Page {
                 rotate: false,
                 zoom: false,
                 tilt: false
-            }
+            },
+            styles: mapStyle,
         };
         this.map = GoogleMaps.create('map_canvas', mapOptions);
         this.map.on(GoogleMapsEvent.MAP_CLICK).pipe(

@@ -51,7 +51,7 @@ export class Tab2Page {
 
     dataError: ErrorTemplate = {
         value: false,
-        message: 'Un problème est survenu'
+        message: 'Error ...'
     };
 
     constructor(private geoloc: Geolocation,
@@ -77,7 +77,7 @@ export class Tab2Page {
                 }
             },
             error => {
-                console.warn('errorStorage', error);
+                console.warn('Local storage error', error);
                 this.dataError = {
                     value: true,
                     message: error
@@ -95,7 +95,7 @@ export class Tab2Page {
             this.coords = resp.coords;
             this.reverseGeoloc(resp.coords.latitude, resp.coords.longitude);
         }).catch((error) => {
-            console.warn('Erreur de géolocalisation', error);
+            console.warn('Geolocalisation error', error);
             this.loading = false;
             this.dataError = {
                 value: true,
@@ -119,7 +119,7 @@ export class Tab2Page {
                 this.getSolarWind();
             },
             error => {
-                console.warn('Erreur de reverse geocode', error);
+                console.warn('Reverse geocode error', error);
                 this.loading = false;
                 this.dataError = {
                     value: true,
@@ -163,7 +163,7 @@ export class Tab2Page {
                     this.trickLoading('1st');
                 },
                 error => {
-                    console.warn('Error with Dark Sky Forecast', error);
+                    console.warn('DarkSky forecast error', error);
                     this.loading = false;
                     this.dataError = {
                         value: true,
@@ -180,7 +180,7 @@ export class Tab2Page {
                     this.trickLoading('1st');
                 },
                 error => {
-                    console.warn('Error with Dark Sky Forecast', error);
+                    console.warn('DarkSky forecast error', error);
                     this.loading = false;
                     this.dataError = {
                         value: true,
@@ -202,7 +202,7 @@ export class Tab2Page {
                 this.trickLoading('2nd');
             },
             error => {
-                console.warn('Problème avec données vent solaire', error);
+                console.warn('Wind Solar data error', error);
                 this.dataError = {
                     value: true,
                     message: error.status + ' ' + error.statusText

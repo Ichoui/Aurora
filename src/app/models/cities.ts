@@ -92,6 +92,14 @@ export const cities: City[] = [
         'longitude': -149.887640
     },
     {
+        'code': 'tls',
+        'ville': 'Toulouse',
+        'pays': 'France',
+        'codePays':'FR',
+        'latitude': 43.608763,
+        'longitude': 1.436908
+    },
+    {
         'code': 'bgn',
         'ville': 'Bergen',
         'pays': 'Norvège',
@@ -117,7 +125,6 @@ export const cities: City[] = [
         'longitude': -21.940686
     }
 ];
-
 // toulouse
 // lat : 43.608763
 // long : 1.436908

@@ -1,14 +1,18 @@
-<div [routerLink]="['','tabs','tab3']" class="close"><span class="icon icon-close"></span></div>
-LOCALISATION
+<app-header titre="{{ 'tabmap.title' | translate }}"></app-header>
+<div [routerLink]="['','tabs','tab3']" class="close">
+    <span>{{ 'tabmap.back' | translate }}</span>
+    <span class="icon icon-back1"></span>
+</div>
 
 <ion-item>
-    <ion-label>Localisation prédéfinie</ion-label>
+    <ion-label>{{ 'tabmap.select' | translate }}</ion-label>
     <ion-select value="{{ localisation }}" interface="action-sheet" (ionChange)="selectedLoc($event)" cancelText="{{ 'tab3.cancel' | translate }}">
-<!--        <ion-select-option value="currentLocation">{{ 'tab3.current.position' | translate }}</ion-select-option>-->
         <ion-select-option *ngFor="let city of cities" value="{{ city.code }}">{{ city.ville }} - {{ city.codePays }} </ion-select-option>
     </ion-select>
 </ion-item>
 
-<div id="map_canvas_select">
-    <button (click)="buttonMyPosition()">ME</button>
+<div class="map-container">
+    <div id="map_canvas_select">
+        <button (click)="buttonMyPosition()"><span class="icon icon-map-target"></span></button>
+    </div>
 </div>

@@ -5,6 +5,7 @@ import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { mapStyle } from '../../map-style';
 
 @Component({
     selector: 'app-location-map',
@@ -17,6 +18,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
     marker: Marker;
     cities = cities;
     localisation: string;
+    navBack: ['','tabs','tab3'];
 
     constructor(private route: ActivatedRoute,
                 private geoloc: Geolocation,
@@ -87,12 +89,9 @@ export class LocationMapPage implements OnInit, OnDestroy {
         let mapOptions: GoogleMapOptions = {
             controls: {
                 compass: true,
-                zoom: true,
-                myLocationButton: true,
-                indoorPicker: true,
-                mapToolbar: true,
-                myLocation: true,
-            }
+                zoom: true
+            },
+            styles: mapStyle
         };
 
         this.map = GoogleMaps.create('map_canvas_select', mapOptions);
@@ -106,7 +105,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
             duration: 1200
         });
 
-        this.map.on(GoogleMapsEvent.MAP_CLICK)
+        this.map.on(GoogleMapsEvent.MAP_LONG_CLICK)
             .subscribe(
                 (params: any[]) => {
                     let latLng: LatLng = params[0];
@@ -128,8 +127,11 @@ export class LocationMapPage implements OnInit, OnDestroy {
         this.marker = this.map.addMarkerSync({
             icon: 'blue',
             flat: true,
-            draggable: true,
+            draggable: false,
             animation: 'DROP',
+            styles: {
+                'font-weight': 'bold',
+            },
             position: {
                 lat: lat,
                 lng: lng
@@ -141,7 +143,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
                 lat: lat,
                 lng: lng
             },
-            zoom: 3,
             duration: 1200
         });
     }
@@ -166,14 +167,14 @@ export class LocationMapPage implements OnInit, OnDestroy {
             this.addMarker(resp.coords.latitude, resp.coords.longitude);
             this.storage.set('localisation', {code: 'currentLocation', lat: resp.coords.latitude, long: resp.coords.longitude});
         }).catch((error) => {
-            console.warn('Error getting location', error);
+            console.warn('Error getting current location', error);
         });
     }
 
     /**
      * @param lat
      * @param lng
-     * Récupérer l'adresse en var globale
+     * Récupérer l'adresse de l'emplacement est affiche un tooltip
      * */
     reverseGeocode(lat: number, lng: number) {
         let options: GeocoderRequest = {
@@ -182,18 +183,16 @@ export class LocationMapPage implements OnInit, OnDestroy {
         Geocoder.geocode(options).then(
             (locale: GeocoderResult[]) => {
                 let infoWindow;
-                console.log(locale);
                 if (locale.length === 0) {
                     infoWindow = 'Localisation inconnue';
                 } else {
-                    if (locale[0].locality && locale[0].countryCode) {
-                        console.log('a');
+                    if (locale[0].locality && locale[0].country) {
                         // Ville - CODE
-                        infoWindow = locale[0].locality + ' - ' + locale[0].countryCode;
+                        infoWindow = locale[0].locality + ' - ' + locale[0].country;
                     } else if (locale[0].country && !locale[0].locality && locale[0].subAdminArea) {
-                        infoWindow = locale[0].subAdminArea + ' - ' + locale[0].countryCode
+                        // Des régions un peu lointaine
+                        infoWindow = locale[0].subAdminArea + ' - ' + locale[0].country
                     } else {
-                        console.log('c');
                         // Dans un océan
                         infoWindow = locale[0].extra.featureName;
                     }
