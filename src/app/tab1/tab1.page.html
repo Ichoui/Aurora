@@ -1,7 +1,7 @@
 <app-header titre="{{ 'tab1.title' | translate }}"></app-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
+    <ion-card class="welcome-card" (click)="visibility($event, 0)">
         <ion-card-header>{{'tab1.welcome.title' | translate }}</ion-card-header>
         <ion-card-content class="dont-touch" [innerHtml]="'tab1.welcome.message' | translate"></ion-card-content>
     </ion-card>
