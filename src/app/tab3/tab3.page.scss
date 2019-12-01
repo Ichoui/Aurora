@@ -23,8 +23,9 @@ ion-card {
     width: 100%;
   }
 
-  button.legal {
-    margin-top: 15px;
+  ion-button.legal {
+    margin-top: 10px;
+    font-family: var(--ion-font-light);
   }
 
   ion-img {
