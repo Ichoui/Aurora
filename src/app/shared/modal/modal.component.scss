@@ -28,3 +28,22 @@
     border: 1px solid var(--ion-color-primary);
   }
 }
+
+#cgu {
+  padding: 0 5px;
+  .title {
+    text-align: center;
+    font-family: var(--ion-font-bold);
+    margin-bottom: 10px;
+  }
+  .art-title {
+    font-family: var(--ion-font-semibold);
+    color: var(--ion-color-primary);
+    margin-bottom: 5px;
+  }
+
+  .art-msg {
+    margin-bottom: 10px;
+
+  }
+}

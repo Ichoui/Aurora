@@ -2,8 +2,8 @@
 
 <ion-content>
     <ion-card class="welcome-card">
-        <ion-card-header>{{'tab1.firstblock.welcome.title' | translate }}</ion-card-header>
-        <ion-card-content class="dont-touch">{{ 'tab1.firstblock.welcome.message' | translate }}</ion-card-content>
+        <ion-card-header>{{'tab1.welcome.title' | translate }}</ion-card-header>
+        <ion-card-content class="dont-touch" [innerHtml]="'tab1.welcome.message' | translate"></ion-card-content>
     </ion-card>
     <ion-card class="card-container">
         <ion-card-header class="header">{{ 'tab1.firstblock.header' | translate }}</ion-card-header>
