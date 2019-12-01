@@ -17,6 +17,8 @@ export class ModalComponent implements OnInit {
   @Input() globe2: string;
   @Input() globeTitle2: string;
 
+  @Input() cgu: boolean = false;
+
 
   constructor(private modalController: ModalController) { }
 

@@ -92,8 +92,8 @@
     "loading": "Votre localisation est en cours de chargement ...",
     "kp": {
       "kpindex": "Kp Index",
-     "density":" Densitée des particules (p/cc)",
-     "speed":" Vent solaire (km/h)",
+      "density": " Densitée des particules (p/cc)",
+      "speed": " Vent solaire (km/h)",
       "probability": "Vous avez {{value}}% de chances de voir une Aurore Boréale au dessus de vous"
     },
     "meteo": {
@@ -126,11 +126,32 @@
     "cancel": "Annuler",
     "kp": "KP Index",
     "current.position": "Position actuelle",
-    "credits": "Crédits"
+    "credits": "Crédits",
+    "cgu": "Mentions Légales"
   },
   "tabmap": {
     "title": "Localisation",
     "select": "Localisation prédéfinie",
     "back": "Retour"
+  },
+  "cgu": {
+    "title": "Conditions Générales d'Utilisations (CGU)",
+    "subtitle": "Application à but non-lucratif. <br>Projet développé par un passionné du sujet, à destination d'utilisateurs également passionnés souhaitant s'informer sur la visibilité d'aurores boréales.",
+    "persodata": {
+      "title": "Données personnelles",
+      "text": "<ul><li>Seules vos données de géolocalisation vous seront demandées pour veiller au bon fonctionnement de l'application. Elles sont stockées directement dans l'application, sur votre téléphone / tablette, en &laquo Local Storage &raquo.</li><li>La donnée de géolocalisation ne se créée qu'à la demande de l'utilisateur. L'application ne &laquo traque &raquo pas l'utilisateur dans ses déplacements.</li><li>Aucune information n'est collectée, transmise, utilisable ou traitée par le développeur à ce jour.</li><li>Aucun cookie n'est utilisé dans cette application.</li><li>Il n'est pas prévu à ce jour que la gestion de ces données évolue avec le temps.</li></ul>"
+    },
+    "database": {
+      "title": "Base de données",
+      "text": "Aucune base de données n'a été mise en service pour cette application.. - Aucune données personnelle ou impersonnelle n'est stockée ailleurs que sur le smartphone / tablette de l'utilisateur."
+    },
+    "advert": {
+      "title": "Publicité",
+      "text": "Aucune publicité n'est présente dans cette application. Elle est entièrement gratuite et ne génère aucuns revenus."
+    },
+    "contacts": {
+      "title": "Contacts",
+      "text": "Morgan 'Ichoui' N - Développeur indépendant<br>Joignable via réseaux sociaux ou email pour toutes suggestions / réclamations. Pour cela, rendez-vous dans l'onglet de Paramètres, et veuillez cliquer sur le bouton vert pour faire un choix."
+    }
   }
 }

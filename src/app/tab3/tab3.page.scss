@@ -1,39 +1,14 @@
 @import "../../theme/shared";
 
-
-#map_canvas {
-  height: 125px;
-  width: 100%;
-}
-
-ion-icon.gitlab {
-  width: 100%;
-  min-height: 80%;
-}
-
 ion-card {
   ion-item {
     --inner-border-width: 0 !important;
     --border-width: 0 !important;
   }
-
-  ion-img {
-    border: 2px solid var(--ion-color-primary);
-    width: auto;
-  }
-
-  ion-select {
-    color: #fff;
-
-    ion-select-option {
-      color: #fff;
-    }
-  }
-
   ion-header {
     @include header-title;
     margin-left: 0;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     &:before {
       @include bottom-header;
     }
@@ -42,4 +17,19 @@ ion-card {
       background-image: none;
     }
   }
+  #map_canvas {
+    margin-top: 15px;
+    height: 125px;
+    width: 100%;
+  }
+
+  button.legal {
+    margin-top: 15px;
+  }
+
+  ion-img {
+    border: 2px solid var(--ion-color-primary);
+    width: auto;
+  }
+
 }

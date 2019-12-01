@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { ModalModule } from '../shared/modal/modal.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
         FormsModule,
         TranslateModule,
         HeaderPageModule,
+        ModalModule,
         RouterModule.forChild([{path: '', component: Tab3Page}]),
         IonicStorageModule.forRoot({
             name: '__dbAurora',

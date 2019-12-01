@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { mapStyle } from '../../map-style';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 
 @Component({
@@ -104,6 +105,16 @@ export class Tab3Page {
             tap(e => this.navController.navigateRoot(['', 'map']))
         ).subscribe();
 
+    }
+
+    async CGU() {
+        const modal = await this.modalController.create({
+            component: ModalComponent,
+            componentProps: {
+                cgu: true,
+            }
+        });
+        return await modal.present();
     }
 
     storageNotif(): void {
