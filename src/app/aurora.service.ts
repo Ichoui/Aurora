@@ -64,4 +64,12 @@ export class AuroraService {
         };
         return this.http.post(`${environment.push_notifs}`, {body});
     }
+
+    /**
+     * @param pole {string} NORTH / SOUTH
+     * Permet de récupérer les images de la planète qui tournante avec les aurores qui s'y déplacent
+     * */
+    getOvations(pole: string): Observable<any> {
+        return this.http.get(`${environment.cors}/https://services.swpc.noaa.gov/products/animations/ovation-north.json`);
+    }
 }

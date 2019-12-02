@@ -41,5 +41,11 @@
             <div [innerHTML]="'cgu.art6.text' | translate" class="art-msg"></div>
         </div>
     </div>
+
+    <div *ngIf="canvasInput">
+        <div *ngIf="northCanvas">aaaaaaaaa</div>
+        <canvas id="canvas" #canvas width="600" height="300"></canvas>
+    </div>
+
 </ion-content>
 

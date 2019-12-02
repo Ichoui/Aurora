@@ -117,6 +117,16 @@ export class Tab3Page {
         return await modal.present();
     }
 
+    async canvas() {
+        const modal = await this.modalController.create({
+            component: ModalComponent,
+            componentProps: {
+                canvasInput: true,
+            }
+        });
+        return await modal.present();
+    }
+
     storageNotif(): void {
         this.storage.get('notifications_active').then(
             notif => {
