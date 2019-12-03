@@ -3,6 +3,10 @@ import { ModalController } from '@ionic/angular';
 import { AuroraService } from '../../aurora.service';
 import { first, take, takeUntil } from 'rxjs/operators';
 
+export interface Ovations {
+    url: string;
+}
+
 @Component({
     selector: 'app-modal',
     templateUrl: './modal.component.html',
@@ -24,7 +28,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
     northCanvas: boolean = false;
 
-    @ViewChild('canvas', { static: false }) canvas: ElementRef<HTMLCanvasElement>;
+    @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
     private ctx: CanvasRenderingContext2D;
 
     constructor(private modalController: ModalController, private auroraService: AuroraService) {
@@ -32,13 +36,10 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         console.log('eee');
-
-
-
         this.auroraService.getOvations('north').pipe(first()).subscribe(
-            e => {
+            (resp: Ovations[]) => {
                 this.northCanvas = true;
-                console.log(e);
+                this.createCanvas(resp);
             }
         );
     }
@@ -48,11 +49,29 @@ export class ModalComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.ctx = this.canvas.nativeElement.getContext('2d');
-        this.ctx.fillStyle = 'red';
-        this.ctx.fillRect(0, 0, 5, 5);
 
     }
 
+    createCanvas(resp: Ovations[]) {
+        this.ctx = this.canvas.nativeElement.getContext('2d');
+        // this.ctx.fillStyle = 'red';
+        // this.ctx.fillRect(50, 50, 55, 55);
+        const prefixUrl = 'https://services.swpc.noaa.gov/';
 
+        let tab = [
+            '/images/animations/ovation-north/ovation/images/swpc_aurora_map_n_20191203_1200.jpg',
+            '/images/animations/ovation-north/ovation/images/swpc_aurora_map_n_20191203_1205.jpg',
+            '/images/animations/ovation-north/ovation/images/swpc_aurora_map_n_20191203_1210.jpg'
+        ];
+        const img = new Image();
+        img.src = prefixUrl + tab[0];
+        // const width = 900;
+        // const height = 900;
+        this.canvas.nativeElement.width = 800;
+        this.canvas.nativeElement.height = 800;
+        img.onload = () => {
+            this.ctx.drawImage(img, 0, 0);
+        };
+
+    }
 }
