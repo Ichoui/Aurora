@@ -26,7 +26,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
     @Input() cgu: boolean = false;
     @Input() canvasInput: boolean = false;
 
-    northCanvas: boolean = false;
+    canvasModal: string = 'none';
 
     @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
     private ctx: CanvasRenderingContext2D;
@@ -36,12 +36,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         console.log('eee');
-        this.auroraService.getOvations('north').pipe(first()).subscribe(
-            (resp: Ovations[]) => {
-                this.northCanvas = true;
-                this.createCanvas(resp);
-            }
-        );
+
     }
 
     async close() {
@@ -52,26 +47,39 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
     }
 
-    createCanvas(resp: Ovations[]) {
-        this.ctx = this.canvas.nativeElement.getContext('2d');
-        // this.ctx.fillStyle = 'red';
-        // this.ctx.fillRect(50, 50, 55, 55);
-        const prefixUrl = 'https://services.swpc.noaa.gov/';
+    loadOvations(pole: string) {
+        this.auroraService.getOvations(pole).pipe(first()).subscribe(
+            (resp: Ovations[]) => {
+                this.createCanvas(resp);
+            }
+        );
+    }
 
-        let tab = [
-            '/images/animations/ovation-north/ovation/images/swpc_aurora_map_n_20191203_1200.jpg',
-            '/images/animations/ovation-north/ovation/images/swpc_aurora_map_n_20191203_1205.jpg',
-            '/images/animations/ovation-north/ovation/images/swpc_aurora_map_n_20191203_1210.jpg'
-        ];
+
+    createCanvas(resp: Ovations[]) {
+        const prefixUrl = 'https://services.swpc.noaa.gov/';
+        let tab = [];
         const img = new Image();
-        img.src = prefixUrl + tab[0];
-        // const width = 900;
-        // const height = 900;
+        this.ctx = this.canvas.nativeElement.getContext('2d');
+
         this.canvas.nativeElement.width = 800;
         this.canvas.nativeElement.height = 800;
-        img.onload = () => {
-            this.ctx.drawImage(img, 0, 0);
-        };
+
+        resp.forEach(snapshot => tab.push(snapshot.url));
+
+        let count = 0;
+        const incrementImg = setInterval(() => {
+        this.canvasModal = 'block';
+            img.src = prefixUrl + tab[count];
+            img.onload = () => {
+                this.ctx.drawImage(img, 0, 0);
+            };
+            count += 3;
+            if (count > tab.length) {
+                clearInterval(incrementImg);
+                this.canvasModal = 'none';
+            }
+        }, 300);
 
     }
 }

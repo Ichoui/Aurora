@@ -4,14 +4,15 @@
     <div *ngIf="map" class="container-map">
         <div class="title">{{ titleMap }}</div>
         <ion-img src="{{ map }}"></ion-img>
+
     </div>
     <div *ngIf="globe1" class="container-map">
         <div class="title">{{ globeTitle1 }}</div>
-        <ion-img src="{{ globe1 }}"></ion-img>
+        <ion-img src="{{ globe1 }}" (click)="loadOvations('north')"></ion-img>
     </div>
     <div *ngIf="globe2" class="container-map">
         <div class="title">{{ globeTitle2 }}</div>
-        <ion-img src="{{ globe2 }}"></ion-img>
+        <ion-img src="{{ globe2 }}" (click)="loadOvations('north')"></ion-img>
     </div>
 
     <div *ngIf="cgu" id="cgu">
@@ -42,8 +43,7 @@
         </div>
     </div>
 
-    <div *ngIf="canvasInput">
-        <div *ngIf="northCanvas">aaaaaaaaa</div>
+    <div class="modal-ovations" [style.display]="canvasModal">
         <canvas id="canvas" #canvas></canvas>
     </div>
 
