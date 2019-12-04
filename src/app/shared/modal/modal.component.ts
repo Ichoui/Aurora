@@ -2,6 +2,7 @@ import { AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnInit, 
 import { ModalController } from '@ionic/angular';
 import { AuroraService } from '../../aurora.service';
 import { first, take, takeUntil } from 'rxjs/operators';
+import { Event } from '@angular/router';
 
 export interface Ovations {
     url: string;
@@ -56,14 +57,8 @@ export class ModalComponent implements OnInit {
         await this.modalController.dismiss();
     }
 
-    northChange(e) {
-        console.log('val1', e.detail.value);
-        this.valueNorth = e.detail.value;
-    }
-
-    southChange(e) {
-        console.log('val2', e.detail.value);
-        this.valueSouth = e.detail.value;
+    valueOvationsChange(e, pole: string) {
+        pole === 'north' ? this.valueNorth = e.detail.value : this.valueSouth = e.detail.value;
     }
 
     loadOvationNorth() {
@@ -73,6 +68,16 @@ export class ModalComponent implements OnInit {
                 const prefixUrl = 'https://services.swpc.noaa.gov/';
                 resp.forEach(snapshot => this.tabNorth.push(prefixUrl + snapshot.url));
                 console.log(this.tabNorth[10]);
+                this.tabNorth.forEach(e => {
+                    const segment = e.split('/');
+                    console.log(segment);
+                    console.log(segment.split('_'));
+                    // const segmentUrl = segment[9];
+                    // console.log(segmentUrl);
+                    // const date = segmentUrl.split('');
+                    // console.log(date);
+
+                })
             }
         );
     }
@@ -86,32 +91,5 @@ export class ModalComponent implements OnInit {
                 console.log(this.tabSouth[10]);
             }
         );
-    }
-
-    createCanvas(resp: Ovations[]) {
-        let tab = [];
-        const img = new Image();
-        this.ctx = this.canvas.nativeElement.getContext('2d');
-        const prefixUrl = 'https://services.swpc.noaa.gov/';
-
-        this.canvas.nativeElement.width = 800;
-        this.canvas.nativeElement.height = 800;
-
-        resp.forEach(snapshot => tab.push(snapshot.url));
-
-        let count = 0;
-        const incrementImg = setInterval(() => {
-            // this.canvasModal = 'block';
-            img.src = prefixUrl + tab[count];
-            img.onload = () => {
-                this.ctx.drawImage(img, 0, 0);
-            };
-            count += 3;
-            if (count > tab.length) {
-                clearInterval(incrementImg);
-                // this.canvasModal = 'none';
-            }
-        }, 300);
-
     }
 }
