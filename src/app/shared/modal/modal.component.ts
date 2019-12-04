@@ -12,21 +12,32 @@ export interface Ovations {
     templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.scss'],
 })
-export class ModalComponent implements OnInit, AfterViewInit {
+export class ModalComponent implements OnInit {
 
     @Input() map: string;
     @Input() titleMap: string;
 
-    @Input() globe1: string;
-    @Input() globeTitle1: string;
+    @Input() ovation1: string;
+    @Input() ovationTitle1: string;
 
-    @Input() globe2: string;
-    @Input() globeTitle2: string;
+    @Input() ovation2: string;
+    @Input() ovationTitle2: string;
 
     @Input() cgu: boolean = false;
     @Input() canvasInput: boolean = false;
 
-    canvasModal: string = 'none';
+    canvasModal: string = 'none'; //unused : canvas style
+
+    tabNorth = [];
+    minNorth: number = 0;
+    maxNorth: number = 0;
+    valueNorth: number = 0;
+
+    tabSouth = [];
+    minSouth: number = 0;
+    maxSouth: number = 0;
+    valueSouth: number = 0;
+
 
     @ViewChild('canvas', {static: false}) canvas: ElementRef<HTMLCanvasElement>;
     private ctx: CanvasRenderingContext2D;
@@ -35,32 +46,53 @@ export class ModalComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        console.log('eee');
-
+        this.loadOvationNorth();
+        this.loadOvationSouth();
+        this.tabNorth.push(this.ovation1);
+        this.tabSouth.push(this.ovation2);
     }
 
     async close() {
         await this.modalController.dismiss();
     }
 
-    ngAfterViewInit(): void {
-
+    northChange(e) {
+        console.log('val1', e.detail.value);
+        this.valueNorth = e.detail.value;
     }
 
-    loadOvations(pole: string) {
-        this.auroraService.getOvations(pole).pipe(first()).subscribe(
+    southChange(e) {
+        console.log('val2', e.detail.value);
+        this.valueSouth = e.detail.value;
+    }
+
+    loadOvationNorth() {
+        this.auroraService.getOvations('north').pipe(first()).subscribe(
             (resp: Ovations[]) => {
-                this.createCanvas(resp);
+                this.maxNorth = resp.length;
+                const prefixUrl = 'https://services.swpc.noaa.gov/';
+                resp.forEach(snapshot => this.tabNorth.push(prefixUrl + snapshot.url));
+                console.log(this.tabNorth[10]);
             }
         );
     }
 
+    loadOvationSouth() {
+        this.auroraService.getOvations('south').pipe(first()).subscribe(
+            (resp: Ovations[]) => {
+                this.maxSouth = resp.length;
+                const prefixUrl = 'https://services.swpc.noaa.gov/';
+                resp.forEach(snapshot => this.tabSouth.push(prefixUrl + snapshot.url));
+                console.log(this.tabSouth[10]);
+            }
+        );
+    }
 
     createCanvas(resp: Ovations[]) {
-        const prefixUrl = 'https://services.swpc.noaa.gov/';
         let tab = [];
         const img = new Image();
         this.ctx = this.canvas.nativeElement.getContext('2d');
+        const prefixUrl = 'https://services.swpc.noaa.gov/';
 
         this.canvas.nativeElement.width = 800;
         this.canvas.nativeElement.height = 800;
@@ -69,7 +101,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
         let count = 0;
         const incrementImg = setInterval(() => {
-        this.canvasModal = 'block';
+            // this.canvasModal = 'block';
             img.src = prefixUrl + tab[count];
             img.onload = () => {
                 this.ctx.drawImage(img, 0, 0);
@@ -77,7 +109,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
             count += 3;
             if (count > tab.length) {
                 clearInterval(incrementImg);
-                this.canvasModal = 'none';
+                // this.canvasModal = 'none';
             }
         }, 300);
 

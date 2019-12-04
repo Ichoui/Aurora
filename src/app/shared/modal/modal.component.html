@@ -4,15 +4,22 @@
     <div *ngIf="map" class="container-map">
         <div class="title">{{ titleMap }}</div>
         <ion-img src="{{ map }}"></ion-img>
-
     </div>
-    <div *ngIf="globe1" class="container-map">
-        <div class="title">{{ globeTitle1 }}</div>
-        <ion-img src="{{ globe1 }}" (click)="loadOvations('north')"></ion-img>
+    <div *ngIf="ovation1" class="container-map">
+        <div class="title">{{ ovationTitle1 }}</div>
+        <ion-img src="{{ tabNorth[valueNorth] }}"></ion-img>
+        <ion-range [min]="minNorth" [max]="maxNorth" color="primary" (ionChange)="northChange($event)">
+            <ion-label slot="start">{{ minNorth }}</ion-label>
+            <ion-label slot="end">{{ maxNorth }}</ion-label>
+        </ion-range>
     </div>
-    <div *ngIf="globe2" class="container-map">
-        <div class="title">{{ globeTitle2 }}</div>
-        <ion-img src="{{ globe2 }}" (click)="loadOvations('north')"></ion-img>
+    <div *ngIf="ovation2" class="container-map">
+        <div class="title">{{ ovationTitle2 }}</div>
+        <ion-img src="{{ tabSouth[valueSouth] }}"></ion-img>
+        <ion-range [min]="minSouth" [max]="maxSouth" color="primary" (ionChange)="southChange($event)">
+            <ion-label slot="start">{{ minSouth }}</ion-label>
+            <ion-label slot="end">{{ maxSouth }}</ion-label>
+        </ion-range>
     </div>
 
     <div *ngIf="cgu" id="cgu">
@@ -43,9 +50,9 @@
         </div>
     </div>
 
-    <div class="modal-ovations" [style.display]="canvasModal">
-        <canvas id="canvas" #canvas></canvas>
-    </div>
+    <!--    <div class="modal-ovations" [style.display]="canvasModal">-->
+    <!--        <canvas id="canvas" #canvas></canvas>-->
+    <!--    </div>-->
 
 </ion-content>
 
