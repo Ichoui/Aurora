@@ -9,9 +9,8 @@
         <div class="title">{{ ovationTitle1 }}</div>
         <ion-img src="{{ tabNorth[valueNorth] }}"></ion-img>
         <ion-range [min]="minNorth" [max]="maxNorth" color="primary" (ionChange)="valueOvationsChange($event, 'north')">
-            <ion-label slot="start">{{ minNorth }}</ion-label>
-            <ion-label slot="end">{{ maxNorth }}</ion-label>
         </ion-range>
+        {{ HourNorth }} - {{ DateNorth }}
     </div>
     <div *ngIf="ovation2" class="container-map">
         <div class="title">{{ ovationTitle2 }}</div>
