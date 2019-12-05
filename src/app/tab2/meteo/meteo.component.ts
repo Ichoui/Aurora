@@ -227,7 +227,7 @@ export class MeteoComponent implements OnInit {
     lotties(icon: string): void {
         this.lottieConfig = {
             // path: `assets/lotties/lottie-${icon}.json`,
-            path: `assets/lotties/lottie-thunderstorm.json`,
+            path: `assets/lotties/lottie-clear-night.json`,
             renderer: 'canvas',
             autoplay: true,
             loop: true

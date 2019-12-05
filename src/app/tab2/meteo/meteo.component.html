@@ -1,12 +1,12 @@
 <div class="container">
     <div class="date">{{ actualDate }}</div>
     <div class="today">
-<!--        <lottie-animation-view-->
-<!--                [options]="lottieConfig"-->
-<!--                [width]="110"-->
-<!--                [height]="110"-->
-<!--                (animCreated)="handleAnimation($event)">-->
-<!--        </lottie-animation-view>-->
+        <lottie-animation-view
+                [options]="lottieConfig"
+                [width]="110"
+                [height]="110"
+                (animCreated)="handleAnimation($event)">
+        </lottie-animation-view>
         <div class="actual-weather">
                        <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"
                              class="icon icon-cold-wind"></span>
