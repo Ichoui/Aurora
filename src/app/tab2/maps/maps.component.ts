@@ -41,7 +41,7 @@ export class MapsComponent implements OnInit {
     }
 
     lottieMap: Object;
-    lottieOvations: Object
+    lottieOvations: Object;
 
     constructor(private modalController: ModalController, private translateService: TranslateService) {
     }
@@ -49,7 +49,6 @@ export class MapsComponent implements OnInit {
     ngOnInit() {
         this.chartNextHoursForecast();
         this.chartForecast27day();
-        this.loadLotties();
     }
 
     async showMap() {
@@ -249,22 +248,6 @@ export class MapsComponent implements OnInit {
                 break;
         }
         return color;
-    }
-
-    loadLotties(): void {
-        this.lottieMap = {
-            path: `assets/lotties/lottie-mapworld.json`,
-            renderer: 'canvas',
-            autoplay: true,
-            loop: true
-        };
-
-        this.lottieOvations = {
-            path: `assets/lotties/lottie-ovations.json`,
-            renderer: 'canvas',
-            autoplay: true,
-            loop: true
-        };
     }
 }
 

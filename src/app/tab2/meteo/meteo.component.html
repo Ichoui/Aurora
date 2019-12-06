@@ -1,12 +1,11 @@
 <div class="container">
     <div class="date">{{ actualDate }}</div>
     <div class="today">
-        <lottie-animation-view *ngIf="lottieConfig"
-                [options]="lottieConfig"
-                [width]="110"
-                [height]="110"
-                (animCreated)="handleAnimation($event)">
-        </lottie-animation-view>
+<!--        <lottie-animation-view *ngIf="lottieConfig"-->
+<!--                               [options]="lottieConfig"-->
+<!--                               [width]="110"-->
+<!--                               [height]="110">-->
+<!--        </lottie-animation-view>-->
         <div class="actual-weather">
                        <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"
                              class="icon icon-cold-wind"></span>
@@ -18,7 +17,6 @@
         <span *ngIf="currentWeather.temperature >= 34" class="icon minicons icon-hot"></span>
         <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>
     </div>
-
 
     <ion-card>
         <ion-header>{{ 'tab2.meteo.next.hours' | translate }}</ion-header>

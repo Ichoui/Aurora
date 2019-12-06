@@ -155,7 +155,7 @@ export class MeteoComponent implements OnInit {
                             family: 'Oswald-SemiBold',
                             size: 15
                         },
-                        formatter: function(value) {
+                        formatter: function (value) {
                             return value + '°';
                         },
                     }
@@ -221,9 +221,9 @@ export class MeteoComponent implements OnInit {
     }
 
     /**
-    * @param currentWeather {Currently}
+     * @param currentWeather {Currently}
      * Permet de calculer le lottie à afficher. Les cas particuliers hors API Dark Sky seront à traiter "à la mano"
-    * */
+     * */
     calculateLotties(currentWeather: Currently) {
         if ((currentWeather.temperature <= 8) && (currentWeather.icon === 'wind')) {
             this.lotties('lottie-cold-wind');
