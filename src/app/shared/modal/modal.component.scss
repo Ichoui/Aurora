@@ -27,15 +27,27 @@
   ion-img {
     border: 1px solid var(--ion-color-primary);
   }
+
+  ion-range {
+    padding: 0 15px;
+  }
+
+  .datetime {
+    text-align: center;
+    margin: 5px 0 -5px 0;
+    font-family: var(--ion-font-semibold);
+  }
 }
 
 #cgu {
   padding: 0 5px;
+
   .title {
     text-align: center;
     font-family: var(--ion-font-bold);
     margin-bottom: 10px;
   }
+
   .art-title {
     font-family: var(--ion-font-semibold);
     color: var(--ion-color-primary);
@@ -52,12 +64,3 @@
   width: 100%;
   display: block;
 }
-
-//.modal-ovations {
-//  position: absolute;
-//  background: rgba(0,0,0,.9);
-//  top: 0;
-//  bottom: 0;
-//  left: 0;
-//  right: 0;
-//}

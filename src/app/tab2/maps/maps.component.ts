@@ -40,12 +40,16 @@ export class MapsComponent implements OnInit {
         return this.kpForecast27$.getValue();
     }
 
+    lottieMap: Object;
+    lottieOvations: Object
+
     constructor(private modalController: ModalController, private translateService: TranslateService) {
     }
 
     ngOnInit() {
         this.chartNextHoursForecast();
         this.chartForecast27day();
+        this.loadLotties();
     }
 
     async showMap() {
@@ -245,6 +249,22 @@ export class MapsComponent implements OnInit {
                 break;
         }
         return color;
+    }
+
+    loadLotties(): void {
+        this.lottieMap = {
+            path: `assets/lotties/lottie-mapworld.json`,
+            renderer: 'canvas',
+            autoplay: true,
+            loop: true
+        };
+
+        this.lottieOvations = {
+            path: `assets/lotties/lottie-ovations.json`,
+            renderer: 'canvas',
+            autoplay: true,
+            loop: true
+        };
     }
 }
 

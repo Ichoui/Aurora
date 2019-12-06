@@ -16,8 +16,8 @@ export class AuroraService {
     }
 
     /**
-     * @param lat longitude
-     * @param long latitude
+     * @param lat {number} longitude
+     * @param long {number} latitude
      * get la v2 providé par aurora.live grâce au Space Weather Prediction Center
      * https://v2.api.auroras.live/images/embed/nowcast.png
      * */
@@ -32,10 +32,10 @@ export class AuroraService {
     }
 
     /**
-     * @param lat : latitude
-     * @param long : longitude
-     * @param exclude : hourly | daily
-     * @param time : Time au format UNIX (moment)
+     * @param lat {number} latitude
+     * @param long {number} longitude
+     * @param exclude {string} hourly | daily
+     * @param time {number} Time au format UNIX (moment)
      * */
     darkSkyForecast(lat: number, long: number, exclude?: string, time?: number): Observable<any> {
         const params = {

@@ -8,17 +8,15 @@
     <div *ngIf="ovation1" class="container-map">
         <div class="title">{{ ovationTitle1 }}</div>
         <ion-img src="{{ tabNorth[valueNorth] }}"></ion-img>
-        <ion-range [min]="minNorth" [max]="maxNorth" color="primary" (ionChange)="valueOvationsChange($event, 'north')">
-        </ion-range>
-        {{ HourNorth }} - {{ DateNorth }}
+        <div class="datetime">{{ HourNorth }}{{ DateNorth }}</div>
+        <ion-range [min]="minNorth" [max]="maxNorth" color="primary" (ionChange)="valueOvationsChange($event, 'north')"></ion-range>
     </div>
     <div *ngIf="ovation2" class="container-map">
         <div class="title">{{ ovationTitle2 }}</div>
         <ion-img src="{{ tabSouth[valueSouth] }}"></ion-img>
-        <ion-range [min]="minSouth" [max]="maxSouth" color="primary" (ionChange)="valueOvationsChange($event, 'south')">
-            <ion-label slot="start">{{ minSouth }}</ion-label>
-            <ion-label slot="end">{{ maxSouth }}</ion-label>
-        </ion-range>
+        <div class="datetime">{{ HourSouth }}{{ DateSouth }}</div>
+        <ion-range [min]="minSouth" [max]="maxSouth" color="primary" (ionChange)="valueOvationsChange($event, 'south')"></ion-range>
+
     </div>
 
     <div *ngIf="cgu" id="cgu">

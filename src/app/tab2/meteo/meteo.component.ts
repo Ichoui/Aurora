@@ -14,9 +14,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MeteoComponent implements OnInit {
 
-
-    // A passer en observable pour le refresh
-    // INPUTS
+    // INPUTs
     @Input() coords: Coords;
 
     @Input()
@@ -70,8 +68,6 @@ export class MeteoComponent implements OnInit {
     // lotties
     lottieConfig: Object;
     anim: any;
-    animationSpeed: number = 1;
-
 
     constructor() {
     }
@@ -80,7 +76,6 @@ export class MeteoComponent implements OnInit {
         this.todayForecast();
         this.nextHoursForecast();
         this.sevenDayForecast();
-        this.lotties(this.currentWeather.icon);
     }
 
 
@@ -89,6 +84,8 @@ export class MeteoComponent implements OnInit {
             (res: Currently) => {
                 // console.log(res);
                 this.currentWeather = res;
+                // this.lotties(this.currentWeather.icon);
+                this.calculateLotties(this.currentWeather);
                 this.actualDate = this.manageDates(res.time, 'dddd DD MMMM, HH:mm:ss');
             }
         );
@@ -103,7 +100,6 @@ export class MeteoComponent implements OnInit {
                         this.temps.push(Math.round(hours.temperature));
                         this.nextHours.push(this.manageDates(hours.time, 'HH:mm'));
                     }
-
                     const cloudy: Cloudy = {
                         percent: hours.cloudCover,
                         time: this.manageDates(hours.time, 'HH:mm')
@@ -159,7 +155,7 @@ export class MeteoComponent implements OnInit {
                             family: 'Oswald-SemiBold',
                             size: 15
                         },
-                        formatter: function (value) {
+                        formatter: function(value) {
                             return value + '°';
                         },
                     }
@@ -215,8 +211,8 @@ export class MeteoComponent implements OnInit {
 
     /**
      * Permet de gérer les dates qui sont au format Unix Timestamp (seconds)
-     * @param date Date retournée par l'API
-     * @param format Permet de choisir le formatage de la date. (ex: YYYY MM DD)
+     * @param date {number} Date retournée par l'API
+     * @param format {string} Permet de choisir le formatage de la date. (ex: YYYY MM DD)
      * .utc() pour gérer l'heure au format UTC et Input() Offset pour ajouter/soustraires les heures
      * */
     manageDates(date: number, format?: string): string | moment.Moment {
@@ -224,10 +220,26 @@ export class MeteoComponent implements OnInit {
         return unixToLocal.format(format);
     }
 
+    /**
+    * @param currentWeather {Currently}
+     * Permet de calculer le lottie à afficher. Les cas particuliers hors API Dark Sky seront à traiter "à la mano"
+    * */
+    calculateLotties(currentWeather: Currently) {
+        if ((currentWeather.temperature <= 8) && (currentWeather.icon === 'wind')) {
+            this.lotties('lottie-cold-wind');
+
+        } else if ((currentWeather.cloudCover >= 0.75) && currentWeather.icon === 'lottie-cloudy-night') {
+            this.lotties('lottie-very-cloudy-night');
+        } else {
+            this.lotties(currentWeather.icon);
+        }
+
+    }
+
     lotties(icon: string): void {
         this.lottieConfig = {
             // path: `assets/lotties/lottie-${icon}.json`,
-            path: `assets/lotties/lottie-clear-night.json`,
+            path: `assets/lotties/lottie-very-cloudy-night.json`,
             renderer: 'canvas',
             autoplay: true,
             loop: true
