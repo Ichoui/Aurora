@@ -107,8 +107,8 @@ export class Tab2Page {
     }
 
     /**
-     * @param lat
-     * @param long
+     * @param lat {number}
+     * @param long {number}
      * Si utilisateur a déjà eu accès à cette page / utilisé la tab 3 / rentré coords dans tab3
      * reverseGeocode, retrouve le nom de la ville via Lat/long
      * */
@@ -217,7 +217,7 @@ export class Tab2Page {
     }
 
     /**
-     * @param count
+     * @param count {string}
      * Gère le loader
      * Lorsque tout les appels API sont passés et le tableau égal à la valeur API_CALL_NUMBER, débloque le loader
      * */
@@ -230,7 +230,7 @@ export class Tab2Page {
     }
 
     /**
-    @param event renvoyé par le rafraichissement
+    @param event {event} renvoyé par le rafraichissement
     * Attends les retours des résultats d'API pour retirer l'animation visuelle
     * */
     doRefresh(event) {

@@ -72,7 +72,6 @@ export class ModalComponent implements OnInit {
      * */
     valueOvationsChange(e, pole: string): void {
         pole === 'north' ? this.valueNorth = e.detail.value : this.valueSouth = e.detail.value;
-        // décalage de 5 minutes, faut p'tet gérer un truc en plus :) mais marche
         if (this.datetimeNorth.length > 0 && pole === 'north') {
             this.HourNorth = this.datetimeNorth[e.detail.value][0];
             this.DateNorth = this.datetimeNorth[e.detail.value][1];

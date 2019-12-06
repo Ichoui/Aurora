@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Environment, Geocoder, GeocoderRequest, GeocoderResult, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, LatLng, Marker } from '@ionic-native/google-maps';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { cities, CodeLocalisation } from '../models/cities';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
@@ -18,9 +18,9 @@ export class LocationMapPage implements OnInit, OnDestroy {
     marker: Marker;
     cities = cities;
     localisation: string;
-    navBack: ['','tabs','tab3'];
 
     constructor(private route: ActivatedRoute,
+                private router: Router,
                 private geoloc: Geolocation,
                 private navController: NavController,
                 private storage: Storage) {
@@ -39,8 +39,8 @@ export class LocationMapPage implements OnInit, OnDestroy {
     }
 
     /**
-     * @param choice Lorsque le Select est modifié, rentre dans la condition pour modifier la valeur de localisation
-     * @param position Lorsqu'on ajoute un point sur la carte
+     * @param choice {any} Lorsque le Select est modifié, rentre dans la condition pour modifier la valeur de localisation
+     * @param position {LatLng} Lorsqu'on ajoute un point sur la carte
      * Permet de pré-remplir le select avec la valeur disponible en storage si elle existe.
      * Met également la valeur en storage pour traitement tab3
      * */
@@ -80,8 +80,8 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
 
     /**
-     * @param lat
-     * @param lng
+     * @param lat {number}
+     * @param lng {number}
      * Chargement de la carte
      * */
     loadMap(lat: number, lng: number): void {
@@ -116,8 +116,8 @@ export class LocationMapPage implements OnInit, OnDestroy {
     }
 
     /**
-     * @param lat
-     * @param lng
+     * @param lat {number}
+     * @param lng {number}
      * Permet de créer un marqueur
      * */
     addMarker(lat, lng): void {
@@ -172,8 +172,8 @@ export class LocationMapPage implements OnInit, OnDestroy {
     }
 
     /**
-     * @param lat
-     * @param lng
+     * @param lat {number}
+     * @param lng {number}
      * Récupérer l'adresse de l'emplacement est affiche un tooltip
      * */
     reverseGeocode(lat: number, lng: number) {
@@ -191,7 +191,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
                         infoWindow = locale[0].locality + ' - ' + locale[0].country;
                     } else if (locale[0].country && !locale[0].locality && locale[0].subAdminArea) {
                         // Des régions un peu lointaine
-                        infoWindow = locale[0].subAdminArea + ' - ' + locale[0].country
+                        infoWindow = locale[0].subAdminArea + ' - ' + locale[0].country;
                     } else {
                         // Dans un océan
                         infoWindow = locale[0].extra.featureName;
@@ -200,6 +200,9 @@ export class LocationMapPage implements OnInit, OnDestroy {
                 this.marker.setTitle(infoWindow);
                 this.marker.setSnippet(`Lat: ${lat}\nLng: ${lng}`);
                 this.marker.showInfoWindow();
+                this.marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
+                    this.router.navigate(['', 'tabs', 'tab2']);
+                });
             });
     }
 

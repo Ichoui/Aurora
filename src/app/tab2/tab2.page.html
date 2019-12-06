@@ -34,7 +34,7 @@
 </ion-content>
 
 <ion-content *ngIf="!loading && dataError.value" #bugs>
-    <p style="text-align: center">
+    <p class="error">
         {{ dataError.message }}
     </p>
 </ion-content>

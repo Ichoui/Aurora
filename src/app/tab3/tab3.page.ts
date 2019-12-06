@@ -148,6 +148,10 @@ export class Tab3Page {
         }
     }
 
+    /**
+     * @param url {string} Url navigable
+     * Demande à l'utilisateur d'ouvrir dans l'application au choix le lien
+     **/
     openUrl(url: string): void {
         const options: InAppBrowserOptions = {
             location: 'yes',//Or 'no'
