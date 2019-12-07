@@ -5,10 +5,12 @@ ion-card {
     --inner-border-width: 0 !important;
     --border-width: 0 !important;
   }
+
   ion-header {
     @include header-title;
     margin-left: 0;
     margin-bottom: 15px;
+
     &:before {
       @include bottom-header;
     }
@@ -17,6 +19,7 @@ ion-card {
       background-image: none;
     }
   }
+
   #map_canvas {
     margin-top: 15px;
     height: 125px;
@@ -35,4 +38,18 @@ ion-card {
     width: auto;
   }
 
+
+  &.credits {
+    color: white;
+    &:before {
+      width: 100%;
+      height: 100%;
+      content: " ";
+      background-image: url('/assets/img/artwork-auroras.jpg');
+      background-size: cover;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
 }
