@@ -9,6 +9,8 @@ import { tap } from 'rxjs/operators';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { mapStyle } from '../../map-style';
 import { ModalComponent } from '../shared/modal/modal.component';
+import { Language, Languages } from '../models/languages';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -26,16 +28,22 @@ export class Tab3Page {
     coords: Coords = {} as any;
     map: GoogleMap;
 
+    language: string = 'fr';
+    languages: Language[] = Languages;
+
+
     constructor(private storage: Storage,
                 private router: Router,
                 private geoloc: Geolocation,
                 private navController: NavController,
                 private modalController: ModalController,
+                private translateService: TranslateService,
                 private iab: InAppBrowser) {
     }
 
     ionViewWillEnter() {
         this.minimapLocation();
+        this.getLanguage();
         this.storageNotif();
     }
 
@@ -47,12 +55,9 @@ export class Tab3Page {
         // localisation format json ? {code: 'currentlocation', lat: 41.1, long: 10.41} --> pas besoin de call à chaque fois lat et long comme ça...
         this.storage.get('localisation').then(
             (codeLocation: CodeLocalisation) => {
-                console.log(codeLocation);
                 if (!codeLocation) {
-                    console.log('??');
                     this.userLocalisation();
                 } else {
-                    console.log(' cc ');
                     this.loadMap(codeLocation.lat, codeLocation.long);
                 }
             }
@@ -115,6 +120,24 @@ export class Tab3Page {
             }
         });
         return await modal.present();
+    }
+
+    /**
+     * Sélection de la langue à utiliser et update du storage
+    * */
+    selectedLanguage(event) {
+        this.language = event.detail.value;
+        this.translateService.use(this.language);
+        this.storage.set('language', this.language);
+    }
+
+    getLanguage(): void {
+        this.storage.get('language').then(
+            lg => {
+                this.translateService.use(lg);
+                this.language = lg;
+            }
+        );
     }
 
     storageNotif(): void {

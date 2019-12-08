@@ -6,6 +6,7 @@ import { Cloudy, Currently, Daily, DataDaily, Hourly } from '../../models/weathe
 import * as Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { BehaviorSubject } from 'rxjs';
+import { Storage } from '@ionic/storage';
 
 @Component({
     selector: 'app-meteo',
@@ -69,15 +70,23 @@ export class MeteoComponent implements OnInit {
     lottieConfig: Object;
     anim: any;
 
-    constructor() {
+    language: string;
+
+    constructor(private storage: Storage) {
     }
 
     ngOnInit() {
         this.todayForecast();
         this.nextHoursForecast();
         this.sevenDayForecast();
+        this.getLanguage();
     }
 
+    getLanguage(): void {
+        this.storage.get('language').then(
+            lg => this.language = lg
+        );
+    }
 
     todayForecast() {
         this.currentWeather$.subscribe(
@@ -216,7 +225,12 @@ export class MeteoComponent implements OnInit {
      * .utc() pour gérer l'heure au format UTC et Input() Offset pour ajouter/soustraires les heures
      * */
     manageDates(date: number, format?: string): string | moment.Moment {
-        const unixToLocal = moment.unix(date).utc().add(this.utc, 'h');
+        let unixToLocal;
+        if (this.language === 'fr') {
+            unixToLocal = moment.unix(date).utc().add(this.utc, 'h').locale('fr');
+        } else {
+            unixToLocal = moment.unix(date).add(this.utc, 'h').locale('en');
+        }
         return unixToLocal.format(format);
     }
 

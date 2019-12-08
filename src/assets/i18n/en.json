@@ -87,58 +87,58 @@
     }
   },
   "tab2": {
-    "title": "Aurores",
-    "loading": "Votre localisation est en cours de chargement ...",
+    "title": "Auroras",
+    "loading": "Current location loading...",
     "kp": {
       "kpindex": "Kp Index",
-      "density": " Densitée des particules (p/cc)",
-      "speed": " Vent solaire (km/h)",
-      "probability": "Vous avez {{value}}% de chances de voir une Aurore Boréale au dessus de vous"
+      "density": " Particles density (p/cc)",
+      "speed": " Solar wind (km/h)",
+      "probability": "You currently have {{value}}% chance to observe Aurora Borealis"
     },
     "meteo": {
-      "next.hours": "Les prochaines heures",
-      "seven.days": "Prévisions 7 jours",
-      "cover.clouds": "Couverture nuageuse",
-      "details": "Détails",
+      "next.hours": "Next hours forecast",
+      "seven.days": "7 days forecast",
+      "cover.clouds": "Cloud cover",
+      "details": "Details",
       "details.data": {
-        "sunrise": "Lever du soleil",
-        "sunset": "Coucher du soleil",
-        "windspeed": "Vitesse du vent",
-        "humidity": "Humidité"
+        "sunrise": "Sunrise",
+        "sunset": "Sunset",
+        "windspeed": "Wind speed",
+        "humidity": "Humidity"
       }
     },
     "maps": {
-      "worldmap": "Carte du monde",
+      "worldmap": "World map",
       "ovations": "Ovation Prime",
       "ovation.north": "Ovation North",
       "ovation.south": "Ovation South",
-      "nexthours.title": "Les prochaines heures",
+      "nexthours.title": "Next hours forecast",
       "nexthours.sub": "Kp maximum",
-      "longterm.title": "Prévisions à long termes",
+      "longterm.title": "Long term forecast",
       "longterm.sub": "Kp maximum"
     }
   },
   "tab3": {
-    "title": "Paramètres",
-    "location": "Localisation",
+    "title": "Settings",
+    "location": "Location",
     "notifications": "Notifications",
-    "cancel": "Annuler",
+    "cancel": "Cancel",
     "kp": "KP Index",
-    "current.position": "Position actuelle",
-    "credits": "Crédits",
-    "cgu": "Conditions Générales d'Utilisation",
-    "languages": "Langues"
+    "current.position": "Current location",
+    "credits": "Credits",
+    "cgu": "Terms of Use",
+    "languages": "Languages"
   },
   "tabmap": {
-    "title": "Localisation",
-    "select": "Localisation prédéfinie",
-    "back": "Retour"
+    "title": "Location",
+    "select": "Preset locations",
+    "back": "Back"
   },
   "cgu": {
-    "title": "Conditions Générales d'Utilisations (CGU)",
+    "title": "Terms of Use (only in French)",
     "art1": {
       "title": "Article 1 : Mentions légales",
-      "text": "L’édition de l’application est assurée par Mr Morgan NICOL, développeur indépendant et créatif. <br>L’application est à but non-lucratif, et est proposée dans l'unique but de renseigner un utilisateur sur des faits météorologique.<br>L'application est hébergée sur le Play Store / Apple Store, en fonction de votre smartphone.<br>Adresse de contact : <a href='mailto:morganichoui@gmail.com'>morganichoui@gmail.com</a><br>"
+      "text": "L’édition de l’application est assurée par Mr Morgan NICOL, développeur indépendant et créatif, non déclaré. <br>L’application est à but non-lucratif, et est proposée dans l'unique but de renseigner un utilisateur sur des faits météorologique.<br>L'application est hébergée sur le Play Store / Apple Store, en fonction de votre smartphone.<br>Adresse de contact : <a href='mailto:morganichoui@gmail.com'>morganichoui@gmail.com</a><br>"
     },
     "art2": {
       "title": "Article 2 : Accès et utilisation du site ",
@@ -158,7 +158,7 @@
     },
     "art6": {
       "title": "Article 6 : Contacts",
-      "text": "<b>Morgan 'Ichoui' N - Développeur web et mobile indépendant - Région de Toulouse</b><br>Joignable via réseaux sociaux ou email pour toutes suggestions / réclamations. Pour cela, rendez-vous dans l'onglet de Paramètres, et veuillez cliquer sur le bouton vert pour faire un choix."
+      "text": "<b>Morgan 'Ichoui' N - Web and mobile free developper - Toulouse</b><br>You can join me for any reclamations or suggestions. For that, use the green button in the Settings page."
     }
   }
 }

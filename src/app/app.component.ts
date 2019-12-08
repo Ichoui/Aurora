@@ -33,7 +33,7 @@ export class AppComponent {
         private auroraService: AuroraService
     ) {
         this.initializeApp();
-        translateService.setDefaultLang('fr');
+
 
     }
 
@@ -42,10 +42,15 @@ export class AppComponent {
             this.statusBar.styleLightContent();
             this.statusBar.backgroundColorByHexString('#2a2a2a');
             this.splashScreen.hide();
+
             this.getKp();
             this.isNotifsActive();
 
-            Environment.setBackgroundColor('#2a2a2a');
+            this.translateService.addLangs(['fr', 'en']);
+            this.translateService.setDefaultLang('fr');
+            this.getLanguage();
+
+            Environment.setBackgroundColor('#2a2a2a'); // Permet d'éviter un soucis de couleur d'affichage dûe à gmap
             const notificationFile = new Notifications(this.platform, this.oneSignal, this.auroraService, this.alertCtrl);
             // notificationFile.isCordova();
             // notificationFile.invokePush()
@@ -78,5 +83,11 @@ export class AppComponent {
 
     }
 
+    getLanguage(): void {
+        this.storage.get('language').then(
+            lg => this.translateService.use(lg),
+            noValue => this.storage.set('language', 'fr')
+        );
+    }
 
 }
