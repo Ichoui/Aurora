@@ -6,9 +6,9 @@
       "message": "Cette application a été pensée pour tout utilisateur s'intéressant au phénomène des Aurores Boréales.<br>Que vous viviez dans un pays lointain du phénomène, ou que vous soyez un chasseur d'aurores assidu, cette application vous permettra de vous informer quant à la probabilité de voir une Aurore Boréale, grâce aux données du Space Weather Prediction Center.<br> Une partie météo est intégrée à l'application, pour optimiser vos recherches."
     },
     "firstblock": {
-      "header": "Aurora Borealis ?",
+      "header": "Aurora Borealis",
       "how": {
-        "title": "Mécanisme ?",
+        "title": "How it works ?",
         "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le <b>Soleil</b>.<br>Elles apparaissent lorsque des <b>particules solaires</b>, propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles sont attirées vers les pôles magnétiques, où elles interagissent avec les couches supérieures de l'atmosphère : ozone, oxygène, hydrogène et autres gaz. De l'énergie se créé alors et devient visible sous forme de lumières dansantes.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), c'est à dire dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques et scientifiques, je vous propose les sites suivants :<ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
       },
       "solarwind": {
@@ -75,9 +75,9 @@
       }
     },
     "secondblock": {
-      "header": "Forecasts ?",
+      "header": "Forecasts",
       "forecast": {
-        "title": "Comment peut-on prévoir ce phénomène ?",
+        "title": "How can we predict Auroras ?",
         "message": "Grâce à un satellite nommé ACE, qui a pour mission d'étudier les particules solaires.<br>Les données sont ensuite traitée par le &laquo; Space Weather Prediction Center &raquo; qui est un service météorologique situé aux Etats-Unis.<br>Grâce à de savants calculs autour des particules solaires, il est alors possible de prévoir les Aurores, notamment grâce à l'indice Kp."
       },
       "kp": {
