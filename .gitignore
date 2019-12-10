@@ -33,3 +33,4 @@ npm-debug.log*
 /environments/keep.ts
 keep.ts
 
+aurora-release-key.keystore
