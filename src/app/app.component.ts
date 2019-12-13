@@ -42,16 +42,14 @@ export class AppComponent {
             this.statusBar.styleLightContent();
             this.statusBar.backgroundColorByHexString('#2a2a2a');
             this.splashScreen.hide();
-
-            this.getKp();
-            this.isNotifsActive();
+            Environment.setBackgroundColor('#2a2a2a'); // Permet d'éviter un soucis de couleur d'affichage dûe à gmap
 
             this.translateService.addLangs(['fr', 'en']);
-            this.translateService.setDefaultLang('fr');
             this.getLanguage();
 
-            Environment.setBackgroundColor('#2a2a2a'); // Permet d'éviter un soucis de couleur d'affichage dûe à gmap
-            const notificationFile = new Notifications(this.platform, this.oneSignal, this.auroraService, this.alertCtrl);
+            // this.getKp();
+            // this.isNotifsActive();
+            // const notificationFile = new Notifications(this.platform, this.oneSignal, this.auroraService, this.alertCtrl);
             // notificationFile.isCordova();
             // notificationFile.invokePush()
         });
@@ -85,8 +83,19 @@ export class AppComponent {
 
     getLanguage(): void {
         this.storage.get('language').then(
-            lg => this.translateService.use(lg),
-            noValue => this.storage.set('language', 'fr')
+            lg => {
+                if (lg) {
+                    this.translateService.setDefaultLang(lg);
+                    this.storage.set('language', lg);
+                } else {
+                    this.translateService.setDefaultLang('fr');
+                    this.storage.set('language', 'fr');
+                }
+            },
+            noValue => {
+                this.storage.set('language', 'fr');
+                console.log('novalue', noValue);
+            }
         );
     }
 
