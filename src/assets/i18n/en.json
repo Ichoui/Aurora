@@ -13,7 +13,7 @@
       },
       "solarwind": {
         "title": "Solar wind",
-        "message": "Le vent solaire est un <b>plasma</b> (un gaz constitué principalement d'électrons, d'ions et de protons). Il existe 2 type de vents solaires :<ul><li>le lent (environ 300 km/s)</li><li>le rapide (entre 500 et 800 km/s)</li></ul> C'est le second qui a un impact direct sur la Terre, et qui est soumis à l'activité et aux cycles solaires.<br>Le vent solaire est émis continuellement, mais son émission peut dépendre de certains phénomènes, comme les trous coronaux ou encore les éruptions solaires, qui peuvent amplifier sa <b>vitesse<b> et sa <b>densité<b>. Plus ces caractéristiques seront élevées, et plus les Aurores Boréales seront intenses.<br>"
+        "message": "Le vent solaire est un <b>plasma</b> (un gaz constitué principalement d'électrons, d'ions et de protons). Il existe 2 type de vents solaires :<ul><li>le lent (environ 300 km/s)</li><li>le rapide (entre 500 et 800 km/s)</li></ul> C'est le second qui a un impact direct sur la Terre, et qui est soumis à l'activité et aux cycles solaires.<br>Le vent solaire est émis continuellement, mais son émission peut dépendre de certains phénomènes, comme les trous coronaux ou encore les éruptions solaires, qui peuvent amplifier sa <b>vitesse</b> et sa <b>densité</b>.<br>Plus ces caractéristiques seront élevées, et plus les Aurores Boréales seront intenses.<br>"
       },
       "colors": {
         "title": "Green, purple or pink",
