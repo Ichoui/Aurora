@@ -9,11 +9,11 @@
       "header": "Aurora Borealis",
       "how": {
         "title": "How it works ?",
-        "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le <b>Soleil</b>.<br>Elles apparaissent lorsque des <b>particules solaires</b>, propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles sont attirées vers les pôles magnétiques, où elles interagissent avec les couches supérieures de l'atmosphère : ozone, oxygène, hydrogène et autres gaz. De l'énergie se créé alors et devient visible sous forme de lumières dansantes.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), c'est à dire dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques et scientifiques, je vous propose les sites suivants :<ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
+        "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le <b>Soleil</b>.<br>Elles apparaissent lorsque des <b>particules solaires</b>, propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles se produisent à proximité des pôles magnétiques, dans la <b>zone aurorale<b> (située entre 65 et 75° de latitude), où elles interagissent avec les couches supérieures de l'atmosphère : ozone, oxygène, hydrogène et autres gaz. De l'énergie se créé alors et devient visible sous forme de lumières dansantes.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), c'est à dire dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques et scientifiques, je vous propose les sites suivants :<ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
       },
       "solarwind": {
         "title": "Solar wind",
-        "message": "Le vent solaire est un <b>plasma</b> (un gaz constitué principalement d'électrons, d'ions et de protons). Il existe 2 type de vents solaires :<ul><li>le lent (environ 300 km/s)</li><li>le rapide (entre 500 et 800 km/s)</li></ul> C'est le second qui a un impact direct sur la Terre, et qui est soumis à l'activité et aux cycles solaires.<br>  vent solaire BZ densité vitesse ..."
+        "message": "Le vent solaire est un <b>plasma</b> (un gaz constitué principalement d'électrons, d'ions et de protons). Il existe 2 type de vents solaires :<ul><li>le lent (environ 300 km/s)</li><li>le rapide (entre 500 et 800 km/s)</li></ul> C'est le second qui a un impact direct sur la Terre, et qui est soumis à l'activité et aux cycles solaires.<br>Le vent solaire est émis continuellement, mais son émission peut dépendre de certains phénomènes, comme les trous coronaux ou encore les éruptions solaires, qui peuvent amplifier sa <b>vitesse<b> et sa <b>densité<b>. Plus ces caractéristiques seront élevées, et plus les Aurores Boréales seront intenses.<br>"
       },
       "colors": {
         "title": "Green, purple or pink",
@@ -121,13 +121,15 @@
   "tab3": {
     "title": "Settings",
     "location": "Location",
+    "sublocation": "Tap to choose your location",
     "notifications": "Notifications",
     "cancel": "Cancel",
     "kp": "KP Index",
     "current.position": "Current location",
     "credits": "Credits",
     "cgu": "Terms of Use",
-    "languages": "Languages"
+    "languages": "Languages",
+    "sublanguages": "Choose your language"
   },
   "tabmap": {
     "title": "Location",
@@ -154,7 +156,7 @@
     },
     "art5": {
       "title": "Article 5 : Garantie et Responsabilité ",
-      "text": "L’application dépend exclusivement des données fournies par d’autres services en ligne, gratuit ou payant. Le développeur se réserve le droit :<ul><li>>Suspendre le site momentanément ou définitivement</li><li>tModifier le cœur de l’application, et demander à l’avenir plus de renseignements à l’utilisateur, qui sera prévenu de ces évolutions au travers d’une mise à jour</li></ul>"
+      "text": "L’application dépend exclusivement des données fournies par d’autres services en ligne, gratuit ou payant. Le développeur se réserve le droit :<ul><li>Suspendre le site momentanément ou définitivement</li><li>tModifier le cœur de l’application, et demander à l’avenir plus de renseignements à l’utilisateur, qui sera prévenu de ces évolutions au travers d’une mise à jour</li></ul>"
     },
     "art6": {
       "title": "Article 6 : Contacts",

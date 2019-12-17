@@ -4,9 +4,8 @@
     <ion-card>
         <ion-card-content>
             <div class="google-maps">
-                <ion-header>
-                    {{ 'tab3.location' | translate }}
-                </ion-header>
+                <ion-header>{{ 'tab3.location' | translate }}</ion-header>
+                <div class="sub">{{ 'tab3.sublocation' | translate }}</div>
                 <div id="map_canvas"></div>
             </div>
         </ion-card-content>
@@ -30,6 +29,7 @@
     <ion-card>
         <ion-card-content>
             <ion-header>{{ 'tab3.languages' | translate }}</ion-header>
+            <div class="sub">{{ 'tab3.sublanguages' | translate }}</div>
             <ion-item>
                 <ion-select value="{{ language }}" interface="action-sheet" (ionChange)="selectedLanguage($event)" cancelText="{{ 'tab3.cancel' | translate }}">
                     <ion-select-option *ngFor="let lg of languages" value="{{ lg.slug }}">
@@ -43,7 +43,7 @@
 
     <ion-card class="credits">
         <ion-card-content>
-            <ion-header>{{ 'tab3.credits' | translate }}</ion-header>
+            <ion-header class="credits">{{ 'tab3.credits' | translate }}</ion-header>
             <!--  <p>Weather Lotties made by my friend <a>Blue Pixel</a></p>-->
             <p>Aurora datas provided by <a href="#" (click)="openUrl('http://auroraslive.io/#/')">Auroras.live API</a></p>
             <p>Weather Powered by <a href="#" (click)="openUrl('https://darksky.net/poweredby/')">Dark Sky</a></p>

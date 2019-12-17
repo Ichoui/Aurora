@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.aurora.start" version="0.1.1">
-    <name>Aurora - NorthenLight</name>
-    <description>Application NorthenLight</description>
+    <name>Aurora - Northen Lights</name>
+    <description>Application Northen Lights</description>
     <author email="morganichoui@gmail.com" href="#">Morgan NICOL</author>
-    <content original-src="index.html" src="https://localhost:8100" />
+    <content original-src="index.html" src="http://192.168.10.58:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -105,4 +105,5 @@
     <allow-navigation href="https://localhost:8100" sessionid="bc8ee852" />
     <allow-navigation href="https://192.168.10.92:8100" sessionid="b14e50c5" />
     <allow-navigation href="https://192.168.10.58:8100" sessionid="85bfe339" />
+    <allow-navigation href="http://192.168.10.58:8100" sessionid="b968663c" />
 </widget>

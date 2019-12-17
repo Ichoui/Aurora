@@ -9,7 +9,6 @@ ion-card {
   ion-header {
     @include header-title;
     margin-left: 0;
-    margin-bottom: 15px;
 
     &:before {
       @include bottom-header;
@@ -18,6 +17,16 @@ ion-card {
     &:after {
       background-image: none;
     }
+
+    &.credits {
+      margin-bottom: 15px;
+    }
+  }
+
+  .sub {
+    @include subtitle-header;
+    margin-bottom: 15px;
+    margin-left: 0;
   }
 
   #map_canvas {
@@ -41,6 +50,7 @@ ion-card {
 
   &.credits {
     color: white;
+
     &:before {
       width: 100%;
       height: 100%;
