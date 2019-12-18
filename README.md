@@ -1,4 +1,4 @@
-# Aurora Northen Lights Project
+# Aurora Northern Lights Project
 
 ### Installation
 `npm i` for dependencies
@@ -14,7 +14,7 @@ You will need an DarkSky API Key (free up to 1000 calls/day, then 1€/10.000 ca
 
 
 ### About 
-Aurora Northen Lights Forecast & Weather. 
+Aurora Northern Lights Forecast & Weather. 
 <br>
 Mobile App (IONIC Angular).
 This project will be deployed on Android mobile devices in a first time. 

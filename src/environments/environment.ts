@@ -12,7 +12,7 @@ export const environment = {
   aurora_v2_api: 'https://v2.api.auroras.live',
   push_notifs : 'https://onesignal.com/api/v1/notifications',
   apikey: DARKSKY_API_KEY,
-  application_name: 'Aurora - Northen Light',
+  application_name: 'Aurora - Northern Light',
 };
 
 
