@@ -28,14 +28,44 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
 
     ngOnInit(): void {
+        this.removeMarker();
+        console.log();
         this.checkStorageLoc();
+
     }
 
     ionViewWillEnter(): void {
     }
 
+    ionViewDidLeave() {
+        // this.removeMarker();
+    }
+
     ngOnDestroy(): void {
         this.removeMarker();
+    }
+    test() {
+        console.log('ccc');
+        this.removeMarker();
+
+    }
+
+
+    /**
+     * Si storage vide, set valeur à location actuelle ET valeur du select à position actuelle
+     * Sinon, set valeur du select à la position indiquée dans storage
+     * */
+    checkStorageLoc(): void {
+        this.storage.get('localisation').then(
+            (codeLocation: CodeLocalisation) => {
+                if (codeLocation) {
+                    this.localisation = codeLocation.code;
+                    this.loadMap(codeLocation.lat, codeLocation.long);
+                    this.addMarker(codeLocation.lat, codeLocation.long);
+                }
+            },
+            error => console.warn('Il y a un soucis de storage de position', error)
+        );
     }
 
     /**
@@ -62,29 +92,12 @@ export class LocationMapPage implements OnInit, OnDestroy {
     }
 
     /**
-     * Si storage vide, set valeur à location actuelle ET valeur du select à position actuelle
-     * Sinon, set valeur du select à la position indiquée dans storage
-     * */
-    checkStorageLoc(): void {
-        this.storage.get('localisation').then(
-            (codeLocation: CodeLocalisation) => {
-                if (codeLocation) {
-                    this.localisation = codeLocation.code;
-                    this.loadMap(codeLocation.lat, codeLocation.long);
-                    this.addMarker(codeLocation.lat, codeLocation.long);
-                }
-            },
-            error => console.warn('Il y a un soucis de storage de position', error)
-        );
-    }
-
-
-    /**
      * @param lat {number}
      * @param lng {number}
      * Chargement de la carte
      * */
     loadMap(lat: number, lng: number): void {
+        console.log(lat, lng);
         Environment.setBackgroundColor('#2a2a2a');
         let mapOptions: GoogleMapOptions = {
             controls: {
@@ -137,7 +150,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
                 lng: lng
             }
         });
-
         this.map.animateCamera({
             target: {
                 lat: lat,
