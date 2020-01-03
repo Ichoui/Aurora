@@ -44,11 +44,11 @@ export class LocationMapPage implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.removeMarker();
     }
-    test() {
-        console.log('ccc');
-        this.removeMarker();
-
-    }
+    // test() {
+    //     console.log('ccc');
+    //     this.removeMarker();
+    //
+    // }
 
 
     /**
