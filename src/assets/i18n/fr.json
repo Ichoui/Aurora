@@ -115,7 +115,8 @@
       "nexthours.title": "Les prochaines heures",
       "nexthours.sub": "Kp maximum",
       "longterm.title": "Prévisions à long termes",
-      "longterm.sub": "Kp maximum"
+      "longterm.sub": "Kp maximum",
+      "solarwind": "Vent solaire"
     }
   },
   "tab3": {

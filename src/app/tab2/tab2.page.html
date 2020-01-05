@@ -14,7 +14,15 @@
         <div class="refresh whirly-loader"></div>
     </ion-refresher>
 
-    <h2 class="ion-text-center"><span>{{ city }}</span><span>{{ country }}</span></h2><br>
+    <h2 class="ion-text-center">
+        <span class="city">
+            <span>
+            <ion-icon name="pin"></ion-icon>
+                {{ city }}
+            </span>
+        </span>
+        <span class="country">{{ country }}</span>
+    </h2>
     <ion-slides [options]="slideOpts">
         <ion-slide>
             <app-meteo [coords]="coords"

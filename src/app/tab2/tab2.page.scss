@@ -5,13 +5,20 @@
 }
 
 h2 {
-  margin: 10px auto 0;
+  margin: 10px auto 5px;
 
-  span:first-child {
+  .city {
+    position: relative;
     display: block;
+    span {
+      position: relative;
+      ion-icon {
+        font-size: 0.8em;
+      }
+    }
   }
 
-  span:last-child {
+  .country {
     display: block;
     font-size: .55em;
     text-transform: uppercase;

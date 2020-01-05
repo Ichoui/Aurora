@@ -3,7 +3,7 @@
     <name>Aurora - Northern Lights</name>
     <description>Application Northern Lights</description>
     <author email="morganichoui@gmail.com" href="#">Morgan NICOL</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="https://localhost:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
