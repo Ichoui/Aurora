@@ -83,7 +83,7 @@ export class Tab3Page {
      * @param long
      * */
     loadMap(lat?, long?): void {
-        Environment.setBackgroundColor('#2a2a2a');
+        // Environment.setBackgroundColor('#2a2a2a');
 
         let mapOptions: GoogleMapOptions = {
             controls: {

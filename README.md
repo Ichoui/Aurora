@@ -11,8 +11,6 @@
 You will need an DarkSky API Key (free up to 1000 calls/day, then 1€/10.000 calls), a Firebase project & a OneSignal free account.
 
 
-
-
 ### About 
 Aurora Northern Lights Forecast & Weather. 
 <br>

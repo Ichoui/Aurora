@@ -46,6 +46,8 @@
         <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
+        <preference default="27.+" name="ANDROID_SUPPORT_V4_VERSION" />
+        <framework src="com.android.support:supportv4:$ANDROID_SUPPORT_V4_VERSION" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

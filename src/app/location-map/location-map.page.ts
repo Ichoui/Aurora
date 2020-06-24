@@ -98,7 +98,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
      * */
     loadMap(lat: number, lng: number): void {
         console.log(lat, lng);
-        Environment.setBackgroundColor('#2a2a2a');
+        // Environment.setBackgroundColor('#2a2a2a');
         let mapOptions: GoogleMapOptions = {
             controls: {
                 compass: true,
