@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { CodeLocalisation, Coords } from '../models/cities';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
-import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent } from '@ionic-native/google-maps';
+import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent } from '@ionic-native/google-maps/ngx';
 import { ModalController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { mapStyle } from '../../map-style';
 import { ModalComponent } from '../shared/modal/modal.component';
 import { Language, Languages } from '../models/languages';
 import { TranslateService } from '@ngx-translate/core';
+import { GoogleMapsService } from '../google-maps.service';
 
 
 @Component({
@@ -38,11 +39,14 @@ export class Tab3Page {
                 private navController: NavController,
                 private modalController: ModalController,
                 private translateService: TranslateService,
+                private GoogleMapsService: GoogleMapsService,
                 private iab: InAppBrowser) {
     }
 
     ionViewWillEnter() {
-        this.minimapLocation();
+        this.GoogleMapsService.loadSDK().then(s => {
+            this.minimapLocation();
+        });
         this.getLanguage();
         this.storageNotif();
     }

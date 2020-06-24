@@ -4,7 +4,7 @@
   "author": "Morgan N",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "start:browser _angular": "ng serve --port=4254 -o --proxy-config angular-proxy.json",
+    "start:browser_angular": "ng serve --port=4254 -o --proxy-config angular-proxy.json",
     "start:android_emulate": "ionic cordova emulate android",
     "start:android_cordova_run_livereload": "ionic cordova run android --livereload --ssl",
     "start+build:android_cordova_run": "ionic cordova run android",
@@ -60,6 +60,7 @@
     "moment": "^2.24.0",
     "ng-lottie": "^0.3.2",
     "onesignal-cordova-plugin": "^2.7.0",
+    "prettier": "^2.0.5",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -80,12 +81,6 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
-    "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-ionic-keyboard": "^2.2.0",
-    "cordova-plugin-ionic-webview": "^4.2.1",
-    "cordova-plugin-splashscreen": "^5.0.2",
-    "cordova-plugin-statusbar": "^2.4.2",
-    "cordova-plugin-whitelist": "^1.3.3",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
     "gulp-inject-string": "^1.1.1",
@@ -107,7 +102,6 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-statusbar": {},
       "cordova-plugin-geolocation": {},
       "cordova-plugin-googlemaps": {},
       "cordova-plugin-inappbrowser": {},
@@ -116,7 +110,6 @@
       "onesignal-cordova-plugin": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {}
     },
