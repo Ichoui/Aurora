@@ -46,6 +46,7 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "@types/chart.js": "^2.8.11",
+    "@types/googlemaps": "^3.39.8",
     "chart.js": "^2.9.2",
     "chartjs-plugin-datalabels": "^0.7.0",
     "cordova-browser": "6.0.0",
@@ -108,13 +109,7 @@
       "cordova-plugin-nativegeocoder": {},
       "cordova-sqlite-storage": {},
       "onesignal-cordova-plugin": {},
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
-    },
-    "platforms": [
-      "browser"
-    ]
+      "cordova-plugin-whitelist": {}
+    }
   }
 }

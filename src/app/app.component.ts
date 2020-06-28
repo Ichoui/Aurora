@@ -39,9 +39,9 @@ export class AppComponent {
 
     initializeApp() {
         this.platform.ready().then(() => {
-            this.statusBar.styleLightContent();
-            this.statusBar.backgroundColorByHexString('#2a2a2a');
-            this.splashScreen.hide();
+            // this.statusBar.styleLightContent();
+            // this.statusBar.backgroundColorByHexString('#2a2a2a');
+            // this.splashScreen.hide();
             // Environment.setBackgroundColor('#2a2a2a'); // Permet d'éviter un soucis de couleur d'affichage dûe à gmap
 
             this.translateService.addLangs(['fr', 'en']);
