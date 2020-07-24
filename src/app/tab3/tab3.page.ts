@@ -1,38 +1,16 @@
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  RendererFactory2,
-  Renderer2,
-  Inject, AfterViewInit,
-} from '@angular/core';
-import { Storage } from "@ionic/storage";
-import { CodeLocalisation, Coords } from "../models/cities";
-import {
-  InAppBrowser,
-  InAppBrowserOptions,
-} from "@ionic-native/in-app-browser/ngx";
-import {
-  Environment,
-  GoogleMap,
-  GoogleMapOptions,
-  GoogleMaps,
-  GoogleMapsEvent,
-} from "@ionic-native/google-maps/ngx";
-import { ModalController, NavController } from "@ionic/angular";
-import { Router } from "@angular/router";
-import { tap } from "rxjs/operators";
-import { mapStyle } from "../../map-style";
-import { ModalComponent } from "../shared/modal/modal.component";
-import { Language, Languages } from "../models/languages";
-import { TranslateService } from "@ngx-translate/core";
+import { AfterViewInit, Component, ElementRef, Inject, Renderer2, RendererFactory2, ViewChild, } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { CodeLocalisation, Coords } from '../models/cities';
+import { InAppBrowser, InAppBrowserOptions, } from '@ionic-native/in-app-browser/ngx';
+import { ModalController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { ModalComponent } from '../shared/modal/modal.component';
+import { Language, Languages } from '../models/languages';
+import { TranslateService } from '@ngx-translate/core';
+import { Map } from "leaflet";
 
-import { Geolocation } from "@ionic-native/geolocation/ngx";
-import { GOOGLE_API_KEY } from "../../environments/keep";
-import { DOCUMENT } from "@angular/common";
-import { viewClassName } from '@angular/compiler';
-// import { Plugins } from '@capacitor/core';
-// const { Geolocation } = Plugins;
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { DOCUMENT } from '@angular/common';
 
 declare var google;
 
@@ -48,7 +26,6 @@ export class Tab3Page implements AfterViewInit{
   notifKp;
 
   coords: Coords = {} as any;
-  // map: GoogleMap;
   map: any;
 
   language: string = "fr";
@@ -121,11 +98,10 @@ export class Tab3Page implements AfterViewInit{
   mapInit(lat?, long?): void {
     // Environment.setBackgroundColor('#2a2a2a');
 
-    let mapOptions: GoogleMapOptions = {
+    let mapOptions = {
       controls: {
         compass: false,
       },
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
       camera: {
         target: {
           lat: lat,
@@ -141,33 +117,18 @@ export class Tab3Page implements AfterViewInit{
         tilt: false,
       }
     };
-      // styles: mapStyle,
 
-    // this.map = GoogleMaps.create('map_canvas', mapOptions);
-    console.log(this.mapElement.nativeElement);
-    console.log(document.getElementById("map_canvas"));
-    this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    // }).addTo(map);
+    //
+    // L.marker([51.5, -0.09]).addTo(map)
+    //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    //     .openPopup();
+    // this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    this.map = new Map('map_canvas').setView([43.608030, 1.467292], 10 );
     console.log(this.map);
 
-    // function ini()
-    // {
-    //   var mapOptions =
-    //       {
-    //         center: new google.maps.LatLng(37.7831, -122.4039),
-    //         zoom: 12,
-    //         mapTypeId: google.maps.MapTypeId.ROADMAP
-    //       }
-    //
-    //   map= new google.maps.Map(document.getElementById("map"), mapOptions);
-    //   console.log(map);
-    // }
-    //
-    // ini();
-
-
-    /*        this.map.on(GoogleMapsEvent.MAP_CLICK).pipe(
-            tap(e => this.navController.navigateRoot(['', 'map']))
-        ).subscribe();*/
   }
 
   async CGU() {

@@ -1,6 +1,6 @@
 {
   "name": "aurora-northern-lights",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Morgan N",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -47,6 +47,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@types/chart.js": "^2.8.11",
     "@types/googlemaps": "^3.39.8",
+    "@types/leaflet": "^1.5.17",
     "chart.js": "^2.9.2",
     "chartjs-plugin-datalabels": "^0.7.0",
     "cordova-browser": "6.0.0",
@@ -58,6 +59,7 @@
     "cordova-sqlite-storage": "^3.4.0",
     "core-js": "^2.5.4",
     "jetifier": "^1.6.5",
+    "leaflet": "^1.6.0",
     "moment": "^2.24.0",
     "ng-lottie": "^0.3.2",
     "onesignal-cordova-plugin": "^2.7.0",
