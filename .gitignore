@@ -27,11 +27,15 @@ npm-debug.log*
 /dist
 /node_modules
 /platforms
+/android
+/ios
 /plugins
 /www
 /resources
 
+
 /environments/keep.ts
 keep.ts
+
 
 aurora-release-key.keystore

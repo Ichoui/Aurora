@@ -1,16 +1,27 @@
-import { AfterViewInit, Component, ElementRef, Inject, Renderer2, RendererFactory2, ViewChild, } from '@angular/core';
-import { Storage } from '@ionic/storage';
-import { CodeLocalisation, Coords } from '../models/cities';
-import { InAppBrowser, InAppBrowserOptions, } from '@ionic-native/in-app-browser/ngx';
-import { ModalController, NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { ModalComponent } from '../shared/modal/modal.component';
-import { Language, Languages } from '../models/languages';
-import { TranslateService } from '@ngx-translate/core';
-import { Map } from "leaflet";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  Renderer2,
+  RendererFactory2,
+  ViewChild,
+} from "@angular/core";
+import { Storage } from "@ionic/storage";
+import { CodeLocalisation, Coords } from "../models/cities";
+import {
+  InAppBrowser,
+  InAppBrowserOptions,
+} from "@ionic-native/in-app-browser/ngx";
+import { ModalController, NavController } from "@ionic/angular";
+import { Router } from "@angular/router";
+import { ModalComponent } from "../shared/modal/modal.component";
+import { Language, Languages } from "../models/languages";
+import { TranslateService } from "@ngx-translate/core";
+import { Map, tileLayer, ZoomPanOptions } from 'leaflet';
 
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { DOCUMENT } from '@angular/common';
+import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { DOCUMENT } from "@angular/common";
 
 declare var google;
 
@@ -19,14 +30,14 @@ declare var google;
   templateUrl: "tab3.page.html",
   styleUrls: ["tab3.page.scss"],
 })
-export class Tab3Page implements AfterViewInit{
+export class Tab3Page implements AfterViewInit {
   kpindex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   localisation: string;
   notifications: boolean = false;
   notifKp;
 
   coords: Coords = {} as any;
-  map: any;
+  map: Map;
 
   language: string = "fr";
   languages: Language[] = Languages;
@@ -52,7 +63,7 @@ export class Tab3Page implements AfterViewInit{
   ngAfterViewInit() {
     this.minimapLocation();
     this.getLanguage();
-    this.storageNotif();
+    // this.storageNotif();
   }
 
   /**
@@ -96,39 +107,30 @@ export class Tab3Page implements AfterViewInit{
    * @param long
    * */
   mapInit(lat?, long?): void {
-    // Environment.setBackgroundColor('#2a2a2a');
+    let mapOpt: ZoomPanOptions  = {
+      noMoveStart: false,
+      animate:false
+    }
 
-    let mapOptions = {
-      controls: {
-        compass: false,
-      },
-      camera: {
-        target: {
-          lat: lat,
-          lng: long,
-        },
-        zoom: 10,
-        tilt: 90,
-      },
-      gestures: {
-        scroll: false,
-        rotate: false,
-        zoom: false,
-        tilt: false,
-      }
-    };
-
-    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    // }).addTo(map);
     //
     // L.marker([51.5, -0.09]).addTo(map)
     //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     //     .openPopup();
     // this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-    this.map = new Map('map_canvas').setView([43.608030, 1.467292], 10 );
-    console.log(this.map);
 
+    if (lat && long) {
+      this.map = new Map("map_canvas").setView([lat, long], 10, mapOpt);
+    } else {
+      this.map = new Map("map_canvas").setView([43.60803, 1.467292], 10, mapOpt);
+    }
+    this.map.dragging.disable();
+    this.map.zoomControl.remove();
+
+
+    tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        ' <div style="font-size: 1em">&copy;<a href="https://www.openstreetmap.org/copyright">OSM</a></div>',
+    }).addTo(this.map);
   }
 
   async CGU() {
@@ -157,24 +159,25 @@ export class Tab3Page implements AfterViewInit{
     });
   }
 
-  storageNotif(): void {
-    this.storage.get("notifications_active").then(
-      (notif) => {
-        this.notifications = notif;
-        if (notif) this.storageKP();
-      },
-      (error) => console.warn("Problème de récupération notification", error)
-    );
-  }
+  // need backend
+  // storageNotif(): void {
+  //   this.storage.get("notifications_active").then(
+  //     (notif) => {
+  //       this.notifications = notif;
+  //       if (notif) this.storageKP();
+  //     },
+  //     (error) => console.warn("Problème de récupération notification", error)
+  //   );
+  // }
 
-  storageKP(): void {
-    this.storage.get("kp_notif").then(
-      (kp) => {
-        this.notifKp = kp;
-      },
-      (error) => console.warn("Problème de récupération notification", error)
-    );
-  }
+  // storageKP(): void {
+  //   this.storage.get("kp_notif").then(
+  //     (kp) => {
+  //       this.notifKp = kp;
+  //     },
+  //     (error) => console.warn("Problème de récupération notification", error)
+  //   );
+  // }
 
   activeNotif(e): void {
     this.notifications = e.detail.checked;
@@ -199,4 +202,3 @@ export class Tab3Page implements AfterViewInit{
     this.iab.create(url, "_system", options);
   }
 }
-
