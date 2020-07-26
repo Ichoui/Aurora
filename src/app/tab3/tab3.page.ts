@@ -23,8 +23,6 @@ import { Map, tileLayer, ZoomPanOptions } from 'leaflet';
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { DOCUMENT } from "@angular/common";
 
-declare var google;
-
 @Component({
   selector: "app-tab3",
   templateUrl: "tab3.page.html",

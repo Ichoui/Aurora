@@ -3,10 +3,10 @@
 <ion-content>
     <ion-card>
         <ion-card-content>
-            <div class="google-maps">
+            <div class="google-maps" [routerLink]="['../../../map']">
                 <ion-header>{{ 'tab3.location' | translate }}</ion-header>
                 <div class="sub">{{ 'tab3.sublocation' | translate }}</div>
-                <div #map_canvas id="map_canvas"></div>
+                <div id="map_canvas"></div>
             </div>
         </ion-card-content>
     </ion-card>
