@@ -7,5 +7,6 @@ COPY . /app/
 
 RUN npm i
 
+EXPOSE 49153
 
 CMD ["npm", "start"]
