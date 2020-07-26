@@ -1,9 +1,11 @@
 version: '3'
 services:
   angular:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    container_name: aurora
+    image: aurora
+    build: .
     volumes:
-    - .:/app
-    - /app/node_modules
+      - /app/node_modules
+    ports:
+      - "8100:8100"
+      - "8200:8200"

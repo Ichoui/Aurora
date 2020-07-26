@@ -2,15 +2,10 @@ FROM node:10.22.0-alpine3.9
 
 RUN npm i -g @ionic/cli
 
-COPY package.json /app/package.json
-
-RUN cd /app && npm i
-
+WORKDIR /app
 COPY . /app/
 
-EXPOSE 8200
+RUN npm i
 
-VOLUME /app
-WORKDIR /app
 
 CMD ["npm", "start"]
