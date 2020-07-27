@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { mapStyle } from '../../map-style';
+import { Map } from 'leaflet';
 
 @Component({
     selector: 'app-location-map',
@@ -14,7 +15,7 @@ import { mapStyle } from '../../map-style';
 })
 export class LocationMapPage implements OnInit, OnDestroy {
 
-    map: GoogleMap;
+    map: Map;
     marker: Marker;
     cities = cities;
     localisation: string;
@@ -44,12 +45,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.removeMarker();
     }
-    // test() {
-    //     console.log('ccc');
-    //     this.removeMarker();
-    //
-    // }
-
 
     /**
      * Si storage vide, set valeur à location actuelle ET valeur du select à position actuelle
@@ -93,30 +88,27 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
     /**
      * @param lat {number}
-     * @param lng {number}
+     * @param long {number}
      * Chargement de la carte
      * */
-    loadMap(lat: number, lng: number): void {
-        console.log(lat, lng);
-        // Environment.setBackgroundColor('#2a2a2a');
-        let mapOptions: GoogleMapOptions = {
-            controls: {
-                compass: true,
-                zoom: true
-            },
-            styles: mapStyle
-        };
+    loadMap(lat: number, long: number): void {
+        // let mapOptions: GoogleMapOptions = {
+        //     controls: {
+        //         compass: true,
+        //         zoom: true
+        //     },
+        //     styles: mapStyle
+        // };
+        this.map = new Map("map_canvas_select").setView([lat, long], 10, mapOpt);
 
-        this.map = GoogleMaps.create('map_canvas_select', mapOptions);
-
-        this.map.animateCamera({
-            target: {
-                lat: lat,
-                lng: lng
-            },
-            zoom: 3,
-            duration: 1200
-        });
+        // this.map.animateCamera({
+        //     target: {
+        //         lat: lat,
+        //         lng: lng
+        //     },
+        //     zoom: 3,
+        //     duration: 1200
+        // });
 
         this.map.on(GoogleMapsEvent.MAP_LONG_CLICK)
             .subscribe(
