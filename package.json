@@ -11,7 +11,7 @@
     "build:android_cordova": "cordova build android",
     "prod:android_release": "ionic cordova build android --prod --release",
     "info:ionic": "ionic info",
-    "start": "ng serve -o --port=1418 --host 0.0.0.0 --poll",
+    "start": "ng serve -o --port=1418 --host 0.0.0.0 --poll 50",
     "start:lab": "ionic serve --lab -o --host 0.0.0.0 --lab-host 0.0.0.0",
     "start:capacitor-android:": "ionic capacitor run android -l",
     "start:browser-npx": "npx cap serve",
