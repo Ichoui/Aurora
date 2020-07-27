@@ -7,8 +7,8 @@ services:
     volumes:
       - /app/node_modules
       - .:/app
-
     ports:
       - "8100:8100"
       - "8200:8200"
       - "49153:49153"
+      - "1418:1418"
