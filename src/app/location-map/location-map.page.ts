@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { mapStyle } from '../../map-style';
-import { Map } from 'leaflet';
+import { Map, tileLayer, ZoomPanOptions } from 'leaflet';
 
 @Component({
     selector: 'app-location-map',
@@ -92,14 +92,15 @@ export class LocationMapPage implements OnInit, OnDestroy {
      * Chargement de la carte
      * */
     loadMap(lat: number, long: number): void {
-        // let mapOptions: GoogleMapOptions = {
-        //     controls: {
-        //         compass: true,
-        //         zoom: true
-        //     },
-        //     styles: mapStyle
-        // };
+        let mapOpt: ZoomPanOptions  = {
+            noMoveStart: false,
+            animate:false
+        }
         this.map = new Map("map_canvas_select").setView([lat, long], 10, mapOpt);
+        tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution:
+                ' <div style="font-size: 1em">&copy;<a href="https://www.openstreetmap.org/copyright">OSM</a></div>',
+        }).addTo(this.map);
 
         // this.map.animateCamera({
         //     target: {
@@ -110,14 +111,14 @@ export class LocationMapPage implements OnInit, OnDestroy {
         //     duration: 1200
         // });
 
-        this.map.on(GoogleMapsEvent.MAP_LONG_CLICK)
-            .subscribe(
-                (params: any[]) => {
-                    let latLng: LatLng = params[0];
-                    this.removeMarker();
-                    this.addMarker(latLng.lat, latLng.lng);
-                    this.selectedLoc(null, latLng);
-                });
+        // this.map.on(GoogleMapsEvent.MAP_LONG_CLICK)
+        //     .subscribe(
+        //         (params: any[]) => {
+        //             let latLng: LatLng = params[0];
+        //             this.removeMarker();
+        //             this.addMarker(latLng.lat, latLng.lng);
+        //             this.selectedLoc(null, latLng);
+        //         });
     }
 
     /**
@@ -129,26 +130,26 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
         this.reverseGeocode(lat, lng);
 
-        this.marker = this.map.addMarkerSync({
-            icon: 'blue',
-            flat: true,
-            draggable: false,
-            animation: 'DROP',
-            styles: {
-                'font-weight': 'bold',
-            },
-            position: {
-                lat: lat,
-                lng: lng
-            }
-        });
-        this.map.animateCamera({
-            target: {
-                lat: lat,
-                lng: lng
-            },
-            duration: 1200
-        });
+        // this.marker = this.map.addMarkerSync({
+        //     icon: 'blue',
+        //     flat: true,
+        //     draggable: false,
+        //     animation: 'DROP',
+        //     styles: {
+        //         'font-weight': 'bold',
+        //     },
+        //     position: {
+        //         lat: lat,
+        //         lng: lng
+        //     }
+        // });
+        // this.map.animateCamera({
+        //     target: {
+        //         lat: lat,
+        //         lng: lng
+        //     },
+        //     duration: 1200
+        // });
     }
 
 
@@ -201,12 +202,12 @@ export class LocationMapPage implements OnInit, OnDestroy {
                         infoWindow = locale[0].extra.featureName;
                     }
                 }
-                this.marker.setTitle(infoWindow);
-                this.marker.setSnippet(`Lat: ${lat}\nLng: ${lng}`);
-                this.marker.showInfoWindow();
-                this.marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
-                    this.router.navigate(['', 'tabs', 'tab2']);
-                });
+                // this.marker.setTitle(infoWindow);
+                // this.marker.setSnippet(`Lat: ${lat}\nLng: ${lng}`);
+                // this.marker.showInfoWindow();
+                // this.marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
+                //     this.router.navigate(['', 'tabs', 'tab2']);
+                // });
             });
     }
 
