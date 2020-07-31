@@ -18,7 +18,7 @@ import { Router } from "@angular/router";
 import { ModalComponent } from "../shared/modal/modal.component";
 import { Language, Languages } from "../models/languages";
 import { TranslateService } from "@ngx-translate/core";
-import { Map, tileLayer, ZoomPanOptions } from 'leaflet';
+import { icon, Map, Marker, marker, tileLayer, ZoomPanOptions } from "leaflet";
 
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { DOCUMENT } from "@angular/common";
@@ -34,6 +34,7 @@ export class Tab3Page implements AfterViewInit {
   notifications: boolean = false;
   notifKp;
 
+  marker: Marker;
   coords: Coords = {} as any;
   map: Map;
 
@@ -105,25 +106,30 @@ export class Tab3Page implements AfterViewInit {
    * @param long
    * */
   mapInit(lat?, long?): void {
-    let mapOpt: ZoomPanOptions  = {
+    let mapOpt: ZoomPanOptions = {
       noMoveStart: false,
-      animate:false
-    }
-
-    //
-    // L.marker([51.5, -0.09]).addTo(map)
-    //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    //     .openPopup();
-    // this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+      animate: false,
+    };
 
     if (lat && long) {
       this.map = new Map("map_canvas").setView([lat, long], 10, mapOpt);
     } else {
-      this.map = new Map("map_canvas").setView([43.60803, 1.467292], 10, mapOpt);
+      this.map = new Map("map_canvas").setView(
+        [43.60803, 1.467292],
+        10,
+        mapOpt
+      );
     }
+    this.marker = marker([lat, long], {
+      icon: icon({
+        iconSize: [14, 25],
+        iconUrl: "assets/img/marker-icon.png",
+        shadowUrl: "assets/img/marker-shadow.png",
+      }),
+    }).addTo(this.map);
+
     this.map.dragging.disable();
     this.map.zoomControl.remove();
-
 
     tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
