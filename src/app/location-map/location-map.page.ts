@@ -5,7 +5,6 @@ import { Storage } from "@ionic/storage";
 import { NavController } from "@ionic/angular";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import {
-  CircleMarker,
   icon,
   LatLng,
   Map,
@@ -14,6 +13,9 @@ import {
   tileLayer,
   ZoomPanOptions,
 } from "leaflet";
+import { GeocoderResult } from '@ionic-native/google-maps';
+import { NativeGeocoderOptions } from '@ionic-native/native-geocoder';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 @Component({
   selector: "app-location-map",
@@ -30,6 +32,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private geoloc: Geolocation,
+    private geocode: NativeGeocoder,
     private navController: NavController,
     private storage: Storage
   ) {}
@@ -37,6 +40,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.removeMarker();
     this.checkStorageLoc();
+    console.log('e:)');
   }
 
   ionViewWillEnter(): void {}
@@ -142,14 +146,14 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * @param lng {number}
    * Permet de créer un marqueur
    * */
-  addMarker(lat, lng): void {
-    // this.reverseGeocode(lat, lng);
+  addMarker(lat, long): void {
+    this.reverseGeocode(lat, long);
 
-    this.marker = marker([lat, lng], {
+    this.marker = marker([lat, long], {
       icon: icon({
-        iconSize: [25, 41],
+        iconSize: [45, 45],
         iconUrl: "assets/img/marker-icon.png",
-        shadowUrl: "assets/img/marker-shadow.png",
+
       }),
     })
       .addTo(this.map)
@@ -168,13 +172,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
     //         lat: lat,
     //         lng: lng
     //     }
-    // });
-    // this.map.animateCamera({
-    //     target: {
-    //         lat: lat,
-    //         lng: lng
-    //     },
-    //     duration: 1200
     // });
   }
 
@@ -210,16 +207,18 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
   /**
    * @param lat {number}
-   * @param lng {number}
+   * @param long {number}
    * Récupérer l'adresse de l'emplacement est affiche un tooltip
    * */
-  /*    reverseGeocode(lat: number, lng: number) {
-        let options: GeocoderRequest = {
-            position: {'lat': lat, 'lng': lng}
+    reverseGeocode(lat: number, long: number) {
+        let options: NativeGeocoderOptions = {
+          useLocale: true,
+          maxResults: 8
         };
-        Geocoder.geocode(options).then(
+        this.geocode.reverseGeocode(lat, long, options).then(
             (locale: GeocoderResult[]) => {
-                let infoWindow;
+              console.log(locale);
+              let infoWindow;
                 if (locale.length === 0) {
                     infoWindow = 'Localisation inconnue';
                 } else {
@@ -235,11 +234,11 @@ export class LocationMapPage implements OnInit, OnDestroy {
                     }
                 }
                 // this.marker.setTitle(infoWindow);
-                // this.marker.setSnippet(`Lat: ${lat}\nLng: ${lng}`);
+                // this.marker.setSnippet(`Lat: ${lat}\nLng: ${long}`);
                 // this.marker.showInfoWindow();
                 // this.marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
                 //     this.router.navigate(['', 'tabs', 'tab2']);
                 // });
             });
-    }*/
+    }
 }

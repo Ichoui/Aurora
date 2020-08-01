@@ -6,10 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 
-import { OneSignal } from '@ionic-native/onesignal/ngx';
-import { Notifications } from './notifications';
 import { AuroraService } from './aurora.service';
-import { Environment } from '@ionic-native/google-maps';
 
 
 @Component({
@@ -28,7 +25,6 @@ export class AppComponent {
         private splashScreen: SplashScreen,
         private storage: Storage,
         private statusBar: StatusBar,
-        private oneSignal: OneSignal,
         private alertCtrl: AlertController,
         private auroraService: AuroraService
     ) {

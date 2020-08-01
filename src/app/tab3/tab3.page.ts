@@ -1,34 +1,23 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Inject,
-  Renderer2,
-  RendererFactory2,
-  ViewChild,
-} from "@angular/core";
-import { Storage } from "@ionic/storage";
-import { CodeLocalisation, Coords } from "../models/cities";
-import {
-  InAppBrowser,
-  InAppBrowserOptions,
-} from "@ionic-native/in-app-browser/ngx";
-import { ModalController, NavController } from "@ionic/angular";
-import { Router } from "@angular/router";
-import { ModalComponent } from "../shared/modal/modal.component";
-import { Language, Languages } from "../models/languages";
-import { TranslateService } from "@ngx-translate/core";
-import { icon, Map, Marker, marker, tileLayer, ZoomPanOptions } from "leaflet";
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, Renderer2, RendererFactory2, ViewChild, } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { CodeLocalisation, Coords } from '../models/cities';
+import { ModalController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { ModalComponent } from '../shared/modal/modal.component';
+import { Language, Languages } from '../models/languages';
+import { TranslateService } from '@ngx-translate/core';
+import { icon, Map, Marker, marker, tileLayer, ZoomPanOptions } from 'leaflet';
 
-import { Geolocation } from "@ionic-native/geolocation/ngx";
-import { DOCUMENT } from "@angular/common";
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { DOCUMENT } from '@angular/common';
+import { Browser } from '@capacitor/core';
 
 @Component({
   selector: "app-tab3",
   templateUrl: "tab3.page.html",
   styleUrls: ["tab3.page.scss"],
 })
-export class Tab3Page implements AfterViewInit {
+export class Tab3Page implements AfterViewInit, OnInit {
   kpindex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   localisation: string;
   notifications: boolean = false;
@@ -52,17 +41,19 @@ export class Tab3Page implements AfterViewInit {
     private modalController: ModalController,
     private translateService: TranslateService,
     private rendererFactory: RendererFactory2,
-    @Inject(DOCUMENT) private _document,
-    private iab: InAppBrowser
+    @Inject(DOCUMENT) private _document
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
+  ngOnInit() {
+
   // ionViewWillEnter() {
-  ngAfterViewInit() {
     this.minimapLocation();
     this.getLanguage();
     // this.storageNotif();
+  }
+  ngAfterViewInit() {
   }
 
   /**
@@ -111,6 +102,7 @@ export class Tab3Page implements AfterViewInit {
       animate: false,
     };
 
+    console.log(lat, long);
     if (lat && long) {
       this.map = new Map("map_canvas").setView([lat, long], 10, mapOpt);
     } else {
@@ -122,7 +114,7 @@ export class Tab3Page implements AfterViewInit {
     }
     this.marker = marker([lat, long], {
       icon: icon({
-        iconSize: [14, 25],
+        iconSize: [25, 25],
         iconUrl: "assets/img/marker-icon.png",
         shadowUrl: "assets/img/marker-shadow.png",
       }),
@@ -183,26 +175,23 @@ export class Tab3Page implements AfterViewInit {
   //   );
   // }
 
-  activeNotif(e): void {
-    this.notifications = e.detail.checked;
-    this.storage.set("notifications_active", this.notifications);
-  }
+  // activeNotif(e): void {
+  //   this.notifications = e.detail.checked;
+  //   this.storage.set("notifications_active", this.notifications);
+  // }
 
-  selectedKp(choice?: any): void {
-    if (choice) {
-      this.notifKp = choice.detail.value;
-      this.storage.set("kp_notif", this.notifKp);
-    }
-  }
+  // selectedKp(choice?: any): void {
+  //   if (choice) {
+  //     this.notifKp = choice.detail.value;
+  //     this.storage.set("kp_notif", this.notifKp);
+  //   }
+  // }
 
   /**
    * @param url {string} Url navigable
    * Demande à l'utilisateur d'ouvrir dans l'application au choix le lien
    **/
   openUrl(url: string): void {
-    const options: InAppBrowserOptions = {
-      location: "yes", //Or 'no'
-    };
-    this.iab.create(url, "_system", options);
+    Browser.open({url})
   }
 }

@@ -4,9 +4,7 @@
 `npm i` for dependencies
 <br> Create a typescript file here `src/environments/keep.ts` and then :
 - export a const named `DARKSKY_API_KEY`
-- export a const named `ONESIGNAL_APP_ID` (find in OneSignal Key&Id)
 - export a const named `GOOGLE_PROJECT_NUMBER` (represent Sender ID in Firebase)
-- export a const named `ONE_SIGNAL_REST_KEY` (API Rest found in OneSignal Key&Id)
 
 You will need an DarkSky API Key (free up to 1000 calls/day, then 1€/10.000 calls), a Firebase project & a OneSignal free account.
 

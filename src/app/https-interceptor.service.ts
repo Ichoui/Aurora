@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ONE_SIGNAL_REST_KEY } from '../environments/keep';
-import { tap } from 'rxjs/operators';
-import { environment } from '../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -14,19 +11,7 @@ export class HttpsInterceptorService implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-       if (req.url === `${environment.push_notifs}`) {
-            console.log(req.url);
             req = req.clone({
-                setHeaders: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Basic ${ONE_SIGNAL_REST_KEY}`,
-                }
-            });
-            return next.handle(req).pipe(tap(console.log));
-        }
-      req = req.clone({
         setHeaders: {
           'Access-Control-Allow-Origin':'*',
           'Accept': 'application/json',

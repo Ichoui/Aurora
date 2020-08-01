@@ -14,7 +14,6 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule } from '@ionic/storage';
 
-import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { HttpsInterceptorService } from './https-interceptor.service';
 
 
@@ -40,7 +39,6 @@ import { HttpsInterceptorService } from './https-interceptor.service';
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-        OneSignal,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpsInterceptorService,
