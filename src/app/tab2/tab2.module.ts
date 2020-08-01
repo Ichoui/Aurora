@@ -13,22 +13,18 @@ import { KpindexModule } from './kpindex/kpindex.module';
 import { MapsModule } from './maps/maps.module';
 
 @NgModule({
-    imports: [
-        IonicModule,
-        CommonModule,
-        FormsModule,
-        TranslateModule,
-        RouterModule.forChild([{path: '', component: Tab2Page}]),
-        HeaderPageModule,
-        MeteoModule,
-        KpindexModule,
-        MapsModule
-    ],
-    declarations: [Tab2Page],
-    providers: [
-        Geolocation,
-        NativeGeocoder
-    ]
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    TranslateModule,
+    RouterModule.forChild([{ path: '', component: Tab2Page }]),
+    HeaderPageModule,
+    MeteoModule,
+    KpindexModule,
+    MapsModule,
+  ],
+  declarations: [Tab2Page],
+  providers: [Geolocation, NativeGeocoder],
 })
-export class Tab2PageModule {
-}
+export class Tab2PageModule {}

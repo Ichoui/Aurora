@@ -7,6 +7,7 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { Tab3PageModule } from '../tab3/tab3.module';
 
 @NgModule({
     imports: [

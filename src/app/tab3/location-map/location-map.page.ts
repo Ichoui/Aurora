@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { cities, CodeLocalisation } from "../models/cities";
+import { cities, CodeLocalisation } from "../../models/cities";
 import { Storage } from "@ionic/storage";
 import { NavController } from "@ionic/angular";
 import { Geolocation } from "@ionic-native/geolocation/ngx";

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-import { LocationMapPage } from '../location-map/location-map.page';
+import { LocationMapPage } from '../tab3/location-map/location-map.page';
 
 const routes: Routes = [
   {
@@ -13,48 +13,53 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
-        ]
+            loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule),
+          },
+        ],
       },
       {
         path: 'tab2',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
-          }
-        ]
+            loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule),
+          },
+        ],
       },
       {
         path: 'tab3',
         children: [
           {
             path: '',
-            loadChildren: () =>
-                import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-          }
-        ]
+            redirectTo: '/tabs/tab3/settings',
+            pathMatch: 'full',
+          },
+          {
+            path: 'settings',
+            loadChildren: () => import('../tab3/settings/settings.module').then(m => m.SettingsPageModule),
+          },
+          {
+            path: 'map',
+            loadChildren: () => import('../tab3/location-map/location-map.module').then(m => m.LocationMapPageModule),
+          },
+          {
+            path: 'infos',
+            loadChildren: () => import('../tab3/informations/informations.module').then(m => m.InformationsPageModule),
+          },
+        ],
       },
       {
         path: '',
         redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
-      }
-    ]
-  },
-  {
-    path: 'map',
-    loadChildren: () =>
-        import('../location-map/location-map.module').then(m => m.LocationMapPageModule)
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
