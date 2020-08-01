@@ -4,12 +4,6 @@
   "author": "Morgan N",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "start:browser_angular": "ng serve --port=4254 -o --proxy-config angular-proxy.json",
-    "start:android_emulate": "ionic cordova emulate android",
-    "start:android_cordova_run_livereload": "ionic cordova run android --livereload --ssl",
-    "start+build:android_cordova_run": "ionic cordova run android",
-    "build:android_cordova": "cordova build android",
-    "prod:android_release": "ionic cordova build android --prod --release",
     "info:ionic": "ionic info",
     "start": "ng serve -o --port=1418 --host 0.0.0.0 --poll 50",
     "start:lab": "ionic serve --lab -o --host 0.0.0.0 --lab-host 0.0.0.0",
@@ -18,7 +12,7 @@
     "start:browser-cordova": "ionic cordova run browser -lc -o",
     "build:capacitor": "ng build --prod && npx cap copy",
     "ide:open": "npx cap open android",
-    "update:native": "cordova-res android --skip-config --copy ; node script/resources-android",
+    "update:native": "cordova-res android --skip-config --copy ; node script/resources-android.js",
     "prepare:native": "gulp prepare:native"
   },
   "private": true,

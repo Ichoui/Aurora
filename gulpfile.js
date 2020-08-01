@@ -17,10 +17,10 @@ gulp.task('replace-conf', function() {
         runSequence('add-android', function(err) {
             if (!err) {
                 gulp.src('./env/android/*').pipe(gulp.dest('./android/app/'));
-                run('update-android');
+                runSequence('update-android');
             }
         });
-    }
+    } else { console.log('Dossier ./ANDROID existe') }
 });
 
 // Task 3 : create native folder
