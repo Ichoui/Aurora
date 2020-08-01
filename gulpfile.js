@@ -3,7 +3,6 @@ const clean = require('gulp-clean');
 const runSequence = require('run-sequence');
 const run = require('gulp-run-command').default;
 const fs = require('fs');
-const inject = require('gulp-inject-string');
 
 const androidExist = fs.existsSync('android');
 
@@ -36,15 +35,7 @@ gulp.task('rm-www', function() {
 });
 
 
-gulp.task('inject', () => {
-    const fileContent = fs.readFileSync("./to-inject-in-index.html", "utf8");
-    return gulp.src('./www/index.html')
-        .pipe(inject.before('</body>', fileContent))
-        .pipe(gulp.dest('./www/'));
-});
-
 // Task 5 : compile previous tasks and prepare to natif
 gulp.task('prepare:native', function() {
-    runSequence(['rm-www', 'build:capacitor'], 'replace-conf');
-
+    runSequence('rm-www','build:capacitor', 'replace-conf');
 });
