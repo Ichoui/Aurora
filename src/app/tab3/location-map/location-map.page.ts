@@ -219,20 +219,20 @@ export class LocationMapPage implements OnInit, OnDestroy {
             (locale: GeocoderResult[]) => {
               console.log(locale);
               let infoWindow;
-                if (locale.length === 0) {
-                    infoWindow = 'Localisation inconnue';
-                } else {
-                    if (locale[0].locality && locale[0].country) {
-                        // Ville - CODE
-                        infoWindow = locale[0].locality + ' - ' + locale[0].country;
-                    } else if (locale[0].country && !locale[0].locality && locale[0].subAdminArea) {
-                        // Des régions un peu lointaine
-                        infoWindow = locale[0].subAdminArea + ' - ' + locale[0].country;
-                    } else {
-                        // Dans un océan
-                        infoWindow = locale[0].extra.featureName;
-                    }
-                }
+                // if (locale.length === 0) {
+                //     infoWindow = 'Localisation inconnue';
+                // } else {
+                //     if (locale[0].locality && locale[0].country) {
+                //         // Ville - CODE
+                //         infoWindow = locale[0].locality + ' - ' + locale[0].country;
+                //     } else if (locale[0].country && !locale[0].locality && locale[0].subAdminArea) {
+                //         // Des régions un peu lointaine
+                //         infoWindow = locale[0].subAdminArea + ' - ' + locale[0].country;
+                //     } else {
+                //         // Dans un océan
+                //         infoWindow = locale[0].extra.featureName;
+                //     }
+                // }
                 // this.marker.setTitle(infoWindow);
                 // this.marker.setSnippet(`Lat: ${lat}\nLng: ${long}`);
                 // this.marker.showInfoWindow();

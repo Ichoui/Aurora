@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
@@ -8,7 +7,6 @@ import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geoco
 import { cities, CodeLocalisation, Coords } from '../models/cities';
 import { Currently, Daily, Hourly, Weather } from '../models/weather';
 import * as moment from 'moment';
-import { Kp27day, KpForecast } from '../models/aurorav2';
 import { ErrorTemplate } from '../tab2/tab2.page';
 
 export interface ErrorTemplate {
@@ -16,7 +14,7 @@ export interface ErrorTemplate {
   message: string;
 }
 
-const API_CALL_NUMBER = 2; // nombre de fois où une API est appelé sur cette page
+const API_CALL_NUMBER = 1; // nombre de fois où une API est appelé sur cette page
 
 @Component({
   selector: 'app-tab1',
@@ -32,10 +30,6 @@ export class Tab1Page {
   coords: Coords;
   city: string;
   country: string;
-  slideOpts = {
-    initialSlide: 1,
-    speed: 400,
-  };
 
   eventRefresh: any;
 
@@ -44,9 +38,6 @@ export class Tab1Page {
   dataHourly: Hourly;
   dataSevenDay: Daily;
   utcOffset: number;
-  moduleACE: any = {} as any;
-  kpForecast: KpForecast[] = [] as any;
-  kpForecast27days: Kp27day[] = [] as any;
 
   dataError: ErrorTemplate = {
     value: false,
@@ -119,7 +110,6 @@ export class Tab1Page {
         this.city = res[0].locality;
         this.country = res[0].countryName;
         this.getForecast();
-        this.getSolarWind();
       },
       error => {
         console.warn('Reverse geocode error', error);
@@ -146,7 +136,6 @@ export class Tab1Page {
       longitude: city.longitude,
     };
     this.getForecast();
-    this.getSolarWind();
   }
 
   /**
@@ -195,26 +184,6 @@ export class Tab1Page {
     }
   }
 
-  /**
-   * Récupère les données ACE de vent solaire & nowcast
-   * */
-  getSolarWind(): void {
-    this.auroraService.auroraLiveV2(this.coords.latitude, this.coords.longitude).subscribe(
-      ACE => {
-        this.moduleACE = ACE;
-        this.kpForecast = ACE['kp:forecast'];
-        this.kpForecast27days = ACE['kp:27day'];
-        this.trickLoading('2nd');
-      },
-      error => {
-        console.warn('Wind Solar data error', error);
-        this.dataError = {
-          value: true,
-          message: error.status + ' ' + error.statusText,
-        };
-      }
-    );
-  }
 
   /**
    * @param count {string}
@@ -237,6 +206,5 @@ export class Tab1Page {
     this.tabLoading = [];
     this.eventRefresh = event;
     this.getForecast(moment().unix());
-    this.getSolarWind();
   }
 }
