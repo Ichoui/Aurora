@@ -41,7 +41,7 @@
       <ion-header>{{ 'tab3.settings.languages' | translate }}</ion-header>
       <div class="sub">{{ 'tab3.settings.sublanguages' | translate }}</div>
       <ion-item>
-        <ion-select value="{{ language }}" interface="action-sheet" (ionChange)="selectedLanguage($event)" cancelText="{{ 'tab3.settings.cancel' | translate }}">
+        <ion-select value="{{ language }}" interface="action-sheet" (ionChange)="selectedLanguage($event)" cancelText="{{ 'global.cancel' | translate }}">
           <ion-select-option *ngFor="let lg of languages" value="{{ lg.slug }}">
             <span *ngIf="language === 'fr'">{{ lg.labelFr }}</span>
             <span *ngIf="language === 'en'">{{ lg.labelEn }}</span>

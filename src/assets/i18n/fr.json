@@ -1,17 +1,13 @@
 {
-  "tab1": {
-    "title": "Météo"
-  },
-  "tab2": {
-    "title": "Aurores",
+  "global": {
+    "unknown": "Lieu inconnu",
     "loading": "Votre localisation est en cours de chargement ...",
-    "kp": {
-      "kpindex": "Kp Index",
-      "density": " Densitée des particules (p/cc)",
-      "speed": " Vent solaire (km/h)",
-      "probability": "Vous avez {{value}}% de chances de voir une Aurore Boréale au dessus de vous"
-    },
-    "meteo": {
+    "back": "Retour",
+    "cancel": "Annuler"
+  },
+  "tab1": {
+    "title": "Météo",
+    "weather": {
       "next.hours": "Les prochaines heures",
       "seven.days": "Prévisions 7 jours",
       "cover.clouds": "Couverture nuageuse",
@@ -22,6 +18,15 @@
         "windspeed": "Vitesse du vent",
         "humidity": "Humidité"
       }
+    }
+  },
+  "tab2": {
+    "title": "Aurores",
+    "kp": {
+      "kpindex": "Kp Index",
+      "density": " Densitée des particules (p/cc)",
+      "speed": " Vent solaire (km/h)",
+      "probability": "Vous avez {{value}}% de chances de voir une Aurore Boréale au dessus de vous"
     },
     "maps": {
       "worldmap": "Carte du monde",
@@ -41,7 +46,6 @@
       "location": "Localisation",
       "sublocation": "Touchez pour choisir votre localisation",
       "notifications": "Notifications",
-      "cancel": "Annuler",
       "kp": "KP Index",
       "current.position": "Position actuelle",
       "credits": "Crédits",
@@ -50,7 +54,8 @@
       "languages": "Langues",
       "sublanguages": "Choisissez votre langue",
       "infos": "Informations",
-      "subinfos": "Plus d'informations sur les aurores"
+      "subinfos": "Plus d'informations sur les aurores",
+      "another": "Essayez un autre emplacement"
     },
     "infos": {
       "title": "Informations",
@@ -142,12 +147,11 @@
         "title": "Comment marche Aurora - Northern Lights ?",
         "message": "C'est très simple ! <ol><li>Premièrement, comprenez leur fonctionnement</li><li>Ensuite, choisissez une localisation. Sinon, vous serez géolocalisé.</li><li>Vous n'avez plus qu'à consulter l'activité solaire et la couverture nuageuse. Rappel, ces données fournissent des pistes pour chasser une aurore boréale. Elles ne vous assureront pas d'en voir.</li></ol>"
       }
+    },
+    "map": {
+      "title": "Localisation",
+      "select": "Localisation prédéfinie"
     }
-  },
-  "tabmap": {
-    "title": "Localisation",
-    "select": "Localisation prédéfinie",
-    "back": "Retour"
   },
   "cgu": {
     "title": "Conditions Générales d'Utilisations (CGU)",

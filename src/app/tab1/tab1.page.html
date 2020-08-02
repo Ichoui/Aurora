@@ -1,33 +1,36 @@
 <app-header titre="{{ 'tab1.title' | translate }}"></app-header>
-e
-<ion-content *ngIf="loading" fullscreen>
-  <ion-progress-bar type="indeterminate"></ion-progress-bar>
-  <p class="text-spinner">{{ 'tab2.loading' | translate }}</p>
-  <div class="content-spinner">
-    <div class="whirly-loader"></div>
-  </div>
-</ion-content>
 
-<ion-content *ngIf="!loading && !dataError.value">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="140">
-    <div class="refresh whirly-loader"></div>
-  </ion-refresher>
+<ion-content fullscreen>
+  <ng-container *ngIf="loading">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    <p class="text-spinner">{{ 'global.loading' | translate }}</p>
+    <div class="content-spinner">
+      <div class="whirly-loader"></div>
+    </div>
+  </ng-container>
 
-  <h2 class="ion-text-center">
-    <span class="city">
-      <span>
-        <ion-icon name="pin"></ion-icon>
-        {{ city }}
+  <ng-container *ngIf="!loading && !dataError.value">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="140">
+      <div class="refresh whirly-loader"></div>
+    </ion-refresher>
+
+    <h2 class="ion-text-center">
+      <span class="city">
+        <span>
+          <ion-icon name="pin"></ion-icon>
+          {{ city }}
+        </span>
       </span>
-    </span>
-    <span class="country">{{ country }}</span>
-  </h2>
+      <span class="country"> - {{ country }}</span>
+      <span *ngIf="!city && !country" class="country">{{ 'global.unknown' | translate }}</span>
+    </h2>
+    <app-meteo [coords]="coords" [currentWeatherInput]="dataCurrentWeather" [hourlyWeatherInput]="dataHourly" [sevenDayWeatherInput]="dataSevenDay" [utc]="utcOffset"> </app-meteo>
+  </ng-container>
 
-  <app-meteo [coords]="coords" [currentWeatherInput]="dataCurrentWeather" [hourlyWeatherInput]="dataHourly" [sevenDayWeatherInput]="dataSevenDay" [utc]="utcOffset"> </app-meteo>
-</ion-content>
-
-<ion-content *ngIf="!loading && dataError.value" #bugs>
-  <p class="error">
-    {{ dataError.message }}
-  </p>
+  <ng-container *ngIf="!loading && dataError.value" #bug>
+    <p class="error">
+      <img src="" alt="{{ dataError.message }}" />
+      {{ dataError.message }}
+    </p>
+  </ng-container>
 </ion-content>

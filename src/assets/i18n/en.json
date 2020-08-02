@@ -1,17 +1,13 @@
 {
-  "tab1": {
-    "title": "Weather"
-  },
-  "tab2": {
-    "title": "Auroras",
+  "global": {
+      "unknown": "Unknown location",
     "loading": "Current location loading...",
-    "kp": {
-      "kpindex": "Kp Index",
-      "density": " Particles density (p/cc)",
-      "speed": " Solar wind (km/h)",
-      "probability": "You currently have {{value}}% chance to observe Aurora Borealis"
-    },
-    "meteo": {
+    "back": "Back",
+    "cancel": "Cancel"
+  },
+  "tab1": {
+    "title": "Weather",
+    "weather": {
       "next.hours": "Next hours forecast",
       "seven.days": "7 days forecast",
       "cover.clouds": "Cloud cover",
@@ -22,7 +18,17 @@
         "windspeed": "Wind speed",
         "humidity": "Humidity"
       }
+    }
+  },
+  "tab2": {
+    "title": "Auroras",
+    "kp": {
+      "kpindex": "Kp Index",
+      "density": " Particles density (p/cc)",
+      "speed": " Solar wind (km/h)",
+      "probability": "You currently have {{value}}% chance to observe Aurora Borealis"
     },
+
     "maps": {
       "worldmap": "World map",
       "ovations": "Ovation Prime",
@@ -41,7 +47,6 @@
       "location": "Location",
       "sublocation": "Tap to choose your location",
       "notifications": "Notifications",
-      "cancel": "Cancel",
       "kp": "KP Index",
       "current.position": "Current location",
       "credits": "Credits",
@@ -140,12 +145,12 @@
         "title": "How Aurora - Northern Lights works ?",
         "message": "It's very easy ! <ol><li>First of all, you have to learn how works the Northern Lights</li><li>Then, choose a location in the settings tab. Otherwise, you will be geolocated.</li><li>Finally, take a look at the Aurora tab and check both the solar wind and the cloud cover.</li></ol>"
       }
+    },
+    "map": {
+      "title": "Location",
+      "select": "Preset locations",
+      "another": "Try another location"
     }
-  },
-  "tabmap": {
-    "title": "Location",
-    "select": "Preset locations",
-    "back": "Back"
   },
   "cgu": {
     "title": "Terms of Use (only in French)",

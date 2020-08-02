@@ -27,7 +27,7 @@ gulp.task('replace-conf', function() {
 gulp.task('add-android', run(['npx cap add android']));
 
 // Task 4 : update files
-gulp.task('update-android', run('npm run update:native && npx cap update'));
+gulp.task('update-android', run('npx cap update && npm run update:native'));
 
 // Task 4: clear ./www
 gulp.task('rm-www', function() {
