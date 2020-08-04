@@ -30,8 +30,10 @@
     <ion-card-content>
       <ion-header>{{ 'tab3.settings.infos' | translate }}</ion-header>
       <div class="sub">{{ 'tab3.settings.subinfos' | translate }}</div>
-      <ion-item>
-        <span [routerLink]="['../../../infos']">abcde</span>
+      <ion-item [routerLink]="['../../../infos']">
+        <span style="font-size: .9em">
+        {{ 'tab3.settings.infos.text' | translate }}
+        </span>
       </ion-item>
     </ion-card-content>
   </ion-card>

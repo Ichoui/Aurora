@@ -30,15 +30,9 @@ export class LocationMapPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // this.removeMarker();
     this.checkStorageLoc();
-    // checker avec route.subscribe les changes
     console.log('e:)');
   }
-
-  ionViewWillEnter(): void {}
-
-  ionViewDidLeave() {}
 
   ngOnDestroy(): void {
     this.removeMarker();
@@ -113,8 +107,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
     this.map.on('click', params => {
       let latLng: LatLng = params['latlng'];
-      // this.removeMarker();
-      // this.addMarker(latLng.lat, latLng.lng);
       this.selectedLoc(null, latLng);
     });
   }
@@ -125,7 +117,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * Permet de créer un marqueur
    * */
   addMarker(lat, long): void {
-    if (this.marker) this.removeMarker();
+    this.removeMarker();
 
     this.reverseGeocode(lat, long);
 
@@ -143,11 +135,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * Permet de retirer le marqueur actuel
    * */
   removeMarker(): void {
-    this.marker.remove();
-    // this.marker.fire('remove')
-    // if (this.marker) {
-    //   this.marker.remove();
-    // }
+    if (this.marker) this.marker.remove();
   }
 
   /**
@@ -178,13 +166,12 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * */
   reverseGeocode(lat: number, long: number) {
     let options: NativeGeocoderOptions = {
-      useLocale: true,
+      useLocale: false,
       maxResults: 2,
     };
     this.geocode
       .reverseGeocode(lat, long, options)
       .then((locale: NativeGeocoderResult[]) => {
-        console.log(locale);
         let infoWindow;
         if (locale[0].locality && locale[0].countryName) {
           // Ville - CODE
@@ -212,15 +199,15 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * */
   createTooltip(infoWindow: string, lat?, long?) {
     if (lat && long) {
-      // this.marker
-      // .bindPopup(`<b>${infoWindow}</b> <br /> Lat: ${lat} <br/> Long: ${long}`)
-      // .openPopup()
-      // .on('click', () => {
-      //   console.log('clic on tooltip');
-      //   this.router.navigate(['', 'tabs', 'tab1']);
-      // });
+      this.marker
+      .bindPopup(`<b>${infoWindow}</b> <br /> Lat: ${lat} <br/> Long: ${long}`)
+      .openPopup()
+      .on('click', () => {
+        console.log('clic on tooltip');
+        this.router.navigate(['', 'tabs', 'tab1']);
+      });
     } else {
-      // this.marker.bindPopup(`<b>${infoWindow}</b><br /> ${this.translate.instant('tab3.map.another')} `).openPopup();
+      this.marker.bindPopup(`<b>${infoWindow}</b><br /> ${this.translate.instant('tab3.map.another')} `).openPopup();
     }
   }
 }
