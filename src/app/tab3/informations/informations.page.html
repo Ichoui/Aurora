@@ -1,6 +1,10 @@
-<app-header titre="{{ 'tab3.settings.title' | translate }}"></app-header>
+<app-header titre="{{ 'tab3.settings.infos' | translate }}"></app-header>
 
 <ion-content>
+  <div [routerLink]="['','tabs','tab3']" class="close">
+    <span>{{ 'global.back' | translate }}</span>
+    <span class="icon icon-back1"></span>
+  </div>
   <ion-card class="welcome-card" (click)="visibility($event, 0)">
     <ion-card-header>{{'tab3.infos.welcome.title' | translate }}</ion-card-header>
     <ion-card-content class="dont-touch" [innerHtml]="'tab3.infos.welcome.message' | translate"></ion-card-content>

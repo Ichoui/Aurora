@@ -150,7 +150,8 @@
     },
     "map": {
       "title": "Localisation",
-      "select": "Localisation prédéfinie"
+      "select": "Localisation prédéfinie",
+      "another": "Essayez un autre endroit"
     }
   },
   "cgu": {

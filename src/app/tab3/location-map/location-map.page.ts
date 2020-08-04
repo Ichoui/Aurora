@@ -30,7 +30,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.removeMarker();
+    // this.removeMarker();
     this.checkStorageLoc();
     // checker avec route.subscribe les changes
     console.log('e:)');
@@ -54,7 +54,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
         if (codeLocation) {
           this.localisation = codeLocation.code;
           this.loadMap(codeLocation.lat, codeLocation.long);
-          this.addMarker(codeLocation.lat, codeLocation.long);
+          // this.addMarker(codeLocation.lat, codeLocation.long);
         }
       },
       error => console.warn('Il y a un soucis de storage de position', error)
@@ -69,25 +69,28 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * */
   selectedLoc(choice?: any, position?: LatLng): void {
     if (choice) {
-      this.removeMarker();
       this.localisation = choice.detail.value;
+      console.log(choice);
       console.log('localis', this.localisation);
       const city = cities.find(res => res.code === choice.detail.value);
       if (city) {
-        this.addMarker(city.latitude, city.longitude);
+        console.log('c');
         this.storage.set('localisation', {
           code: this.localisation,
           lat: city.latitude,
           long: city.longitude,
         });
+        this.addMarker(city.latitude, city.longitude);
       }
     } else {
       this.localisation = 'marker';
+      console.log('d  ' + position);
       this.storage.set('localisation', {
         code: 'marker',
         lat: position.lat,
         long: position.lng,
       });
+      this.addMarker(position.lat, position.lng);
     }
   }
 
@@ -98,7 +101,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * */
   loadMap(lat: number, long: number): void {
     let mapOpt: ZoomPanOptions = {
-      // noMoveStart: false,
       animate: true,
       duration: 1.2,
     };
@@ -107,28 +109,12 @@ export class LocationMapPage implements OnInit, OnDestroy {
       attribution: ' <div style="font-size: 1em">&copy;<a href="https://www.openstreetmap.org/copyright">OSM</a></div>',
     }).addTo(this.map);
 
-    // this.map.animateCamera({
-    //     target: {
-    //         lat: lat,
-    //         lng: lng
-    //     },
-    //     zoom: 3,
-    //     duration: 1200
-    // });
-
-    // this.map.on(GoogleMapsEvent.MAP_LONG_CLICK)
-    //     .subscribe(
-    //         (params: any[]) => {
-    //             let latLng: LatLng = params[0];
-    //             this.removeMarker();
-    //             this.addMarker(latLng.lat, latLng.lng);
-    //             this.selectedLoc(null, latLng);
-    //         });
+    this.addMarker(lat, long);
 
     this.map.on('click', params => {
       let latLng: LatLng = params['latlng'];
-      this.removeMarker();
-      this.addMarker(latLng.lat, latLng.lng);
+      // this.removeMarker();
+      // this.addMarker(latLng.lat, latLng.lng);
       this.selectedLoc(null, latLng);
     });
   }
@@ -139,37 +125,29 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * Permet de créer un marqueur
    * */
   addMarker(lat, long): void {
+    if (this.marker) this.removeMarker();
+
     this.reverseGeocode(lat, long);
 
     this.marker = marker([lat, long], {
+      draggable: false,
+
       icon: icon({
         iconSize: [45, 45],
-        iconUrl: 'assets/img/marker-icon.png',
+        iconUrl: 'assets/img/marker-icon.png'
       }),
     }).addTo(this.map);
-
-    // this.marker = this.map.addMarkerSync({
-    //     icon: 'blue',
-    //     flat: true,
-    //     draggable: false,
-    //     animation: 'DROP',
-    //     styles: {
-    //         'font-weight': 'bold',
-    //     },
-    //     position: {
-    //         lat: lat,
-    //         lng: lng
-    //     }
-    // });
   }
 
   /**
    * Permet de retirer le marqueur actuel
    * */
   removeMarker(): void {
-    if (this.marker) {
-      this.marker.remove();
-    }
+    this.marker.remove();
+    // this.marker.fire('remove')
+    // if (this.marker) {
+    //   this.marker.remove();
+    // }
   }
 
   /**
@@ -203,9 +181,11 @@ export class LocationMapPage implements OnInit, OnDestroy {
       useLocale: true,
       maxResults: 2,
     };
-    this.geocode.reverseGeocode(lat, long, options).then((locale: NativeGeocoderResult[]) => {
-      console.log(locale);
-      let infoWindow;
+    this.geocode
+      .reverseGeocode(lat, long, options)
+      .then((locale: NativeGeocoderResult[]) => {
+        console.log(locale);
+        let infoWindow;
         if (locale[0].locality && locale[0].countryName) {
           // Ville - CODE
           infoWindow = locale[0].locality + ' - ' + locale[0].countryName;
@@ -215,12 +195,13 @@ export class LocationMapPage implements OnInit, OnDestroy {
         } else {
           locale[0].countryName ? (infoWindow = locale[0].countryName) : (infoWindow = this.translate.instant('global.unknown'));
         }
-      this.createTooltip(infoWindow, lat, long)
-    }).catch(err => {
-      console.error('Error localisation', err);
-      const infoWindow = this.translate.instant('global.unknown')
-      this.createTooltip(infoWindow)
-    });
+        this.createTooltip(infoWindow, lat, long);
+      })
+      .catch(err => {
+        console.error('Error localisation', err);
+        const infoWindow = this.translate.instant('global.unknown');
+        this.createTooltip(infoWindow);
+      });
   }
 
   /**
@@ -231,18 +212,15 @@ export class LocationMapPage implements OnInit, OnDestroy {
    * */
   createTooltip(infoWindow: string, lat?, long?) {
     if (lat && long) {
-    this.marker
-      .bindPopup(`<b>${infoWindow}</b> <br /> Lat: ${lat} <br/> Long: ${long}`)
-      .openPopup()
-      .on('click', () => {
-        console.log('clic on tooltip');
-        this.router.navigate(['', 'tabs', 'tab1']);
-      });
+      // this.marker
+      // .bindPopup(`<b>${infoWindow}</b> <br /> Lat: ${lat} <br/> Long: ${long}`)
+      // .openPopup()
+      // .on('click', () => {
+      //   console.log('clic on tooltip');
+      //   this.router.navigate(['', 'tabs', 'tab1']);
+      // });
     } else {
-      this.marker
-        .bindPopup(`<b>${infoWindow}</b><br /> ${this.translate.instant('tab3.map.another')} `)
-        .openPopup()
-
+      // this.marker.bindPopup(`<b>${infoWindow}</b><br /> ${this.translate.instant('tab3.map.another')} `).openPopup();
     }
   }
 }

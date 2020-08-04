@@ -46,12 +46,12 @@ export class SettingsPage implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-
-    // ionViewWillEnter() {
+console.log('Ne passe pas deux fois ici');
     this.minimapLocation();
     this.getLanguage();
     // this.storageNotif();
   }
+
   ngAfterViewInit() {
   }
 
