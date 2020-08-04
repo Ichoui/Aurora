@@ -1,5 +1,8 @@
 @import "../../../theme/shared";
-
+.lotties-nogg div{
+  width: 65px !important;
+  height: 65px !important;
+}
 ion-card {
   ion-item {
     --inner-border-width: 0 !important;
