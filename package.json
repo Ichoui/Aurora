@@ -2,7 +2,6 @@
   "name": "aurora-northern-lights",
   "version": "2.0.0",
   "author": "Morgan N",
-  "homepage": "https://ionicframework.com/",
   "scripts": {
     "info:ionic": "ionic info",
     "start": "ng serve -o --port=1418 --host 0.0.0.0 --poll 50",
