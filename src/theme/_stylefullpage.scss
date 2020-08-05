@@ -92,3 +92,35 @@ app-maps {
     transform: rotate(360deg);
   }
 }
+// Bouton retour
+.close {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  span:first-child {
+    position: absolute;
+    top: -10px;
+    left: 22px;
+    font-size: 0.6em;
+    font-family: var(--ion-font-semibold);
+    color: var(--ion-color-primary);
+    transform: rotate(6deg);
+  }
+
+  span:last-child {
+    color: var(--ion-color-primary);
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 1.8em;
+  }
+
+  &:focus {
+    outline: none !important;
+  }
+}
+ion-card-content {
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+}

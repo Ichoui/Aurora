@@ -54,7 +54,8 @@
       "languages": "Langues",
       "sublanguages": "Choisissez votre langue",
       "infos": "Informations",
-      "subinfos": "Plus d'informations sur les aurores",
+      "subinfos": "Explications techniques, mécanismes et annecdotes",
+      "infos.text": "En savoir plus",
       "another": "Essayez un autre emplacement"
     },
     "infos": {
@@ -140,7 +141,7 @@
         },
         "kp": {
           "title": "L'indice Kp",
-          "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre, mais il ne prédit pas à 100% la visibibilité d'une Aurore. De plus, la couverture nuageuse est très importante. L'échelle commence à 0 et se termine à 9 :<ul><li><b>Kp 0</b> : Très faible visibilitées dans les ciels du Nord</li><li><b>Kp 1</b> : Faibles et peu dynamiques dans les ciels du Nord</li><li><b>Kp 2</b> : Visibles, un peu plus dynamiques et lumineuses</li><li><b>Kp 3</b> : Visibles au zénith, couleur vert pâle</li><li><b>Kp 4</b> : Brillantes, constantes et dynamiques. De plus en plus de couleurs apparaissent</li><li><b>Kp 5</b> : Tempête mineure. Brillantes et très colorées, rouge et violet peuvent apparaître. Petite probabilitée d'Aurora Corona</li><li><b>Kp 6</b> : Tempête moyenne. Plus intense que le précédent niveau</li><li><b>Kp 7</b> : Tempête puissante. Grande probabilitée d'Aurora Corona</li><li><b>Kp 8</b> : Tempête Tempête intense. Possibilité d'en voir à une latitude de 50°</li><li><b>Kp 9</b> : Tempête extrême. Possibilité d'en voir à une latitude de 40°. Les aurores sont rouges. Rare car nécessite une puissante éjections de masse coronale.</li></ul><br><br>Pour plus d'explications, rendez-vous sur <a href='https://tinyurl.com/y3fnxwdv'>Aurora Maniacs</a>"
+          "message": "L'indice K (K-Index), ou Kp (Planetary K-Index), est l'indice utilisé pour exprimer la magnitude des tempêtes géomagnétiques. C'est un excellent indicateur des perturbations du champ magnétique terrestre, mais il ne prédit pas à 100% la visibibilité d'une Aurore. De plus, la couverture nuageuse est très importante. L'échelle commence à 0 et se termine à 9 :<ul><li><b>Kp 0</b> : Très faible visibilitées dans les ciels du Nord</li><li><b>Kp 1</b> : Faibles et peu dynamiques dans les ciels du Nord</li><li><b>Kp 2</b> : Visibles, un peu plus dynamiques et lumineuses</li><li><b>Kp 3</b> : Visibles au zénith, couleur vert pâle</li><li><b>Kp 4</b> : Brillantes, constantes et dynamiques. De plus en plus de couleurs apparaissent</li><li><b>Kp 5</b> : Tempête mineure. Brillantes et très colorées, rouge et violet peuvent apparaître. Petite probabilitée d'Aurora Corona</li><li><b>Kp 6</b> : Tempête moyenne. Plus intense que le précédent niveau</li><li><b>Kp 7</b> : Tempête puissante. Grande probabilitée d'Aurora Corona</li><li><b>Kp 8</b> : Tempête Tempête intense. Possibilité d'en voir à une latitude de 50°</li><li><b>Kp 9</b> : Tempête extrême. Possibilité d'en voir à une latitude de 40°. Les aurores sont rouges. Rare car nécessite une puissante éjections de masse coronale.</li></ul>"
         }
       },
       "help": {
@@ -150,7 +151,8 @@
     },
     "map": {
       "title": "Localisation",
-      "select": "Localisation prédéfinie"
+      "select": "Localisation prédéfinie",
+      "another": "Essayez un autre endroit"
     }
   },
   "cgu": {

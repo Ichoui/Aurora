@@ -2,19 +2,21 @@
     <div class="date">{{ actualDate }}</div>
     <div class="today">
 
-<!--        <lottie-animation-view *ngIf="lottieConfig"-->
-<!--                               [options]="lottieConfig"-->
-<!--                               [width]="110"-->
-<!--                               [height]="110">-->
-<!--        </lottie-animation-view>-->
+        <lottie-animation-view *ngIf="lottieConfig"
+                               [options]="lottieConfig"
+                               [width]="110"
+                               [height]="110"
+                               [ngClass]="(currentWeather.icon === 'fog' || currentWeather.icon === 'sleet' || currentWeather.icon === 'snow') ? 'lotties-nogg' : ''"
+        >
+        </lottie-animation-view>
 
-        <div class="actual-weather">
-                       <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"
-                             class="icon icon-cold-wind"></span>
-            <ng-template #normalIcon>
-                <span class="icon icon-{{ currentWeather.icon }}"></span>
-            </ng-template>
-        </div>
+<!--        <div class="actual-weather">-->
+<!--                       <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"-->
+<!--                             class="icon icon-cold-wind"></span>-->
+<!--            <ng-template #normalIcon>-->
+<!--                <span class="icon icon-{{ currentWeather.icon }}"></span>-->
+<!--            </ng-template>-->
+<!--        </div>-->
         <div class="temperature">{{ currentWeather.temperature | number: '1.0-0' }}°</div>
         <span *ngIf="currentWeather.temperature >= 34" class="icon minicons icon-hot"></span>
         <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>

@@ -12,6 +12,7 @@ import { HeaderPageModule } from '../../shared/header/header.module';
 import { ModalModule } from '../../shared/modal/modal.module';
 import { Tab3Page } from '../tab3.page';
 import { IonicStorageModule } from '@ionic/storage';
+import { LottieAnimationViewModule } from "ng-lottie";
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
     TranslateModule,
     HeaderPageModule,
     ModalModule,
+    LottieAnimationViewModule.forRoot(),
     IonicStorageModule.forRoot({
       name: '__dbAurora',
       driverOrder: ['indexeddb', 'sqlite', 'websql']

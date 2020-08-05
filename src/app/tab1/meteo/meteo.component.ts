@@ -88,7 +88,7 @@ export class MeteoComponent implements OnInit {
     this.currentWeather$.subscribe((res: Currently) => {
       // console.log(res);
       this.currentWeather = res;
-      // this.lotties(this.currentWeather.icon);
+      this.lotties(this.currentWeather.icon);
       this.calculateLotties(this.currentWeather);
       this.actualDate = this.manageDates(res.time, 'dddd DD MMMM, HH:mm:ss');
     });
@@ -235,10 +235,10 @@ export class MeteoComponent implements OnInit {
    * Permet de calculer le lottie à afficher. Les cas particuliers hors API Dark Sky seront à traiter "à la mano"
    * */
   calculateLotties(currentWeather: Currently) {
-    if (currentWeather.temperature <= 8 && currentWeather.icon === 'wind') {
-      this.lotties('lottie-cold-wind');
-    } else if (currentWeather.cloudCover >= 0.75 && currentWeather.icon === 'lottie-cloudy-night') {
+    if (currentWeather.cloudCover >= 0.75 && currentWeather.icon === 'lottie-cloudy-night') {
       this.lotties('lottie-very-cloudy-night');
+    } else if (currentWeather.temperature <= 8 && currentWeather.icon === 'wind') {
+      this.lotties('lottie-cold-wind');
     } else {
       this.lotties(currentWeather.icon);
     }
@@ -246,8 +246,8 @@ export class MeteoComponent implements OnInit {
 
   lotties(icon: string): void {
     this.lottieConfig = {
-      // path: `assets/lotties/lottie-${icon}.json`,
-      path: `assets/lotties/lottie-very-cloudy-night.json`,
+      path: `assets/lotties/lottie-${icon}.json`,
+      // path: `assets/lotties/lottie-very-cloudy-night.json`,
       renderer: 'canvas',
       autoplay: true,
       loop: true,
