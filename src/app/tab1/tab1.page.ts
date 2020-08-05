@@ -79,19 +79,19 @@ export class Tab1Page {
    * Déterminer la localisation actuelle de l'utilisateur
    */
   userLocalisation() {
-    this.geoloc
-      .getCurrentPosition()
-      .then(resp => {
-        this.reverseGeoloc(resp.coords.latitude, resp.coords.longitude);
-      })
-      .catch(error => {
-        console.warn('Geolocalisation error', error);
-        this.loading = false;
-        this.dataError = {
-          value: true,
-          message: error,
-        };
-      });
+    // this.geoloc
+    //   .getCurrentPosition()
+    //   .then(resp => {
+    //     this.reverseGeoloc(resp.coords.latitude, resp.coords.longitude);
+    //   })
+    //   .catch(error => {
+    //     console.warn('Geolocalisation error', error);
+    //     this.loading = false;
+    //     this.dataError = {
+    //       value: true,
+    //       message: error,
+    //     };
+    //   });
   }
 
   /**
@@ -105,21 +105,22 @@ export class Tab1Page {
       latitude: lat,
       longitude: long,
     };
-    this.nativeGeo.reverseGeocode(lat, long).then(
-      (res: NativeGeocoderResult[]) => {
-        this.city = res[0].locality;
-        this.country = res[0].countryName;
-        this.getForecast();
-      },
-      error => {
-        console.warn('Reverse geocode error', error);
-        this.loading = false;
-        this.dataError = {
-          value: true,
-          message: error,
-        };
-      }
-    );
+    this.getForecast()// ToDel
+    // this.nativeGeo.reverseGeocode(lat, long).then(
+    //   (res: NativeGeocoderResult[]) => {
+    //     this.city = res[0].locality;
+    //     this.country = res[0].countryName;
+    //     this.getForecast();
+    //   },
+    //   error => {
+    //     console.warn('Reverse geocode error', error);
+    //     this.loading = false;
+    //     this.dataError = {
+    //       value: true,
+    //       message: error,
+    //     };
+    //   }
+    // );
   }
 
   /**

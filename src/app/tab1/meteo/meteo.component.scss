@@ -1,6 +1,11 @@
-@import "../../../theme/shared";
+@import '../../../theme/shared';
 
-.today, .previsions, .cloudy-rate, .details, .datas, .next-hours {
+.today,
+.previsions,
+.cloudy-rate,
+.details,
+.datas,
+.next-hours {
   padding: 10px 0;
 }
 
@@ -40,7 +45,6 @@ ion-header {
 
   .temperature {
     font-size: 3.5em;
-
   }
 
   .lotties-nogg {
@@ -51,7 +55,7 @@ ion-header {
 
 .date {
   font-family: var(--ion-font-semibold);
-  font-size: .8em;
+  font-size: 0.8em;
   text-align: center;
 }
 
@@ -81,11 +85,11 @@ ion-header {
     align-items: center;
 
     span.icon {
-      font-size: .3em;
+      font-size: 0.3em;
     }
 
     .percent {
-      font-size: .6em;
+      font-size: 0.6em;
     }
   }
 
@@ -100,7 +104,7 @@ ion-header {
       //border-bottom: 1px solid;
       //width: 26px;
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         border-bottom: 1px solid;
         width: 15px;
@@ -112,11 +116,9 @@ ion-header {
 
     .temp-min {
       padding-top: 3px;
-      opacity: .5;
+      opacity: 0.5;
     }
   }
-
-
 }
 
 // Ennuagement
@@ -137,10 +139,7 @@ ion-header {
     .bar {
       height: 15px;
       width: 60vw;
-      background: linear-gradient(to right,
-              var(--ion-color-secondary) 30%,
-              var(--ion-color-primary) 55%,
-              var(--ion-color-tertiary)) 100%;
+      background: linear-gradient(to right, var(--ion-color-secondary) 30%, var(--ion-color-primary) 55%, var(--ion-color-tertiary)) 100%;
     }
 
     .percent {
@@ -154,7 +153,8 @@ ion-header {
 }
 
 //Détails
-.details, .datas {
+.details,
+.datas {
   display: flex;
   justify-content: space-evenly;
 
@@ -168,7 +168,14 @@ ion-header {
     flex-direction: column;
   }
 
-  span.icon {
-    font-size: 3em;
+  .icon {
+    text-align: center;
+    span {
+      font-size: 3em;
+    }
+  }
+
+  .label {
+    text-align: center;
   }
 }

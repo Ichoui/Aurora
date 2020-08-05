@@ -62,24 +62,32 @@
         <ion-header>{{ 'tab1.weather.details' | translate }}</ion-header>
         <div class="details">
             <div class="sun">
+                <div class="icon">
                 <span class="icon icon-sunrise"></span>
+                </div>
                 <div class="label">{{ 'tab1.weather.details.data.sunrise' | translate }}</div>
                 <div class="value">{{ sunrise }}</div>
             </div>
             <div class="sun">
+                <div class="icon">
                 <span class="icon icon-sunset"></span>
+                </div>
                 <div class="label">{{ 'tab1.weather.details.data.sunset' | translate }}</div>
                 <div class="value">{{ sunset }}</div>
             </div>
         </div>
         <div class="datas">
             <div class="windy">
+                <div class="icon">
                 <span class="icon icon-wind-cloud"></span>
+                </div>
                 <div class="label">{{ 'tab1.weather.details.data.windspeed' | translate }}</div>
                 <div class="value">{{ currentWeather.windSpeed | number: '1.0-0' }} km/h</div>
             </div>
             <div class="feels-like">
+                <div class="icon">
                 <span class="icon icon-humidity"></span>
+                </div>
                 <div class="label">{{ 'tab1.weather.details.data.humidity' | translate }}</div>
                 <div class="value">{{ currentWeather.humidity | percent }}</div>
             </div>
