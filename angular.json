@@ -42,6 +42,16 @@
             "scripts": []
           },
           "configurations": {
+            "dev": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": true,
+              "aot": true,
+              "vendorChunk": true,
+              "buildOptimizer": true
+            },
             "production": {
               "fileReplacements": [
                 {

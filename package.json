@@ -9,6 +9,7 @@
     "start:capacitor-android:": "ionic capacitor run android -l --host 0.0.0.0 --external",
     "start:browser-npx": "npx cap serve",
     "start:browser-cordova": "ionic cordova run browser -lc -o",
+    "build:dev:capacitor": "ng build -c dev && npx cap copy",
     "build:capacitor": "ng build --prod && npx cap copy",
     "ide:open": "npx cap open android",
     "update:native": "cordova-res android --skip-config --copy ; node script/resources-android.js",

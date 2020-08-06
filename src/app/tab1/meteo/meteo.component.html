@@ -4,11 +4,11 @@
 
         <lottie-animation-view *ngIf="lottieConfig"
                                [options]="lottieConfig"
-                               [width]="110"
-                               [height]="110"
-                               [ngClass]="(currentWeather.icon === 'fog' || currentWeather.icon === 'sleet' || currentWeather.icon === 'snow') ? 'lotties-nogg' : ''"
+                               [width]="width"
+                               [height]="height"
         >
         </lottie-animation-view>
+
 
 <!--        <div class="actual-weather">-->
 <!--                       <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"-->

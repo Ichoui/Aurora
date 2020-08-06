@@ -178,8 +178,8 @@ export class SettingsPage implements OnInit {
 
   lotties(icon: string): void {
     this.lottieConfig = {
-      path: `assets/lotties/lottie-${icon}.json`,
-      // path: `assets/lotties/lottie-very-cloudy-night.json`,
+      // path: `assets/lotties/lottie-${icon}.json`,
+      path: `assets/lotties/lottie-very-cloudy-night.json`,
       renderer: 'canvas',
       autoplay: true,
       loop: true,
@@ -188,8 +188,8 @@ export class SettingsPage implements OnInit {
 
   lottiesFake(icon: string): void {
     this.lottieConfigFake = {
-      path: `assets/lotties/lottie-${icon}.json`,
-      // path: `assets/lotties/lottie-very-cloudy-night.json`,
+      // path: `assets/lotties/lottie-${icon}.json`,
+      path: `assets/lotties/lottie-cloudy-night.json`,
       renderer: 'canvas',
       autoplay: true,
       loop: true

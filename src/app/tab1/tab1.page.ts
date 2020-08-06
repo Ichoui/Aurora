@@ -8,6 +8,7 @@ import { cities, CodeLocalisation, Coords } from '../models/cities';
 import { Currently, Daily, Hourly, Weather } from '../models/weather';
 import * as moment from 'moment';
 import { ErrorTemplate } from '../tab2/tab2.page';
+import { environment } from "../../environments/environment";
 
 export interface ErrorTemplate {
   value: boolean;
@@ -79,19 +80,19 @@ export class Tab1Page {
    * Déterminer la localisation actuelle de l'utilisateur
    */
   userLocalisation() {
-    // this.geoloc
-    //   .getCurrentPosition()
-    //   .then(resp => {
-    //     this.reverseGeoloc(resp.coords.latitude, resp.coords.longitude);
-    //   })
-    //   .catch(error => {
-    //     console.warn('Geolocalisation error', error);
-    //     this.loading = false;
-    //     this.dataError = {
-    //       value: true,
-    //       message: error,
-    //     };
-    //   });
+    this.geoloc
+      .getCurrentPosition()
+      .then(resp => {
+        this.reverseGeoloc(resp.coords.latitude, resp.coords.longitude);
+      })
+      .catch(error => {
+        console.warn('Geolocalisation error', error);
+        this.loading = false;
+        this.dataError = {
+          value: true,
+          message: error,
+        };
+      });
   }
 
   /**
@@ -105,7 +106,9 @@ export class Tab1Page {
       latitude: lat,
       longitude: long,
     };
-    this.getForecast()// ToDel
+    this.getForecast();
+
+    // this.getForecast()// TODO pour tricker car reverseGeoloc plante avec cordopute
     // this.nativeGeo.reverseGeocode(lat, long).then(
     //   (res: NativeGeocoderResult[]) => {
     //     this.city = res[0].locality;
@@ -113,12 +116,15 @@ export class Tab1Page {
     //     this.getForecast();
     //   },
     //   error => {
-    //     console.warn('Reverse geocode error', error);
+    //     console.warn('Reverse geocode error ==> ');
+    //     console.warn(error);
     //     this.loading = false;
-    //     this.dataError = {
-    //       value: true,
-    //       message: error,
-    //     };
+    //
+    //     // if (environment)
+    //     // this.dataError = {
+    //     //   value: true,
+    //     //   message: error,
+    //     // };
     //   }
     // );
   }
