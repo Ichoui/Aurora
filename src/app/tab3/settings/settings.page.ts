@@ -45,8 +45,6 @@ export class SettingsPage implements OnInit {
    * */
   ngOnInit() {
     this.minimapLocation();
-    this.lotties('fog')
-    this.lottiesFake('sleet')
   }
 
   /**
@@ -171,29 +169,6 @@ export class SettingsPage implements OnInit {
    **/
   openUrl(url: string): void {
     Browser.open({ url });
-  }
-
-  lottieConfig: Object;
-  lottieConfigFake: Object;
-
-  lotties(icon: string): void {
-    this.lottieConfig = {
-      // path: `assets/lotties/lottie-${icon}.json`,
-      path: `assets/lotties/lottie-very-cloudy-night.json`,
-      renderer: 'canvas',
-      autoplay: true,
-      loop: true,
-    };
-  }
-
-  lottiesFake(icon: string): void {
-    this.lottieConfigFake = {
-      // path: `assets/lotties/lottie-${icon}.json`,
-      path: `assets/lotties/lottie-cloudy-night.json`,
-      renderer: 'canvas',
-      autoplay: true,
-      loop: true
-    };
   }
 
   // need backend

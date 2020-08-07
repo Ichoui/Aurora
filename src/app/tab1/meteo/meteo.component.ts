@@ -68,6 +68,8 @@ export class MeteoComponent implements OnInit {
   // lotties
   lottieConfig: Object;
   anim: any;
+  width: number = 110;
+  height: number = 110;
 
   language: string;
 
@@ -245,8 +247,6 @@ export class MeteoComponent implements OnInit {
     }
   }
 
-  width: number = 110;
-  height: number = 110;
   lotties(icon: string): void {
     if (icon === 'fog' || icon === 'sleet' || icon === 'snow' || icon === 'wind' ) {
       this.width = this.height = 65;
@@ -259,7 +259,6 @@ export class MeteoComponent implements OnInit {
       autoplay: true,
       loop: true,
     };
-
     console.log(icon);
   }
 

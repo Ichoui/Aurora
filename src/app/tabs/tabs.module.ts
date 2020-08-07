@@ -7,16 +7,17 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { Tab3PageModule } from '../tab3/tab3.module';
+import { LottieAnimationViewModule } from "ng-lottie";
 
 @NgModule({
-    imports: [
-        IonicModule,
-        CommonModule,
-        FormsModule,
-        TabsPageRoutingModule,
-        TranslateModule
-    ],
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    TabsPageRoutingModule,
+    TranslateModule,
+    LottieAnimationViewModule.forRoot()
+  ],
   declarations: [TabsPage]
 })
 export class TabsPageModule {}
