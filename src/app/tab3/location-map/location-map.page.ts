@@ -31,7 +31,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.checkStorageLoc();
-    console.log('e:)');
   }
 
   ngOnDestroy(): void {

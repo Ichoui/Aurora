@@ -30,7 +30,7 @@ ion-tab-bar {
   font-size: 2.7em;
 }
 
-.icon-test {
+.icon-aurora {
   content: url('/assets/icon/aurora.svg');
   width: 4rem;
   height: 4rem;
@@ -42,11 +42,42 @@ ion-tab-bar {
 .tabs {
   position: absolute;
   z-index: 500;
-  bottom: -11px;
+  width: 124px;
+  ng-lottie {
+    > div {width: 100%}
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+  .currentview {
+    position: absolute;
+    width: 50px;
+    bottom: 0;
+    /* height: 0; */
+    right: 0;
+    border: 2px solid var(--ion-color-primary);
+  }
   &.tab1 {
-    left: 75px;
+    //left: 43px;
+    bottom: -11px; // seul sans label
+    left:0;
+
+    .currentview {
+      bottom: 11px;
+      left: 36px;
+    }
+
   }
   &.tab3 {
-    right: 75px;
+    //right: 50px;
+    bottom: 0; // seul sans label
+    right: 0;
+
+    .currentview {
+      bottom: 0;
+      left: 36px;
+
+    }
   }
 }

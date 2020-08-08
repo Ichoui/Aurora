@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { Storage } from '@ionic/storage';
-import { NavController } from '@ionic/angular';
-import { AuroraService } from '../aurora.service';
-import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
-import { cities, CodeLocalisation, Coords } from '../models/cities';
-import { Currently, Daily, Hourly, Weather } from '../models/weather';
-import * as moment from 'moment';
-import { ErrorTemplate } from '../tab2/tab2.page';
-import { environment } from "../../environments/environment";
+import { Component } from "@angular/core";
+import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { Storage } from "@ionic/storage";
+import { NavController } from "@ionic/angular";
+import { AuroraService } from "../aurora.service";
+import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
+import { cities, CodeLocalisation, Coords } from "../models/cities";
+import { Currently, Daily, Hourly, Weather } from "../models/weather";
+import * as moment from "moment";
+import { ErrorTemplate } from "../tab2/tab2.page";
 
 export interface ErrorTemplate {
   value: boolean;

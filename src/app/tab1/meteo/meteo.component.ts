@@ -7,6 +7,7 @@ import * as Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { BehaviorSubject } from 'rxjs';
 import { Storage } from '@ionic/storage';
+import { AnimationOptions } from "ngx-lottie";
 
 @Component({
   selector: 'app-meteo',
@@ -66,7 +67,7 @@ export class MeteoComponent implements OnInit {
   days: DataDaily[] = [];
 
   // lotties
-  lottieConfig: Object;
+  lottieConfig: AnimationOptions;
   anim: any;
   width: number = 110;
   height: number = 110;
@@ -255,14 +256,11 @@ export class MeteoComponent implements OnInit {
     this.lottieConfig = {
       path: `assets/lotties/lottie-${icon}.json`,
       // path: `assets/lotties/lottie-very-cloudy-night.json`,
-      renderer: 'canvas',
+      renderer: "svg",
       autoplay: true,
       loop: true,
     };
     console.log(icon);
   }
 
-  handleAnimation(anim: any) {
-    this.anim = anim;
-  }
 }

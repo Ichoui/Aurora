@@ -1,4 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { AnimationOptions } from "ngx-lottie";
+import { NavigationEnd, Router } from "@angular/router";
+import { AnimationItem } from "ngx-lottie/src/symbols";
 
 @Component({
   selector: 'app-tabs',
@@ -6,32 +9,54 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-  @ViewChild('test', { static: false }) test;
+  @ViewChild('auroraLogo', { static: false }) auroraLogo;
 
   // lotties
-  lottieConfigWeather: Object;
-  lottieConfigSettings: Object;
+  lottieConfigWeather: AnimationOptions;
+  lottieConfigSettings: AnimationOptions;
 
-  constructor() {}
+  activeRoute: number = null;
+
+  style: Partial<CSSStyleDeclaration> = {
+    width:'100%'
+  };
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.interval();
     this.lottieConfigWeather = {
       path: `assets/lotties/lottie-partly-cloudy-day.json`,
-      renderer: 'canvas',
+      renderer: "svg",
+      autoplay: true,
+      loop: true
+    };
+    this.lottieConfigSettings = {
+      path: `assets/lotties/lottie-settings.json`,
+      renderer: "svg",
       autoplay: true,
       loop: true,
     };
-      this.lottieConfigSettings = {
-          path: `assets/lotties/lottie-settings.json`,
-          renderer: 'canvas',
-          autoplay: true,
-          loop: true,
-      };
+
+    this.router.events.subscribe((event: NavigationEnd) =>{
+      if (event && event.url)
+        this.selectTab(null, event.url)
+    });
+
+  }
+  animationCreated(animationItem: AnimationItem): void {
+    animationItem.setSpeed(.4)
   }
 
-  trough(tab: number) {
-      // this.router.
+  selectTab(index?: number, pathObs?: string): void {
+    const path = pathObs ? pathObs : window.location.pathname;
+    if (path.startsWith('/tabs/tab1') || index === 1) {
+      this.activeRoute = 1;
+    } else if (path.startsWith('/tabs/tab2') || index === 2) {
+      this.activeRoute = null;
+    } else if (path.startsWith('/tabs/tab3') || index === 3) {
+      this.activeRoute = 3;
+    }
   }
 
   /*
@@ -41,7 +66,7 @@ export class TabsPage implements OnInit {
    * */
   interval(): void {
     let inter = setInterval(() => {
-      let fuckingA = this.test.el.shadowRoot.querySelector('a'); // null
+      let fuckingA = this.auroraLogo.el.shadowRoot.querySelector('a'); // null
       if (fuckingA !== null) {
         fuckingA.style.overflow = 'visible';
         clearInterval(inter);

@@ -9,6 +9,7 @@
     "start:capacitor-android:": "ionic capacitor run android -l --host 0.0.0.0 --external",
     "start:browser-npx": "npx cap serve",
     "start:browser-cordova": "ionic cordova run browser -lc -o",
+    "start:android-cordova": "ionic cordova run android --livereload --ssl --port=9991",
     "build:dev:capacitor": "ng build -c dev && npx cap copy",
     "build:capacitor": "ng build --prod && npx cap copy",
     "ide:open": "npx cap open android",
@@ -49,6 +50,7 @@
     "leaflet": "^1.6.0",
     "moment": "^2.24.0",
     "ng-lottie": "^0.3.2",
+    "ngx-lottie": "^6.3.0",
     "prettier": "^2.0.5",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
@@ -95,6 +97,9 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-nativegeocoder": {},
       "cordova-sqlite-storage": {}
-    }
+    },
+    "platforms": [
+      "browser"
+    ]
   }
 }

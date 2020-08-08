@@ -10,11 +10,13 @@ ion-text {
   text-align: center;
   margin-top: 30px;
 }
+app-kpindex {
+  height: 80vh;
+}
 
 app-kpindex,
 app-maps {
   width: 100%;
-  //height: 80vh;
   overflow: hidden;
 }
 
