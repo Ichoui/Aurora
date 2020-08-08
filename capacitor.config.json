@@ -19,8 +19,7 @@
       "FadeSplashScreenDuration": "300",
       "SplashShowOnlyFirstTime": "false",
       "SplashScreen": "screen",
-      "SplashScreenDelay": "3000",
-      "GOOGLE_MAPS_ANDROID_API_KEY": "AIzaSyB1g7WAa9Q8OdIEeKmWugkZb4WkPSdS2vc"
+      "SplashScreenDelay": "3000"
     }
   }
 }
