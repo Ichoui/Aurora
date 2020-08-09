@@ -62,7 +62,7 @@
       "title": "Informations",
       "welcome": {
         "title": "Aurora - Northern Lights",
-        "message": "Cette application a été pensée pour tout utilisateur s'intéressant au phénomène des Aurores Boréales.<br>Que vous viviez dans un pays lointain du phénomène, ou que vous soyez un chasseur d'aurores assidu, cette application vous permettra de vous informer quant à la probabilité de voir une Aurore Boréale, grâce aux données du Space Weather Prediction Center.<br> Une partie météo est intégrée à l'application, pour optimiser vos recherches."
+        "message": "Cette application est destinée au phénomène des Aurores Boréales.<br>Que vous viviez dans un pays lointain du phénomène, ou que vous soyez un chasseur d'aurores assidu, cette application vous permettra de vous informer quant à la probabilité de voir une Aurore Boréale, grâce aux données du <i>Space Weather Prediction Center</i>.<br> Une section météo est également intégrée à l'application, pour optimiser vos recherches !"
       },
       "firstblock": {
         "header": "Une Aurore Boréale ?",

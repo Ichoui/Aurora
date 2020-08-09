@@ -10,9 +10,12 @@
     <!--                <span class="icon icon-{{ currentWeather.icon }}"></span>-->
     <!--            </ng-template>-->
     <!--        </div>-->
-    <div class="temperature">{{ currentWeather.temperature | number: '1.0-0' }}°</div>
-    <span *ngIf="currentWeather.temperature >= 34" class="icon minicons icon-hot"></span>
-    <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>
+
+    <ng-container *ngIf=" currentWeather$ | async as currentWeather " >
+      <div class="temperature">{{ currentWeather.temperature | number: '1.0-0' }}°</div>
+      <span *ngIf="currentWeather.temperature >= 33" class="icon minicons icon-hot"></span>
+      <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>
+    </ng-container>
   </div>
 
   <ion-card>
@@ -71,7 +74,7 @@
         <div class="value">{{ sunset }}</div>
       </div>
     </div>
-    <div class="datas">
+    <div class="datas" *ngIf="currentWeather$ | async as currentWeather">
       <div class="windy">
         <div class="icon">
           <span class="icon icon-wind-cloud"></span>

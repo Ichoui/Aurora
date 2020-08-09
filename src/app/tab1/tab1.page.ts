@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { Storage } from "@ionic/storage";
-import { NavController } from "@ionic/angular";
+import { NavController, Platform } from "@ionic/angular";
 import { AuroraService } from "../aurora.service";
 import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
 import { cities, CodeLocalisation, Coords } from "../models/cities";
@@ -44,7 +44,7 @@ export class Tab1Page {
     message: 'Error ...',
   };
 
-  constructor(private geoloc: Geolocation, private storage: Storage, private navCtrl: NavController, private auroraService: AuroraService, private nativeGeo: NativeGeocoder) {}
+  constructor(private geoloc: Geolocation, private storage: Storage, private navCtrl: NavController, private platform: Platform, private auroraService: AuroraService, private nativeGeo: NativeGeocoder) {}
 
   ionViewWillEnter() {
     this.loading = true; // buffer constant
@@ -153,7 +153,6 @@ export class Tab1Page {
     if (time) {
       this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude, null, time).subscribe(
         (res: Weather) => {
-          console.log(res);
           this.dataCurrentWeather = res.currently;
           this.dataHourly = res.hourly;
           this.dataSevenDay = res.daily;
@@ -210,7 +209,6 @@ export class Tab1Page {
   doRefresh(event) {
     this.tabLoading = [];
     this.eventRefresh = event;
-    console.log(moment().unix());
     this.getForecast(moment().unix());
   }
 }

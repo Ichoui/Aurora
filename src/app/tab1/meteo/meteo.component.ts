@@ -83,7 +83,6 @@ export class MeteoComponent implements OnInit {
   constructor(private storage: Storage) {}
 
   ngOnInit() {
-    this.getLanguage();
     this.storage.get('language').then(lg => {
       this.language = lg;
       this.todayForecast();
@@ -92,12 +91,9 @@ export class MeteoComponent implements OnInit {
     });
   }
 
-  getLanguage(): void {}
-
   todayForecast() {
     this.currentWeather$.subscribe((res: Currently) => {
       this.currentWeather = res;
-      this.loading = true;
       this.lotties(this.currentWeather.icon);
       this.calculateLotties(this.currentWeather);
       this.actualDate = this.manageDates(res.time, 'dddd DD MMMM, HH:mm:ss');
@@ -212,7 +208,6 @@ export class MeteoComponent implements OnInit {
     const today = moment().add(0, 'd');
 
     this.sevenDayWeather$.subscribe((res: Daily) => {
-      console.log(res);
       res.data.forEach(day => {
         this.calculateLotties(day);
         // Permet de calculer dans le jour en cours sunset/sunrise
@@ -234,12 +229,9 @@ export class MeteoComponent implements OnInit {
    * */
   manageDates(date: number, format?: string): string | moment.Moment {
     let unixToLocal;
-    console.log(this.language);
     if (this.language === 'fr') {
-      console.log('aa');
       unixToLocal = moment.unix(date).utc().add(this.utc, 'h').locale('fr');
     } else {
-      console.log('bb');
       unixToLocal = moment.unix(date).add(this.utc, 'h').locale('en');
     }
     return unixToLocal.format(format);
@@ -256,7 +248,7 @@ export class MeteoComponent implements OnInit {
       // Améliorable avec un lottie-cold-wind
       // this.lotties('lottie-wind');
     } else {
-      console.log(currentWeather.icon);
+      // console.log(currentWeather.icon);
       this.lotties(currentWeather.icon);
     }
   }
