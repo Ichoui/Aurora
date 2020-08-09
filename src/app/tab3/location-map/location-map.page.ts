@@ -47,7 +47,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
         if (codeLocation) {
           this.localisation = codeLocation.code;
           this.loadMap(codeLocation.lat, codeLocation.long);
-          // this.addMarker(codeLocation.lat, codeLocation.long);
         }
       },
       error => console.warn('Il y a un soucis de storage de position', error)

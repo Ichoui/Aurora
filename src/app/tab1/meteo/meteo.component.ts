@@ -7,7 +7,8 @@ import * as Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { BehaviorSubject } from 'rxjs';
 import { Storage } from '@ionic/storage';
-import { AnimationOptions } from "ngx-lottie";
+import { AnimationOptions } from 'ngx-lottie';
+import { AnimationItem } from 'ngx-lottie/src/symbols';
 
 @Component({
   selector: 'app-meteo',
@@ -68,9 +69,12 @@ export class MeteoComponent implements OnInit {
 
   // lotties
   lottieConfig: AnimationOptions;
-  anim: any;
-  width: number = 110;
-  height: number = 110;
+  widthCurrent: number = 110;
+  heightCurrent: number = 110;
+
+  lottie7Fcst: AnimationOptions;
+  width7Fcst: number = 42;
+  height7Fcst: number = 42;
 
   language: string;
 
@@ -205,7 +209,9 @@ export class MeteoComponent implements OnInit {
     const today = moment().add(0, 'd');
 
     this.sevenDayWeather$.subscribe((res: Daily) => {
+      console.log(res);
       res.data.forEach(day => {
+        this.calculateLotties(day);
         // Permet de calculer dans le jour en cours sunset/sunrise
         if (this.manageDates(day.time, 'MM DD') === today.format('MM DD')) {
           this.sunset = this.manageDates(day.sunsetTime, 'H:mm');
@@ -237,30 +243,43 @@ export class MeteoComponent implements OnInit {
    * @param currentWeather {Currently}
    * Permet de calculer le lottie à afficher. Les cas particuliers hors API Dark Sky seront à traiter "à la mano"
    * */
-  calculateLotties(currentWeather: Currently) {
+  calculateLotties(currentWeather: Currently | DataDaily) {
     if (currentWeather.cloudCover >= 0.75 && currentWeather.icon === 'cloudy-night') {
       this.lotties('lottie-very-cloudy-night');
-    } else if (currentWeather.temperature <= 8 && currentWeather.icon === 'wind') {
+      // } else if (currentWeather.temperature <= 8 && currentWeather.icon === 'wind') {
       // Améliorable avec un lottie-cold-wind
-      this.lotties('lottie-wind');
+      // this.lotties('lottie-wind');
     } else {
+      console.log(currentWeather.icon);
       this.lotties(currentWeather.icon);
     }
   }
 
+
   lotties(icon: string): void {
-    if (icon === 'fog' || icon === 'sleet' || icon === 'snow' || icon === 'wind' ) {
-      this.width = this.height = 65;
+    if (icon === 'fog' || icon === 'sleet' || icon === 'snow' || icon === 'wind') {
+      this.widthCurrent = this.heightCurrent = 65;
+      this.width7Fcst = this.height7Fcst = 35;
     }
 
     this.lottieConfig = {
       path: `assets/lotties/lottie-${icon}.json`,
       // path: `assets/lotties/lottie-very-cloudy-night.json`,
-      renderer: "svg",
+      renderer: 'svg',
       autoplay: true,
       loop: true,
     };
-    console.log(icon);
+
+    this.lottie7Fcst = {
+      path: `assets/lotties/lottie-${icon}.json`,
+      // path: `assets/lotties/lottie-very-cloudy-night.json`,
+      renderer: 'svg',
+      autoplay: true,
+      loop: true,
+    };
   }
 
+  animationCreated(animationItem: AnimationItem): void {
+    animationItem.setSpeed(0.6);
+  }
 }

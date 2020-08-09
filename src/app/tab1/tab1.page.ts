@@ -61,7 +61,7 @@ export class Tab1Page {
           this.reverseGeoloc(codeLocation.lat, codeLocation.long);
         } else {
           console.log('cc');
-          this.chooseAnyCity(codeLocation.code);
+          this.chooseExistingCity(codeLocation.code);
         }
       },
       error => {
@@ -132,7 +132,7 @@ export class Tab1Page {
    * @param code slug de la ville pour pouvoir récupérer les données liées au code
    * Choisir une des villes pré-enregistrées
    */
-  chooseAnyCity(code: string): void {
+  chooseExistingCity(code: string): void {
     const city = cities.find(res => res.code === code);
     this.city = city.ville;
     this.country = city.pays;

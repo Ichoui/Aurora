@@ -1,7 +1,7 @@
 <div class="container">
   <div class="date">{{ actualDate }}</div>
   <div class="today">
-    <ng-lottie *ngIf="lottieConfig" [options]="lottieConfig" [width]="width + 'px'" [height]="height + 'px'"> </ng-lottie>
+    <ng-lottie *ngIf="lottieConfig" [options]="lottieConfig" [width]="widthCurrent + 'px'" [height]="heightCurrent + 'px'"> </ng-lottie>
 
     <!--        <div class="actual-weather">-->
     <!--                       <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"-->
@@ -32,6 +32,8 @@
           <div class="percent">{{ day.precipProbability | percent }}</div>
         </div>
         <span class="icon icon-{{ day.icon }}"></span>
+<!--        <ng-lottie *ngIf="lottie7Fcst" [options]="lottie7Fcst" [width]="width7Fcst+'px'" [height]="height7Fcst+'px'" (animationCreated)="animationCreated($event)" > </ng-lottie>-->
+
         <div class="temps">
           <span class="temp-max">{{ day.temperatureMax | number: '1.0-0' }}°</span>
           <span class="temp-min">{{ day.temperatureMin | number: '1.0-0' }}°</span>
