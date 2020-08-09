@@ -190,7 +190,6 @@ export class Tab1Page {
     }
   }
 
-
   /**
    * @param count {string}
    * Gère le loader
@@ -211,6 +210,7 @@ export class Tab1Page {
   doRefresh(event) {
     this.tabLoading = [];
     this.eventRefresh = event;
+    console.log(moment().unix());
     this.getForecast(moment().unix());
   }
 }

@@ -1,14 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Coords } from '../../models/cities';
-import * as moment from 'moment';
-import 'moment/locale/fr';
-import { Cloudy, Currently, Daily, DataDaily, Hourly } from '../../models/weather';
-import * as Chart from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { BehaviorSubject } from 'rxjs';
-import { Storage } from '@ionic/storage';
-import { AnimationOptions } from 'ngx-lottie';
-import { AnimationItem } from 'ngx-lottie/src/symbols';
+import { Component, Input, OnInit } from "@angular/core";
+import { Coords } from "../../models/cities";
+import * as moment from "moment";
+import "moment/locale/fr";
+import { Cloudy, Currently, Daily, DataDaily, Hourly } from "../../models/weather";
+import * as Chart from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { BehaviorSubject } from "rxjs";
+import { Storage } from "@ionic/storage";
+import { AnimationOptions } from "ngx-lottie";
+import { AnimationItem } from "ngx-lottie/src/symbols";
 
 @Component({
   selector: 'app-meteo',
@@ -48,6 +48,8 @@ export class MeteoComponent implements OnInit {
 
   @Input() utc: number;
 
+  loading: boolean = false;
+
   // Observable
   currentWeather$ = new BehaviorSubject<Currently>(null);
   hourlyWeather$ = new BehaviorSubject<Hourly>(null);
@@ -81,20 +83,21 @@ export class MeteoComponent implements OnInit {
   constructor(private storage: Storage) {}
 
   ngOnInit() {
-    this.todayForecast();
-    this.nextHoursForecast();
-    this.sevenDayForecast();
     this.getLanguage();
+    this.storage.get('language').then(lg => {
+      this.language = lg;
+      this.todayForecast();
+      this.nextHoursForecast();
+      this.sevenDayForecast();
+    });
   }
 
-  getLanguage(): void {
-    this.storage.get('language').then(lg => (this.language = lg));
-  }
+  getLanguage(): void {}
 
   todayForecast() {
     this.currentWeather$.subscribe((res: Currently) => {
-      // console.log(res);
       this.currentWeather = res;
+      this.loading = true;
       this.lotties(this.currentWeather.icon);
       this.calculateLotties(this.currentWeather);
       this.actualDate = this.manageDates(res.time, 'dddd DD MMMM, HH:mm:ss');
@@ -231,9 +234,12 @@ export class MeteoComponent implements OnInit {
    * */
   manageDates(date: number, format?: string): string | moment.Moment {
     let unixToLocal;
+    console.log(this.language);
     if (this.language === 'fr') {
+      console.log('aa');
       unixToLocal = moment.unix(date).utc().add(this.utc, 'h').locale('fr');
     } else {
+      console.log('bb');
       unixToLocal = moment.unix(date).add(this.utc, 'h').locale('en');
     }
     return unixToLocal.format(format);
@@ -254,7 +260,6 @@ export class MeteoComponent implements OnInit {
       this.lotties(currentWeather.icon);
     }
   }
-
 
   lotties(icon: string): void {
     if (icon === 'fog' || icon === 'sleet' || icon === 'snow' || icon === 'wind') {

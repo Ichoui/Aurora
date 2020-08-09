@@ -5,7 +5,7 @@ import { AuroraService } from "../aurora.service";
 import { NavController } from "@ionic/angular";
 import "moment/locale/fr";
 import { Kp27day, KpForecast } from "../models/aurorav2";
-import { NativeGeocoder, NativeGeocoderResult } from "@ionic-native/native-geocoder/ngx";
+import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 
 export interface ErrorTemplate {
@@ -59,10 +59,10 @@ export class Tab2Page {
           console.log('aa');
         } else if (codeLocation.code === 'currentLocation' || codeLocation.code === 'marker') {
           console.log('bb');
-          this.reverseGeoloc(codeLocation.lat, codeLocation.long);
+          this.getExistingLocalisation(codeLocation.lat, codeLocation.long);
         } else {
           console.log('cc');
-          this.chooseAnyCity(codeLocation.code);
+          this.chooseExistingCity(codeLocation.code);
         }
       },
       error => {
@@ -83,7 +83,7 @@ export class Tab2Page {
     this.geoloc
       .getCurrentPosition()
       .then(resp => {
-        this.reverseGeoloc(resp.coords.latitude, resp.coords.longitude);
+        this.getExistingLocalisation(resp.coords.latitude, resp.coords.longitude);
       })
       .catch(error => {
         console.warn('Geolocalisation error', error);
@@ -98,37 +98,21 @@ export class Tab2Page {
   /**
    * @param lat {number}
    * @param long {number}
-   * Si utilisateur a déjà eu accès à cette page / utilisé la tab 3 / rentré coords dans tab3
-   * reverseGeocode, retrouve le nom de la ville via Lat/long
+   * Set les coords avec celles existante en localStorage (déjà eu accès tab3 et marker placé ou géolocalisé)
    * */
-  reverseGeoloc(lat: number, long: number) {
+  getExistingLocalisation(lat: number, long: number) {
     this.coords = {
       latitude: lat,
       longitude: long,
     };
-
-    this.nativeGeo.reverseGeocode(lat, long).then(
-      (res: NativeGeocoderResult[]) => {
-        this.city = res[0].locality;
-        this.country = res[0].countryName;
-        this.getSolarWind();
-      },
-      error => {
-        console.warn('Reverse geocode error', error);
-        this.loading = false;
-        this.dataError = {
-          value: true,
-          message: error,
-        };
-      }
-    );
+    this.getSolarWind();
   }
 
   /**
    * @param code slug de la ville pour pouvoir récupérer les données liées au code
    * Choisir une des villes pré-enregistrées
    */
-  chooseAnyCity(code: string): void {
+  chooseExistingCity(code: string): void {
     const city = cities.find(res => res.code === code);
     this.city = city.ville;
     this.country = city.pays;
