@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../environments/environment";
 import { AuroraModules } from "./models/aurorav2";
+import { Weather } from "./models/weather";
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +39,24 @@ export class AuroraService {
       exclude: `alerts, flags, ${exclude}`,
     };
     return this.http.get(`${environment.cors}/${environment.api_weather}/forecast/${environment.apikey}/${lat},${long}/`, { params });
+  }
+
+
+  /**
+   * @param lat {number} latitude
+   * @param lon {number} longitude
+   * @param exclude {string} hourly | daily
+   * */
+  openWeatherMapForecast$(lat: number, lon: number, exclude?: string): Observable<Weather> {
+    const params = {
+      appid: environment.apikey,
+      lat: lat.toString(),
+      lon: lon.toString(),
+      lang: 'fr',
+      units: 'metric',
+      exclude: exclude,
+    };
+    return this.http.get<Weather>(`${environment.cors}/${environment.api_weather}`, { params });
   }
 
   /**
