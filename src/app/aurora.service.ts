@@ -30,19 +30,14 @@ export class AuroraService {
    * @param lat {number} latitude
    * @param long {number} longitude
    * @param exclude {string} hourly | daily
-   * @param time {number} Time au format UNIX (moment)
    * */
-  darkSkyForecast(lat: number, long: number, exclude?: string, time?: number): Observable<any> {
+  darkSkyForecast(lat: number, long: number, exclude?: string): Observable<any> {
     const params = {
       lang: 'fr',
       units: 'si',
       exclude: `alerts, flags, ${exclude}`,
     };
-    if (time) {
-      return this.http.get(`${environment.cors}/${environment.api_weather}/forecast/${environment.apikey}/${lat},${long},${time}/`, { params });
-    } else {
-      return this.http.get(`${environment.cors}/${environment.api_weather}/forecast/${environment.apikey}/${lat},${long}/`, { params });
-    }
+    return this.http.get(`${environment.cors}/${environment.api_weather}/forecast/${environment.apikey}/${lat},${long}/`, { params });
   }
 
   /**

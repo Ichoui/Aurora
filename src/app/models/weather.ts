@@ -1,116 +1,101 @@
 import { Moment } from 'moment';
 
+// https://openweathermap.org/api/one-call-api
+
 // DarkSky
 export interface Weather {
-    currently: Currently;
-    daily: Daily;
-    hourly: Hourly;
-    latitude: number;
-    longitude: number;
-    timezone: string;
-    offset: number;
+  lat: number;
+  long: number;
+  timezone: string;
+  timezone_offset: number;
+  current: Currently;
+  minutely: Minutely[];
+  hourly: Hourly[];
+  daily: Daily[];
 }
 
 export interface Currently {
-    time: number;
-    summary: string;
-    icon: string;
-    precipIntensity: number;
-    precipProbability: number;
-    precipType: string;
-    temperature: number;
-    apparentTemperature: number;
-    dewPoint: number;
-    humidity: number;
-    pressure: number;
-    windSpeed: number;
-    windGust: number;
-    windBearing: number;
-    cloudCover: number;
-    uvIndex: number;
-    visibility: number;
-    ozone: number;
+  dt: number;
+  sunrise: number;
+  sunset: number;
+  temp: number;
+  feels_like: number;
+  pressure: number;
+  humidity: number;
+  dew_point: number;
+  uvi: number;
+  clouds: number;
+  visibility: number;
+  wind_speed: number;
+  wind_deg: number;
+  weather: WeatherIcon[];
+  rain: RainOneHour;
+}
+
+export interface WeatherIcon {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+}
+
+export interface RainOneHour {
+  ['1h']: number;
+}
+
+export interface Minutely {
+  dt: number;
+  precipitation: number;
 }
 
 export interface Hourly {
-    summary: string;
-    icon: string;
-    data: DataHourly[];
-}
-
-export interface DataHourly {
-    time: number;
-    summary: string;
-    icon: string;
-    precipIntensity: number;
-    precipProbability: number;
-    precipType: string;
-    temperature: number;
-    apparentTemperature: number;
-    dewPoint: number;
-    humidity: number;
-    pressure: number;
-    windSpeed: number;
-    windGust: number;
-    windBearing: number;
-    cloudCover: number;
-    uvIndex: number;
-    visibility: number;
-    ozone: number
+  dt: number;
+  temp: number;
+  feels_like: number;
+  pressure: number;
+  humidity: number;
+  dew_point: number;
+  clouds: number;
+  visibility: number;
+  wind_speed: number;
+  wind_deg: number;
+  weather: WeatherIcon[];
+  pop: number;
+  rain: RainOneHour;
 }
 
 export interface Daily {
-    summary: string;
-    icon: string;
-    data: DataDaily[];
+  dt: number;
+  sunrise: number;
+  sunset: number;
+  temp: DailyTemp;
+  feels_like: DailyFeelsLike;
+  pressure: number;
+  humidity: number;
+  dew_point: number;
+  wind_speed: number;
+  wind_deg: number;
+  weather: WeatherIcon[];
+  clouds: number;
+  pop: number;
+  rain: number;
+  uvi: number;
 }
 
-export interface DataDaily {
-    time: number;
-    summary: string;
-    icon: string;
-    sunriseTime: number;
-    sunsetTime: number;
-    moonPhase: number;
-    precipIntensity: number;
-    precipIntensityMax: number;
-    precipIntensityMaxTime: number;
-    precipProbability: number;
-    precipType: string;
-    temperatureHigh: number;
-    temperatureHighTime: number;
-    temperatureLow: number;
-    temperatureLowTime: number;
-    apparentTemperatureHigh: number;
-    apparentTemperatureHighTime: number;
-    apparentTemperatureLow: number;
-    apparentTemperatureLowTime: number;
-    dewPoint: number;
-    humidity: number;
-    pressure: number;
-    windSpeed: number;
-    windGust: number;
-    windGustTime: number;
-    windBearing: number;
-    cloudCover: number;
-    uvIndex: number;
-    uvIndexTime: number;
-    visibility: number;
-    ozone: number;
-    temperatureMin: number;
-    temperatureMinTime: number;
-    temperatureMax: number;
-    temperatureMaxTime: number;
-    apparentTemperatureMin: number;
-    apparentTemperatureMinTime: number;
-    apparentTemperatureMax: number;
-    apparentTemperatureMaxTime: number;
-    date?: string | number | Moment;
+export interface DailyTemp {
+  day: number;
+  min: number;
+  max: number;
+  night: number;
+  eve: number;
+  morn: number;
+}
+export interface DailyFeelsLike {
+  day: number;
+  night: number;
+  eve: number;
+  morn: number;
 }
 
 // Ennuagement
-export interface Cloudy {
-    percent?: number;
-    time?: string | Moment;
-}
-
+export interface Cloudy {}

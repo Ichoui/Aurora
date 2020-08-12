@@ -1,12 +1,11 @@
-import { Component } from "@angular/core";
-import { Storage } from "@ionic/storage";
-import { cities, CodeLocalisation, Coords } from "../models/cities";
-import { AuroraService } from "../aurora.service";
-import { NavController } from "@ionic/angular";
-import "moment/locale/fr";
-import { Kp27day, KpForecast } from "../models/aurorav2";
-import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
-import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { cities, CodeLocalisation, Coords } from '../models/cities';
+import { AuroraService } from '../aurora.service';
+import { NavController } from '@ionic/angular';
+import 'moment/locale/fr';
+import { Kp27day, KpForecast } from '../models/aurorav2';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 export interface ErrorTemplate {
   value: boolean;
@@ -46,7 +45,7 @@ export class Tab2Page {
     message: 'Error ...',
   };
 
-  constructor(private geoloc: Geolocation, private nativeGeo: NativeGeocoder, private storage: Storage, private navCtrl: NavController, private auroraService: AuroraService) {}
+  constructor(private geoloc: Geolocation, private storage: Storage, private navCtrl: NavController, private auroraService: AuroraService) {}
 
   ionViewWillEnter() {
     this.tabLoading = [];

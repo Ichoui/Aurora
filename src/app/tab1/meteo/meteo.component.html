@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container">
   <div class="date">{{ actualDate }}</div>
   <div class="today">
     <ng-lottie *ngIf="lottieConfig" [options]="lottieConfig" [width]="widthCurrent + 'px'" [height]="heightCurrent + 'px'"> </ng-lottie>
@@ -11,7 +11,7 @@
     <!--            </ng-template>-->
     <!--        </div>-->
 
-    <ng-container *ngIf=" currentWeather$ | async as currentWeather " >
+    <ng-container *ngIf="currentWeather$ | async as currentWeather">
       <div class="temperature">{{ currentWeather.temperature | number: '1.0-0' }}°</div>
       <span *ngIf="currentWeather.temperature >= 33" class="icon minicons icon-hot"></span>
       <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>
@@ -28,15 +28,14 @@
   <ion-card>
     <ion-header>{{ 'tab1.weather.seven.days' | translate }}</ion-header>
     <div class="previsions">
-      <div *ngFor="let day of days" class="next-days">
+      <div *ngFor="let day of days; let i = index" class="next-days">
         <span class="day">{{ day.date }}</span>
         <div class="rain">
           <span class="icon icon-drop"></span>
           <div class="percent">{{ day.precipProbability | percent }}</div>
         </div>
         <span class="icon icon-{{ day.icon }}"></span>
-<!--        <ng-lottie *ngIf="lottie7Fcst" [options]="lottie7Fcst" [width]="width7Fcst+'px'" [height]="height7Fcst+'px'" (animationCreated)="animationCreated($event)" > </ng-lottie>-->
-
+        <!--        <ng-lottie *ngIf="i === 0" [options]="lottie7Fcst0" [width]="width7Fcst+'px'" [height]="height7Fcst+'px'" (animationCreated)="animationCreated($event)" > </ng-lottie>-->
         <div class="temps">
           <span class="temp-max">{{ day.temperatureMax | number: '1.0-0' }}°</span>
           <span class="temp-min">{{ day.temperatureMin | number: '1.0-0' }}°</span>

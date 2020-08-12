@@ -53,8 +53,11 @@
       "cgu": "Terms of Use",
       "languages": "Languages",
       "sublanguages": "Choose your language",
+      "infos": "Informations",
       "subinfos": "Technical explanations and anecdotes (French)",
-      "infos.text": "Want to know more..."
+      "infos.text": "Want to know more...",
+      "another": "Essayez un autre emplacement"
+
     },
     "infos": {
       "title": "Informations",
