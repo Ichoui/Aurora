@@ -80,6 +80,7 @@ export interface Daily {
   pop: number;
   rain: number;
   uvi: number;
+  date: string | Moment; // not from API
 }
 
 export interface DailyTemp {
@@ -98,4 +99,39 @@ export interface DailyFeelsLike {
 }
 
 // Ennuagement
-export interface Cloudy {}
+export interface Cloudy {
+  percent?: number;
+  time?: string | Moment;
+}
+
+export enum IconsOWM {
+  THUNDERSTORM = 'Thunderstorm',
+  DRIZZLE = 'Drizzle',
+  RAIN = 'Rain',
+  SNOW = 'Snow',
+  MIST = 'Mist',
+  SMOKE = 'Smoke',
+  HAZE = 'Haze',
+  DUST = 'Dust',
+  FOG = 'Fog',
+  SAND = 'Sand',
+  ASH = 'Ash',
+  SQUALL = 'Squall',
+  TORNADO = 'Tornado',
+  CLEAR = 'Clear',
+  CLOUDS = 'Clouds',
+}
+
+export enum LottiesValues {
+  RAIN = 'rain',
+  WIND = 'wind',
+  THUNDERSTORM = 'thunderstorm',
+  SNOW = 'snow',
+  CLEAR_DAY = 'clear-day',
+  CLEAR_NIGHT = 'clear-night',
+  VERY_CLOUDY = 'very-cloudy',
+  PARTLY_CLOUDY_DAY = 'partly-cloudy-day',
+  CLOUDY_DAY = 'cloudy-day',
+  PARTLY_CLOUDY_NIGHT = 'partly-cloudy-night',
+  CLOUDY_NIGHT = 'cloudy-night'
+}

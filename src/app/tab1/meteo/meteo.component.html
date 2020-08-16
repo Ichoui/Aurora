@@ -12,9 +12,9 @@
     <!--        </div>-->
 
     <ng-container *ngIf="currentWeather$ | async as currentWeather">
-      <div class="temperature">{{ currentWeather.temperature | number: '1.0-0' }}°</div>
-      <span *ngIf="currentWeather.temperature >= 33" class="icon minicons icon-hot"></span>
-      <span *ngIf="currentWeather.temperature <= 0" class="icon minicons icon-cold"></span>
+      <div class="temperature">{{ currentWeather.temp | number: '1.0-0' }}°</div>
+      <span *ngIf="currentWeather.temp >= 33" class="icon minicons icon-hot"></span>
+      <span *ngIf="currentWeather.temp <= 0" class="icon minicons icon-cold"></span>
     </ng-container>
   </div>
 
@@ -26,19 +26,25 @@
   </ion-card>
 
   <ion-card>
+    tests
+  <ng-lottie *ngIf="lottieConfig1" [options]="lottieConfig1" [width]="heightCurrent+'px'" [height]="heightCurrent+'px'"> </ng-lottie>
+  <ng-lottie *ngIf="lottieConfig2" [options]="lottieConfig2" [width]="heightCurrent+'px'" [height]="heightCurrent+'px'"> </ng-lottie>
+  </ion-card>
+
+  <ion-card>
     <ion-header>{{ 'tab1.weather.seven.days' | translate }}</ion-header>
     <div class="previsions">
       <div *ngFor="let day of days; let i = index" class="next-days">
         <span class="day">{{ day.date }}</span>
         <div class="rain">
           <span class="icon icon-drop"></span>
-          <div class="percent">{{ day.precipProbability | percent }}</div>
+          <div class="percent">{{ day.rain }}%</div>
         </div>
-        <span class="icon icon-{{ day.icon }}"></span>
-        <!--        <ng-lottie *ngIf="i === 0" [options]="lottie7Fcst0" [width]="width7Fcst+'px'" [height]="height7Fcst+'px'" (animationCreated)="animationCreated($event)" > </ng-lottie>-->
+        <span class="icon icon-{{ day.weather[0].icon }}"></span>
+<!--        <ng-lottie *ngIf="i === 0" [options]="lottie7Fcst0" [width]="width7Fcst + 'px'" [height]="height7Fcst + 'px'" (animationCreated)="animationCreated($event)"> </ng-lottie-->
         <div class="temps">
-          <span class="temp-max">{{ day.temperatureMax | number: '1.0-0' }}°</span>
-          <span class="temp-min">{{ day.temperatureMin | number: '1.0-0' }}°</span>
+          <span class="temp-max">{{ day.temp.max | number: '1.0-0' }}°</span>
+          <span class="temp-min">{{ day.temp.min | number: '1.0-0' }}°</span>
         </div>
       </div>
     </div>
@@ -63,14 +69,14 @@
           <span class="icon icon-sunrise"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.sunrise' | translate }}</div>
-        <div class="value">{{ sunrise }}</div>
+        <!--        <div class="value">{{ sunrise }}</div>-->
       </div>
       <div class="sun">
         <div class="icon">
           <span class="icon icon-sunset"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.sunset' | translate }}</div>
-        <div class="value">{{ sunset }}</div>
+        <!--        <div class="value">{{ sunset }}</div>-->
       </div>
     </div>
     <div class="datas" *ngIf="currentWeather$ | async as currentWeather">
@@ -79,14 +85,14 @@
           <span class="icon icon-wind-cloud"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.windspeed' | translate }}</div>
-        <div class="value">{{ currentWeather.windSpeed | number: '1.0-0' }} km/h</div>
+        <div class="value">{{ currentWeather.wind_speed | number: '1.0-0' }} km/h</div>
       </div>
       <div class="feels-like">
         <div class="icon">
           <span class="icon icon-humidity"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.humidity' | translate }}</div>
-        <div class="value">{{ currentWeather.humidity | percent }}</div>
+        <div class="value">{{ currentWeather.humidity }} %</div>
       </div>
     </div>
   </ion-card>

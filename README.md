@@ -10,7 +10,7 @@ You will need an DarkSky API Key (free up to 1000 calls/day, then 1€/10.000 ca
 
 
 ### About 
-Aurora Northern Lights Forecast & Weather. 
+Aurora Northern Lights Forecast & WeatherDarksky. 
 <br>
 Mobile App (IONIC Angular).
 This project will be deployed on Android mobile devices in a first time. 

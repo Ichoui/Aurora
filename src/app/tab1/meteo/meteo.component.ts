@@ -1,14 +1,14 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Coords } from "../../models/cities";
-import * as moment from "moment";
-import "moment/locale/fr";
-import { Cloudy, Currently, Daily, DataDaily, DataHourly, Hourly } from "../../models/weather";
-import * as Chart from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import { BehaviorSubject, Subject } from "rxjs";
-import { Storage } from "@ionic/storage";
-import { AnimationOptions } from "ngx-lottie";
-import { AnimationItem } from "ngx-lottie/src/symbols";
+import { Component, Input, OnInit } from '@angular/core';
+import { Coords } from '../../models/cities';
+import * as moment from 'moment';
+import 'moment/locale/fr';
+import { Cloudy, Currently, Daily, Hourly, IconsOWM, LottiesValues } from '../../models/weather';
+import * as Chart from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { AnimationOptions } from 'ngx-lottie';
+import { AnimationItem } from 'ngx-lottie/src/symbols';
 
 @Component({
   selector: 'app-meteo',
@@ -29,7 +29,7 @@ export class MeteoComponent implements OnInit {
   }
 
   @Input()
-  set hourlyWeatherInput(value: Hourly) {
+  set hourlyWeatherInput(value: Hourly[]) {
     this.hourlyWeather$.next(value);
   }
 
@@ -38,8 +38,7 @@ export class MeteoComponent implements OnInit {
   }
 
   @Input()
-  set sevenDayWeatherInput(value: Daily) {
-    console.log(value);
+  set sevenDayWeatherInput(value: Daily[]) {
     this.sevenDayWeather$.next(value);
   }
 
@@ -53,8 +52,8 @@ export class MeteoComponent implements OnInit {
 
   // Observable
   currentWeather$ = new BehaviorSubject<Currently>(null);
-  hourlyWeather$ = new BehaviorSubject<Hourly>(null);
-  sevenDayWeather$ = new BehaviorSubject<Daily>(null);
+  hourlyWeather$ = new BehaviorSubject<Hourly[]>(null);
+  sevenDayWeather$ = new BehaviorSubject<Daily[]>(null);
 
   // Var reflettant observables
   currentWeather: Currently;
@@ -68,7 +67,7 @@ export class MeteoComponent implements OnInit {
   nextHours = [];
 
   cloudy: Cloudy[] = [];
-  days: DataDaily[] = [];
+  days: Daily[] = [];
 
   // lotties
   lottieConfig: AnimationOptions;
@@ -83,7 +82,6 @@ export class MeteoComponent implements OnInit {
   language: string;
   englishFormat: boolean = false; // h, hh : 12 && H,HH : 24
 
-
   constructor(private storage: Storage) {}
 
   ngOnInit() {
@@ -91,7 +89,7 @@ export class MeteoComponent implements OnInit {
     // this.unsubscribeAll$.complete();
     this.storage.get('language').then(lg => {
       this.language = lg;
-      if (lg === 'en') this.englishFormat = true
+      if (lg === 'en') this.englishFormat = true;
       this.todayForecast();
       this.nextHoursForecast();
       this.sevenDayForecast();
@@ -100,30 +98,27 @@ export class MeteoComponent implements OnInit {
 
   todayForecast() {
     this.currentWeather$.pipe().subscribe((res: Currently) => {
+      console.log(res);
       this.currentWeather = res;
+      this.lotties(this.calculateLotties(res));
       this.actualDate = this.manageDates(moment().unix(), this.englishFormat ? 'dddd Do of MMMM, hh:mm:ss' : 'dddd DD MMMM, HH:mm:ss');
     });
   }
 
   nextHoursForecast() {
-    this.hourlyWeather$.pipe().subscribe((res: Hourly) => {
+    this.hourlyWeather$.pipe().subscribe((res: Hourly[]) => {
       this.cloudy = [];
-      res.data.forEach((hours: DataHourly, i) => {
+      res.forEach((hours: Hourly, i) => {
         if (this.temps.length < this.dataNumberInCharts && i % 2 === 0) {
-          this.temps.push(Math.round(hours.temperature));
-          this.nextHours.push(this.manageDates(hours.time, this.englishFormat ? 'hh:mm' : 'HH:mm'));
+          this.temps.push(Math.round(hours.temp));
+          this.nextHours.push(this.manageDates(hours.dt, this.englishFormat ? 'hh:mm' : 'HH:mm'));
         }
         const cloudy: Cloudy = {
-          percent: hours.cloudCover,
-          time: this.manageDates(hours.time, this.englishFormat ? 'hh:mm' : 'HH:mm'),
+          percent: hours.clouds,
+          time: this.manageDates(hours.dt, this.englishFormat ? 'hh:mm' : 'HH:mm'),
         };
         if (this.cloudy.length < 8) {
           this.cloudy.push(cloudy);
-        }
-
-        if (i === 0) {
-          // lottie de la prévision de l'heure en cours pour moins de marge d'erreur
-          this.calculateLotties(hours, true);
         }
       });
     });
@@ -213,20 +208,18 @@ export class MeteoComponent implements OnInit {
     });
   }
 
-
   sevenDayForecast() {
     const today = moment().add(0, 'd');
 
-    this.sevenDayWeather$.pipe().subscribe((res: Daily) => {
+    this.sevenDayWeather$.pipe().subscribe((res: Daily[]) => {
       this.days = [];
-      res.data.forEach(day => {
-        this.calculateLotties(day, false);
+      res.forEach(day => {
         // Permet de calculer dans le jour en cours sunset/sunrise
-        if (this.manageDates(day.time, 'MM DD') === today.format('MM DD')) {
-          this.sunset = this.manageDates(day.sunsetTime, this.englishFormat ? 'h:mm' : 'H:mm');
-          this.sunrise = this.manageDates(day.sunriseTime, this.englishFormat ? 'h:mm' : 'H:mm');
+        if (this.manageDates(day.dt, 'MM DD') === today.format('MM DD')) {
+          this.sunset = this.manageDates(day.sunset, this.englishFormat ? 'h:mm' : 'H:mm');
+          this.sunrise = this.manageDates(day.sunrise, this.englishFormat ? 'h:mm' : 'H:mm');
         }
-        day.date = this.manageDates(day.time, 'ddd');
+        day.date = this.manageDates(day.dt, 'ddd');
         this.days.push(day);
       });
       console.log(this.days);
@@ -251,47 +244,105 @@ export class MeteoComponent implements OnInit {
 
   /**
    * @param currentWeather {Currently}
-   * @param today {boolean} Détermine si on calcule le lottie du jour ou de la prévision des 7 jours
-   * Permet de calculer le lottie à afficher. Les cas particuliers hors API Dark Sky seront à traiter "à la mano"
+   * Permet de calculer le lottie à afficher. Comporte des cas regroupés ou cas particulier
+   * https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
    * */
-  calculateLotties(currentWeather: Currently | DataDaily, today: boolean = true) {
-    if (currentWeather.cloudCover >= 0.75 && currentWeather.icon === 'cloudy-night') {
-      this.lotties('lottie-very-cloudy-night', today);
-      // } else if (currentWeather.temperature <= 8 && currentWeather.icon === 'wind') {
-      // Améliorable avec un lottie-cold-wind
-      // this.lotties('lottie-wind', today);
-    } else {
-      // console.log(currentWeather.icon);
-      this.lotties(currentWeather.icon, today);
+  calculateLotties(currentWeather: Currently): LottiesValues {
+    const mainIcon = currentWeather.weather[0].main;
+    const idIcon = currentWeather.weather[0].id;
+    const icon = currentWeather.weather[0].icon;
+
+    let day = true;
+    let night = false;
+
+    switch (mainIcon) {
+      case IconsOWM.DRIZZLE:
+      case IconsOWM.RAIN:
+        return LottiesValues.RAIN;
+
+      case IconsOWM.CLEAR:
+        if (currentWeather.wind_speed >= 50) {
+          return LottiesValues.WIND;
+        } else {
+          if (day) {
+            return LottiesValues.CLEAR_DAY;
+          }
+
+          if (night) {
+            return LottiesValues.CLEAR_NIGHT;
+          }
+        }
+        break;
+
+      case IconsOWM.CLOUDS:
+        if (idIcon === 804) {
+          return LottiesValues.VERY_CLOUDY;
+        }
+        if (day) {
+          if (idIcon === 803) {
+            return LottiesValues.PARTLY_CLOUDY_DAY;
+          } else {
+            return LottiesValues.CLOUDY_DAY;
+          }
+        }
+        if (night) {
+          if (idIcon === 803) {
+            return LottiesValues.PARTLY_CLOUDY_NIGHT;
+          } else {
+            return LottiesValues.CLOUDY_NIGHT;
+          }
+        }
+        break;
+
+      case IconsOWM.THUNDERSTORM:
+        return LottiesValues.THUNDERSTORM;
+
+      case IconsOWM.SNOW:
+        return LottiesValues.SNOW;
+
+      default:
+        if (day) {
+          return LottiesValues.CLEAR_DAY;
+        }
+        if (night) {
+          return LottiesValues.CLEAR_NIGHT;
+        }
     }
   }
 
-  lotties(icon: string, today: boolean): void {
-    if (icon === 'fog' || icon === 'sleet' || icon === 'snow' || icon === 'wind') {
-      this.widthCurrent = this.heightCurrent = 65;
-      this.width7Fcst = this.height7Fcst = 35;
-    }
+  lottieConfig1: AnimationOptions;
+  lottieConfig2: AnimationOptions;
 
-    if (today) {
-      this.lottieConfig = {
-        path: `assets/lotties/lottie-${icon}.json`,
-        // path: `assets/lotties/lottie-very-cloudy-night.json`,
-        renderer: 'svg',
-        autoplay: true,
-        loop: true,
-      };
-    } else {
-      // not use ATM
-      this.lottie7Fcst = {
-        path: `assets/lotties/lottie-${icon}.json`,
-        renderer: 'svg',
-        autoplay: true,
-        loop: true,
-      };
-    }
+  lotties(icon: string /*Icons*/): void {
+    // if (icon === 'fog' || icon === 'snow' || icon === 'wind') {
+    // not used atm, keep for sevenDays lotties evol
+    //   this.widthCurrent = this.heightCurrent = 65;
+    //   this.width7Fcst = this.height7Fcst = 35;
+    // }
+
+    this.lottieConfig = {
+      path: `assets/lotties/lottie-${icon}.json`,
+      // path: `assets/lotties/lottie-very-cloudy-night.json`,
+      renderer: 'svg',
+      autoplay: true,
+      loop: true,
+    };
+
+    this.lottieConfig1 = {
+      path: `assets/lotties/lottie-very-cloudy-night.json`,
+      renderer: 'svg',
+      autoplay: true,
+      loop: true,
+    };
+    this.lottieConfig2 = {
+      // path: `assets/lotties/lottie-tornado.json`,
+      renderer: 'svg',
+      autoplay: true,
+      loop: true,
+    };
   }
 
-  animationCreated(animationItem: AnimationItem): void {
-    animationItem.setSpeed(0.6);
-  }
+  // animationCreated(animationItem: AnimationItem): void {
+  //   animationItem.setSpeed(0.6);
+  // }
 }

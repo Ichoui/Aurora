@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { environment } from "../environments/environment";
-import { AuroraModules } from "./models/aurorav2";
-import { Weather } from "./models/weather";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
+import { AuroraModules } from './models/aurorav2';
+import { Weather } from './models/weather';
 
 @Injectable({
   providedIn: 'root',
@@ -38,22 +38,22 @@ export class AuroraService {
       units: 'si',
       exclude: `alerts, flags, ${exclude}`,
     };
-    return this.http.get(`${environment.cors}/${environment.api_weather}/forecast/${environment.apikey}/${lat},${long}/`, { params });
+    return this.http.get(`${environment.cors}/${environment.api_darksky}/forecast/${environment.apikey_ds}/${lat},${long}/`, { params });
   }
-
 
   /**
    * @param lat {number} latitude
    * @param lon {number} longitude
    * @param exclude {string} hourly | daily
+   * @param unit  {unit}
    * */
-  openWeatherMapForecast$(lat: number, lon: number, exclude?: string): Observable<Weather> {
+  openWeatherMapForecast$(lat: number, lon: number, unit?: Unit, exclude?: ExcludeType): Observable<Weather> {
     const params = {
       appid: environment.apikey,
       lat: lat.toString(),
       lon: lon.toString(),
       lang: 'fr',
-      units: 'metric',
+      units: unit,
       exclude: exclude,
     };
     return this.http.get<Weather>(`${environment.cors}/${environment.api_weather}`, { params });
@@ -66,4 +66,15 @@ export class AuroraService {
   getOvations(pole: string): Observable<any> {
     return this.http.get(`${environment.cors}/https://services.swpc.noaa.gov/products/animations/ovation-${pole}.json`);
   }
+}
+
+export enum ExcludeType {
+  MINUTELY = 'minutely',
+  HOURLY = 'hourly',
+  DAILY = 'daily'
+}
+
+export enum Unit {
+  METRIC = 'metric',
+  IMPERIAL = 'imperial',
 }

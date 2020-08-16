@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { Storage } from '@ionic/storage';
-import { NavController, Platform } from '@ionic/angular';
-import { AuroraService } from '../aurora.service';
-import { NativeGeocoder, NativeGeocoderResult } from "@ionic-native/native-geocoder/ngx";
-import { cities, CodeLocalisation, Coords } from '../models/cities';
-import { Currently, Daily, Hourly, Weather } from '../models/weather';
-import { ErrorTemplate } from '../tab2/tab2.page';
+import { Component } from "@angular/core";
+import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { Storage } from "@ionic/storage";
+import { NavController, Platform } from "@ionic/angular";
+import { AuroraService, Unit } from "../aurora.service";
+import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
+import { cities, CodeLocalisation, Coords } from "../models/cities";
+import { Currently, Daily, Hourly, Weather } from "../models/weather";
+import { ErrorTemplate } from "../tab2/tab2.page";
 
 export interface ErrorTemplate {
   value: boolean;
@@ -34,8 +34,8 @@ export class Tab1Page {
 
   // Data inputs
   dataCurrentWeather: Currently;
-  dataHourly: Hourly;
-  dataSevenDay: Daily;
+  dataHourly: Hourly[];
+  dataSevenDay: Daily[];
   utcOffset: number;
 
   dataError: ErrorTemplate = {
@@ -111,8 +111,9 @@ export class Tab1Page {
       latitude: lat,
       longitude: long,
     };
-    // this.getForecast() // TODO pour tricker car reverseGeoloc plante avec cordopute
-    this.nativeGeo.reverseGeocode(lat, long).then(
+    this.getForecastDS()
+    this.getForecast() // TODO pour tricker car reverseGeoloc plante avec cordopute
+/*    this.nativeGeo.reverseGeocode(lat, long).then(
       (res: NativeGeocoderResult[]) => {
         this.city = res[0].locality;
         this.country = res[0].countryName;
@@ -129,7 +130,7 @@ export class Tab1Page {
         //   message: error,
         // };
       }
-    );
+    );*/
   }
 
   /**
@@ -152,14 +153,15 @@ export class Tab1Page {
    * API Dark Sky
    * 4 variables pour aujourd'hui, les variables vont aux enfants via Input()
    */
-  getForecast(): void {
+  getForecastDS(): void {
     this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
-      (res: Weather) => {
-        this.dataCurrentWeather = res.currently;
-        this.dataHourly = res.hourly;
-        this.dataSevenDay = res.daily;
-        this.utcOffset = res.offset;
-        this.trickLoading('1st');
+      (res) => {
+        console.log('DARKSKY', res);
+        // this.dataCurrentWeather = res.currently;
+        // this.dataHourly = res.hourly;
+        // this.dataSevenDay = res.daily;
+        // this.utcOffset = res.offset;
+        // this.trickLoading('1st');
       },
       error => {
         console.warn('DarkSky forecast error', error);
@@ -170,6 +172,25 @@ export class Tab1Page {
         };
       }
     );
+  }
+
+  getForecast() {
+    this.auroraService.openWeatherMapForecast$(this.coords.latitude, this.coords.longitude, Unit.METRIC).subscribe((res: Weather) => {
+      this.dataCurrentWeather = res.current;
+      this.dataHourly = res.hourly;
+      this.dataSevenDay = res.daily;
+      this.utcOffset = res.timezone_offset; // in seconds
+      this.trickLoading('1st');
+      console.log(res);
+    },
+      error => {
+        console.warn('DarkSky forecast error', error);
+        this.loading = false;
+        this.dataError = {
+          value: true,
+          message: error.status + ' ' + error.statusText,
+        };
+      })
   }
 
   /**
