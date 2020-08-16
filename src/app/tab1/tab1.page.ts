@@ -3,7 +3,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { NavController, Platform } from '@ionic/angular';
 import { AuroraService } from '../aurora.service';
-import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder, NativeGeocoderResult } from "@ionic-native/native-geocoder/ngx";
 import { cities, CodeLocalisation, Coords } from '../models/cities';
 import { Currently, Daily, Hourly, Unit, Weather } from "../models/weather";
 import { ErrorTemplate } from '../tab2/tab2.page';
@@ -116,24 +116,23 @@ export class Tab1Page {
       longitude: long,
     };
     this.getForecast(); // TODO pour tricker car reverseGeoloc plante avec cordopute
-    /*    this.nativeGeo.reverseGeocode(lat, long).then(
-      (res: NativeGeocoderResult[]) => {
-        this.city = res[0].locality;
-        this.country = res[0].countryName;
-        this.getForecast();
-      },
-      error => {
-        console.warn('Reverse geocode error ==> ');
-        console.warn(error);
-        this.loading = false;
-
-        // if (environment)
-        // this.dataError = {
-        //   value: true,
-        //   message: error,
-        // };
-      }
-    );*/
+       // this.nativeGeo.reverseGeocode(lat, long).then(
+      // (res: NativeGeocoderResult[]) => {
+      //   this.city = res[0].locality;
+      //   this.country = res[0].countryName;
+      //   this.getForecast();
+      // },
+      // error => {
+      //   console.warn('Reverse geocode error ==> ');
+      //   console.warn(error);
+      //   this.loading = false;
+      //
+      //   this.dataError = {
+      //     value: true,
+      //     message: error,
+      //   };
+      // }
+    // );
   }
 
   /**

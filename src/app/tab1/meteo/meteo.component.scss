@@ -45,6 +45,10 @@ ion-header {
 
     .temperature {
       font-size: 3.5em;
+      sup {
+        top: -0.8em !important;
+        font-size: 50% !important;
+      }
     }
     &.feels {
       display: flex;

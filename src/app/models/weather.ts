@@ -145,6 +145,7 @@ export enum ExcludeType {
 export enum Unit {
   METRIC = 'metric',
   IMPERIAL = 'imperial',
+  KELVIN = 'kelvin',
 }
 
 export const units: SelectContents[] = [
