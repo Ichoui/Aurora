@@ -49,9 +49,9 @@ ion-header {
     &.feels {
       display: flex;
       flex-direction: column;
-      font-size: .8em;
+      font-size: 0.8em;
       .tiret {
-        color: var(--ion-color-primary)
+        color: var(--ion-color-primary);
       }
       .description {
         text-transform: capitalize;
@@ -65,6 +65,34 @@ ion-header {
   font-size: 0.8em;
   text-transform: capitalize;
   text-align: center;
+}
+
+.next-hours {
+  .next-more-info {
+    display: flex;
+    align-content: center;
+  }
+
+  .next-content {
+    align-self: center;
+    img {
+      width: 40px;
+    }
+    .rain {
+      display: flex;
+      align-items: center;
+      margin-top: 4px;
+
+      span.icon {
+        font-size: 0.55em;
+        padding-right: 2px;
+      }
+
+      .percent {
+        font-size: 0.73em;
+      }
+    }
+  }
 }
 
 // Prévisions 7j
