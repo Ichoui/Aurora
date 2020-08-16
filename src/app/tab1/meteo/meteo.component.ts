@@ -210,17 +210,16 @@ export class MeteoComponent implements OnInit {
   }
 
   sevenDayForecast() {
-
     this.sevenDayWeather$.pipe().subscribe((res: Daily[]) => {
       this.days = [];
       res.forEach((day: Daily, index) => {
         if (index === 0) {
           this.todayTemp = day.temp;
-        }
+        } else {
         day.date = this.manageDates(day.dt, 'ddd');
         this.days.push(day);
+        }
       });
-      console.log(this.days);
     });
   }
 

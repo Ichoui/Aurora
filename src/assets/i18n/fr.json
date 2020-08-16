@@ -26,7 +26,9 @@
       "kpindex": "Kp Index",
       "density": " Densitée des particules (p/cc)",
       "speed": " Vent solaire (km/h)",
-      "probability": "Tu as {{value}}% de chances de voir une Aurore Boréale au dessus de toi"
+      "probability": "Tu as {{value}}% de chances de voir<br/>une Aurore Boréale au dessus de toi",
+      "bz": "IMF - Bz",
+      "bt": "IMF - Bt"
     },
     "maps": {
       "worldmap": "Carte du monde",
@@ -58,7 +60,7 @@
       "infos.text": "En savoir plus",
       "another": "Essaye un autre emplacement",
       "units": "Unité",
-      "subunits": "Choisis ton unité de mesure prférée",
+      "subunits": "Choisis ton unité de mesure préférée",
       "metric": "Métrique",
       "imperial": "Impérial",
       "kelvin": "Kelvin",

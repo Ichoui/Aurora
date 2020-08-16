@@ -1,6 +1,6 @@
 {
   "global": {
-      "unknown": "Unknown location",
+    "unknown": "Unknown location",
     "loading": "Current location loading...",
     "back": "Back",
     "cancel": "Cancel"
@@ -26,9 +26,10 @@
       "kpindex": "Kp Index",
       "density": " Particles density (p/cc)",
       "speed": " Solar wind (km/h)",
-      "probability": "You currently have {{value}}% chance to observe Aurora Borealis"
+      "probability": "You currently have {{value}}% chance to observe Aurora Borealis",
+      "bz": "IMF - Bz",
+      "bt": "IMF - Bt"
     },
-
     "maps": {
       "worldmap": "World map",
       "ovations": "Ovation Prime",
@@ -64,7 +65,6 @@
       "kelvin": "Kelvin",
       "fr": "French",
       "en": "English"
-
     },
     "infos": {
       "title": "Informations",
