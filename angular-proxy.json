@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://api.darksky.net/",
+    "target": "https://api.openweathermap.org/data/2.5/onecall/",
     "secure": false,
     "changeOrigin": true
   }

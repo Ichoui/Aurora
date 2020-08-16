@@ -2,7 +2,6 @@ import { Moment } from 'moment';
 
 // https://openweathermap.org/api/one-call-api
 
-// DarkSky
 export interface Weather {
   lat: number;
   long: number;

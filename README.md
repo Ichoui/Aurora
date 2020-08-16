@@ -3,14 +3,13 @@
 ### Installation
 `npm i` for dependencies
 <br> Create a typescript file here `src/environments/keep.ts` and then :
-- export a const named `DARKSKY_API_KEY`
-- export a const named `GOOGLE_PROJECT_NUMBER` (represent Sender ID in Firebase)
+- export a const named `OPENWHEATHER_API_KEY`
 
-You will need an DarkSky API Key (free up to 1000 calls/day, then 1€/10.000 calls), a Firebase project & a OneSignal free account.
+You will need an OpenWeatherMap free account.
 
 
 ### About 
-Aurora Northern Lights Forecast & WeatherDarksky. 
+Aurora Northern Lights Forecast 
 <br>
 Mobile App (IONIC Angular).
 This project will be deployed on Android mobile devices in a first time. 
@@ -19,7 +18,7 @@ This project will be deployed on Android mobile devices in a first time.
 
 
 ### Credits 
-- Dark Sky API for the weather: https://darksky.net/poweredby/
+- OpenWeatherMap API for the weather : https://openweathermap.org/api/one-call-api#data 
 - Aurora Live API for the auroras' informations : http://auroraslive.io/#/
 - Thanks to JHEY for his talent, found on Codepen : https://codepen.io/jh3y/pen/JKddVx
 - Various websites for informations & stories about Aurora

@@ -163,7 +163,7 @@ export class Tab1Page {
         console.log(res);
       },
       error => {
-        console.warn('DarkSky forecast error', error);
+        console.warn('OpenWeatherMap forecast error', error);
         this.loading = false;
         this.dataError = {
           value: true,
