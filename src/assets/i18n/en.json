@@ -52,11 +52,18 @@
       "credits": "Credits",
       "cgu": "Terms of Use",
       "languages": "Languages",
-      "sublanguages": "Choose your language",
+      "sublanguages": "Pick your favorite language",
       "infos": "Informations",
       "subinfos": "Technical explanations and anecdotes (French)",
       "infos.text": "Want to know more...",
-      "another": "Essayez un autre emplacement"
+      "another": "Essayez un autre emplacement",
+      "units": "Unit",
+      "subunits": "Pick your favorate unit",
+      "metric": "Metric",
+      "imperial": "Imperial",
+      "kelvin": "Kelvin",
+      "fr": "French",
+      "en": "English"
 
     },
     "infos": {

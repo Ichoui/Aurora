@@ -4,7 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
-import { Plugins } from "@capacitor/core";
+import { Plugins } from '@capacitor/core';
 
 const { StatusBar } = Plugins;
 
@@ -22,16 +22,14 @@ export class AppComponent {
   }
 
   initializeApp() {
-      if (this.platform.is('hybrid')) StatusBar.setBackgroundColor({ color: '#69BFAF' }).then();
+    if (this.platform.is('hybrid')) StatusBar.setBackgroundColor({ color: '#69BFAF' }).then();
     this.platform.ready().then(() => {
-
-
       this.translateService.addLangs(['fr', 'en']);
       this.getLanguage();
+      this.getUnit();
 
       // this.getKp();
       // this.isNotifsActive();
-
     });
   }
 
@@ -67,7 +65,23 @@ export class AppComponent {
       },
       noValue => {
         this.storage.set('language', 'fr');
-        console.log('novalue', noValue);
+        console.log('novalue of language', noValue);
+      }
+    );
+  }
+
+  getUnit(): void {
+    this.storage.get('unit').then(
+      unit => {
+        if (unit) {
+          this.storage.set('unit', unit);
+        } else {
+          this.storage.set('unit', 'metric');
+        }
+      },
+      noValue => {
+        this.storage.set('unit', 'metric');
+        console.log('novalue of units', noValue);
       }
     );
   }

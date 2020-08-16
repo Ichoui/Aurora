@@ -1,18 +1,15 @@
-export interface Language {
+export interface SelectContents {
     slug: string;
-    labelFr: string;
-    labelEn: string;
+    label: string;
 }
 
-export const Languages: Language[] = [
+export const Languages: SelectContents[] = [
     {
         slug: 'fr',
-        labelFr: 'Français',
-        labelEn: 'French',
+        label: 'tab3.settings.fr'
     },
     {
         slug: 'en',
-        labelFr: 'Anglais',
-        labelEn: 'English',
+        label: 'tab3.settings.en'
     }
 ];

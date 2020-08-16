@@ -31,8 +31,8 @@
       <ion-header>{{ 'tab3.settings.infos' | translate }}</ion-header>
       <div class="sub">{{ 'tab3.settings.subinfos' | translate }}</div>
       <ion-item [routerLink]="['../../../infos']">
-        <span style="font-size: .9em">
-        {{ 'tab3.settings.infos.text' | translate }}
+        <span style="font-size: 0.9em;">
+          {{ 'tab3.settings.infos.text' | translate }}
         </span>
       </ion-item>
     </ion-card-content>
@@ -45,8 +45,23 @@
       <ion-item>
         <ion-select value="{{ language }}" interface="action-sheet" (ionChange)="selectedLanguage($event)" cancelText="{{ 'global.cancel' | translate }}">
           <ion-select-option *ngFor="let lg of languages" value="{{ lg.slug }}">
-            <span *ngIf="language === 'fr'">{{ lg.labelFr }}</span>
-            <span *ngIf="language === 'en'">{{ lg.labelEn }}</span>
+            {{ lg.label | translate }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-header>{{ 'tab3.settings.units' | translate }}</ion-header>
+      <div class="sub">{{ 'tab3.settings.subunits' | translate }}</div>
+      <ion-item>
+        <ion-select value="{{ unit }}" interface="action-sheet" (ionChange)="selectedUnit($event)" cancelText="{{ 'global.cancel' | translate }}">
+          <ion-select-option *ngFor="let u of units" value="{{ u.slug }}">
+            <span>
+              {{ u.label | translate }}
+            </span>
           </ion-select-option>
         </ion-select>
       </ion-item>

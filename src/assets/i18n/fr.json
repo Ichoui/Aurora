@@ -1,7 +1,7 @@
 {
   "global": {
     "unknown": "Lieu inconnu",
-    "loading": "Votre localisation est en cours de chargement ...",
+    "loading": "Ta localisation est en cours de chargement ...",
     "back": "Retour",
     "cancel": "Annuler"
   },
@@ -26,7 +26,7 @@
       "kpindex": "Kp Index",
       "density": " Densitée des particules (p/cc)",
       "speed": " Vent solaire (km/h)",
-      "probability": "Vous avez {{value}}% de chances de voir une Aurore Boréale au dessus de vous"
+      "probability": "Tu as {{value}}% de chances de voir une Aurore Boréale au dessus de toi"
     },
     "maps": {
       "worldmap": "Carte du monde",
@@ -44,7 +44,7 @@
     "settings": {
       "title": "Paramètres",
       "location": "Localisation",
-      "sublocation": "Touchez pour choisir votre localisation",
+      "sublocation": "Touche pour choisir ta localisation",
       "notifications": "Notifications",
       "kp": "KP Index",
       "current.position": "Position actuelle",
@@ -52,23 +52,30 @@
       "subcredits": "",
       "cgu": "Conditions Générales d'Utilisation",
       "languages": "Langues",
-      "sublanguages": "Choisissez votre langue",
+      "sublanguages": "Choisis ta langue préférée",
       "infos": "Informations",
       "subinfos": "Explications techniques, mécanismes et annecdotes",
       "infos.text": "En savoir plus",
-      "another": "Essayez un autre emplacement"
+      "another": "Essaye un autre emplacement",
+      "units": "Unité",
+      "subunits": "Choisis ton unité de mesure prférée",
+      "metric": "Métrique",
+      "imperial": "Impérial",
+      "kelvin": "Kelvin",
+      "fr": "Français",
+      "en": "Anglais"
     },
     "infos": {
       "title": "Informations",
       "welcome": {
         "title": "Aurora - Northern Lights",
-        "message": "Cette application est destinée au phénomène des Aurores Boréales.<br>Que vous viviez dans un pays lointain du phénomène, ou que vous soyez un chasseur d'aurores assidu, cette application vous permettra de vous informer quant à la probabilité de voir une Aurore Boréale, grâce aux données du <i>Space Weather Prediction Center</i>.<br> Une section météo est également intégrée à l'application, pour optimiser vos recherches !"
+        "message": "Cette application est destinée au phénomène des Aurores Boréales.<br>Que tu vives dans un pays lointain du phénomène, ou que tu sois un chasseur d'aurores assidu, cette application te permettra de t'informer quant à la probabilité de voir une Aurore Boréale, grâce aux données du <i>Space Weather Prediction Center</i>.<br> Une section météo est également intégrée à l'application, pour optimiser vos recherches !"
       },
       "firstblock": {
         "header": "Une Aurore Boréale ?",
         "how": {
           "title": "Mécanisme ?",
-          "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le <b>Soleil</b>.<br>Elles apparaissent lorsque des <b>particules solaires</b>, propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles se produisent à proximité des pôles magnétiques, dans la <b>zone aurorale<b> (située entre 65 et 75° de latitude), où elles interagissent avec les couches supérieures de l'atmosphère : ozone, oxygène, hydrogène et autres gaz. De l'énergie se créé alors et devient visible sous forme de lumières dansantes.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), c'est à dire dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques et scientifiques, je vous propose les sites suivants :<ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
+          "message": "Une Aurore Boréale est un phénomène naturel qui a pour origine le <b>Soleil</b>.<br>Elles apparaissent lorsque des <b>particules solaires</b>, propulsées par des vents solaires, entrent dans le champ magnétique terrestre. Elles se produisent à proximité des pôles magnétiques, dans la <b>zone aurorale<b> (située entre 65 et 75° de latitude), où elles interagissent avec les couches supérieures de l'atmosphère : ozone, oxygène, hydrogène et autres gaz. De l'énergie se créé alors et devient visible sous forme de lumières dansantes.<br>Ce phénomène se produit à une altitude de 100 km, au niveau de la ligne de Karman (ligne qui sépare l'atmosphère de l'espace), c'est à dire dans la Thermosphère (85 - 690 km).<br><br>Pour plus d'informations techniques et scientifiques, je te propose les sites suivants :<ul><li><a href='https://tinyurl.com/y3ptbsab'>visitnorway.fr</a></li><li><a href='https://tinyurl.com/yxslqesx'>bastienfoucher.com</a></li></ul>"
         },
         "solarwind": {
           "title": "Le vent solaire",
@@ -146,20 +153,20 @@
       },
       "help": {
         "title": "Comment marche Aurora - Northern Lights ?",
-        "message": "C'est très simple ! <ol><li>Premièrement, comprenez leur fonctionnement</li><li>Ensuite, choisissez une localisation. Sinon, vous serez géolocalisé.</li><li>Vous n'avez plus qu'à consulter l'activité solaire et la couverture nuageuse. Rappel, ces données fournissent des pistes pour chasser une aurore boréale. Elles ne vous assureront pas d'en voir.</li></ol>"
+        "message": "C'est très simple ! <ol><li>Premièrement, comprends comment fonctionne une aurore.</li><li>Ensuite, choisis une localisation, sinon tu seras géolocalisé si tu me l'autorises.</li><li>Tu n'auras plus qu'à consulter l'activité solaire et la couverture nuageuse. Rappel, ces données fournissent des indicateurs pour chasser une aurore boréale. Elles ne t'assureront pas d'en voir ☺</li></ol>"
       }
     },
     "map": {
       "title": "Localisation",
       "select": "Localisation prédéfinie",
-      "another": "Essayez un autre endroit"
+      "another": "Essaye un autre endroit"
     }
   },
   "cgu": {
     "title": "Conditions Générales d'Utilisations (CGU)",
     "art1": {
       "title": "Article 1 : Mentions légales",
-      "text": "L’édition de l’application est assurée par Mr Morgan NICOL, développeur indépendant et créatif. <br>L’application est à but non-lucratif, et est proposée dans l'unique but de renseigner un utilisateur sur des faits météorologique.<br>L'application est hébergée sur le Play Store / Apple Store, en fonction de votre smartphone.<br>Adresse de contact : <a href='mailto:morganichoui@gmail.com'>morganichoui@gmail.com</a><br>"
+      "text": "L’édition de l’application est assurée par Mr Morgan NICOL, développeur indépendant et créatif. <br>L’application est à but non-lucratif, et est proposée dans l'unique but de renseigner un utilisateur sur des faits météorologique.<br>L'application est hébergée sur le Play Store / Apple Store, en fonction de ton smartphone.<br>Adresse de contact : <a href='mailto:morganichoui@gmail.com'>morganichoui@gmail.com</a><br>"
     },
     "art2": {
       "title": "Article 2 : Accès et utilisation du site ",
@@ -179,7 +186,7 @@
     },
     "art6": {
       "title": "Article 6 : Contacts",
-      "text": "<b>Morgan 'Ichoui' N - Développeur web et mobile indépendant - Région de Toulouse</b><br>Joignable via réseaux sociaux ou email pour toutes suggestions / réclamations. Pour cela, rendez-vous dans l'onglet de Paramètres, et veuillez cliquer sur le bouton vert pour faire un choix."
+      "text": "<b>MorgaN - Développeur web et mobile indépendant - Région de Toulouse</b><br>Joignable via réseaux sociaux ou email pour toutes suggestions / réclamations. Pour cela, rends-toi dans l'onglet de Paramètres, mes coordonnées derrière le bouton vert ☺"
     }
   }
 }

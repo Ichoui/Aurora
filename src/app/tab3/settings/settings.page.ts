@@ -1,14 +1,15 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from "@angular/core";
-import { icon, Map, Marker, marker, tileLayer, ZoomPanOptions } from "leaflet";
-import { CodeLocalisation, Coords } from "../../models/cities";
-import { Language, Languages } from "../../models/languages";
-import { Storage } from "@ionic/storage";
-import { Router } from "@angular/router";
-import { Geolocation } from "@ionic-native/geolocation/ngx";
-import { ModalController, NavController } from "@ionic/angular";
-import { TranslateService } from "@ngx-translate/core";
-import { ModalComponent } from "../../shared/modal/modal.component";
-import { Browser } from "@capacitor/core";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { icon, Map, Marker, marker, tileLayer, ZoomPanOptions } from 'leaflet';
+import { CodeLocalisation, Coords } from '../../models/cities';
+import { Languages, SelectContents } from '../../models/languages';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { ModalController, NavController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { ModalComponent } from '../../shared/modal/modal.component';
+import { Browser } from '@capacitor/core';
+import { Unit, units } from '../../models/weather';
 
 @Component({
   selector: 'app-settings',
@@ -26,8 +27,10 @@ export class SettingsPage implements OnInit {
   map: Map;
 
   language: string = 'fr';
-  languages: Language[] = Languages;
-  private renderer: Renderer2;
+  languages: SelectContents[] = Languages;
+
+  unit: Unit = Unit.METRIC;
+  units: SelectContents[] = units;
 
   @ViewChild('map_canvas', { static: false }) mapElement: ElementRef;
 
@@ -66,10 +69,6 @@ export class SettingsPage implements OnInit {
     this.storage.get('localisation').then((codeLocation: CodeLocalisation) => {
       if (!codeLocation) {
         this.userLocalisation();
-      // } else if (mapExist) {
-      //   this.addMarker(codeLocation.lat, codeLocation.long);
-        // this.map.remove();
-        // this.mapInit(codeLocation.lat, codeLocation.long);
       } else {
         this.mapInit(codeLocation.lat, codeLocation.long);
       }
@@ -154,6 +153,14 @@ export class SettingsPage implements OnInit {
     this.language = event.detail.value;
     this.translateService.use(this.language);
     this.storage.set('language', this.language);
+  }
+
+  /**
+   * Sélection de l'unité Imperiale ou Métrique
+   * */
+  selectedUnit(event) {
+    this.unit = event.detail.value;
+    this.storage.set('unit', this.unit);
   }
 
   getLanguage(): void {

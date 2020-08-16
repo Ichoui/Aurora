@@ -38,6 +38,7 @@ export class Tab1Page {
   dataSevenDay: Daily[];
   utcOffset: number;
 
+  unit: Unit;
   dataError: ErrorTemplate = {
     value: false,
     message: 'Error ...',
@@ -57,6 +58,9 @@ export class Tab1Page {
     this.tabLoading = [];
 
     // Cheminement en fonction si la localisation est pré-set ou si géoloc
+    this.storage.get('unit').then((unit: Unit) => {
+      this.unit = unit;
+    })
     this.storage.get('localisation').then(
       (codeLocation: CodeLocalisation) => {
         if (!codeLocation) {
@@ -153,7 +157,8 @@ export class Tab1Page {
    * 4 variables pour aujourd'hui, les variables vont aux enfants via Input()
    */
   getForecast() {
-    this.auroraService.openWeatherMapForecast$(this.coords.latitude, this.coords.longitude, Unit.METRIC).subscribe(
+
+    this.auroraService.openWeatherMapForecast$(this.coords.latitude, this.coords.longitude, this.unit).subscribe(
       (res: Weather) => {
         this.dataCurrentWeather = res.current;
         this.dataHourly = res.hourly;

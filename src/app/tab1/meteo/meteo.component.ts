@@ -91,6 +91,9 @@ export class MeteoComponent implements OnInit {
       this.nextHoursForecast();
       this.sevenDayForecast();
     });
+
+    // Convert seconds to hours
+    this.utc = (this.utc / 60) / 60;
   }
 
   todayForecast() {

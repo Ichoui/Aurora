@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { SelectContents } from './languages';
 
 // https://openweathermap.org/api/one-call-api
 
@@ -132,7 +133,7 @@ export enum LottiesValues {
   PARTLY_CLOUDY_DAY = 'partly-cloudy-day',
   CLOUDY_DAY = 'cloudy-day',
   PARTLY_CLOUDY_NIGHT = 'partly-cloudy-night',
-  CLOUDY_NIGHT = 'cloudy-night'
+  CLOUDY_NIGHT = 'cloudy-night',
 }
 
 export enum ExcludeType {
@@ -145,3 +146,18 @@ export enum Unit {
   METRIC = 'metric',
   IMPERIAL = 'imperial',
 }
+
+export const units: SelectContents[] = [
+  {
+    slug: 'metric',
+    label: 'tab3.settings.metric'
+  },
+  {
+    slug: 'imperial',
+    label: 'tab3.settings.imperial'
+  },
+  {
+    slug: 'kelvin',
+    label: 'tab3.settings.kelvin'
+  },
+];
