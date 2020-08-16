@@ -11,12 +11,14 @@
       "next.hours": "Next hours forecast",
       "seven.days": "7 days forecast",
       "cover.clouds": "Cloud cover",
-      "details": "Details",
+      "details": "More details",
       "details.data": {
         "sunrise": "Sunrise",
         "sunset": "Sunset",
         "windspeed": "Wind speed",
-        "humidity": "Humidity"
+        "humidity": "Humidity",
+        "winddeg": "Compass",
+        "uvindex":"UV Index"
       }
     }
   },
@@ -50,7 +52,15 @@
       "notifications": "Notifications",
       "kp": "KP Index",
       "current.position": "Current location",
-      "credits": "Credits",
+      "credits": {
+        "title": "Crédits",
+        "first": "Auroras datas provided by ",
+        "first.link": "Auroras.live API",
+        "second": "Thanks to JHEY for his ",
+        "second.link": "Aurora CSS Project",
+        "third": "If you like it, don't forget to ",
+        "third.link": "rate me!"
+      },
       "cgu": "Terms of Use",
       "languages": "Languages",
       "sublanguages": "Pick your favorite language",

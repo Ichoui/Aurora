@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'aurora-icons';
-  src:  url('fonts/aurora-icons.eot?jjr7ph');
-  src:  url('fonts/aurora-icons.eot?jjr7ph#iefix') format('embedded-opentype'),
-    url('fonts/aurora-icons.ttf?jjr7ph') format('truetype'),
-    url('fonts/aurora-icons.woff?jjr7ph') format('woff'),
-    url('fonts/aurora-icons.svg?jjr7ph#aurora-icons') format('svg');
+  src:  url('fonts/aurora-icons.eot?ereglc');
+  src:  url('fonts/aurora-icons.eot?ereglc#iefix') format('embedded-opentype'),
+    url('fonts/aurora-icons.ttf?ereglc') format('truetype'),
+    url('fonts/aurora-icons.woff?ereglc') format('woff'),
+    url('fonts/aurora-icons.svg?ereglc#aurora-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -13,7 +13,7 @@
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'aurora-icons' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -25,6 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-uv-index:before {
+  content: "\e915";
+}
+.icon-navigator:before {
+  content: "\e916";
+}
 .icon-paypal:before {
   content: "\e925";
 }
@@ -52,65 +58,20 @@
 .icon-drop:before {
   content: "\e950";
 }
-.icon-partly-cloudy-night:before {
-  content: "\e915";
-}
-.icon-fog:before {
-  content: "\e916";
-}
-.icon-clear-night:before {
-  content: "\e917";
-}
-.icon-cold-wind:before {
-  content: "\e918";
-}
-.icon-sleet:before {
-  content: "\e91a";
-}
-.icon-cloudy:before {
-  content: "\e91c";
-}
 .icon-cold:before {
   content: "\e91d";
-}
-.icon-rain:before {
-  content: "\e91f";
-}
-.icon-wind:before {
-  content: "\e921";
-}
-.icon-bolt:before {
-  content: "\e922";
 }
 .icon-sunset:before {
   content: "\e942";
 }
-.icon-partly-cloudy-day:before {
-  content: "\e944";
-}
-.icon-thunderstorm:before {
-  content: "\e945";
-}
 .icon-hot:before {
   content: "\e947";
-}
-.icon-snow:before {
-  content: "\e94b";
-}
-.icon-clear-day:before {
-  content: "\e94c";
 }
 .icon-wind-cloud:before {
   content: "\e94e";
 }
 .icon-sunrise:before {
   content: "\e94f";
-}
-.icon-settings:before {
-  content: "\e93f";
-}
-.icon-infos:before {
-  content: "\e940";
 }
 .icon-aurora .path1:before {
   content: "\e901";

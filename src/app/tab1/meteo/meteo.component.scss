@@ -74,14 +74,13 @@ ion-header {
   }
 
   .next-content {
-    align-self: center;
     img {
-      width: 40px;
     }
     .rain {
       display: flex;
       align-items: center;
-      margin-top: 4px;
+      transform: translate(-50%);
+      margin-left: 50%;
 
       span.icon {
         font-size: 0.55em;
@@ -194,10 +193,10 @@ ion-header {
 }
 
 //Détails
-.details,
-.datas {
+.data-details, {
   display: flex;
   justify-content: space-evenly;
+  margin: 1px 0;
 
   > div {
     width: 50%;
@@ -207,6 +206,7 @@ ion-header {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 10px;
   }
 
   .icon {
@@ -218,5 +218,6 @@ ion-header {
 
   .label {
     text-align: center;
+    margin-top: 5px;
   }
 }

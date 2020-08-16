@@ -1,16 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Coords } from '../../models/cities';
-import * as moment from 'moment';
-import 'moment/locale/fr';
-import { Cloudy, Currently, Daily, DailyFeelsLike, DailyTemp, Hourly, IconsOWM, LottiesValues } from "../../models/weather";
-import * as Chart from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { Storage } from '@ionic/storage';
-import { AnimationOptions } from 'ngx-lottie';
-import { AnimationItem } from 'ngx-lottie/src/symbols';
-import { Util } from 'leaflet';
-import indexOf = Util.indexOf;
+import { Component, Input, OnInit } from "@angular/core";
+import { Coords } from "../../models/cities";
+import * as moment from "moment";
+import "moment/locale/fr";
+import { Cloudy, Currently, Daily, DailyTemp, Hourly, IconsOWM, LottiesValues } from "../../models/weather";
+import * as Chart from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { BehaviorSubject, Subject } from "rxjs";
+import { Storage } from "@ionic/storage";
+import { AnimationOptions } from "ngx-lottie";
+import { Util } from "leaflet";
 
 @Component({
   selector: 'app-meteo',
@@ -109,6 +107,7 @@ export class MeteoComponent implements OnInit {
   nextHoursForecast() {
     this.hourlyWeather$.pipe().subscribe((res: Hourly[]) => {
       this.cloudy = [];
+      console.log(res);
       res.forEach((hours: Hourly, i) => {
         if (this.temps.length < this.dataNumberInCharts && i % 2 === 0) {
           this.temps.push(Math.round(hours.temp));
@@ -118,7 +117,7 @@ export class MeteoComponent implements OnInit {
           percent: hours.clouds,
           time: this.manageDates(hours.dt, this.englishFormat ? 'hhA' : 'HH:mm'),
         };
-        if (this.cloudy.length < 8) {
+        if (this.cloudy.length < this.dataNumberInCharts) {
           this.cloudy.push(cloudy);
         }
       });

@@ -8,15 +8,17 @@
   "tab1": {
     "title": "Météo",
     "weather": {
-      "next.hours": "Les prochaines heures",
+      "next.hours": "Prévisions heures",
       "seven.days": "Prévisions 7 jours",
       "cover.clouds": "Couverture nuageuse",
-      "details": "Détails",
+      "details": "Plus de détails",
       "details.data": {
         "sunrise": "Lever du soleil",
         "sunset": "Coucher du soleil",
         "windspeed": "Vitesse du vent",
-        "humidity": "Humidité"
+        "humidity": "Humidité",
+        "winddeg": "Rose des vents",
+        "uvindex":"Index UV"
       }
     }
   },
@@ -50,7 +52,15 @@
       "notifications": "Notifications",
       "kp": "KP Index",
       "current.position": "Position actuelle",
-      "credits": "Crédits",
+      "credits": {
+        "title": "Crédits",
+        "first": "Data Aurores fournies par ",
+        "first.link": "Auroras.live API",
+        "second": "Merci à JHEY pour son ",
+        "second.link": "Aurora CSS Project",
+        "third": "Si t'aimes, laisse-moi une ",
+        "third.link": "note !"
+      },
       "subcredits": "",
       "cgu": "Conditions Générales d'Utilisation",
       "languages": "Langues",
