@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
-import { Geolocation } from "@ionic-native/geolocation/ngx";
-import { Storage } from "@ionic/storage";
-import { NavController, Platform } from "@ionic/angular";
-import { AuroraService, Unit } from "../aurora.service";
-import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
-import { cities, CodeLocalisation, Coords } from "../models/cities";
-import { Currently, Daily, Hourly, Weather } from "../models/weather";
-import { ErrorTemplate } from "../tab2/tab2.page";
+import { Component } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Storage } from '@ionic/storage';
+import { NavController, Platform } from '@ionic/angular';
+import { AuroraService } from '../aurora.service';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { cities, CodeLocalisation, Coords } from '../models/cities';
+import { Currently, Daily, Hourly, Unit, Weather } from "../models/weather";
+import { ErrorTemplate } from '../tab2/tab2.page';
 
 export interface ErrorTemplate {
   value: boolean;
@@ -111,9 +111,8 @@ export class Tab1Page {
       latitude: lat,
       longitude: long,
     };
-    this.getForecastDS()
-    this.getForecast() // TODO pour tricker car reverseGeoloc plante avec cordopute
-/*    this.nativeGeo.reverseGeocode(lat, long).then(
+    this.getForecast(); // TODO pour tricker car reverseGeoloc plante avec cordopute
+    /*    this.nativeGeo.reverseGeocode(lat, long).then(
       (res: NativeGeocoderResult[]) => {
         this.city = res[0].locality;
         this.country = res[0].countryName;
@@ -150,18 +149,18 @@ export class Tab1Page {
   }
 
   /**
-   * API Dark Sky
+   * API OpenWeatherMap
    * 4 variables pour aujourd'hui, les variables vont aux enfants via Input()
    */
-  getForecastDS(): void {
-    this.auroraService.darkSkyForecast(this.coords.latitude, this.coords.longitude).subscribe(
-      (res) => {
-        console.log('DARKSKY', res);
-        // this.dataCurrentWeather = res.currently;
-        // this.dataHourly = res.hourly;
-        // this.dataSevenDay = res.daily;
-        // this.utcOffset = res.offset;
-        // this.trickLoading('1st');
+  getForecast() {
+    this.auroraService.openWeatherMapForecast$(this.coords.latitude, this.coords.longitude, Unit.METRIC).subscribe(
+      (res: Weather) => {
+        this.dataCurrentWeather = res.current;
+        this.dataHourly = res.hourly;
+        this.dataSevenDay = res.daily;
+        this.utcOffset = res.timezone_offset; // in seconds
+        this.trickLoading('1st');
+        console.log(res);
       },
       error => {
         console.warn('DarkSky forecast error', error);
@@ -172,25 +171,6 @@ export class Tab1Page {
         };
       }
     );
-  }
-
-  getForecast() {
-    this.auroraService.openWeatherMapForecast$(this.coords.latitude, this.coords.longitude, Unit.METRIC).subscribe((res: Weather) => {
-      this.dataCurrentWeather = res.current;
-      this.dataHourly = res.hourly;
-      this.dataSevenDay = res.daily;
-      this.utcOffset = res.timezone_offset; // in seconds
-      this.trickLoading('1st');
-      console.log(res);
-    },
-      error => {
-        console.warn('DarkSky forecast error', error);
-        this.loading = false;
-        this.dataError = {
-          value: true,
-          message: error.status + ' ' + error.statusText,
-        };
-      })
   }
 
   /**

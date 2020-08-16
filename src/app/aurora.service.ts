@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
-import { AuroraModules } from './models/aurorav2';
-import { Weather } from './models/weather';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { environment } from "../environments/environment";
+import { AuroraModules } from "./models/aurorav2";
+import { ExcludeType, Unit, Weather } from "./models/weather";
 
 @Injectable({
   providedIn: 'root',
@@ -25,20 +25,6 @@ export class AuroraService {
         long: long,
       },
     });
-  }
-
-  /**
-   * @param lat {number} latitude
-   * @param long {number} longitude
-   * @param exclude {string} hourly | daily
-   * */
-  darkSkyForecast(lat: number, long: number, exclude?: string): Observable<any> {
-    const params = {
-      lang: 'fr',
-      units: 'si',
-      exclude: `alerts, flags, ${exclude}`,
-    };
-    return this.http.get(`${environment.cors}/${environment.api_darksky}/forecast/${environment.apikey_ds}/${lat},${long}/`, { params });
   }
 
   /**
@@ -68,13 +54,4 @@ export class AuroraService {
   }
 }
 
-export enum ExcludeType {
-  MINUTELY = 'minutely',
-  HOURLY = 'hourly',
-  DAILY = 'daily'
-}
 
-export enum Unit {
-  METRIC = 'metric',
-  IMPERIAL = 'imperial',
-}

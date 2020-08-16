@@ -2,13 +2,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Coords } from '../../models/cities';
 import * as moment from 'moment';
 import 'moment/locale/fr';
-import { Cloudy, Currently, Daily, Hourly, IconsOWM, LottiesValues } from '../../models/weather';
+import { Cloudy, Currently, Daily, DailyFeelsLike, DailyTemp, Hourly, IconsOWM, LottiesValues } from "../../models/weather";
 import * as Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'ngx-lottie/src/symbols';
+import { Util } from 'leaflet';
+import indexOf = Util.indexOf;
 
 @Component({
   selector: 'app-meteo',
@@ -69,15 +71,12 @@ export class MeteoComponent implements OnInit {
   cloudy: Cloudy[] = [];
   days: Daily[] = [];
 
+  todayTemp: DailyTemp;
   // lotties
   lottieConfig: AnimationOptions;
   widthCurrent: number = 110;
   heightCurrent: number = 110;
   unsubscribeAll$ = new Subject<void>();
-
-  lottie7Fcst: AnimationOptions;
-  width7Fcst: number = 42;
-  height7Fcst: number = 42;
 
   language: string;
   englishFormat: boolean = false; // h, hh : 12 && H,HH : 24
@@ -85,8 +84,6 @@ export class MeteoComponent implements OnInit {
   constructor(private storage: Storage) {}
 
   ngOnInit() {
-    // this.unsubscribeAll$.next();
-    // this.unsubscribeAll$.complete();
     this.storage.get('language').then(lg => {
       this.language = lg;
       if (lg === 'en') this.englishFormat = true;
@@ -98,9 +95,10 @@ export class MeteoComponent implements OnInit {
 
   todayForecast() {
     this.currentWeather$.pipe().subscribe((res: Currently) => {
-      console.log(res);
       this.currentWeather = res;
-      this.lotties(this.calculateLotties(res));
+      this.sunset = this.manageDates(res.sunset, this.englishFormat ? 'h:mm A' : 'H:mm');
+      this.sunrise = this.manageDates(res.sunrise, this.englishFormat ? 'h:mm A' : 'H:mm');
+      this.lotties(this.calculateWeaterIcons(res));
       this.actualDate = this.manageDates(moment().unix(), this.englishFormat ? 'dddd Do of MMMM, hh:mm:ss' : 'dddd DD MMMM, HH:mm:ss');
     });
   }
@@ -111,11 +109,11 @@ export class MeteoComponent implements OnInit {
       res.forEach((hours: Hourly, i) => {
         if (this.temps.length < this.dataNumberInCharts && i % 2 === 0) {
           this.temps.push(Math.round(hours.temp));
-          this.nextHours.push(this.manageDates(hours.dt, this.englishFormat ? 'hh:mm' : 'HH:mm'));
+          this.nextHours.push(this.manageDates(hours.dt, this.englishFormat ? 'hh A' : 'HH:mm'));
         }
         const cloudy: Cloudy = {
           percent: hours.clouds,
-          time: this.manageDates(hours.dt, this.englishFormat ? 'hh:mm' : 'HH:mm'),
+          time: this.manageDates(hours.dt, this.englishFormat ? 'hhA' : 'HH:mm'),
         };
         if (this.cloudy.length < 8) {
           this.cloudy.push(cloudy);
@@ -209,15 +207,12 @@ export class MeteoComponent implements OnInit {
   }
 
   sevenDayForecast() {
-    const today = moment().add(0, 'd');
 
     this.sevenDayWeather$.pipe().subscribe((res: Daily[]) => {
       this.days = [];
-      res.forEach(day => {
-        // Permet de calculer dans le jour en cours sunset/sunrise
-        if (this.manageDates(day.dt, 'MM DD') === today.format('MM DD')) {
-          this.sunset = this.manageDates(day.sunset, this.englishFormat ? 'h:mm' : 'H:mm');
-          this.sunrise = this.manageDates(day.sunrise, this.englishFormat ? 'h:mm' : 'H:mm');
+      res.forEach((day: Daily, index) => {
+        if (index === 0) {
+          this.todayTemp = day.temp;
         }
         day.date = this.manageDates(day.dt, 'ddd');
         this.days.push(day);
@@ -247,13 +242,19 @@ export class MeteoComponent implements OnInit {
    * Permet de calculer le lottie à afficher. Comporte des cas regroupés ou cas particulier
    * https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
    * */
-  calculateLotties(currentWeather: Currently): LottiesValues {
+  calculateWeaterIcons(currentWeather: Currently): LottiesValues {
     const mainIcon = currentWeather.weather[0].main;
     const idIcon = currentWeather.weather[0].id;
     const icon = currentWeather.weather[0].icon;
 
-    let day = true;
-    let night = false;
+    let daytime,
+      night = false;
+
+    if (icon.slice(-1) === 'd') {
+      daytime = true;
+    } else if (icon.slice(-1) === 'n') {
+      night = true;
+    }
 
     switch (mainIcon) {
       case IconsOWM.DRIZZLE:
@@ -264,7 +265,7 @@ export class MeteoComponent implements OnInit {
         if (currentWeather.wind_speed >= 50) {
           return LottiesValues.WIND;
         } else {
-          if (day) {
+          if (daytime) {
             return LottiesValues.CLEAR_DAY;
           }
 
@@ -278,7 +279,7 @@ export class MeteoComponent implements OnInit {
         if (idIcon === 804) {
           return LottiesValues.VERY_CLOUDY;
         }
-        if (day) {
+        if (daytime) {
           if (idIcon === 803) {
             return LottiesValues.PARTLY_CLOUDY_DAY;
           } else {
@@ -301,7 +302,7 @@ export class MeteoComponent implements OnInit {
         return LottiesValues.SNOW;
 
       default:
-        if (day) {
+        if (daytime) {
           return LottiesValues.CLEAR_DAY;
         }
         if (night) {
@@ -313,7 +314,7 @@ export class MeteoComponent implements OnInit {
   lottieConfig1: AnimationOptions;
   lottieConfig2: AnimationOptions;
 
-  lotties(icon: string /*Icons*/): void {
+  lotties(icon: LottiesValues): void {
     // if (icon === 'fog' || icon === 'snow' || icon === 'wind') {
     // not used atm, keep for sevenDays lotties evol
     //   this.widthCurrent = this.heightCurrent = 65;

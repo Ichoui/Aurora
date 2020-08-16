@@ -135,3 +135,14 @@ export enum LottiesValues {
   PARTLY_CLOUDY_NIGHT = 'partly-cloudy-night',
   CLOUDY_NIGHT = 'cloudy-night'
 }
+
+export enum ExcludeType {
+  MINUTELY = 'minutely',
+  HOURLY = 'hourly',
+  DAILY = 'daily',
+}
+
+export enum Unit {
+  METRIC = 'metric',
+  IMPERIAL = 'imperial',
+}

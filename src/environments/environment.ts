@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { DARKSKY_API_KEY, OPENWHEATHER_API_KEY } from "./keep";
+import { OPENWHEATHER_API_KEY } from "./keep";
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
@@ -15,12 +15,10 @@ import "zone.js/dist/zone-error"; // Included with Angular CLI.
 export const environment = {
   production: false,
   cors: 'https://cors-anywhere.herokuapp.com',
-  api_darksky: 'https://api.darksky.net',
   api_weather: 'https://api.openweathermap.org/data/2.5/onecall',
   aurora_v1_api: 'https://api.auroras.live/v1',
   aurora_v2_api: 'https://v2.api.auroras.live',
   apikey: OPENWHEATHER_API_KEY,
-  apikey_ds: DARKSKY_API_KEY,
   application_name: 'Aurora - Northern Light',
 };
 

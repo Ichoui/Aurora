@@ -1,21 +1,15 @@
 <div class="container">
   <div class="date">{{ actualDate }}</div>
-  <div class="today">
-    <ng-lottie *ngIf="lottieConfig" [options]="lottieConfig" [width]="widthCurrent + 'px'" [height]="heightCurrent + 'px'"> </ng-lottie>
-
-    <!--        <div class="actual-weather">-->
-    <!--                       <span *ngIf="currentWeather.temperature <= 8 && currentWeather.icon === 'wind'; else: normalIcon"-->
-    <!--                             class="icon icon-cold-wind"></span>-->
-    <!--            <ng-template #normalIcon>-->
-    <!--                <span class="icon icon-{{ currentWeather.icon }}"></span>-->
-    <!--            </ng-template>-->
-    <!--        </div>-->
-
-    <ng-container *ngIf="currentWeather$ | async as currentWeather">
+  <div class="today" *ngIf="currentWeather$ | async as currentWeather">
+    <div class="row">
+      <ng-lottie *ngIf="lottieConfig" [options]="lottieConfig" [width]="widthCurrent + 'px'" [height]="heightCurrent + 'px'"> </ng-lottie>
       <div class="temperature">{{ currentWeather.temp | number: '1.0-0' }}°</div>
       <span *ngIf="currentWeather.temp >= 33" class="icon minicons icon-hot"></span>
       <span *ngIf="currentWeather.temp <= 0" class="icon minicons icon-cold"></span>
-    </ng-container>
+    </div>
+    <div class="row feels">
+      <div>{{ todayTemp?.max | number: '1.0-0' }}° / {{ todayTemp?.min | number: '1.0-0' }}° - Ressenti : {{ currentWeather.feels_like | number: '1.0-0' }}°</div>
+    </div>
   </div>
 
   <ion-card>
@@ -25,11 +19,11 @@
     </div>
   </ion-card>
 
-  <ion-card>
-    tests
-  <ng-lottie *ngIf="lottieConfig1" [options]="lottieConfig1" [width]="heightCurrent+'px'" [height]="heightCurrent+'px'"> </ng-lottie>
-  <ng-lottie *ngIf="lottieConfig2" [options]="lottieConfig2" [width]="heightCurrent+'px'" [height]="heightCurrent+'px'"> </ng-lottie>
-  </ion-card>
+  <!--  <ion-card>-->
+  <!--    tests-->
+  <!--  <ng-lottie *ngIf="lottieConfig1" [options]="lottieConfig1" [width]="heightCurrent+'px'" [height]="heightCurrent+'px'"> </ng-lottie>-->
+  <!--  <ng-lottie *ngIf="lottieConfig2" [options]="lottieConfig2" [width]="heightCurrent+'px'" [height]="heightCurrent+'px'"> </ng-lottie>-->
+  <!--  </ion-card>-->
 
   <ion-card>
     <ion-header>{{ 'tab1.weather.seven.days' | translate }}</ion-header>
@@ -38,10 +32,12 @@
         <span class="day">{{ day.date }}</span>
         <div class="rain">
           <span class="icon icon-drop"></span>
-          <div class="percent">{{ day.rain }}%</div>
+          <div class="percent">{{ day.pop ? (day.pop | percent: '1.0-0') : '0%' }}</div>
         </div>
-        <span class="icon icon-{{ day.weather[0].icon }}"></span>
-<!--        <ng-lottie *ngIf="i === 0" [options]="lottie7Fcst0" [width]="width7Fcst + 'px'" [height]="height7Fcst + 'px'" (animationCreated)="animationCreated($event)"> </ng-lottie-->
+        <!--        <span class="icon icon-{{ day.weather[0].icon }}"></span>-->
+        <!--        <span class="icon"><img src="http://openweathermap.org/img/wn/{{ day.weather[0].icon }}@2x.png" alt="" /></span>-->
+        <span class="icon"><img src="assets/img/meteoOWM/{{ day.weather[0].icon }}@2x.png" alt="{{ day.weather[0].main }}" /></span>
+        <!--        <ng-lottie *ngIf="i === 0" [options]="lottie7Fcst0" [width]="width7Fcst + 'px'" [height]="height7Fcst + 'px'" (animationCreated)="animationCreated($event)"> </ng-lottie-->
         <div class="temps">
           <span class="temp-max">{{ day.temp.max | number: '1.0-0' }}°</span>
           <span class="temp-min">{{ day.temp.min | number: '1.0-0' }}°</span>
@@ -55,13 +51,13 @@
     <div class="cloudy-rate">
       <div *ngFor="let c of cloudy" class="cloudy">
         <div class="time">{{ c.time }}</div>
-        <div class="bar" [style.width]="(c.percent * 100 * 70) / 100 + 'vw'"></div>
-        <div class="percent">{{ c.percent | percent }}</div>
+        <div class="bar" [style.width]="(c.percent * 67) / 100 + 'vw'"></div>
+        <div class="percent">{{ c.percent }}%</div>
       </div>
     </div>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="currentWeather$ | async as currentWeather">
     <ion-header>{{ 'tab1.weather.details' | translate }}</ion-header>
     <div class="details">
       <div class="sun">
@@ -69,17 +65,17 @@
           <span class="icon icon-sunrise"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.sunrise' | translate }}</div>
-        <!--        <div class="value">{{ sunrise }}</div>-->
+        <div class="value">{{ sunrise }}</div>
       </div>
       <div class="sun">
         <div class="icon">
           <span class="icon icon-sunset"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.sunset' | translate }}</div>
-        <!--        <div class="value">{{ sunset }}</div>-->
+        <div class="value">{{ sunset }}</div>
       </div>
     </div>
-    <div class="datas" *ngIf="currentWeather$ | async as currentWeather">
+    <div class="datas">
       <div class="windy">
         <div class="icon">
           <span class="icon icon-wind-cloud"></span>
