@@ -56,6 +56,7 @@ export class SettingsPage implements OnInit {
   ionViewWillEnter() {
     this.minimapLocation();
     this.getLanguage();
+    this.getUnit();
     // this.storageNotif();
   }
 
@@ -82,7 +83,6 @@ export class SettingsPage implements OnInit {
     this.geoloc
       .getCurrentPosition()
       .then(resp => {
-        // Geolocation.getCurrentPosition().then((resp) => {
         this.coords = resp.coords;
         this.mapInit(this.coords.latitude, this.coords.longitude);
         this.storage.set('localisation', {
@@ -149,7 +149,7 @@ export class SettingsPage implements OnInit {
   /**
    * Sélection de la langue à utiliser et update du storage
    * */
-  selectedLanguage(event) {
+  setLanguage(event) {
     this.language = event.detail.value;
     this.translateService.use(this.language);
     this.storage.set('language', this.language);
@@ -158,7 +158,7 @@ export class SettingsPage implements OnInit {
   /**
    * Sélection de l'unité Imperiale ou Métrique
    * */
-  selectedUnit(event) {
+  setUnit(event) {
     this.unit = event.detail.value;
     this.storage.set('unit', this.unit);
   }
@@ -167,6 +167,12 @@ export class SettingsPage implements OnInit {
     this.storage.get('language').then(lg => {
       this.translateService.use(lg);
       this.language = lg;
+    });
+  }
+
+  getUnit() {
+    this.storage.get('unit').then(unit => {
+      this.unit = unit;
     });
   }
 

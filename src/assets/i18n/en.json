@@ -12,6 +12,7 @@
       "seven.days": "7 days forecast",
       "cover.clouds": "Cloud cover",
       "details": "More details",
+      "feelslike": "Feels like",
       "details.data": {
         "sunrise": "Sunrise",
         "sunset": "Sunset",
@@ -67,9 +68,8 @@
       "infos": "Informations",
       "subinfos": "Technical explanations and anecdotes (French)",
       "infos.text": "Want to know more...",
-      "another": "Essayez un autre emplacement",
       "units": "Unit",
-      "subunits": "Pick your favorate unit",
+      "subunits": "Pick your favorite unit",
       "metric": "Metric",
       "imperial": "Imperial",
       "kelvin": "Kelvin",

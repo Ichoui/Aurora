@@ -6,6 +6,13 @@ ion-text {
   font-family: var(--ion-font-semibold);
 }
 
+app-header {
+  z-index: 999;
+}
+ion-content {
+  z-index: 450;
+}
+
 .error {
   text-align: center;
   margin-top: 30px;

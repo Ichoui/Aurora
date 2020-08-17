@@ -212,6 +212,7 @@ export class MeteoComponent implements OnInit {
       res.forEach((day: Daily, index) => {
         if (index === 0) {
           this.todayTemp = day.temp;
+          console.log(this.todayTemp);
         } else {
         day.date = this.manageDates(day.dt, 'ddd');
         this.days.push(day);
@@ -228,11 +229,11 @@ export class MeteoComponent implements OnInit {
    * */
   manageDates(date: number, format?: string): string | moment.Moment {
     let unixToLocal;
-    if (this.language === 'fr') {
-      unixToLocal = moment.unix(date).utc().add(this.utc, 'h').locale('fr');
-    } else {
-      unixToLocal = moment.unix(date).add(this.utc, 'h').locale('en');
-    }
+      unixToLocal = moment.unix(date).utc().add(this.utc, 'h').locale(this.language);
+    // if (this.language === 'fr') {
+    // } else {
+    //   unixToLocal = moment.unix(date).add(this.utc, 'h').locale('en');
+    // }
     return unixToLocal.format(format);
   }
 

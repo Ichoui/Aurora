@@ -9,8 +9,7 @@
     </div>
     <div class="row feels">
       <div>
-        {{ todayTemp?.max | number: '1.0-0' }}° / {{ todayTemp?.min | number: '1.0-0' }}°&nbsp;<span class="tiret">—</span>&nbsp;Ressenti :
-        {{ currentWeather.feels_like | number: '1.0-0' }}°&nbsp;<span class="tiret">—</span>&nbsp;<span class="description">{{ currentWeather.weather[0].description }}</span>
+        {{ todayTemp?.max | number: '1.0-0' }}° / {{ todayTemp?.min | number: '1.0-0' }}°&nbsp;<span class="tiret">—</span>&nbsp;{{ 'tab1.weather.feelslike' | translate }}&nbsp;{{ currentWeather.feels_like | number: '1.0-0' }}°&nbsp;<span class="tiret">—</span>&nbsp;<span class="description">{{ currentWeather.weather[0].description }}</span>
       </div>
     </div>
   </div>
@@ -108,7 +107,7 @@
           <span class="icon icon-uv-index"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.uvindex' | translate }}</div>
-        <div class="value">{{ currentWeather.uvi | number: '1.0-0' }} km/h</div>
+        <div class="value">{{ currentWeather.uvi | number: '1.0-0' }}</div>
       </div>
       <div class="feels-like">
         <div class="icon">
