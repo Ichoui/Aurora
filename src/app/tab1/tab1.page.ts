@@ -3,9 +3,9 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { NavController, Platform } from '@ionic/angular';
 import { AuroraService } from '../aurora.service';
-import { NativeGeocoder, NativeGeocoderResult } from "@ionic-native/native-geocoder/ngx";
+import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { cities, CodeLocalisation, Coords } from '../models/cities';
-import { Currently, Daily, Hourly, Unit, Weather } from "../models/weather";
+import { Currently, Daily, Hourly, Unit, Weather } from '../models/weather';
 import { ErrorTemplate } from '../tab2/tab2.page';
 
 export interface ErrorTemplate {
@@ -60,7 +60,7 @@ export class Tab1Page {
     // Cheminement en fonction si la localisation est pré-set ou si géoloc
     this.storage.get('unit').then((unit: Unit) => {
       this.unit = unit;
-    })
+    });
     this.storage.get('localisation').then(
       (codeLocation: CodeLocalisation) => {
         if (!codeLocation) {
@@ -116,22 +116,22 @@ export class Tab1Page {
       longitude: long,
     };
     this.getForecast(); // TODO pour tricker car reverseGeoloc plante avec cordopute
-       // this.nativeGeo.reverseGeocode(lat, long).then(
-      // (res: NativeGeocoderResult[]) => {
-      //   this.city = res[0].locality;
-      //   this.country = res[0].countryName;
-      //   this.getForecast();
-      // },
-      // error => {
-      //   console.warn('Reverse geocode error ==> ');
-      //   console.warn(error);
-      //   this.loading = false;
-      //
-      //   this.dataError = {
-      //     value: true,
-      //     message: error,
-      //   };
-      // }
+    // this.nativeGeo.reverseGeocode(lat, long).then(
+    // (res: NativeGeocoderResult[]) => {
+    //   this.city = res[0].locality;
+    //   this.country = res[0].countryName;
+    //   this.getForecast();
+    // },
+    // error => {
+    //   console.warn('Reverse geocode error ==> ');
+    //   console.warn(error);
+    //   this.loading = false;
+    //
+    //   this.dataError = {
+    //     value: true,
+    //     message: error,
+    //   };
+    // }
     // );
   }
 
@@ -156,7 +156,6 @@ export class Tab1Page {
    * 4 variables pour aujourd'hui, les variables vont aux enfants via Input()
    */
   getForecast() {
-
     this.auroraService.openWeatherMapForecast$(this.coords.latitude, this.coords.longitude, this.unit).subscribe(
       (res: Weather) => {
         this.dataCurrentWeather = res.current;
