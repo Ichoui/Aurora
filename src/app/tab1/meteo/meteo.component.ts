@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Coords } from "../../models/cities";
-import * as moment from "moment";
-import "moment/locale/fr";
-import { Cloudy, Currently, Daily, DailyTemp, Hourly, IconsOWM, LottiesValues, Unit } from "../../models/weather";
-import * as Chart from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import { BehaviorSubject, Subject } from "rxjs";
-import { Storage } from "@ionic/storage";
-import { AnimationOptions } from "ngx-lottie";
+import { Component, Input, OnInit } from '@angular/core';
+import { Coords } from '../../models/cities';
+import * as moment from 'moment';
+import 'moment/locale/fr';
+import { Cloudy, Currently, Daily, DailyTemp, Hourly, IconsOWM, LottiesValues, Unit } from '../../models/weather';
+import * as Chart from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-meteo',
@@ -78,7 +78,8 @@ export class MeteoComponent implements OnInit {
   language: string;
   englishFormat: boolean = false; // h, hh : 12 && H,HH : 24
 
-  constructor(private storage: Storage) {}
+  constructor(private storage: Storage) {
+  }
 
   ngOnInit() {
     this.storage.get('language').then(lg => {
@@ -90,7 +91,7 @@ export class MeteoComponent implements OnInit {
     });
 
     // Convert seconds to hours
-    this.utc = (this.utc / 60) / 60;
+    this.utc = this.utc / 60 / 60;
   }
 
   todayForecast() {
@@ -165,7 +166,7 @@ export class MeteoComponent implements OnInit {
               family: 'Oswald-SemiBold',
               size: 15,
             },
-            formatter: function (value) {
+            formatter: function(value) {
               return value + '°';
             },
           },
@@ -214,8 +215,8 @@ export class MeteoComponent implements OnInit {
           this.todayTemp = day.temp;
           console.log(this.todayTemp);
         } else {
-        day.date = this.manageDates(day.dt, 'ddd');
-        this.days.push(day);
+          day.date = this.manageDates(day.dt, 'ddd');
+          this.days.push(day);
         }
       });
     });
@@ -229,7 +230,7 @@ export class MeteoComponent implements OnInit {
    * */
   manageDates(date: number, format?: string): string | moment.Moment {
     let unixToLocal;
-      unixToLocal = moment.unix(date).utc().add(this.utc, 'h').locale(this.language);
+    unixToLocal = moment.unix(date).utc().add(this.utc, 'h').locale(this.language);
     // if (this.language === 'fr') {
     // } else {
     //   unixToLocal = moment.unix(date).add(this.utc, 'h').locale('en');
@@ -311,8 +312,42 @@ export class MeteoComponent implements OnInit {
     }
   }
 
-  lottieConfig1: AnimationOptions;
-  lottieConfig2: AnimationOptions;
+  /* 
+  http://www.toujourspret.com/techniques/orientation/topographie/rose_vents1.gif
+    */
+  calculateWindDeg(windSpeed): string {
+    if (windSpeed >= 337.5 && windSpeed < 22.5) {
+      return 'N';
+    } else if (windSpeed >= 22.5 && windSpeed < 67.5) {
+      return 'NE';
+    } else if (windSpeed >= 67.5 && windSpeed < 112.5) {
+      return 'E';
+    } else if (windSpeed >= 112.5 && windSpeed < 157.5) {
+      return 'SE';
+    } else if (windSpeed >= 157.5 && windSpeed < 202.5) {
+      return 'S';
+    } else if (windSpeed >= 202.5 && windSpeed < 247.5) {
+      return this.language === 'fr' ? 'SO' : 'SW';
+    } else if (windSpeed >= 247.5 && windSpeed < 292.5) {
+      return this.language === 'fr' ? 'O' : 'W';
+    } else if (windSpeed >= 292.5 && windSpeed < 337.5) {
+      return this.language === 'fr' ? 'NO' : 'NW';
+    }
+  }
+
+  calculateUV(indexUv): string {
+    if (indexUv >= 0 && indexUv < 3) {
+      return this.language === 'fr' ? 'Faible' : 'Low';
+    } else if (indexUv >= 3 && indexUv < 6) {
+      return this.language === 'fr' ? 'Modéré' : 'Moderate';
+    } else if (indexUv >= 6 && indexUv < 8) {
+      return this.language === 'fr' ? 'Élevé' : 'High';
+    } else if (indexUv >= 8 && indexUv < 11) {
+      return this.language === 'fr' ? 'Très élevé' : 'Very high';
+    } else if (indexUv >= 11) {
+      return this.language === 'fr' ? 'Extrême' : 'Extreme';
+    }
+  }
 
   lotties(icon: LottiesValues): void {
     // if (icon === 'fog' || icon === 'snow' || icon === 'wind') {
@@ -328,22 +363,5 @@ export class MeteoComponent implements OnInit {
       autoplay: true,
       loop: true,
     };
-
-    this.lottieConfig1 = {
-      path: `assets/lotties/lottie-very-cloudy-night.json`,
-      renderer: 'svg',
-      autoplay: true,
-      loop: true,
-    };
-    this.lottieConfig2 = {
-      // path: `assets/lotties/lottie-tornado.json`,
-      renderer: 'svg',
-      autoplay: true,
-      loop: true,
-    };
   }
-
-  // animationCreated(animationItem: AnimationItem): void {
-  //   animationItem.setSpeed(0.6);
-  // }
 }

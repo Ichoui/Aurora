@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'aurora-icons';
-  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?ereglc');
-  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?ereglc#iefix') format('embedded-opentype'),
-  url('/assets/aurora-icons/fonts/aurora-icons.ttf?ereglc') format('truetype'),
-  url('/assets/aurora-icons/fonts/aurora-icons.woff?ereglc') format('woff'),
-  url('/assets/aurora-icons/fonts/aurora-icons.svg?ereglc#aurora-icons') format('svg');
+  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?s32rwt');
+  src:  url('/assets/aurora-icons/fonts/aurora-icons.eot?s32rwt#iefix') format('embedded-opentype'),
+  url('/assets/aurora-icons/fonts/aurora-icons.ttf?s32rwt') format('truetype'),
+  url('/assets/aurora-icons/fonts/aurora-icons.woff?s32rwt') format('woff'),
+  url('/assets/aurora-icons/fonts/aurora-icons.svg?s32rwt#aurora-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,11 +25,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-compass:before {
+  content: "\e916";
+}
 .icon-uv-index:before {
   content: "\e915";
-}
-.icon-navigator:before {
-  content: "\e916";
 }
 .icon-paypal:before {
   content: "\e925";

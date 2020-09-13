@@ -95,10 +95,10 @@
       </div>
       <div class="feels-like">
         <div class="icon">
-          <span class="icon icon-navigator"></span>
+          <span class="icon icon-compass"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.winddeg' | translate }}</div>
-        <div class="value">{{ currentWeather.wind_deg }}°</div>
+        <div class="value">{{ calculateWindDeg(currentWeather.wind_deg) }} ({{ currentWeather.wind_deg }}°)</div>
       </div>
     </div>
     <div class="data-details">
@@ -107,7 +107,7 @@
           <span class="icon icon-uv-index"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.uvindex' | translate }}</div>
-        <div class="value">{{ currentWeather.uvi | number: '1.0-0' }}</div>
+        <div class="value">{{ calculateUV(currentWeather.uvi) }} ({{ currentWeather.uvi | number: '1.0-0' }})</div>
       </div>
       <div class="feels-like">
         <div class="icon">
