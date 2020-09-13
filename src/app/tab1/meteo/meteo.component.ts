@@ -1,13 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Coords } from '../../models/cities';
-import * as moment from 'moment';
-import 'moment/locale/fr';
-import { Cloudy, Currently, Daily, DailyTemp, Hourly, IconsOWM, LottiesValues, Unit } from '../../models/weather';
-import * as Chart from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { Storage } from '@ionic/storage';
-import { AnimationOptions } from 'ngx-lottie';
+import { Component, Input, OnInit } from "@angular/core";
+import { Coords } from "../../models/cities";
+import * as moment from "moment";
+import "moment/locale/fr";
+import { Cloudy, Currently, Daily, DailyTemp, Hourly, IconsOWM, LottiesValues, Unit } from "../../models/weather";
+import * as Chart from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { BehaviorSubject, Subject } from "rxjs";
+import { Storage } from "@ionic/storage";
+import { AnimationOptions } from "ngx-lottie";
+import { listLanguages } from "../../models/languages";
 
 @Component({
   selector: 'app-meteo',
@@ -84,7 +85,7 @@ export class MeteoComponent implements OnInit {
   ngOnInit() {
     this.storage.get('language').then(lg => {
       this.language = lg;
-      if (lg === 'en') this.englishFormat = true;
+      if (lg === listLanguages.FR) this.englishFormat = true;
       this.todayForecast();
       this.nextHoursForecast();
       this.sevenDayForecast();
@@ -327,25 +328,25 @@ export class MeteoComponent implements OnInit {
     } else if (windSpeed >= 157.5 && windSpeed < 202.5) {
       return 'S';
     } else if (windSpeed >= 202.5 && windSpeed < 247.5) {
-      return this.language === 'fr' ? 'SO' : 'SW';
+      return this.language === listLanguages.FR ? 'SO' : 'SW';
     } else if (windSpeed >= 247.5 && windSpeed < 292.5) {
-      return this.language === 'fr' ? 'O' : 'W';
+      return this.language === listLanguages.FR ? 'O' : 'W';
     } else if (windSpeed >= 292.5 && windSpeed < 337.5) {
-      return this.language === 'fr' ? 'NO' : 'NW';
+      return this.language === listLanguages.FR ? 'NO' : 'NW';
     }
   }
 
   calculateUV(indexUv): string {
     if (indexUv >= 0 && indexUv < 3) {
-      return this.language === 'fr' ? 'Faible' : 'Low';
+      return this.language === listLanguages.FR ? 'Faible' : 'Low';
     } else if (indexUv >= 3 && indexUv < 6) {
-      return this.language === 'fr' ? 'Modéré' : 'Moderate';
+      return this.language === listLanguages.FR ? 'Modéré' : 'Moderate';
     } else if (indexUv >= 6 && indexUv < 8) {
-      return this.language === 'fr' ? 'Élevé' : 'High';
+      return this.language === listLanguages.FR ? 'Élevé' : 'High';
     } else if (indexUv >= 8 && indexUv < 11) {
-      return this.language === 'fr' ? 'Très élevé' : 'Very high';
+      return this.language === listLanguages.FR ? 'Très élevé' : 'Very high';
     } else if (indexUv >= 11) {
-      return this.language === 'fr' ? 'Extrême' : 'Extreme';
+      return this.language === listLanguages.FR ? 'Extrême' : 'Extreme';
     }
   }
 
