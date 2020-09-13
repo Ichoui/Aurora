@@ -91,7 +91,8 @@
           <span class="icon icon-wind-cloud"></span>
         </div>
         <div class="label">{{ 'tab1.weather.details.data.windspeed' | translate }}</div>
-        <div class="value">{{ currentWeather.wind_speed * 3.2 | number: '1.0-0' }} km/h</div>
+        <div class="value" *ngIf="unit === Unit.METRIC">{{ currentWeather.wind_speed * 3.2 | number: '1.0-0' }} km/h</div>
+        <div class="value" *ngIf="unit === Unit.IMPERIAL">{{ currentWeather.wind_speed | number: '1.0-0' }} mph</div>
       </div>
       <div class="feels-like">
         <div class="icon">

@@ -1,14 +1,14 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Coords } from "../../models/cities";
-import * as moment from "moment";
-import "moment/locale/fr";
-import { Cloudy, Currently, Daily, DailyTemp, Hourly, IconsOWM, LottiesValues, Unit } from "../../models/weather";
-import * as Chart from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import { BehaviorSubject, Subject } from "rxjs";
-import { Storage } from "@ionic/storage";
-import { AnimationOptions } from "ngx-lottie";
-import { listLanguages } from "../../models/languages";
+import { Component, Input, OnInit } from '@angular/core';
+import { Coords } from '../../models/cities';
+import * as moment from 'moment';
+import 'moment/locale/fr';
+import { Cloudy, Currently, Daily, DailyTemp, Hourly, IconsOWM, LottiesValues, Unit } from '../../models/weather';
+import * as Chart from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { AnimationOptions } from 'ngx-lottie';
+import { listLanguages } from '../../models/languages';
 
 @Component({
   selector: 'app-meteo',
@@ -79,8 +79,7 @@ export class MeteoComponent implements OnInit {
   language: string;
   englishFormat: boolean = false; // h, hh : 12 && H,HH : 24
 
-  constructor(private storage: Storage) {
-  }
+  constructor(private storage: Storage) {}
 
   ngOnInit() {
     this.storage.get('language').then(lg => {
@@ -91,6 +90,7 @@ export class MeteoComponent implements OnInit {
       this.sevenDayForecast();
     });
 
+    console.log(this.unit);
     // Convert seconds to hours
     this.utc = this.utc / 60 / 60;
   }
@@ -167,7 +167,7 @@ export class MeteoComponent implements OnInit {
               family: 'Oswald-SemiBold',
               size: 15,
             },
-            formatter: function(value) {
+            formatter: function (value) {
               return value + '°';
             },
           },
@@ -313,7 +313,7 @@ export class MeteoComponent implements OnInit {
     }
   }
 
-  /* 
+  /** 
   http://www.toujourspret.com/techniques/orientation/topographie/rose_vents1.gif
     */
   calculateWindDeg(windSpeed): string {
