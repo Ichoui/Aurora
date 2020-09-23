@@ -36,12 +36,12 @@ export class AppComponent {
   isNotifsActive(): void {
     this.storage.get('notifications_active').then(notifs => {
       if (notifs) {
-        console.log(this.selectedKp);
-        console.log(this.currentKp);
+        // console.log(this.selectedKp);
+        // console.log(this.currentKp);
         if (this.selectedKp === this.currentKp && this.selectedKp !== undefined) {
-          console.log('Cool');
+          // console.log('Cool');
         } else {
-          console.log('PAS Cool');
+          // console.log('PAS Cool');
         }
       }
     });
@@ -65,7 +65,7 @@ export class AppComponent {
       },
       noValue => {
         this.storage.set('language', 'fr');
-        console.log('novalue of language', noValue);
+        console.warn('novalue of language', noValue);
       }
     );
   }
@@ -81,7 +81,7 @@ export class AppComponent {
       },
       noValue => {
         this.storage.set('unit', 'metric');
-        console.log('novalue of units', noValue);
+        console.warn('novalue of units', noValue);
       }
     );
   }

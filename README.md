@@ -7,6 +7,10 @@
 
 You will need an OpenWeatherMap free account.
 
+Start project with `npm run start:browser-cordova` and test on your browser.
+
+
+
 
 ### About 
 Aurora Northern Lights Forecast 

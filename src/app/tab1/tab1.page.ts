@@ -65,12 +65,12 @@ export class Tab1Page {
       (codeLocation: CodeLocalisation) => {
         if (!codeLocation) {
           this.userLocalisation();
-          console.log('aa');
+          // console.log('aa');
         } else if (codeLocation.code === 'currentLocation' || codeLocation.code === 'marker') {
-          console.log('bb');
+          // console.log('bb');
           this.reverseGeoloc(codeLocation.lat, codeLocation.long);
         } else {
-          console.log('cc');
+          // console.log('cc');
           this.chooseExistingCity(codeLocation.code);
         }
       },
@@ -115,24 +115,24 @@ export class Tab1Page {
       latitude: lat,
       longitude: long,
     };
-    this.getForecast(); // TODO pour tricker car reverseGeoloc plante avec cordopute
-    // this.nativeGeo.reverseGeocode(lat, long).then(
-    // (res: NativeGeocoderResult[]) => {
-    //   this.city = res[0].locality;
-    //   this.country = res[0].countryName;
-    //   this.getForecast();
-    // },
-    // error => {
-    //   console.warn('Reverse geocode error ==> ');
-    //   console.warn(error);
-    //   this.loading = false;
-    //
-    //   this.dataError = {
-    //     value: true,
-    //     message: error,
-    //   };
-    // }
-    // );
+    // this.getForecast(); // TODO pour tricker en web car reverseGeoloc plante avec cordopute
+    this.nativeGeo.reverseGeocode(lat, long).then(
+    (res: NativeGeocoderResult[]) => {
+      this.city = res[0].locality;
+      this.country = res[0].countryName;
+      this.getForecast();
+    },
+    error => {
+      console.warn('Reverse geocode error ==> ');
+      console.warn(error);
+      this.loading = false;
+
+      this.dataError = {
+        value: true,
+        message: error,
+      };
+    }
+    );
   }
 
   /**
@@ -163,7 +163,7 @@ export class Tab1Page {
         this.dataSevenDay = res.daily;
         this.utcOffset = res.timezone_offset; // in seconds
         this.trickLoading('1st');
-        console.log(res);
+        // console.log(res);
       },
       error => {
         console.warn('OpenWeatherMap forecast error', error);

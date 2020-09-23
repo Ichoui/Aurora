@@ -40,9 +40,6 @@ export class MapsComponent implements OnInit {
         return this.kpForecast27$.getValue();
     }
 
-    lottieMap: Object;
-    lottieOvations: Object;
-
     constructor(private modalController: ModalController, private translateService: TranslateService) {
     }
 

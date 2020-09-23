@@ -90,7 +90,6 @@ export class MeteoComponent implements OnInit {
       this.sevenDayForecast();
     });
 
-    console.log(this.unit);
     // Convert seconds to hours
     this.utc = this.utc / 60 / 60;
   }
@@ -214,7 +213,6 @@ export class MeteoComponent implements OnInit {
       res.forEach((day: Daily, index) => {
         if (index === 0) {
           this.todayTemp = day.temp;
-          console.log(this.todayTemp);
         } else {
           day.date = this.manageDates(day.dt, 'ddd');
           this.days.push(day);

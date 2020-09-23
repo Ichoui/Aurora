@@ -4,7 +4,7 @@ import { cities, CodeLocalisation } from '../../models/cities';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { icon, LatLng, Map, marker, Marker, tileLayer, ZoomPanOptions } from 'leaflet';
+import { Control, control, icon, LatLng, Map, marker, Marker, tileLayer, ZoomPanOptions } from 'leaflet';
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -62,11 +62,10 @@ export class LocationMapPage implements OnInit, OnDestroy {
   selectedLoc(choice?: any, position?: LatLng): void {
     if (choice) {
       this.localisation = choice.detail.value;
-      console.log(choice);
-      console.log('localis', this.localisation);
+      // console.log(choice);
+      // console.log('localis', this.localisation);
       const city = cities.find(res => res.code === choice.detail.value);
       if (city) {
-        console.log('c');
         this.storage.set('localisation', {
           code: this.localisation,
           lat: city.latitude,
@@ -76,7 +75,6 @@ export class LocationMapPage implements OnInit, OnDestroy {
       }
     } else {
       this.localisation = 'marker';
-      console.log('d  ' + position);
       this.storage.set('localisation', {
         code: 'marker',
         lat: position.lat,
@@ -124,7 +122,7 @@ export class LocationMapPage implements OnInit, OnDestroy {
 
       icon: icon({
         iconSize: [45, 45],
-        iconUrl: 'assets/img/marker-icon.png'
+        iconUrl: 'assets/img/marker-icon.png',
       }),
     }).addTo(this.map);
   }
@@ -198,12 +196,12 @@ export class LocationMapPage implements OnInit, OnDestroy {
   createTooltip(infoWindow: string, lat?, long?) {
     if (lat && long) {
       this.marker
-      .bindPopup(`<b>${infoWindow}</b> <br /> Lat: ${lat} <br/> Long: ${long}`)
-      .openPopup()
-      .on('click', () => {
-        console.log('clic on tooltip');
-        this.router.navigate(['', 'tabs', 'tab1']);
-      });
+        .bindPopup(`<b>${infoWindow}</b> <br /> Lat: ${lat} <br/> Long: ${long}`)
+        .openPopup()
+        .on('click', () => {
+          // console.log('clic on tooltip');
+          this.router.navigate(['', 'tabs', 'tab1']);
+        });
     } else {
       this.marker.bindPopup(`<b>${infoWindow}</b><br /> ${this.translate.instant('tab3.map.another')} `).openPopup();
     }

@@ -55,12 +55,12 @@ export class Tab2Page {
       (codeLocation: CodeLocalisation) => {
         if (!codeLocation) {
           this.userLocalisation();
-          console.log('aa');
+          // console.log('aa');
         } else if (codeLocation.code === 'currentLocation' || codeLocation.code === 'marker') {
-          console.log('bb');
+          // console.log('bb');
           this.getExistingLocalisation(codeLocation.lat, codeLocation.long);
         } else {
-          console.log('cc');
+          // console.log('cc');
           this.chooseExistingCity(codeLocation.code);
         }
       },
