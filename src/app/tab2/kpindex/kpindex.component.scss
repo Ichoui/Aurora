@@ -26,7 +26,7 @@
 
     span {
       display: inline-block;
-      border: .2px solid rgba(255,255,255,.5);
+      border: 0.2px solid rgba(255, 255, 255, 0.5);
       width: 7px;
       margin: 0 1.5px;
       background: transparent;
@@ -81,7 +81,6 @@
     span.red {
       background: var(--ion-color-red);
     }
-
   }
 
   .label {
@@ -97,6 +96,9 @@
   .value {
     width: 75%;
     font-size: 3.3rem;
+    @media all and (max-width: 360px) {
+    font-size: 2.8rem;
+    }
   }
 
   &.nowcast {
@@ -104,18 +106,14 @@
   }
 
   &.kp {
-
   }
 
   &.density {
-
   }
 
   &.speed {
-
   }
 }
-
 
 .night-sky {
   position: absolute;
