@@ -118,24 +118,25 @@ export class Tab1Page {
       latitude: lat,
       longitude: long,
     };
-    this.getForecast(); // TODO pour tricker en web car reverseGeoloc plante avec cordopute
-    // this.nativeGeo.reverseGeocode(lat, long).then(
-    // (res: NativeGeocoderResult[]) => {
-    //   this.city = res[0].locality;
-    //   this.country = res[0].countryName;
-    //   this.getForecast();
-    // },
-    // error => {
-    //   console.warn('Reverse geocode error ==> ');
-    //   console.warn(error);
-    //   this.loading = false;
-    //
-    //   this.dataError = {
-    //     value: true,
-    //     message: error,
-    //   };
-    // }
-    // );
+    // this.getForecast(); // TODO pour tricker en web car reverseGeoloc plante avec cordopute
+    this.nativeGeo.reverseGeocode(lat, long).then(
+    (res: NativeGeocoderResult[]) => {
+      this.city = res[0].locality;
+      this.country = res[0].countryName;
+      this.getForecast();
+    },
+    error => {
+      console.warn('Reverse geocode error ==> ');
+      console.warn(error);
+      this.loading = false;
+      this.dataError = new ErrorTemplate({
+        value: true,
+        status: error.status,
+        message: error.statusText,
+        error: error,
+      });
+    }
+    );
   }
 
   /**
