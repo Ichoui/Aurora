@@ -10,6 +10,7 @@ import { KpindexModule } from "./kpindex/kpindex.module";
 import { MapsModule } from "./maps/maps.module";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
+import { BrokenPageModule } from '../shared/broken/broken.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
     HeaderPageModule,
     KpindexModule,
     MapsModule,
+    BrokenPageModule
   ],
   declarations: [Tab2Page],
   providers: [Geolocation, NativeGeocoder]

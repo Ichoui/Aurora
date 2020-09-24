@@ -84,7 +84,7 @@ export class MeteoComponent implements OnInit {
   ngOnInit() {
     this.storage.get('language').then(lg => {
       this.language = lg;
-      if (lg === listLanguages.FR) this.englishFormat = true;
+      if (lg === listLanguages.EN) this.englishFormat = true;
       this.todayForecast();
       this.nextHoursForecast();
       this.sevenDayForecast();

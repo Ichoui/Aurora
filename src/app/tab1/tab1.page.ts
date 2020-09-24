@@ -6,12 +6,13 @@ import { AuroraService } from '../aurora.service';
 import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { cities, CodeLocalisation, Coords } from '../models/cities';
 import { Currently, Daily, Hourly, Unit, Weather } from '../models/weather';
-import { ErrorTemplate } from '../tab2/tab2.page';
+import { ErrorTemplate } from '../shared/broken/broken.model';
+// import { ErrorTemplate } from '../tab2/tab2.page';
 
-export interface ErrorTemplate {
-  value: boolean;
-  message: string;
-}
+// export interface ErrorTemplate {
+//   value: boolean;
+//   message: string;
+// }
 
 const API_CALL_NUMBER = 1; // nombre de fois où une API est appelé sur cette page
 
@@ -39,10 +40,7 @@ export class Tab1Page {
   utcOffset: number;
 
   unit: Unit;
-  dataError: ErrorTemplate = {
-    value: false,
-    message: 'Error ...',
-  };
+  dataError = new ErrorTemplate(null);
 
   constructor(
     private geoloc: Geolocation,
@@ -56,6 +54,7 @@ export class Tab1Page {
   ionViewWillEnter() {
     this.loading = true; // buffer constant
     this.tabLoading = [];
+
 
     // Cheminement en fonction si la localisation est pré-set ou si géoloc
     this.storage.get('unit').then((unit: Unit) => {
@@ -76,10 +75,12 @@ export class Tab1Page {
       },
       error => {
         console.warn('Local storage error', error);
-        this.dataError = {
+        this.dataError = new ErrorTemplate({
           value: true,
-          message: error,
-        };
+          status: error.status,
+          message: error.statusText,
+          error: error,
+        });
       }
     );
   }
@@ -97,10 +98,12 @@ export class Tab1Page {
       .catch(error => {
         console.warn('Geolocalisation error', error);
         this.loading = false;
-        this.dataError = {
+        this.dataError = new ErrorTemplate({
           value: true,
-          message: error,
-        };
+          status: error.status,
+          message: error.statusText,
+          error: error,
+        });
       });
   }
 
@@ -115,24 +118,24 @@ export class Tab1Page {
       latitude: lat,
       longitude: long,
     };
-    // this.getForecast(); // TODO pour tricker en web car reverseGeoloc plante avec cordopute
-    this.nativeGeo.reverseGeocode(lat, long).then(
-    (res: NativeGeocoderResult[]) => {
-      this.city = res[0].locality;
-      this.country = res[0].countryName;
-      this.getForecast();
-    },
-    error => {
-      console.warn('Reverse geocode error ==> ');
-      console.warn(error);
-      this.loading = false;
-
-      this.dataError = {
-        value: true,
-        message: error,
-      };
-    }
-    );
+    this.getForecast(); // TODO pour tricker en web car reverseGeoloc plante avec cordopute
+    // this.nativeGeo.reverseGeocode(lat, long).then(
+    // (res: NativeGeocoderResult[]) => {
+    //   this.city = res[0].locality;
+    //   this.country = res[0].countryName;
+    //   this.getForecast();
+    // },
+    // error => {
+    //   console.warn('Reverse geocode error ==> ');
+    //   console.warn(error);
+    //   this.loading = false;
+    //
+    //   this.dataError = {
+    //     value: true,
+    //     message: error,
+    //   };
+    // }
+    // );
   }
 
   /**
@@ -168,10 +171,12 @@ export class Tab1Page {
       error => {
         console.warn('OpenWeatherMap forecast error', error);
         this.loading = false;
-        this.dataError = {
+        this.dataError = new ErrorTemplate({
           value: true,
-          message: error.status + ' ' + error.statusText,
-        };
+          status: error.status,
+          message: error.statusText,
+          error: error,
+        });
       }
     );
   }

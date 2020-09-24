@@ -15,6 +15,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { HttpsInterceptorService } from './https-interceptor.service';
+import { BrokenComponent } from './shared/broken/broken.component';
 
 
 @NgModule({

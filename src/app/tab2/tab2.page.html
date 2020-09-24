@@ -24,9 +24,6 @@
     </ion-slides>
   </ng-container>
 
-  <ng-container *ngIf="!loading && dataError.value" #bugs>
-    <p class="error">
-      {{ dataError.message }}
-    </p>
-  </ng-container>
+  <app-broken *ngIf="!loading && dataError.value" [dataError]="dataError"> </app-broken>
+
 </ion-content>

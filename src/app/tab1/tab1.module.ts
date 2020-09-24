@@ -9,9 +9,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MeteoModule } from './meteo/meteo.module';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { BrokenPageModule } from '../shared/broken/broken.module';
 
 @NgModule({
-  imports: [IonicModule, CommonModule, FormsModule, TranslateModule, RouterModule.forChild([{ path: '', component: Tab1Page }]), HeaderPageModule, MeteoModule],
+  imports: [IonicModule, CommonModule, FormsModule, TranslateModule, RouterModule.forChild([{ path: '', component: Tab1Page }]), HeaderPageModule, MeteoModule, BrokenPageModule],
   declarations: [Tab1Page],
   providers: [Geolocation, NativeGeocoder],
 })

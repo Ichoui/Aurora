@@ -6,6 +6,7 @@ import { NavController } from '@ionic/angular';
 import 'moment/locale/fr';
 import { Kp27day, KpForecast } from '../models/aurorav2';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { ErrorTemplate } from '../shared/broken/broken.model';
 
 export interface ErrorTemplate {
   value: boolean;
@@ -40,10 +41,7 @@ export class Tab2Page {
   kpForecast: KpForecast[] = [] as any;
   kpForecast27days: Kp27day[] = [] as any;
 
-  dataError: ErrorTemplate = {
-    value: false,
-    message: 'Error ...',
-  };
+  dataError = new ErrorTemplate(null);
 
   constructor(private geoloc: Geolocation, private storage: Storage, private navCtrl: NavController, private auroraService: AuroraService) {}
 
@@ -66,10 +64,12 @@ export class Tab2Page {
       },
       error => {
         console.warn('Local storage error', error);
-        this.dataError = {
+        this.dataError = new ErrorTemplate({
           value: true,
-          message: error,
-        };
+          status: error.status,
+          message: error.statusText,
+          error: error,
+        });
       }
     );
   }
@@ -87,10 +87,12 @@ export class Tab2Page {
       .catch(error => {
         console.warn('Geolocalisation error', error);
         this.loading = false;
-        this.dataError = {
+        this.dataError = new ErrorTemplate({
           value: true,
-          message: error,
-        };
+          status: error.status,
+          message: error.statusText,
+          error: error,
+        });
       });
   }
 
@@ -138,10 +140,12 @@ export class Tab2Page {
       error => {
         console.warn('Wind Solar data error', error);
         this.loading = false;
-        this.dataError = {
+        this.dataError = new ErrorTemplate({
           value: true,
-          message: error.status + ' ' + error.statusText,
-        };
+          status: error.status,
+          message: error.statusText,
+          error: error,
+        });
       }
     );
   }

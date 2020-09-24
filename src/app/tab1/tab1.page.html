@@ -14,25 +14,20 @@
       <div class="refresh whirly-loader"></div>
     </ion-refresher>
 
-        <h2 class="ion-text-center">
-          <span class="city">
-            <span>
-              <ion-icon name="pin"></ion-icon>
-              {{ city ? city + ' -' : '' }}
-            </span>
-          </span>
-          <span class="country">{{ country }}</span>
-          <span *ngIf="!city && !country" class="country">{{ 'global.unknown' | translate }}</span>
-        </h2>
+    <h2 class="ion-text-center">
+      <span class="city">
+        <span>
+          <ion-icon name="pin"></ion-icon>
+          {{ city ? city + ' -' : '' }}
+        </span>
+      </span>
+      <span class="country">{{ country }}</span>
+      <span *ngIf="!city && !country" class="country">{{ 'global.unknown' | translate }}</span>
+    </h2>
 
     <app-meteo [coords]="coords" [currentWeatherInput]="dataCurrentWeather" [hourlyWeatherInput]="dataHourly" [sevenDayWeatherInput]="dataSevenDay" [utc]="utcOffset" [unit]="unit">
     </app-meteo>
   </ng-container>
 
-  <ng-container *ngIf="!loading && dataError.value" #bug>
-    <p class="error">
-      <img src="" alt="{{ dataError.message }}" />
-      {{ dataError.message }}
-    </p>
-  </ng-container>
+  <app-broken *ngIf="!loading && dataError.value" [dataError]="dataError"> </app-broken>
 </ion-content>
