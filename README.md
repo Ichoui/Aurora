@@ -8,9 +8,10 @@
 You will need an OpenWeatherMap free account.
 
 Start project with `npm run start:browser-cordova` and test on your browser.
+Uncomment in `tab1/tab1.page.ts` the following : this.getForecast() , then comment the lines below to avoid reverseGeoloc errors due to cordova.
 
 
-
+`Update:native` & `prepare:native` for building /www and /android folders, then use `ide:open` to open Android Studio and build project to your phone.
 
 ### About 
 Aurora Northern Lights Forecast 

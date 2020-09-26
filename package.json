@@ -1,6 +1,6 @@
 {
   "name": "aurora-northern-lights",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "author": "Morgan N",
   "scripts": {
     "info:ionic": "ionic info",
@@ -13,8 +13,8 @@
     "build:dev:capacitor": "ng build -c dev && npx cap copy",
     "build:capacitor": "ng build --prod && npx cap copy",
     "ide:open": "npx cap open android",
-    "update:native": "cordova-res android --skip-config --copy ; node script/resources-android.js",
-    "prepare:native": "gulp prepare:native"
+    "prepare:native": "gulp prepare:native",
+    "update:native": "cordova-res android --skip-config --copy && node script/resources-android.js"
   },
   "private": true,
   "dependencies": {

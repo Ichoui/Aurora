@@ -17,7 +17,7 @@ gulp.task('replace-conf', function() {
         runSequence('add-android', function(err) {
             if (!err) {
                 gulp.src('./env/android/*').pipe(gulp.dest('./android/app/'));
-                runSequence('update-android');
+                runSequence('update-capacitor', 'update-android', 'update-capacitor');
             }
         });
     } else { console.log('Dossier ./ANDROID existe') }
@@ -27,7 +27,8 @@ gulp.task('replace-conf', function() {
 gulp.task('add-android', run(['npx cap add android']));
 
 // Task 4 : update files
-gulp.task('update-android', run('npx cap update && npm run update:native'));
+gulp.task('update-capacitor', run('npx cap update'));
+gulp.task('update-android', run('npm run update:native'));
 
 // Task 4: clear ./www
 gulp.task('rm-www', function() {
