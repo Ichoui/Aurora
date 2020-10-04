@@ -59,12 +59,12 @@ export class AppComponent {
           this.translateService.setDefaultLang(lg);
           this.storage.set('language', lg);
         } else {
-          this.translateService.setDefaultLang('fr');
-          this.storage.set('language', 'fr');
+          this.translateService.setDefaultLang(this.translateService.getBrowserLang());
+          this.storage.set('language', this.translateService.getBrowserLang());
         }
       },
       noValue => {
-        this.storage.set('language', 'fr');
+        this.storage.set('language', this.translateService.getBrowserLang());
         console.warn('novalue of language', noValue);
       }
     );
@@ -76,7 +76,11 @@ export class AppComponent {
         if (unit) {
           this.storage.set('unit', unit);
         } else {
-          this.storage.set('unit', 'metric');
+          if (this.translateService.getBrowserLang() === 'fr') {
+            this.storage.set('unit', 'metric');
+          } else {
+            this.storage.set('unit', 'imperial');
+          }
         }
       },
       noValue => {
