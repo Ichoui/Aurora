@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 import { Plugins } from '@capacitor/core';
+import { Router } from '@angular/router';
 
 const { StatusBar } = Plugins;
 
@@ -17,7 +18,7 @@ export class AppComponent {
   selectedKp: number;
   currentKp: number;
 
-  constructor(private platform: Platform, private translateService: TranslateService, private splashScreen: SplashScreen, private storage: Storage) {
+  constructor(private platform: Platform, private router: Router, private translateService: TranslateService, private splashScreen: SplashScreen, private storage: Storage) {
     this.initializeApp();
   }
 
@@ -27,6 +28,7 @@ export class AppComponent {
       this.translateService.addLangs(['fr', 'en']);
       this.getLanguage();
       this.getUnit();
+      this.router.navigate(['/tabs/tab2'])
 
       // this.getKp();
       // this.isNotifsActive();
@@ -59,8 +61,13 @@ export class AppComponent {
           this.translateService.setDefaultLang(lg);
           this.storage.set('language', lg);
         } else {
-          this.translateService.setDefaultLang(this.translateService.getBrowserLang());
-          this.storage.set('language', this.translateService.getBrowserLang());
+          if (this.translateService.getBrowserLang() === 'fr') {
+            this.translateService.setDefaultLang('fr');
+            this.storage.set('language', 'fr');
+          } else {
+            this.translateService.setDefaultLang(this.translateService.getBrowserLang());
+            this.storage.set('language', this.translateService.getBrowserLang());
+          }
         }
       },
       noValue => {
